@@ -1,7 +1,7 @@
 import os
 from scipy import signal
 from datasets import CWRU
-from data_processing import generate_spectrogram
+from scripts import generate_spectrogram
 
 def create_directory_structure():
     root_dir = "data/spectrograms"
@@ -16,13 +16,13 @@ def create_directory_structure():
 
 def create_spectrograms():    
     dataset = CWRU()
-    segment_length = 4800
+    segment_length = 48000
     filter_parameters = {
         "label": ["N", "I", "O", "B"],
         "sampling_rate": "48000",
     }  
     hp_severity_map = {"0": "007", "1": "014", "2": "021"}
-    for extent_damage in ["000"]: #["007", "014", "021"]:
+    for extent_damage in ["000", "007", "014", "021"]:
         metainfo = dataset.metainfo.filter_data({**filter_parameters, "extent_damage": extent_damage})        
         for info in metainfo:
             severity = extent_damage
@@ -36,7 +36,7 @@ def create_spectrograms():
             detrended_data = signal.detrend(data)
             for i in range(data.shape[0] // segment_length):
                 sample = detrended_data[i*segment_length:(i+1)*segment_length]
-                output_path = f"data/spectrograms/{severity}/{label}/{basename}_{i}.png"   
+                output_path = f"data/temp/{severity}/{label}/{basename}_{i}.png"   
                 # Creates and saves the spectrogram in a directory according to its classification.
                 if not os.path.exists(output_path):
                     generate_spectrogram(data=sample, 
@@ -47,11 +47,8 @@ def create_spectrograms():
 
 if __name__ == "__main__":
     # Create structure of directories
-    create_directory_structure()
+    # create_directory_structure()
 
     # create spectrograms
     create_spectrograms()
-
-    # run experiment
-
     

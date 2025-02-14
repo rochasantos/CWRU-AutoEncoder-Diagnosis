@@ -4,7 +4,7 @@ import torch.optim as optim
 
 # Definition of the classification model with VAE
 class VAE_Classifier(nn.Module):
-    def __init__(self, vae_encoder, num_classes=4):  # Número de classes pode variar
+    def __init__(self, vae_encoder, latent_dim, num_classes=4):  # Número de classes pode variar
         super(VAE_Classifier, self).__init__()
 
         # VAE Encoder
@@ -12,7 +12,7 @@ class VAE_Classifier(nn.Module):
 
         # full connected layers for classification
         self.classifier = nn.Sequential(
-            nn.Linear(16, 64),  # 16 is the dimension of the latent space of the VAE
+            nn.Linear(latent_dim, 64),  # 16 is the dimension of the latent space of the VAE
             nn.ReLU(),
             nn.Linear(64, num_classes),
             nn.Softmax(dim=1)  

@@ -2,7 +2,7 @@ import torch
 import pandas as pd
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
-def test_model(model, dataloader, class_names, device="cuda"):
+def test_vae(model, dataloader, class_names, device="cuda"):
     # Lists to store actual and predicted labels
     y_true = []
     y_pred = []

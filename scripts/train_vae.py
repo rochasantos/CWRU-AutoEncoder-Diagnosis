@@ -10,7 +10,7 @@ def vae_loss(recon_x, target_x, mu, logvar):
     return recon_loss + kl_divergence
 
 
-def train_vae(model, train_loader, val_loader, epochs=100, lr=1e-3, saved_path="saved_models/vae.pth", device="cuda"):
+def train_vae(model, train_loader1, train_loader2, epochs=100, lr=1e-3, saved_path="saved_models/vae.pth", device="cuda"):
     """
     Train a Variational Autoencoder (VAE) and track validation loss to check for overfitting.
     
@@ -34,8 +34,9 @@ def train_vae(model, train_loader, val_loader, epochs=100, lr=1e-3, saved_path="
         model.train()  # Set model to training mode
         train_loss = 0  
 
-        for batch in train_loader:
-            input_img, target_img = batch
+        for batch1, batch2 in zip(train_loader1, train_loader1):
+            input_img, _ = batch1
+            target_img, _ = batch2
             input_img, target_img = input_img.to(device), target_img.to(device)
 
             optimizer.zero_grad()
@@ -46,27 +47,11 @@ def train_vae(model, train_loader, val_loader, epochs=100, lr=1e-3, saved_path="
 
             train_loss += loss.item()
 
-        train_loss /= len(train_loader.dataset)
-        train_losses.append(train_loss)
-
-        # === Validation Phase ===
-        model.eval()  # Set model to evaluation mode (no weight updates)
-        val_loss = 0
-
-        with torch.no_grad():  # No gradients needed for validation
-            for batch in val_loader:
-                input_img, target_img = batch
-                input_img, target_img = input_img.to(device), target_img.to(device)
-
-                recon_img, mu, logvar = model(input_img)
-                loss = vae_loss(recon_img, target_img, mu, logvar)
-                val_loss += loss.item()
-
-        val_loss /= len(val_loader.dataset)
-        val_losses.append(val_loss)
+        train_loss /= len(train_loader1.dataset)
+        train_losses.append(train_loss)        
 
         # Print both losses for analysis
-        print(f"Epoch {epoch+1}/{epochs}, Train Loss: {train_loss:.4f}, Val Loss: {val_loss:.4f}")
+        print(f"Epoch {epoch+1}/{epochs}, Train Loss: {train_loss:.4f}")
 
     # Save the trained model
     torch.save(model.state_dict(), saved_path)
