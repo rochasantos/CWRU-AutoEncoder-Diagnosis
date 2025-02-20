@@ -67,7 +67,7 @@ class CWRU(BaseDataset):
             '6203': 'FE',
             '6205': 'DE' }
         basename = os.path.basename(filepath).split('.')[0]
-        annot_info = list(filter(lambda x: x["filename"]==basename, self.annotation_file))[0]
+        annot_info = list(filter(lambda x: x["filename"]==basename, self.get_metainfo()))[0]
         label = annot_info["label"]
         bearing_type = annot_info["bearing_type"]
         bearing_position = ['DE'] if label == 'N' else [map_position[bearing_type]]

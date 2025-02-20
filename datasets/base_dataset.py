@@ -24,17 +24,8 @@ class BaseDataset(ABC):
         """
         self._rawfilesdir = rawfilesdir  # Directory to store the raw files
         self._url = url  # Base URL for downloading the files
-        self._data = [] # List to store the extracted data.
-        self._label = []  # List to store the corresponding labels for the data.
         self.acquisition_maxsize = None  # Maximum size for data acquisition.
-        dataset_name = str(self)
-        self._annotation_file=DatasetManager(dataset_name).filter_data()
-        self._metainfo = DatasetManager(dataset_name)
-        self.map_classes = {"N": 0, "I": 1, "O": 2, "B": 3}
-        self.all_signals = []
-        self.all_labels = []
-        self._is_cached = False
-
+        self._metainfo = DatasetManager(str(self))
         if not os.path.exists(self._rawfilesdir):
             os.makedirs(self._rawfilesdir)
 
@@ -69,21 +60,9 @@ class BaseDataset(ABC):
         pass  
 
     @property
-    def data(self):
-        return self._data
-    
-    @property
-    def label(self):
-        return self._label
-    
-    @property
     def rawfilesdir(self):
         return self._rawfilesdir
         
-    @property
-    def annotation_file(self):
-        return self._annotation_file
-    
     @property
     def metainfo(self):
         return self._metainfo
