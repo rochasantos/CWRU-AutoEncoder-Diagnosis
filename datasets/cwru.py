@@ -52,6 +52,7 @@ class CWRU(BaseDataset):
 
         super().__init__(rawfilesdir = "data/raw/cwru",
                          url = "https://engineering.case.edu/sites/default/files/")
+        self.sampling_rate = 48000
 
     def _extract_data(self, filepath):
         """ Extracts data from a .mat file for bearing fault analysis.

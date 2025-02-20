@@ -1,7 +1,7 @@
 import os
 from scipy import signal
 from datasets import CWRU
-from scripts import generate_spectrogram
+from src import generate_spectrogram
 
 def create_directory_structure():
     root_dir = "data/spectrograms"
@@ -17,6 +17,10 @@ def create_directory_structure():
 def create_spectrograms():    
     dataset = CWRU()
     segment_length = 48000
+    output_size = (128, 128)
+    spectro_parameters = {
+        "nperseg":697, "nfft":1024, "noverlap":442,
+    }
     filter_parameters = {
         "label": ["N", "I", "O", "B"],
         "sampling_rate": "48000",
@@ -40,8 +44,8 @@ def create_spectrograms():
                 # Creates and saves the spectrogram in a directory according to its classification.
                 if not os.path.exists(output_path):
                     generate_spectrogram(data=sample, 
-                                        output_path=output_path,
-                                        nfft=1024, fs=48000, nperseg=697, noverlap=442)            
+                                        output_path=output_path, fs=48000,
+                                        nfft=1024, nperseg=697, noverlap=442)            
 
 
 
@@ -51,4 +55,5 @@ if __name__ == "__main__":
 
     # create spectrograms
     create_spectrograms()
+
     

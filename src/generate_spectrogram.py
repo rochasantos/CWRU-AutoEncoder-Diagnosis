@@ -20,9 +20,7 @@ def generate_spectrogram(data, output_path, fs, nperseg=256, nfft=None, noverlap
     plt.close(fig)
 
 
-
-
-def generate_spectrogram2(data, output_path, fs, nperseg=256, nfft=None, noverlap=None, output_size=(128, 128)):
+def generate_spectrogram2(data, output_path, fs, spectro_parameters):
     """
     Generate and save a high-resolution spectrogram.
 
@@ -36,8 +34,7 @@ def generate_spectrogram2(data, output_path, fs, nperseg=256, nfft=None, noverla
     - output_size: Tuple specifying the desired output image size (width, height).
     """
     # Compute STFT
-    f, t, Sxx = signal.stft(data, fs=fs, window='hann', nperseg=nperseg, noverlap=noverlap, 
-                            nfft=nfft, detrend=False)
+    f, t, Sxx = signal.stft(data, fs=fs, window='hann', **spectro_parameters, detrend=False)
     
     # Create figure and plot the spectrogram
     fig = plt.figure(figsize=(10, 6))

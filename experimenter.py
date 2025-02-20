@@ -3,11 +3,11 @@ import torch
 from torch.utils.data import DataLoader, ConcatDataset
 import torchvision.transforms as transforms
 from torchvision.datasets import ImageFolder
-from models import VariationalAutoencoder, VAE_Classifier
+from src.model import ResNet18
 from data_processing import SpectrogramPairDataset
-from scripts.train_vae import train_vae
-from scripts.train_classifier import train_classifier
-from scripts.test_vae import test_vae
+from src.train_vae import train_vae
+from src.train_classifier import train_classifier
+from src.test_vae import test_vae
 
 
 # Device configuration
@@ -31,7 +31,7 @@ def experimenter():
     ])
 
     # Directories where the input and output spectrograms are located
-    dir_7 = "data/temp/007"
+    dir_7 = "data/spectrograms/007"
     dir_14 = "data/spectrograms/014"
     dir_21 = "data/spectrograms/021"
 
@@ -40,9 +40,9 @@ def experimenter():
     dataloader1 = DataLoader(dataset_tr, batch_size=64, shuffle=False)
     
     # Training the VAE
-    vae = VariationalAutoencoder(latent_dim=latent_dim).to(device)
+    model = ResNet18()
     print("Starting VAE training.")
-    train_vae(vae, dataloader1, dataloader1, epochs=150, lr=1e-2, saved_path=saved_vae)
+    train_vae(ResNet18, dataloader1, dataloader1, epochs=100, lr=1e-3, saved_path=saved_vae)
 
     # Load the weights
     vae.eval()  # Set to evaluation mode (no training updates)
