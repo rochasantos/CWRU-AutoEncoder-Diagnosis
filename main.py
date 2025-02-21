@@ -1,7 +1,6 @@
 import os
 from scipy import signal
-from datasets import CWRU
-from src import generate_spectrogram
+from datasets import CWRU, UORED, Hust
 
 def create_directory_structure():
     root_dir = "data/spectrograms"
@@ -13,6 +12,8 @@ def create_directory_structure():
     if not os.path.exists("saved_models"):
         os.makedirs("saved_models")
 
+def download():
+    Hust().download()
 
 def create_spectrograms():    
     dataset = CWRU()
@@ -53,7 +54,6 @@ if __name__ == "__main__":
     # Create structure of directories
     # create_directory_structure()
 
-    # create spectrograms
-    create_spectrograms()
-
+    # download
+    download()
     
