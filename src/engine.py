@@ -22,14 +22,17 @@ def train_model(model, train_loader, val_loader, num_epochs=20, lr=0.001,
     """
     model.to(device)
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=lr)
+    optimizer = optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), lr=lr)
 
     for epoch in range(num_epochs):
         model.train()
         running_loss, correct, total = 0.0, 0, 0
 
         for inputs, labels in train_loader:
-            inputs, labels = inputs.to(device), labels.to(device)
+            inputs, labels = inputs.to(device), labels.to(device).long()
+
+            # assert labels.min() >= 0, f"Erro: Label negativa encontrada: {labels.min().item()}"
+            # assert labels.max() < 3, f"Erro: Label fora do intervalo (max = {labels.max().item()}, esperado < {3})"
 
             optimizer.zero_grad()
             outputs = model(inputs)
@@ -76,9 +79,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from sklearn.metrics import confusion_matrix, classification_report
-# import matplotlib.pyplot as plt
-# import seaborn as sns
-# import numpy as np
+
 
 def test_model(model, test_loader, device="cuda" if torch.cuda.is_available() else "cpu"):
     """
@@ -136,9 +137,5 @@ def test_model(model, test_loader, device="cuda" if torch.cuda.is_available() el
     # Confusion Matrix
     cm = confusion_matrix(all_labels, all_preds)
     print(cm)
-    # plt.figure(figsize=(6, 5))
-    # sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", xticklabels=np.unique(all_labels), yticklabels=np.unique(all_labels))
-    # plt.xlabel("Predicted Label")
-    # plt.ylabel("True Label")
-    # plt.title("Confusion Matrix")
-    # plt.show()
+    
+    return test_acc
