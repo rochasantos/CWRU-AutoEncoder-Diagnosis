@@ -26,7 +26,8 @@ class UORED(BaseDataset):
     def __init__(self):        
         super().__init__(rawfilesdir = "data/raw/uored",
                          url = "https://prod-dcd-datasets-public-files-eu-west-1.s3.eu-west-1.amazonaws.com/")
-    
+        self.sampling_rate = 42000
+
     def list_of_bearings(self):
         """ 
         Returns: 
@@ -107,7 +108,7 @@ class UORED(BaseDataset):
         matlab_file = scipy.io.loadmat(filepath)
         
         basename = os.path.basename(filepath).split('.')[0]
-        file_info = list(filter(lambda x: x["filename"]==basename, self.annotation_file))[0]
+        file_info = list(filter(lambda x: x["filename"]==basename, self.get_metainfo()))[0]
         
         label = file_info["label"]
         data = matlab_file[basename][:, 0]

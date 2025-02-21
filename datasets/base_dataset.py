@@ -1,7 +1,9 @@
 import os
 import numpy as np
+import librosa
 from src.utils import download_file, extract_rar
 from src.data_manager import DatasetManager
+
 
 from abc import ABC, abstractmethod
 
@@ -49,10 +51,58 @@ class BaseDataset(ABC):
                 download_file(url, sufix_url, output_path)                
             if unit == '.rar':
                 extract_rar(output_path, output_path[:-4])
-        print("Download finished.")    
+        print("Download finished.")
+
+    def save_signal(self, root_dir="data/processed/cwru", data_filter=None, segment_size=None, target_sr=None, class_names=["I", "O", "B"]):        
+        for cl in class_names:
+            if not os.path.exists(os.path.join(root_dir, cl)): 
+                os.makedirs(os.path.join(root_dir, cl), exist_ok=True)
+        
+        metainfo = self._metainfo.filter_data(data_filter)
+
+        if segment_size:
+            if root_dir.split("/")[-1] == 'cwru':
+                for info in metainfo:
+                    basename = info["filename"]        
+                    filepath = os.path.join('data/raw/', self.__class__.__name__.lower(), basename+'.mat')            
+                    signal, label = self._extract_data(filepath)
+                    if target_sr:
+                        signal = librosa.resample(signal, orig_sr=self.sampling_rate, target_sr=target_sr)
+                    # split the signal into segments
+                    n_segments = signal.shape[0] // segment_size
+                    for i in range(n_segments):
+                        sample = signal[(i * segment_size):((i + 1) * segment_size)]
+                        label_value = np.array([class_names.index(label)])
+                        data = np.hstack((sample, label_value))
+                        np.save(f"{root_dir}/{info['extent_damage']}/{info['label']}/{basename}_{i}.npy", data)
+            else:
+                for info in metainfo:
+                    basename = info["filename"]        
+                    filepath = os.path.join('data/raw/', self.__class__.__name__.lower(), basename+'.mat')            
+                    signal, label = self._extract_data(filepath)
+                    if target_sr:
+                        signal = librosa.resample(signal, orig_sr=self.sampling_rate, target_sr=target_sr)
+                    # split the signal into segments
+                    n_segments = signal.shape[0] // segment_size
+                    for i in range(n_segments):
+                        sample = signal[(i * segment_size):((i + 1) * segment_size)]
+                        label_value = np.array([class_names.index(label)])
+                        data = np.hstack((sample, label_value))
+                        np.save(f"{root_dir}/{info['label']}/{basename}_{i}.npy", data)
+
+        else:
+            for info in metainfo:
+                basename = info["filename"]        
+                filepath = os.path.join('data/raw/', self.__class__.__name__.lower(), basename+'.mat')            
+                data, label = self._extract_data(filepath)
+                if target_sr:
+                    data = librosa.resample(data, orig_sr=self.sampling_rate, target_sr=target_sr)
+                np.save(f"{root_dir}/{info['extent_damage']}/{info['label']}/{basename}.npy", np.array([data, label], dtype=object))
+
     
     def get_metainfo(self, filter=None):
         return self._metainfo.filter_data(filter)
+    
 
     @classmethod
     @abstractmethod

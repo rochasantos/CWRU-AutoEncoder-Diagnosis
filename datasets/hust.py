@@ -29,7 +29,7 @@ class Hust(BaseDataset):
         
         super().__init__(rawfilesdir = "data/raw/hust", 
                          url = "https://prod-dcd-datasets-public-files-eu-west-1.s3.eu-west-1.amazonaws.com/")
-
+        self.sampling_rate = 51200
     def list_of_bearings(self):
         """ Returns a list of tuples with filenames (which will be used to name the downloaded files 
             in the destination directory) and URL suffixes to download vibration data.
