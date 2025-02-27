@@ -1,6 +1,12 @@
+import sys
+import logging
+from src.utils import LoggerWriter
 import os
+import numpy as np
 from scipy import signal
-from datasets import CWRU, UORED, Hust
+from datasets import CWRU, UORED, Hust, Paderborn
+from experimenter_spectrogram.main import experimenter
+from experimenter_spectrogram.generate_spectrogram import generate_spectrogram
 
 def create_directory_structure():
     root_dir = "data/spectrograms"
@@ -13,47 +19,48 @@ def create_directory_structure():
         os.makedirs("saved_models")
 
 def download():
-    Hust().download()
+    Paderborn().download()
 
-def create_spectrograms():    
-    dataset = CWRU()
-    segment_length = 48000
-    output_size = (128, 128)
-    spectro_parameters = {
-        "nperseg":697, "nfft":1024, "noverlap":442,
-    }
-    filter_parameters = {
-        "label": ["N", "I", "O", "B"],
-        "sampling_rate": "48000",
-    }  
-    hp_severity_map = {"0": "007", "1": "014", "2": "021"}
-    for extent_damage in ["000", "007", "014", "021"]:
-        metainfo = dataset.metainfo.filter_data({**filter_parameters, "extent_damage": extent_damage})        
-        for info in metainfo:
-            severity = extent_damage
-            if info["label"] == "N":
-                if info["hp"] not in hp_severity_map:
+def create_spectrogram():
+    print("Creating the spectrograms.")
+    for label in ["I", "O", "B"]:
+        directories = [
+            # f"data/processed/cwru/007/{label}",
+            # f"data/processed/cwru/014/{label}",
+            # f"data/processed/cwru/021/{label}",
+            f"data/processed/hust/{label}",
+            # f"data/processed/uored/{label}",
+            # f"data/processed/cwru_hust/{label}",
+            # f"data/processed/cwru_uored/{label}",
+        ]    
+
+        # creates a directory structure for the augmented data.
+        root_dir = f"data/spectrogram/hust/{label}"
+        if not os.path.exists(root_dir):
+            os.makedirs(root_dir)
+
+        for dir in directories:
+            # load_severity = dir[-5:-2]
+            for j, file in enumerate(os.listdir(dir)):
+                data = np.load(os.path.join(dir, file))
+                signal, _ = data[:-1], data[-1]
+                output_path = os.path.join(root_dir,f"spectro_{j}.png")
+                if os.path.exists(output_path):
                     continue
-                severity = hp_severity_map[info["hp"]]
-            basename = info["filename"]
-            filepath = os.path.join('data/raw/', dataset.__class__.__name__.lower(), basename+'.mat')
-            data, label = dataset.load_signal_by_path(filepath)
-            detrended_data = signal.detrend(data)
-            for i in range(data.shape[0] // segment_length):
-                sample = detrended_data[i*segment_length:(i+1)*segment_length]
-                output_path = f"data/temp/{severity}/{label}/{basename}_{i}.png"   
-                # Creates and saves the spectrogram in a directory according to its classification.
-                if not os.path.exists(output_path):
-                    generate_spectrogram(data=sample, 
-                                        output_path=output_path, fs=48000,
-                                        nfft=1024, nperseg=697, noverlap=442)            
-
+                generate_spectrogram(signal, output_path)
+            
+    print("finish!")           
 
 
 if __name__ == "__main__":
+    sys.stdout = LoggerWriter(logging.info, "cwru_uored_hust")
+
+
     # Create structure of directories
     # create_directory_structure()
 
     # download
-    download()
+    # download()
+    experimenter()
+    # create_spectrogram()
     

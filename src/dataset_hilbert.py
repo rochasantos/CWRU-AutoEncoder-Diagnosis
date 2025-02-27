@@ -2,6 +2,7 @@ import torch
 import numpy as np
 import os
 from torch.utils.data import Dataset
+from scipy.signal import hilbert
 
 
 class VibrationDataset(Dataset):
@@ -35,11 +36,16 @@ class VibrationDataset(Dataset):
         data = np.load(file_path)
 
         signal = data[:-1]  # Todos os valores menos o último (sinal)
-        label = int(data[-1])    # Última posição é a etiqueta (já numérica)
+        label = int(data[-1])  # Última posição é a etiqueta (já numérica)
 
-        # 🔹 Garante que o formato seja correto: (1, num_samples)
-        signal = torch.tensor(signal, dtype=torch.float32).unsqueeze(0)  # Adiciona canal (1D CNN espera [C, L])
-        label = torch.tensor(int(label), dtype=torch.long)
+        # 🔹 Aplica Transformada de Hilbert para criar o segundo canal
+        hilbert_signal = np.imag(hilbert(signal))  # Parte imaginária do sinal analítico
 
-        return signal, label
+        # 🔹 Empilha os dois canais: [original, hilbert_transform] → Formato: (2, num_samples)
+        signal_2ch = np.stack([signal, hilbert_signal], axis=0)
 
+        # 🔹 Converte para tensor PyTorch
+        signal_2ch = torch.tensor(signal_2ch, dtype=torch.float32)  # (2, num_samples)
+        label = torch.tensor(label, dtype=torch.long)
+
+        return signal_2ch, label

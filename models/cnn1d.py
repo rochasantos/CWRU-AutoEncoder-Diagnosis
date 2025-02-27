@@ -23,6 +23,7 @@ class CNN1D(nn.Module):
         self.fc = nn.Linear(128, num_classes)
 
     def forward(self, x):
+
         x = F.relu(self.bn1(self.conv1(x)))
         x = F.max_pool1d(x, kernel_size=2)
 

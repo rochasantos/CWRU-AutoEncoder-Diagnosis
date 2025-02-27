@@ -1,4 +1,5 @@
 import numpy as np
+import random
 
 class DataAugmentation:
     
@@ -9,6 +10,14 @@ class DataAugmentation:
         np.random.shuffle(segments)
         augmented_signal = np.concatenate(segments)
         return augmented_signal
+    
+    @staticmethod
+    def add_segment(signal1, signal2, segment_size):
+        num_segments = len(signal1) // segment_size
+        idx = random.randint(0, signal1.shape[0]-segment_size-1)
+        segment = signal2[idx:idx+segment_size]
+        signal1[idx:idx+segment_size] = segment
+        return signal1
 
     @staticmethod
     def mix_signals(signal1, signal2, segment_size):

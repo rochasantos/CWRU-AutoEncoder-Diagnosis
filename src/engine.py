@@ -2,9 +2,11 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader
+from src.early_stopping import EarlyStopping
 
 def train_model(model, train_loader, val_loader, num_epochs=20, lr=0.001, 
-                         save_path="cnn1d.pt", device="cuda" if torch.cuda.is_available() else "cpu"):
+                save_path="best_model.pth", eary_stopping_enabled=True,
+                device="cuda" if torch.cuda.is_available() else "cpu"):
     """
     Trains a 1D CNN model and saves the trained model.
 
@@ -23,6 +25,7 @@ def train_model(model, train_loader, val_loader, num_epochs=20, lr=0.001,
     model.to(device)
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), lr=lr)
+    early_stopping = EarlyStopping(patience=20, enabled=eary_stopping_enabled, save_path="best_model.pth")
 
     for epoch in range(num_epochs):
         model.train()
@@ -35,6 +38,7 @@ def train_model(model, train_loader, val_loader, num_epochs=20, lr=0.001,
             # assert labels.max() < 3, f"Erro: Label fora do intervalo (max = {labels.max().item()}, esperado < {3})"
 
             optimizer.zero_grad()
+            # inputs = inputs.squeeze(2)
             outputs = model(inputs)
             loss = criterion(outputs, labels)
             loss.backward()
@@ -66,10 +70,15 @@ def train_model(model, train_loader, val_loader, num_epochs=20, lr=0.001,
 
         print(f"Epoch [{epoch+1}/{num_epochs}] -> Train Loss: {train_loss:.4f}, Train Acc: {train_acc:.4f} | "
               f"Val Loss: {val_loss:.4f}, Val Acc: {val_acc:.4f}")
+        
+        if early_stopping(val_acc, model):
+            print("⏹ Treinamento interrompido por Early Stopping!")
+            break
 
     # Salvar o modelo treinado
-    torch.save(model.state_dict(), save_path)
-    print(f"Modelo salvo em {save_path}")
+    if not eary_stopping_enabled:    
+        torch.save(model.state_dict(), save_path)
+        print(f"Modelo salvo em {save_path}")
 
     return model
 

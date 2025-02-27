@@ -21,33 +21,16 @@ print(f"Device: {device}")
 
 # Experimenter function
 def experimenter():
-    repetitions = 1
-    
-    tr_dataset = ConcatDataset([
-        # VibrationDataset("data/processed/cwru_da"),
-        # VibrationDataset("data/processed/cwru_da_1"),
-        # VibrationDataset("data/processed/cwru_da_2"),
-        VibrationDataset("data/processed/cwru/014"),
-        VibrationDataset("data/processed/cwru/007"),
-        # VibrationDataset("data/processed/cwru_paderborn"),
-        # VibrationDataset("data/processed/uored"),
-        # VibrationDataset("data/processed/hust"),
-        # VibrationDataset("data/processed/paderborn"),
-        # VibrationDataset("data/processed/cwru_uored"),
-        # VibrationDataset("data/processed/cwru_hust"),
-    ])
+    repetitions = 1 
 
-    val_dataset = VibrationDataset("data/processed/uored")
-    te_dataset = VibrationDataset("data/processed/cwru/021")
+    val_dataset = VibrationDataset("data/processed/cwru/014")
+    te_dataset = VibrationDataset("data/processed/cwru/014")
     
     fit_dataset = ConcatDataset([
-        # VibrationDataset("data/processed/cwru_uored_da_2"),
         VibrationDataset("data/processed/cwru/007"),
         VibrationDataset("data/processed/cwru/021"),
-        # VibrationDataset("data/processed/uored"),
     ])
     
-    tr_dataloader = DataLoader(tr_dataset, batch_size=32, shuffle=True)
     fit_dataloader = DataLoader(fit_dataset, batch_size=32, shuffle=True)
     val_dataloader = DataLoader(val_dataset, batch_size=32, shuffle=False)
     te_dataloader = DataLoader(te_dataset, batch_size=32, shuffle=False)
@@ -55,11 +38,10 @@ def experimenter():
     accuracies = []
     for i in range(repetitions):
         model = CNN1D(num_classes=3)
-        trained_model = train_model(model, tr_dataloader, val_dataloader, num_epochs=30, lr=0.0001, device="cuda")
-        # model.load_state_dict(torch.load("cnn1d.pt", weights_only=True))
-        # freeze_layers(trained_model, ["conv1", "conv2", "conv3", "conv4"])
-        # fit_model = train_model(model, fit_dataloader, val_dataloader, num_epochs=50, lr=0.0001, device="cuda")
-        accuracy = test_model(trained_model, test_loader=te_dataloader)
+        model.load_state_dict(torch.load("best_model.pth", weights_only=True))
+        freeze_layers(model, ["conv1", "conv2", "conv3", "conv4"])
+        fit_model = train_model(model, fit_dataloader, val_dataloader, num_epochs=50, lr=0.0001, eary_stopping_enabled=False, device="cuda")
+        accuracy = test_model(fit_model, test_loader=te_dataloader)
         accuracies.append(accuracy)
     accuracies = np.array(accuracies)
     acc_mean = np.mean(accuracies) * 100

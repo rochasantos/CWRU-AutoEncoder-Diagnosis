@@ -2,7 +2,7 @@ import torch
 import numpy as np
 import os
 from torch.utils.data import Dataset
-
+from scipy.signal import hilbert
 
 class VibrationDataset(Dataset):
     def __init__(self, root_dir, transform=None):
@@ -35,11 +35,25 @@ class VibrationDataset(Dataset):
         data = np.load(file_path)
 
         signal = data[:-1]  # Todos os valores menos o último (sinal)
-        label = int(data[-1])    # Última posição é a etiqueta (já numérica)
+        label = int(data[-1])  # Última posição é a etiqueta (já numérica)
 
-        # 🔹 Garante que o formato seja correto: (1, num_samples)
-        signal = torch.tensor(signal, dtype=torch.float32).unsqueeze(0)  # Adiciona canal (1D CNN espera [C, L])
-        label = torch.tensor(int(label), dtype=torch.long)
+        # 🔹 Calcula o envelope do sinal com a Transformada de Hilbert
+        envelope = np.abs(hilbert(signal))
 
-        return signal, label
+        # 🔹 Aplica a Autocorrelação no envelope
+        autocorr = np.correlate(envelope, envelope, mode='full')
 
+        # 🔹 Mantém apenas a parte positiva da autocorrelação (metade superior)
+        autocorr = autocorr[len(autocorr)//2:]
+
+        # 🔹 Garante que autocorr tenha o mesmo tamanho do sinal original
+        autocorr = autocorr[:len(signal)]
+
+        # 🔹 Empilha os dois canais: [sinal original, autocorrelação do envelope]
+        signal_2ch = np.stack([signal, autocorr], axis=0)  # Formato: (2, num_samples)
+
+        # 🔹 Converte para Tensor PyTorch
+        signal_2ch = torch.tensor(signal_2ch, dtype=torch.float32)
+        label = torch.tensor(label, dtype=torch.long)
+
+        return signal_2ch, label

@@ -31,7 +31,7 @@ class Paderborn(BaseDataset):
         
         super().__init__(rawfilesdir = "data/raw/paderborn",
                          url = "https://groups.uni-paderborn.de/kat/BearingDataCenter/")
-        
+        self.sampling_rate = 64000
         self.all_files_metadata = DatasetManager("Paderborn").filter_data()
 
     def list_of_bearings(self):
@@ -71,10 +71,11 @@ class Paderborn(BaseDataset):
         matlab_file = scipy.io.loadmat(filepath)
         key = os.path.basename(filepath).split('.')[0]
         data_raw = matlab_file[key]['Y'][0][0][0][6][2][0, :]
-        dir_name = key.split('_')[-2]
-        relative_path = dir_name + '/' + dir_name + '/' + key
-        file_metadata = list(filter(lambda x: x["filename"]==relative_path, self.all_files_metadata))[0]
-        label = file_metadata['label']
+        # dir_name = key.split('_')[-2]
+        # relative_path = dir_name + '/' + dir_name + '/' + key
+        # file_metadata = list(filter(lambda x: x["filename"]==relative_path, self.all_files_metadata))[0]
+        # label = file_metadata['label']
+        label = {"K0":"N", "KA":"O", "KI":"I"}[os.path.dirname(filepath)[-4:-2]]
         if self.acquisition_maxsize:
             return data_raw[:self.acquisition_maxsize], label
         else:
