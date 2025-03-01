@@ -4,8 +4,9 @@ import logging
 from src.utils import LoggerWriter
 
 from scripts.download import download
-from scripts.experimenter import experimenter
+from scripts.process_signal import process_signal
 from scripts.create_spectrogram import create_spectrogram
+from scripts.experimenter import experimenter
 
 
 def create_directory_structure():
@@ -24,6 +25,7 @@ if __name__ == "__main__":
 
     # create_directory_structure()
     # download()
+    # process_signal(dataset_name="paderborn")
     # create_spectrogram()    
     experimenter()
     
