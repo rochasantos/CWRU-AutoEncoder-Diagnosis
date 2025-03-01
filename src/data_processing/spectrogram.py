@@ -8,7 +8,7 @@ def generate_spectrogram(signal, output_path, fs=42000, nperseg=200, noverlap=19
     spectrogram_generator = SpectrogramGenerator(window="hann", nperseg=nperseg, noverlap=noverlap, nfft=nfft)
     output = spectrogram_generator.generate(signal, sample_rate=fs)
 
-    plt.imshow(output["spectrogram"])
+    plt.imshow(output)
     plt.axis("off")
     plt.savefig(output_path, bbox_inches='tight', pad_inches=0, dpi=100, format='png')
     plt.imsave(output_path, output, cmap="jet")
