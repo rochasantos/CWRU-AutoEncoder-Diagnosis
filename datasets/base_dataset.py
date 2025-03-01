@@ -53,7 +53,7 @@ class BaseDataset(ABC):
                 extract_rar(output_path, output_path[:-4])
         print("Download finished.")
 
-    def save_signal(self, root_dir="data/processed/cwru", data_filter=None, segment_size=None, target_sr=None, class_names=["I", "O", "B"]):        
+    def save_signal(self, root_dir, data_filter=None, segment_size=None, target_sr=None, class_names=["I", "O", "B"]):        
         for cl in class_names:
             if root_dir.split("/")[-1] == 'cwru':
                 for severity in ["007", "014", "021", "028"]:
@@ -82,11 +82,11 @@ class BaseDataset(ABC):
                         np.save(f"{root_dir}/{info['extent_damage']}/{info['label']}/{basename}_{i}.npy", data)
             elif root_dir.split("/")[-1] == 'paderborn':
                 for folder in data_filter:
-                    lb = {'KA':'O', 'KI':'I'}[folder[:2]]
+                    label_map = {'KA':'O', 'KI':'I'}[folder[:2]]
                     for file in os.listdir(os.path.join("data/raw/paderborn",folder, folder)):
                         if os.path.splitext(file)[1] != ".mat":
                             continue
-                        filepath = os.path.join('data/raw/', self.__class__.__name__.lower(),folder, folder, file)            
+                        filepath = os.path.join('data/raw/paderborn', folder, folder, file)
                         signal, label = self._extract_data(filepath)
                         if target_sr:
                             signal = librosa.resample(signal, orig_sr=self.sampling_rate, target_sr=target_sr)
@@ -96,7 +96,7 @@ class BaseDataset(ABC):
                             sample = signal[(i * segment_size):((i + 1) * segment_size)]
                             label_value = np.array([class_names.index(label)])
                             data = np.hstack((sample, label_value))
-                            np.save(f"{root_dir}/{lb}/{folder}_{i}.npy", data)
+                            np.save(f"{root_dir}/{label_map}/{folder}_{i}.npy", data)
             else:
                 for info in metainfo:
                     basename = info["filename"]        
