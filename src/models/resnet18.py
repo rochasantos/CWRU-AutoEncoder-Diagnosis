@@ -6,7 +6,6 @@ from torchvision.models import ResNet18_Weights
 class ResNet18(nn.Module):
     def __init__(self, num_classes=4):
         super(ResNet18, self).__init__()
-        # Load the pretrained ResNet18 model
         self.resnet18 = models.resnet18(weights=ResNet18_Weights.DEFAULT)
         
         # Modify the last fully connected layer to match the number of output classes

@@ -2,7 +2,7 @@ import os
 import numpy as np
 import librosa
 from src.utils import download_file, extract_rar
-from src.data_manager import DatasetManager
+from src.data_processing.data_manager import DatasetManager
 
 
 from abc import ABC, abstractmethod

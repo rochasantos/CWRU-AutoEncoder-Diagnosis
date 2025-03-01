@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 import torch.optim as optim
-from src.early_stopping import EarlyStopping
+from src.training.early_stopping import EarlyStopping
 
 def finetune_rae_classifier(rae_classifier, train_dataset, val_dataset, num_epochs=20, batch_size=32, learning_rate=1e-4, 
                             save_path="rae_cls.pth", save_best_model_path="best_model.pth", device="cuda", eary_stopping_enabled=False):

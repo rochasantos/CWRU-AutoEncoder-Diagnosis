@@ -2,6 +2,8 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader
+from src.training.early_stopping import EarlyStopping
+
 
 def vae_loss_function(reconstructed, x, mu, logvar):
     recon_loss = nn.MSELoss()(reconstructed, x)  # 🔹 Erro de reconstrução
@@ -9,7 +11,8 @@ def vae_loss_function(reconstructed, x, mu, logvar):
     return recon_loss + 0.1 * kl_divergence  # 🔹 O peso 0.1 pode ser ajustado para regularização
 
 def train_rae(rae, dataset, num_epochs=50, batch_size=32, learning_rate=1e-3, 
-              save_path="rae_spectro_model.pth", freeze_layers_idx=None, device="cuda"):
+              save_path="rae_spectro_model.pth",  freeze_layers_idx=None, device="cuda", 
+              eary_stopping_enabled=False, save_best_model_path="best_train_model.pth"):
     """
     Treina o modelo RAE permitindo escolher quais camadas da ResNet18 serão congeladas.
 
@@ -38,6 +41,7 @@ def train_rae(rae, dataset, num_epochs=50, batch_size=32, learning_rate=1e-3,
 
     optimizer = optim.Adam(filter(lambda p: p.requires_grad, rae.parameters()), lr=learning_rate)
     criterion = nn.MSELoss()
+    # early_stopping = EarlyStopping(patience=80, enabled=eary_stopping_enabled, save_path=save_best_model_path)
 
     for epoch in range(num_epochs):
         total_loss = 0
@@ -57,6 +61,10 @@ def train_rae(rae, dataset, num_epochs=50, batch_size=32, learning_rate=1e-3,
             total_loss += loss.item()
 
         print(f'Epoch {epoch+1}/{num_epochs}, Loss: {total_loss / len(dataloader):.4f}')
+        
+        # if early_stopping(val_acc, rae_classifier):
+        #     print("⏹ Treinamento interrompido por Early Stopping!")
+        #     break
     
     torch.save(rae.state_dict(), save_path)
     print(f"Model saved in {save_path}")

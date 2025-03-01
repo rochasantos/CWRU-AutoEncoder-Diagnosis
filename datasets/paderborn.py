@@ -1,7 +1,7 @@
 import os
 import scipy.io
 from datasets.base_dataset import BaseDataset
-from src.data_manager import DatasetManager
+from src.data_processing.data_manager import DatasetManager
 from src.utils import extract_rar
 
 class Paderborn(BaseDataset):    
