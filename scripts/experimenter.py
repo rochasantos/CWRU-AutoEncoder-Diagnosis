@@ -14,10 +14,10 @@ from src.training.test import test_rae_classifier
 def experimenter():
     
     tr_num_epochs = 200
-    tr_lr = 0.0001
-    ft_num_epochs = 40
+    tr_lr = 0.001
+    ft_num_epochs = 2
     ft_lr = 0.001
-    repetition = 5
+    repetition = 4
     
     class_names = ["I", "O", "B"]
     
@@ -32,7 +32,8 @@ def experimenter():
         ImageFolder("data/spectrogram/cwru_14", transform=transform),
         ImageFolder("data/spectrogram/cwru_21", transform=transform),
         ImageFolder("data/spectrogram/uored", transform=transform),
-        ImageFolder("data/spectrogram/hust", transform=transform)
+        ImageFolder("data/spectrogram/hust", transform=transform),
+        ImageFolder("data/spectrogram/paderborn", transform=transform),
     ]
 
     print("Experimenter with RAE\n")
@@ -50,15 +51,14 @@ def experimenter():
     for rep in range(repetition):
         print(f"Repetition {rep+1}/{repetition}")
         accuracies = []
-        for i in [1,2,3]:
-            fold = i + 1
+        for fold in [1,2,3]:
             print(f"Fold {fold}")
             save_model = f"saved_models/rae1_f{fold}_rep{rep}.pth"
             save_cls = f"saved_models/rae_cls1_f{fold}_rep{rep}.pth"
             save_best_model_path = f"saved_models/best_rae1_f{fold}_rep{rep}.pth"
 
             datasets_copy = datasets[:]
-            te_dataset = datasets_copy.pop(i)
+            te_dataset = datasets_copy.pop(fold-1)
             tr_dataset = ConcatDataset(datasets_copy)    
             ft_dataset = ConcatDataset(datasets_copy[:2])
             val_dataset = te_dataset
