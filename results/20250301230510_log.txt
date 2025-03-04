@@ -1,0 +1,3246 @@
+Experimenter with RAE
+
+Parameters
+------------
+ Training
+ * Number of epochs: 200
+ * Learning rate: 0.001
+ Fine-tuning
+ * Number of epochs: 200
+ * Learning rate: 0.0001
+----------------------------------------------
+Repetition 1/4
+Fold 1
+ Training datasets: ['data/spectrogram/cwru_14', 'data/spectrogram/cwru_21', 'data/spectrogram/uored', 'data/spectrogram/hust', 'data/spectrogram/paderborn']
+ Fine-tuning datasets: ['data/spectrogram/cwru_14', 'data/spectrogram/cwru_21']
+ Testing dataset: data/spectrogram/cwru_7
+Starting training...
+Learning rate: 0.001, number of epochs: 200
+Epoch 1/200, Loss: 2.1552
+Epoch 2/200, Loss: 2.0034
+Epoch 3/200, Loss: 2.0003
+Epoch 4/200, Loss: 1.9980
+Epoch 5/200, Loss: 1.9983
+Epoch 6/200, Loss: 1.9971
+Epoch 7/200, Loss: 1.9966
+Epoch 8/200, Loss: 1.9932
+Epoch 9/200, Loss: 1.9900
+Epoch 10/200, Loss: 1.9902
+Epoch 11/200, Loss: 1.9879
+Epoch 12/200, Loss: 1.9866
+Epoch 13/200, Loss: 1.9831
+Epoch 14/200, Loss: 1.9787
+Epoch 15/200, Loss: 1.9771
+Epoch 16/200, Loss: 1.9770
+Epoch 17/200, Loss: 1.9770
+Epoch 18/200, Loss: 1.9759
+Epoch 19/200, Loss: 1.9764
+Epoch 20/200, Loss: 1.9763
+Epoch 21/200, Loss: 1.9766
+Epoch 22/200, Loss: 1.9764
+Epoch 23/200, Loss: 1.9760
+Epoch 24/200, Loss: 1.9752
+Epoch 25/200, Loss: 1.9760
+Epoch 26/200, Loss: 1.9752
+Epoch 27/200, Loss: 1.9753
+Epoch 28/200, Loss: 1.9752
+Epoch 29/200, Loss: 1.9750
+Epoch 30/200, Loss: 1.9751
+Epoch 31/200, Loss: 1.9749
+Epoch 32/200, Loss: 1.9748
+Epoch 33/200, Loss: 1.9746
+Epoch 34/200, Loss: 1.9748
+Epoch 35/200, Loss: 1.9749
+Epoch 36/200, Loss: 1.9746
+Epoch 37/200, Loss: 1.9743
+Epoch 38/200, Loss: 1.9747
+Epoch 39/200, Loss: 1.9742
+Epoch 40/200, Loss: 1.9747
+Epoch 41/200, Loss: 1.9746
+Epoch 42/200, Loss: 1.9742
+Epoch 43/200, Loss: 1.9744
+Epoch 44/200, Loss: 1.9743
+Epoch 45/200, Loss: 1.9741
+Epoch 46/200, Loss: 1.9741
+Epoch 47/200, Loss: 1.9739
+Epoch 48/200, Loss: 1.9739
+Epoch 49/200, Loss: 1.9736
+Epoch 50/200, Loss: 1.9739
+Epoch 51/200, Loss: 1.9736
+Epoch 52/200, Loss: 1.9734
+Epoch 53/200, Loss: 1.9737
+Epoch 54/200, Loss: 1.9735
+Epoch 55/200, Loss: 1.9735
+Epoch 56/200, Loss: 1.9737
+Epoch 57/200, Loss: 1.9735
+Epoch 58/200, Loss: 1.9731
+Epoch 59/200, Loss: 1.9738
+Epoch 60/200, Loss: 1.9733
+Epoch 61/200, Loss: 1.9732
+Epoch 62/200, Loss: 1.9732
+Epoch 63/200, Loss: 1.9731
+Epoch 64/200, Loss: 1.9731
+Epoch 65/200, Loss: 1.9727
+Epoch 66/200, Loss: 1.9722
+Epoch 67/200, Loss: 1.9727
+Epoch 68/200, Loss: 1.9721
+Epoch 69/200, Loss: 1.9717
+Epoch 70/200, Loss: 1.9718
+Epoch 71/200, Loss: 1.9722
+Epoch 72/200, Loss: 1.9717
+Epoch 73/200, Loss: 1.9720
+Epoch 74/200, Loss: 1.9715
+Epoch 75/200, Loss: 1.9716
+Epoch 76/200, Loss: 1.9724
+Epoch 77/200, Loss: 1.9718
+Epoch 78/200, Loss: 1.9718
+Epoch 79/200, Loss: 1.9716
+Epoch 80/200, Loss: 1.9717
+Epoch 81/200, Loss: 1.9712
+Epoch 82/200, Loss: 1.9716
+Epoch 83/200, Loss: 1.9716
+Epoch 84/200, Loss: 1.9713
+Epoch 85/200, Loss: 1.9714
+Epoch 86/200, Loss: 1.9715
+Epoch 87/200, Loss: 1.9713
+Epoch 88/200, Loss: 1.9711
+Epoch 89/200, Loss: 1.9710
+Epoch 90/200, Loss: 1.9712
+Epoch 91/200, Loss: 1.9712
+Epoch 92/200, Loss: 1.9711
+Epoch 93/200, Loss: 1.9710
+Epoch 94/200, Loss: 1.9714
+Epoch 95/200, Loss: 1.9710
+Epoch 96/200, Loss: 1.9714
+Epoch 97/200, Loss: 1.9709
+Epoch 98/200, Loss: 1.9709
+Epoch 99/200, Loss: 1.9708
+Epoch 100/200, Loss: 1.9706
+Epoch 101/200, Loss: 1.9709
+Epoch 102/200, Loss: 1.9708
+Epoch 103/200, Loss: 1.9706
+Epoch 104/200, Loss: 1.9708
+Epoch 105/200, Loss: 1.9705
+Epoch 106/200, Loss: 1.9704
+Epoch 107/200, Loss: 1.9703
+Epoch 108/200, Loss: 1.9706
+Epoch 109/200, Loss: 1.9703
+Epoch 110/200, Loss: 1.9705
+Epoch 111/200, Loss: 1.9702
+Epoch 112/200, Loss: 1.9704
+Epoch 113/200, Loss: 1.9702
+Epoch 114/200, Loss: 1.9701
+Epoch 115/200, Loss: 1.9703
+Epoch 116/200, Loss: 1.9701
+Epoch 117/200, Loss: 1.9699
+Epoch 118/200, Loss: 1.9700
+Epoch 119/200, Loss: 1.9701
+Epoch 120/200, Loss: 1.9702
+Epoch 121/200, Loss: 1.9698
+Epoch 122/200, Loss: 1.9698
+Epoch 123/200, Loss: 1.9698
+Epoch 124/200, Loss: 1.9697
+Epoch 125/200, Loss: 1.9697
+Epoch 126/200, Loss: 1.9695
+Epoch 127/200, Loss: 1.9696
+Epoch 128/200, Loss: 1.9696
+Epoch 129/200, Loss: 1.9694
+Epoch 130/200, Loss: 1.9695
+Epoch 131/200, Loss: 1.9694
+Epoch 132/200, Loss: 1.9695
+Epoch 133/200, Loss: 1.9696
+Epoch 134/200, Loss: 1.9693
+Epoch 135/200, Loss: 1.9695
+Epoch 136/200, Loss: 1.9694
+Epoch 137/200, Loss: 1.9695
+Epoch 138/200, Loss: 1.9694
+Epoch 139/200, Loss: 1.9694
+Epoch 140/200, Loss: 1.9694
+Epoch 141/200, Loss: 1.9694
+Epoch 142/200, Loss: 1.9692
+Epoch 143/200, Loss: 1.9694
+Epoch 144/200, Loss: 1.9690
+Epoch 145/200, Loss: 1.9694
+Epoch 146/200, Loss: 1.9691
+Epoch 147/200, Loss: 1.9691
+Epoch 148/200, Loss: 1.9687
+Epoch 149/200, Loss: 1.9687
+Epoch 150/200, Loss: 1.9688
+Epoch 151/200, Loss: 1.9691
+Epoch 152/200, Loss: 1.9689
+Epoch 153/200, Loss: 1.9687
+Epoch 154/200, Loss: 1.9687
+Epoch 155/200, Loss: 1.9688
+Epoch 156/200, Loss: 1.9687
+Epoch 157/200, Loss: 1.9686
+Epoch 158/200, Loss: 1.9688
+Epoch 159/200, Loss: 1.9690
+Epoch 160/200, Loss: 1.9689
+Epoch 161/200, Loss: 1.9686
+Epoch 162/200, Loss: 1.9683
+Epoch 163/200, Loss: 1.9686
+Epoch 164/200, Loss: 1.9684
+Epoch 165/200, Loss: 1.9682
+Epoch 166/200, Loss: 1.9682
+Epoch 167/200, Loss: 1.9687
+Epoch 168/200, Loss: 1.9683
+Epoch 169/200, Loss: 1.9686
+Epoch 170/200, Loss: 1.9685
+Epoch 171/200, Loss: 1.9686
+Epoch 172/200, Loss: 1.9682
+Epoch 173/200, Loss: 1.9686
+Epoch 174/200, Loss: 1.9686
+Epoch 175/200, Loss: 1.9683
+Epoch 176/200, Loss: 1.9687
+Epoch 177/200, Loss: 1.9687
+Epoch 178/200, Loss: 1.9682
+Epoch 179/200, Loss: 1.9683
+Epoch 180/200, Loss: 1.9682
+Epoch 181/200, Loss: 1.9685
+Epoch 182/200, Loss: 1.9686
+Epoch 183/200, Loss: 1.9683
+Epoch 184/200, Loss: 1.9684
+Epoch 185/200, Loss: 1.9684
+Epoch 186/200, Loss: 1.9684
+Epoch 187/200, Loss: 1.9686
+Epoch 188/200, Loss: 1.9682
+Epoch 189/200, Loss: 1.9684
+Epoch 190/200, Loss: 1.9682
+Epoch 191/200, Loss: 1.9684
+Epoch 192/200, Loss: 1.9685
+Epoch 193/200, Loss: 1.9682
+Epoch 194/200, Loss: 1.9683
+Epoch 195/200, Loss: 1.9685
+Epoch 196/200, Loss: 1.9683
+Epoch 197/200, Loss: 1.9680
+Epoch 198/200, Loss: 1.9681
+Epoch 199/200, Loss: 1.9683
+Epoch 200/200, Loss: 1.9685
+Model saved in saved_models/rae2_f1_rep0.pth
+✅ RAE Treinado!
+Starting fine tuning...
+Learning rate: 0.0001, number of epochs: 50
+Epoch 1/50, Loss: 1.0870, Train Acc: 37.27%, Val Acc: 33.33%
+Epoch 2/50, Loss: 1.0626, Train Acc: 48.30%, Val Acc: 33.52%
+Epoch 3/50, Loss: 1.0421, Train Acc: 57.36%, Val Acc: 33.99%
+Epoch 4/50, Loss: 1.0199, Train Acc: 63.88%, Val Acc: 47.03%
+Epoch 5/50, Loss: 0.9976, Train Acc: 67.58%, Val Acc: 50.80%
+Epoch 6/50, Loss: 0.9712, Train Acc: 68.39%, Val Acc: 50.99%
+Epoch 7/50, Loss: 0.9438, Train Acc: 67.91%, Val Acc: 62.23%
+Epoch 8/50, Loss: 0.9258, Train Acc: 68.78%, Val Acc: 73.47%
+Epoch 9/50, Loss: 0.9012, Train Acc: 68.82%, Val Acc: 87.44%
+Epoch 10/50, Loss: 0.8745, Train Acc: 69.02%, Val Acc: 64.21%
+Epoch 11/50, Loss: 0.8531, Train Acc: 69.93%, Val Acc: 62.61%
+Epoch 12/50, Loss: 0.8295, Train Acc: 69.64%, Val Acc: 66.67%
+Epoch 13/50, Loss: 0.8130, Train Acc: 69.16%, Val Acc: 71.20%
+Epoch 14/50, Loss: 0.7953, Train Acc: 70.41%, Val Acc: 87.91%
+Epoch 15/50, Loss: 0.7833, Train Acc: 69.69%, Val Acc: 82.06%
+Epoch 16/50, Loss: 0.7754, Train Acc: 68.87%, Val Acc: 82.72%
+Epoch 17/50, Loss: 0.7619, Train Acc: 69.78%, Val Acc: 78.19%
+Epoch 18/50, Loss: 0.7357, Train Acc: 70.65%, Val Acc: 73.65%
+Epoch 19/50, Loss: 0.7314, Train Acc: 70.79%, Val Acc: 80.45%
+Epoch 20/50, Loss: 0.7231, Train Acc: 70.84%, Val Acc: 73.28%
+Epoch 21/50, Loss: 0.7133, Train Acc: 71.85%, Val Acc: 84.89%
+Epoch 22/50, Loss: 0.6957, Train Acc: 71.46%, Val Acc: 76.11%
+Epoch 23/50, Loss: 0.6970, Train Acc: 72.09%, Val Acc: 75.26%
+Epoch 24/50, Loss: 0.6809, Train Acc: 72.28%, Val Acc: 73.84%
+Epoch 25/50, Loss: 0.6771, Train Acc: 71.51%, Val Acc: 76.02%
+Epoch 26/50, Loss: 0.6721, Train Acc: 72.42%, Val Acc: 72.99%
+Epoch 27/50, Loss: 0.6640, Train Acc: 72.57%, Val Acc: 75.17%
+Epoch 28/50, Loss: 0.6496, Train Acc: 73.48%, Val Acc: 70.35%
+Epoch 29/50, Loss: 0.6464, Train Acc: 74.24%, Val Acc: 62.04%
+Epoch 30/50, Loss: 0.6394, Train Acc: 73.14%, Val Acc: 62.51%
+Epoch 31/50, Loss: 0.6320, Train Acc: 74.82%, Val Acc: 50.80%
+Epoch 32/50, Loss: 0.6335, Train Acc: 74.05%, Val Acc: 50.71%
+Epoch 33/50, Loss: 0.6234, Train Acc: 76.21%, Val Acc: 60.15%
+Epoch 34/50, Loss: 0.6119, Train Acc: 74.68%, Val Acc: 50.33%
+Epoch 35/50, Loss: 0.6142, Train Acc: 75.01%, Val Acc: 54.11%
+Epoch 36/50, Loss: 0.6006, Train Acc: 75.49%, Val Acc: 45.80%
+Epoch 37/50, Loss: 0.6079, Train Acc: 75.73%, Val Acc: 47.31%
+Epoch 38/50, Loss: 0.6409, Train Acc: 74.05%, Val Acc: 54.77%
+Epoch 39/50, Loss: 0.5991, Train Acc: 76.26%, Val Acc: 56.09%
+Epoch 40/50, Loss: 0.5854, Train Acc: 76.26%, Val Acc: 44.10%
+Epoch 41/50, Loss: 0.5899, Train Acc: 77.12%, Val Acc: 46.93%
+Epoch 42/50, Loss: 0.5776, Train Acc: 77.60%, Val Acc: 41.36%
+Epoch 43/50, Loss: 0.5740, Train Acc: 77.51%, Val Acc: 43.15%
+Epoch 44/50, Loss: 0.5675, Train Acc: 77.79%, Val Acc: 45.80%
+Epoch 45/50, Loss: 0.5552, Train Acc: 77.51%, Val Acc: 43.81%
+Epoch 46/50, Loss: 0.5480, Train Acc: 78.42%, Val Acc: 42.49%
+Epoch 47/50, Loss: 0.5552, Train Acc: 77.36%, Val Acc: 42.97%
+Epoch 48/50, Loss: 0.5670, Train Acc: 77.03%, Val Acc: 42.40%
+Epoch 49/50, Loss: 0.5588, Train Acc: 77.22%, Val Acc: 43.53%
+Epoch 50/50, Loss: 0.5488, Train Acc: 78.18%, Val Acc: 43.15%
+Model saved in saved_models/rae_cls2_f1_rep0.pth
+✅ Fine-Tuning Concluído!
+
+🎯 Accuracy on the test set: 43.15%
+
+📊 Confusion Matrix:
+[[ 94   0 259]
+ [  0 353   0]
+ [307  36  10]]
+Fold 2
+ Training datasets: ['data/spectrogram/cwru_7', 'data/spectrogram/cwru_21', 'data/spectrogram/uored', 'data/spectrogram/hust', 'data/spectrogram/paderborn']
+ Fine-tuning datasets: ['data/spectrogram/cwru_7', 'data/spectrogram/cwru_21']
+ Testing dataset: data/spectrogram/cwru_14
+Starting training...
+Learning rate: 0.001, number of epochs: 200
+Epoch 1/200, Loss: 2.2048
+Epoch 2/200, Loss: 2.0372
+Epoch 3/200, Loss: 2.0205
+Epoch 4/200, Loss: 2.0137
+Epoch 5/200, Loss: 2.0146
+Epoch 6/200, Loss: 2.0084
+Epoch 7/200, Loss: 2.0065
+Epoch 8/200, Loss: 2.0051
+Epoch 9/200, Loss: 2.0036
+Epoch 10/200, Loss: 2.0030
+Epoch 11/200, Loss: 2.0116
+Epoch 12/200, Loss: 2.0014
+Epoch 13/200, Loss: 1.9989
+Epoch 14/200, Loss: 1.9983
+Epoch 15/200, Loss: 1.9951
+Epoch 16/200, Loss: 1.9956
+Epoch 17/200, Loss: 1.9964
+Epoch 18/200, Loss: 1.9932
+Epoch 19/200, Loss: 1.9953
+Epoch 20/200, Loss: 1.9921
+Epoch 21/200, Loss: 1.9980
+Epoch 22/200, Loss: 1.9912
+Epoch 23/200, Loss: 1.9902
+Epoch 24/200, Loss: 1.9898
+Epoch 25/200, Loss: 1.9916
+Epoch 26/200, Loss: 1.9938
+Epoch 27/200, Loss: 1.9905
+Epoch 28/200, Loss: 1.9906
+Epoch 29/200, Loss: 1.9885
+Epoch 30/200, Loss: 1.9883
+Epoch 31/200, Loss: 1.9881
+Epoch 32/200, Loss: 1.9881
+Epoch 33/200, Loss: 1.9893
+Epoch 34/200, Loss: 1.9893
+Epoch 35/200, Loss: 1.9882
+Epoch 36/200, Loss: 1.9877
+Epoch 37/200, Loss: 1.9873
+Epoch 38/200, Loss: 1.9878
+Epoch 39/200, Loss: 1.9875
+Epoch 40/200, Loss: 1.9870
+Epoch 41/200, Loss: 1.9871
+Epoch 42/200, Loss: 1.9865
+Epoch 43/200, Loss: 1.9879
+Epoch 44/200, Loss: 1.9869
+Epoch 45/200, Loss: 1.9865
+Epoch 46/200, Loss: 1.9874
+Epoch 47/200, Loss: 1.9871
+Epoch 48/200, Loss: 1.9877
+Epoch 49/200, Loss: 1.9856
+Epoch 50/200, Loss: 1.9854
+Epoch 51/200, Loss: 1.9856
+Epoch 52/200, Loss: 1.9853
+Epoch 53/200, Loss: 1.9854
+Epoch 54/200, Loss: 1.9876
+Epoch 55/200, Loss: 1.9856
+Epoch 56/200, Loss: 1.9857
+Epoch 57/200, Loss: 1.9854
+Epoch 58/200, Loss: 1.9853
+Epoch 59/200, Loss: 1.9858
+Epoch 60/200, Loss: 1.9847
+Epoch 61/200, Loss: 1.9849
+Epoch 62/200, Loss: 1.9849
+Epoch 63/200, Loss: 1.9853
+Epoch 64/200, Loss: 1.9846
+Epoch 65/200, Loss: 1.9846
+Epoch 66/200, Loss: 1.9847
+Epoch 67/200, Loss: 1.9846
+Epoch 68/200, Loss: 1.9845
+Epoch 69/200, Loss: 1.9852
+Epoch 70/200, Loss: 1.9845
+Epoch 71/200, Loss: 1.9840
+Epoch 72/200, Loss: 1.9842
+Epoch 73/200, Loss: 1.9846
+Epoch 74/200, Loss: 1.9837
+Epoch 75/200, Loss: 1.9842
+Epoch 76/200, Loss: 1.9844
+Epoch 77/200, Loss: 1.9847
+Epoch 78/200, Loss: 1.9844
+Epoch 79/200, Loss: 1.9864
+Epoch 80/200, Loss: 1.9843
+Epoch 81/200, Loss: 1.9838
+Epoch 82/200, Loss: 1.9841
+Epoch 83/200, Loss: 1.9845
+Epoch 84/200, Loss: 1.9842
+Epoch 85/200, Loss: 1.9841
+Epoch 86/200, Loss: 1.9836
+Epoch 87/200, Loss: 1.9845
+Epoch 88/200, Loss: 1.9858
+Epoch 89/200, Loss: 1.9839
+Epoch 90/200, Loss: 1.9838
+Epoch 91/200, Loss: 1.9832
+Epoch 92/200, Loss: 1.9838
+Epoch 93/200, Loss: 1.9838
+Epoch 94/200, Loss: 1.9835
+Epoch 95/200, Loss: 1.9833
+Epoch 96/200, Loss: 1.9836
+Epoch 97/200, Loss: 1.9831
+Epoch 98/200, Loss: 1.9832
+Epoch 99/200, Loss: 1.9838
+Epoch 100/200, Loss: 1.9836
+Epoch 101/200, Loss: 1.9848
+Epoch 102/200, Loss: 1.9835
+Epoch 103/200, Loss: 1.9842
+Epoch 104/200, Loss: 1.9836
+Epoch 105/200, Loss: 1.9838
+Epoch 106/200, Loss: 1.9836
+Epoch 107/200, Loss: 1.9832
+Epoch 108/200, Loss: 1.9830
+Epoch 109/200, Loss: 1.9833
+Epoch 110/200, Loss: 1.9838
+Epoch 111/200, Loss: 1.9825
+Epoch 112/200, Loss: 1.9836
+Epoch 113/200, Loss: 1.9827
+Epoch 114/200, Loss: 1.9830
+Epoch 115/200, Loss: 1.9828
+Epoch 116/200, Loss: 1.9829
+Epoch 117/200, Loss: 1.9850
+Epoch 118/200, Loss: 1.9835
+Epoch 119/200, Loss: 1.9835
+Epoch 120/200, Loss: 1.9841
+Epoch 121/200, Loss: 1.9834
+Epoch 122/200, Loss: 1.9834
+Epoch 123/200, Loss: 1.9827
+Epoch 124/200, Loss: 1.9823
+Epoch 125/200, Loss: 1.9830
+Epoch 126/200, Loss: 1.9832
+Epoch 127/200, Loss: 1.9828
+Epoch 128/200, Loss: 1.9825
+Epoch 129/200, Loss: 1.9826
+Epoch 130/200, Loss: 1.9838
+Epoch 131/200, Loss: 1.9832
+Epoch 132/200, Loss: 1.9828
+Epoch 133/200, Loss: 1.9832
+Epoch 134/200, Loss: 1.9825
+Epoch 135/200, Loss: 1.9827
+Epoch 136/200, Loss: 1.9836
+Epoch 137/200, Loss: 1.9834
+Epoch 138/200, Loss: 1.9827
+Epoch 139/200, Loss: 1.9827
+Epoch 140/200, Loss: 1.9827
+Epoch 141/200, Loss: 1.9829
+Epoch 142/200, Loss: 1.9828
+Epoch 143/200, Loss: 1.9827
+Epoch 144/200, Loss: 1.9840
+Epoch 145/200, Loss: 1.9834
+Epoch 146/200, Loss: 1.9828
+Epoch 147/200, Loss: 1.9825
+Epoch 148/200, Loss: 1.9827
+Epoch 149/200, Loss: 1.9829
+Epoch 150/200, Loss: 1.9826
+Epoch 151/200, Loss: 1.9831
+Epoch 152/200, Loss: 1.9831
+Epoch 153/200, Loss: 1.9830
+Epoch 154/200, Loss: 1.9829
+Epoch 155/200, Loss: 1.9830
+Epoch 156/200, Loss: 1.9825
+Epoch 157/200, Loss: 1.9823
+Epoch 158/200, Loss: 1.9820
+Epoch 159/200, Loss: 1.9821
+Epoch 160/200, Loss: 1.9838
+Epoch 161/200, Loss: 1.9829
+Epoch 162/200, Loss: 1.9829
+Epoch 163/200, Loss: 1.9827
+Epoch 164/200, Loss: 1.9825
+Epoch 165/200, Loss: 1.9829
+Epoch 166/200, Loss: 1.9819
+Epoch 167/200, Loss: 1.9827
+Epoch 168/200, Loss: 1.9835
+Epoch 169/200, Loss: 1.9828
+Epoch 170/200, Loss: 1.9829
+Epoch 171/200, Loss: 1.9819
+Epoch 172/200, Loss: 1.9828
+Epoch 173/200, Loss: 1.9830
+Epoch 174/200, Loss: 1.9826
+Epoch 175/200, Loss: 1.9826
+Epoch 176/200, Loss: 1.9826
+Epoch 177/200, Loss: 1.9824
+Epoch 178/200, Loss: 1.9830
+Epoch 179/200, Loss: 1.9828
+Epoch 180/200, Loss: 1.9822
+Epoch 181/200, Loss: 1.9833
+Epoch 182/200, Loss: 1.9822
+Epoch 183/200, Loss: 1.9824
+Epoch 184/200, Loss: 1.9825
+Epoch 185/200, Loss: 1.9819
+Epoch 186/200, Loss: 1.9831
+Epoch 187/200, Loss: 1.9831
+Epoch 188/200, Loss: 1.9831
+Epoch 189/200, Loss: 1.9824
+Epoch 190/200, Loss: 1.9827
+Epoch 191/200, Loss: 1.9831
+Epoch 192/200, Loss: 1.9823
+Epoch 193/200, Loss: 1.9826
+Epoch 194/200, Loss: 1.9821
+Epoch 195/200, Loss: 1.9827
+Epoch 196/200, Loss: 1.9826
+Epoch 197/200, Loss: 1.9820
+Epoch 198/200, Loss: 1.9828
+Epoch 199/200, Loss: 1.9825
+Epoch 200/200, Loss: 1.9823
+Model saved in saved_models/rae2_f2_rep0.pth
+✅ RAE Treinado!
+Starting fine tuning...
+Learning rate: 0.0001, number of epochs: 50
+Epoch 1/50, Loss: 1.0628, Train Acc: 39.46%, Val Acc: 30.89%
+Epoch 2/50, Loss: 1.0025, Train Acc: 44.04%, Val Acc: 63.44%
+Epoch 3/50, Loss: 0.9590, Train Acc: 58.84%, Val Acc: 54.94%
+Epoch 4/50, Loss: 0.9204, Train Acc: 77.37%, Val Acc: 51.32%
+Epoch 5/50, Loss: 0.8897, Train Acc: 80.58%, Val Acc: 43.40%
+Epoch 6/50, Loss: 0.8596, Train Acc: 81.80%, Val Acc: 41.94%
+Epoch 7/50, Loss: 0.8307, Train Acc: 82.56%, Val Acc: 41.35%
+Epoch 8/50, Loss: 0.7979, Train Acc: 83.07%, Val Acc: 41.94%
+Epoch 9/50, Loss: 0.7720, Train Acc: 83.45%, Val Acc: 40.66%
+Epoch 10/50, Loss: 0.7338, Train Acc: 83.78%, Val Acc: 43.01%
+Epoch 11/50, Loss: 0.7109, Train Acc: 85.05%, Val Acc: 42.72%
+Epoch 12/50, Loss: 0.6768, Train Acc: 85.24%, Val Acc: 42.33%
+Epoch 13/50, Loss: 0.6574, Train Acc: 86.47%, Val Acc: 42.03%
+Epoch 14/50, Loss: 0.6188, Train Acc: 87.22%, Val Acc: 43.50%
+Epoch 15/50, Loss: 0.5957, Train Acc: 87.51%, Val Acc: 45.65%
+Epoch 16/50, Loss: 0.5811, Train Acc: 88.83%, Val Acc: 43.21%
+Epoch 17/50, Loss: 0.5392, Train Acc: 89.53%, Val Acc: 43.30%
+Epoch 18/50, Loss: 0.5401, Train Acc: 90.48%, Val Acc: 41.45%
+Epoch 19/50, Loss: 0.5034, Train Acc: 91.09%, Val Acc: 43.01%
+Epoch 20/50, Loss: 0.5281, Train Acc: 91.09%, Val Acc: 42.72%
+Epoch 21/50, Loss: 0.4792, Train Acc: 90.85%, Val Acc: 43.11%
+Epoch 22/50, Loss: 0.4675, Train Acc: 90.85%, Val Acc: 43.30%
+Epoch 23/50, Loss: 0.4454, Train Acc: 91.65%, Val Acc: 43.79%
+Epoch 24/50, Loss: 0.4272, Train Acc: 92.13%, Val Acc: 43.21%
+Epoch 25/50, Loss: 0.4125, Train Acc: 92.50%, Val Acc: 41.74%
+Epoch 26/50, Loss: 0.4123, Train Acc: 92.41%, Val Acc: 43.11%
+Epoch 27/50, Loss: 0.4546, Train Acc: 91.65%, Val Acc: 43.50%
+Epoch 28/50, Loss: 0.3718, Train Acc: 93.26%, Val Acc: 42.62%
+Epoch 29/50, Loss: 0.4319, Train Acc: 92.64%, Val Acc: 42.03%
+Epoch 30/50, Loss: 0.3858, Train Acc: 92.55%, Val Acc: 40.37%
+Epoch 31/50, Loss: 0.3540, Train Acc: 93.07%, Val Acc: 43.30%
+Epoch 32/50, Loss: 0.3516, Train Acc: 93.16%, Val Acc: 41.74%
+Epoch 33/50, Loss: 0.3606, Train Acc: 93.82%, Val Acc: 43.89%
+Epoch 34/50, Loss: 0.4016, Train Acc: 92.88%, Val Acc: 42.42%
+Epoch 35/50, Loss: 0.3183, Train Acc: 92.93%, Val Acc: 43.50%
+Epoch 36/50, Loss: 0.3070, Train Acc: 93.68%, Val Acc: 43.60%
+Epoch 37/50, Loss: 0.3021, Train Acc: 93.78%, Val Acc: 42.91%
+Epoch 38/50, Loss: 0.2906, Train Acc: 94.81%, Val Acc: 42.72%
+Epoch 39/50, Loss: 0.2759, Train Acc: 94.91%, Val Acc: 43.50%
+Epoch 40/50, Loss: 0.2947, Train Acc: 94.96%, Val Acc: 41.06%
+Epoch 41/50, Loss: 0.2967, Train Acc: 94.58%, Val Acc: 42.62%
+Epoch 42/50, Loss: 0.2697, Train Acc: 94.86%, Val Acc: 42.91%
+Epoch 43/50, Loss: 0.2629, Train Acc: 95.33%, Val Acc: 42.72%
+Epoch 44/50, Loss: 0.2507, Train Acc: 95.62%, Val Acc: 43.21%
+Epoch 45/50, Loss: 0.2474, Train Acc: 95.62%, Val Acc: 42.62%
+Epoch 46/50, Loss: 0.2643, Train Acc: 94.48%, Val Acc: 42.91%
+Epoch 47/50, Loss: 0.2371, Train Acc: 95.62%, Val Acc: 42.52%
+Epoch 48/50, Loss: 0.2194, Train Acc: 95.66%, Val Acc: 42.91%
+Epoch 49/50, Loss: 0.2393, Train Acc: 95.10%, Val Acc: 41.54%
+Epoch 50/50, Loss: 0.2302, Train Acc: 95.10%, Val Acc: 43.21%
+Model saved in saved_models/rae_cls2_f2_rep0.pth
+✅ Fine-Tuning Concluído!
+
+🎯 Accuracy on the test set: 43.21%
+
+📊 Confusion Matrix:
+[[327   8  19]
+ [ 97 111 108]
+ [349   0   4]]
+Fold 3
+ Training datasets: ['data/spectrogram/cwru_7', 'data/spectrogram/cwru_14', 'data/spectrogram/uored', 'data/spectrogram/hust', 'data/spectrogram/paderborn']
+ Fine-tuning datasets: ['data/spectrogram/cwru_7', 'data/spectrogram/cwru_14']
+ Testing dataset: data/spectrogram/cwru_21
+Starting training...
+Learning rate: 0.001, number of epochs: 200
+Epoch 1/200, Loss: 2.1522
+Epoch 2/200, Loss: 2.0308
+Epoch 3/200, Loss: 2.0230
+Epoch 4/200, Loss: 2.0188
+Epoch 5/200, Loss: 2.0126
+Epoch 6/200, Loss: 2.0093
+Epoch 7/200, Loss: 2.0128
+Epoch 8/200, Loss: 2.0111
+Epoch 9/200, Loss: 2.0076
+Epoch 10/200, Loss: 2.0076
+Epoch 11/200, Loss: 2.0056
+Epoch 12/200, Loss: 2.0036
+Epoch 13/200, Loss: 2.0035
+Epoch 14/200, Loss: 2.0002
+Epoch 15/200, Loss: 2.0009
+Epoch 16/200, Loss: 1.9977
+Epoch 17/200, Loss: 1.9960
+Epoch 18/200, Loss: 1.9957
+Epoch 19/200, Loss: 1.9949
+Epoch 20/200, Loss: 1.9950
+Epoch 21/200, Loss: 1.9947
+Epoch 22/200, Loss: 1.9940
+Epoch 23/200, Loss: 1.9936
+Epoch 24/200, Loss: 1.9938
+Epoch 25/200, Loss: 1.9932
+Epoch 26/200, Loss: 1.9939
+Epoch 27/200, Loss: 1.9938
+Epoch 28/200, Loss: 1.9939
+Epoch 29/200, Loss: 1.9927
+Epoch 30/200, Loss: 1.9931
+Epoch 31/200, Loss: 1.9932
+Epoch 32/200, Loss: 1.9931
+Epoch 33/200, Loss: 1.9927
+Epoch 34/200, Loss: 1.9924
+Epoch 35/200, Loss: 1.9925
+Epoch 36/200, Loss: 1.9920
+Epoch 37/200, Loss: 1.9921
+Epoch 38/200, Loss: 1.9921
+Epoch 39/200, Loss: 1.9918
+Epoch 40/200, Loss: 1.9921
+Epoch 41/200, Loss: 1.9922
+Epoch 42/200, Loss: 1.9918
+Epoch 43/200, Loss: 1.9918
+Epoch 44/200, Loss: 1.9913
+Epoch 45/200, Loss: 1.9915
+Epoch 46/200, Loss: 1.9913
+Epoch 47/200, Loss: 1.9912
+Epoch 48/200, Loss: 1.9910
+Epoch 49/200, Loss: 1.9913
+Epoch 50/200, Loss: 1.9909
+Epoch 51/200, Loss: 1.9907
+Epoch 52/200, Loss: 1.9908
+Epoch 53/200, Loss: 1.9909
+Epoch 54/200, Loss: 1.9906
+Epoch 55/200, Loss: 1.9905
+Epoch 56/200, Loss: 1.9907
+Epoch 57/200, Loss: 1.9904
+Epoch 58/200, Loss: 1.9905
+Epoch 59/200, Loss: 1.9902
+Epoch 60/200, Loss: 1.9902
+Epoch 61/200, Loss: 1.9902
+Epoch 62/200, Loss: 1.9902
+Epoch 63/200, Loss: 1.9899
+Epoch 64/200, Loss: 1.9896
+Epoch 65/200, Loss: 1.9899
+Epoch 66/200, Loss: 1.9897
+Epoch 67/200, Loss: 1.9897
+Epoch 68/200, Loss: 1.9897
+Epoch 69/200, Loss: 1.9895
+Epoch 70/200, Loss: 1.9897
+Epoch 71/200, Loss: 1.9897
+Epoch 72/200, Loss: 1.9896
+Epoch 73/200, Loss: 1.9896
+Epoch 74/200, Loss: 1.9896
+Epoch 75/200, Loss: 1.9895
+Epoch 76/200, Loss: 1.9896
+Epoch 77/200, Loss: 1.9897
+Epoch 78/200, Loss: 1.9896
+Epoch 79/200, Loss: 1.9894
+Epoch 80/200, Loss: 1.9891
+Epoch 81/200, Loss: 1.9894
+Epoch 82/200, Loss: 1.9892
+Epoch 83/200, Loss: 1.9892
+Epoch 84/200, Loss: 1.9892
+Epoch 85/200, Loss: 1.9892
+Epoch 86/200, Loss: 1.9892
+Epoch 87/200, Loss: 1.9893
+Epoch 88/200, Loss: 1.9891
+Epoch 89/200, Loss: 1.9895
+Epoch 90/200, Loss: 1.9893
+Epoch 91/200, Loss: 1.9893
+Epoch 92/200, Loss: 1.9890
+Epoch 93/200, Loss: 1.9889
+Epoch 94/200, Loss: 1.9888
+Epoch 95/200, Loss: 1.9890
+Epoch 96/200, Loss: 1.9891
+Epoch 97/200, Loss: 1.9891
+Epoch 98/200, Loss: 1.9890
+Epoch 99/200, Loss: 1.9890
+Epoch 100/200, Loss: 1.9891
+Epoch 101/200, Loss: 1.9888
+Epoch 102/200, Loss: 1.9888
+Epoch 103/200, Loss: 1.9888
+Epoch 104/200, Loss: 1.9888
+Epoch 105/200, Loss: 1.9887
+Epoch 106/200, Loss: 1.9889
+Epoch 107/200, Loss: 1.9887
+Epoch 108/200, Loss: 1.9887
+Epoch 109/200, Loss: 1.9887
+Epoch 110/200, Loss: 1.9886
+Epoch 111/200, Loss: 1.9884
+Epoch 112/200, Loss: 1.9886
+Epoch 113/200, Loss: 1.9886
+Epoch 114/200, Loss: 1.9886
+Epoch 115/200, Loss: 1.9886
+Epoch 116/200, Loss: 1.9885
+Epoch 117/200, Loss: 1.9882
+Epoch 118/200, Loss: 1.9885
+Epoch 119/200, Loss: 1.9884
+Epoch 120/200, Loss: 1.9885
+Epoch 121/200, Loss: 1.9886
+Epoch 122/200, Loss: 1.9883
+Epoch 123/200, Loss: 1.9884
+Epoch 124/200, Loss: 1.9885
+Epoch 125/200, Loss: 1.9883
+Epoch 126/200, Loss: 1.9884
+Epoch 127/200, Loss: 1.9881
+Epoch 128/200, Loss: 1.9883
+Epoch 129/200, Loss: 1.9883
+Epoch 130/200, Loss: 1.9882
+Epoch 131/200, Loss: 1.9883
+Epoch 132/200, Loss: 1.9883
+Epoch 133/200, Loss: 1.9884
+Epoch 134/200, Loss: 1.9882
+Epoch 135/200, Loss: 1.9881
+Epoch 136/200, Loss: 1.9880
+Epoch 137/200, Loss: 1.9881
+Epoch 138/200, Loss: 1.9882
+Epoch 139/200, Loss: 1.9883
+Epoch 140/200, Loss: 1.9884
+Epoch 141/200, Loss: 1.9883
+Epoch 142/200, Loss: 1.9882
+Epoch 143/200, Loss: 1.9879
+Epoch 144/200, Loss: 1.9881
+Epoch 145/200, Loss: 1.9882
+Epoch 146/200, Loss: 1.9882
+Epoch 147/200, Loss: 1.9883
+Epoch 148/200, Loss: 1.9879
+Epoch 149/200, Loss: 1.9880
+Epoch 150/200, Loss: 1.9879
+Epoch 151/200, Loss: 1.9880
+Epoch 152/200, Loss: 1.9881
+Epoch 153/200, Loss: 1.9881
+Epoch 154/200, Loss: 1.9880
+Epoch 155/200, Loss: 1.9881
+Epoch 156/200, Loss: 1.9880
+Epoch 157/200, Loss: 1.9883
+Epoch 158/200, Loss: 1.9881
+Epoch 159/200, Loss: 1.9881
+Epoch 160/200, Loss: 1.9882
+Epoch 161/200, Loss: 1.9880
+Epoch 162/200, Loss: 1.9880
+Epoch 163/200, Loss: 1.9878
+Epoch 164/200, Loss: 1.9879
+Epoch 165/200, Loss: 1.9879
+Epoch 166/200, Loss: 1.9879
+Epoch 167/200, Loss: 1.9880
+Epoch 168/200, Loss: 1.9881
+Epoch 169/200, Loss: 1.9880
+Epoch 170/200, Loss: 1.9879
+Epoch 171/200, Loss: 1.9878
+Epoch 172/200, Loss: 1.9878
+Epoch 173/200, Loss: 1.9882
+Epoch 174/200, Loss: 1.9879
+Epoch 175/200, Loss: 1.9878
+Epoch 176/200, Loss: 1.9879
+Epoch 177/200, Loss: 1.9878
+Epoch 178/200, Loss: 1.9878
+Epoch 179/200, Loss: 1.9880
+Epoch 180/200, Loss: 1.9877
+Epoch 181/200, Loss: 1.9878
+Epoch 182/200, Loss: 1.9876
+Epoch 183/200, Loss: 1.9876
+Epoch 184/200, Loss: 1.9877
+Epoch 185/200, Loss: 1.9878
+Epoch 186/200, Loss: 1.9876
+Epoch 187/200, Loss: 1.9876
+Epoch 188/200, Loss: 1.9877
+Epoch 189/200, Loss: 1.9877
+Epoch 190/200, Loss: 1.9875
+Epoch 191/200, Loss: 1.9875
+Epoch 192/200, Loss: 1.9876
+Epoch 193/200, Loss: 1.9876
+Epoch 194/200, Loss: 1.9874
+Epoch 195/200, Loss: 1.9875
+Epoch 196/200, Loss: 1.9874
+Epoch 197/200, Loss: 1.9872
+Epoch 198/200, Loss: 1.9874
+Epoch 199/200, Loss: 1.9873
+Epoch 200/200, Loss: 1.9874
+Model saved in saved_models/rae2_f3_rep0.pth
+✅ RAE Treinado!
+Starting fine tuning...
+Learning rate: 0.0001, number of epochs: 50
+Epoch 1/50, Loss: 1.0603, Train Acc: 43.47%, Val Acc: 60.83%
+Epoch 2/50, Loss: 0.9770, Train Acc: 66.95%, Val Acc: 64.60%
+Epoch 3/50, Loss: 0.9103, Train Acc: 68.83%, Val Acc: 65.16%
+Epoch 4/50, Loss: 0.8551, Train Acc: 72.62%, Val Acc: 65.91%
+Epoch 5/50, Loss: 0.8012, Train Acc: 73.58%, Val Acc: 66.20%
+Epoch 6/50, Loss: 0.7749, Train Acc: 74.64%, Val Acc: 65.91%
+Epoch 7/50, Loss: 0.7295, Train Acc: 75.26%, Val Acc: 65.54%
+Epoch 8/50, Loss: 0.7023, Train Acc: 73.68%, Val Acc: 65.16%
+Epoch 9/50, Loss: 0.6764, Train Acc: 74.93%, Val Acc: 64.50%
+Epoch 10/50, Loss: 0.6610, Train Acc: 75.65%, Val Acc: 61.68%
+Epoch 11/50, Loss: 0.6369, Train Acc: 76.46%, Val Acc: 62.62%
+Epoch 12/50, Loss: 0.6151, Train Acc: 77.43%, Val Acc: 62.62%
+Epoch 13/50, Loss: 0.6047, Train Acc: 75.84%, Val Acc: 61.21%
+Epoch 14/50, Loss: 0.6124, Train Acc: 75.74%, Val Acc: 62.62%
+Epoch 15/50, Loss: 0.5832, Train Acc: 75.22%, Val Acc: 61.96%
+Epoch 16/50, Loss: 0.5638, Train Acc: 77.57%, Val Acc: 62.24%
+Epoch 17/50, Loss: 0.5615, Train Acc: 76.46%, Val Acc: 59.70%
+Epoch 18/50, Loss: 0.5486, Train Acc: 77.33%, Val Acc: 61.86%
+Epoch 19/50, Loss: 0.5511, Train Acc: 77.19%, Val Acc: 61.68%
+Epoch 20/50, Loss: 0.5318, Train Acc: 78.82%, Val Acc: 61.68%
+Epoch 21/50, Loss: 0.5283, Train Acc: 77.28%, Val Acc: 62.15%
+Epoch 22/50, Loss: 0.5252, Train Acc: 77.91%, Val Acc: 59.98%
+Epoch 23/50, Loss: 0.5177, Train Acc: 78.05%, Val Acc: 59.70%
+Epoch 24/50, Loss: 0.5131, Train Acc: 77.57%, Val Acc: 60.26%
+Epoch 25/50, Loss: 0.5106, Train Acc: 77.91%, Val Acc: 61.68%
+Epoch 26/50, Loss: 0.5065, Train Acc: 77.62%, Val Acc: 58.95%
+Epoch 27/50, Loss: 0.5067, Train Acc: 76.75%, Val Acc: 58.29%
+Epoch 28/50, Loss: 0.4987, Train Acc: 78.58%, Val Acc: 57.34%
+Epoch 29/50, Loss: 0.4891, Train Acc: 78.24%, Val Acc: 58.66%
+Epoch 30/50, Loss: 0.4857, Train Acc: 78.58%, Val Acc: 59.98%
+Epoch 31/50, Loss: 0.4799, Train Acc: 78.48%, Val Acc: 60.83%
+Epoch 32/50, Loss: 0.4643, Train Acc: 78.82%, Val Acc: 58.76%
+Epoch 33/50, Loss: 0.4688, Train Acc: 78.91%, Val Acc: 59.04%
+Epoch 34/50, Loss: 0.4772, Train Acc: 79.39%, Val Acc: 60.64%
+Epoch 35/50, Loss: 0.4605, Train Acc: 79.06%, Val Acc: 57.91%
+Epoch 36/50, Loss: 0.4510, Train Acc: 79.39%, Val Acc: 56.97%
+Epoch 37/50, Loss: 0.4546, Train Acc: 78.72%, Val Acc: 58.47%
+Epoch 38/50, Loss: 0.5228, Train Acc: 78.43%, Val Acc: 60.08%
+Epoch 39/50, Loss: 0.4440, Train Acc: 79.06%, Val Acc: 60.45%
+Epoch 40/50, Loss: 0.4570, Train Acc: 79.30%, Val Acc: 56.50%
+Epoch 41/50, Loss: 0.4467, Train Acc: 79.15%, Val Acc: 59.60%
+Epoch 42/50, Loss: 0.4695, Train Acc: 79.73%, Val Acc: 60.73%
+Epoch 43/50, Loss: 0.4428, Train Acc: 79.68%, Val Acc: 58.47%
+Epoch 44/50, Loss: 0.4407, Train Acc: 79.59%, Val Acc: 58.29%
+Epoch 45/50, Loss: 0.4526, Train Acc: 79.49%, Val Acc: 60.08%
+Epoch 46/50, Loss: 0.4384, Train Acc: 79.39%, Val Acc: 57.63%
+Epoch 47/50, Loss: 0.4354, Train Acc: 79.15%, Val Acc: 57.82%
+Epoch 48/50, Loss: 0.4934, Train Acc: 78.82%, Val Acc: 57.34%
+Epoch 49/50, Loss: 0.4353, Train Acc: 79.15%, Val Acc: 60.83%
+Epoch 50/50, Loss: 0.4792, Train Acc: 79.54%, Val Acc: 59.89%
+Model saved in saved_models/rae_cls2_f3_rep0.pth
+✅ Fine-Tuning Concluído!
+
+🎯 Accuracy on the test set: 59.89%
+
+📊 Confusion Matrix:
+[[330  15   8]
+ [ 49 306   0]
+ [349   5   0]]
+Repetition 2/4
+Fold 1
+ Training datasets: ['data/spectrogram/cwru_14', 'data/spectrogram/cwru_21', 'data/spectrogram/uored', 'data/spectrogram/hust', 'data/spectrogram/paderborn']
+ Fine-tuning datasets: ['data/spectrogram/cwru_14', 'data/spectrogram/cwru_21']
+ Testing dataset: data/spectrogram/cwru_7
+Starting training...
+Learning rate: 0.001, number of epochs: 200
+Epoch 1/200, Loss: 2.1480
+Epoch 2/200, Loss: 2.0051
+Epoch 3/200, Loss: 1.9980
+Epoch 4/200, Loss: 1.9999
+Epoch 5/200, Loss: 1.9973
+Epoch 6/200, Loss: 1.9981
+Epoch 7/200, Loss: 1.9959
+Epoch 8/200, Loss: 1.9950
+Epoch 9/200, Loss: 1.9951
+Epoch 10/200, Loss: 1.9949
+Epoch 11/200, Loss: 1.9919
+Epoch 12/200, Loss: 1.9908
+Epoch 13/200, Loss: 1.9931
+Epoch 14/200, Loss: 1.9906
+Epoch 15/200, Loss: 1.9901
+Epoch 16/200, Loss: 1.9899
+Epoch 17/200, Loss: 1.9885
+Epoch 18/200, Loss: 1.9875
+Epoch 19/200, Loss: 1.9863
+Epoch 20/200, Loss: 1.9850
+Epoch 21/200, Loss: 1.9807
+Epoch 22/200, Loss: 1.9782
+Epoch 23/200, Loss: 1.9777
+Epoch 24/200, Loss: 1.9763
+Epoch 25/200, Loss: 1.9761
+Epoch 26/200, Loss: 1.9761
+Epoch 27/200, Loss: 1.9754
+Epoch 28/200, Loss: 1.9753
+Epoch 29/200, Loss: 1.9747
+Epoch 30/200, Loss: 1.9754
+Epoch 31/200, Loss: 1.9748
+Epoch 32/200, Loss: 1.9746
+Epoch 33/200, Loss: 1.9748
+Epoch 34/200, Loss: 1.9749
+Epoch 35/200, Loss: 1.9751
+Epoch 36/200, Loss: 1.9744
+Epoch 37/200, Loss: 1.9754
+Epoch 38/200, Loss: 1.9750
+Epoch 39/200, Loss: 1.9744
+Epoch 40/200, Loss: 1.9745
+Epoch 41/200, Loss: 1.9740
+Epoch 42/200, Loss: 1.9740
+Epoch 43/200, Loss: 1.9741
+Epoch 44/200, Loss: 1.9738
+Epoch 45/200, Loss: 1.9742
+Epoch 46/200, Loss: 1.9739
+Epoch 47/200, Loss: 1.9737
+Epoch 48/200, Loss: 1.9739
+Epoch 49/200, Loss: 1.9740
+Epoch 50/200, Loss: 1.9740
+Epoch 51/200, Loss: 1.9738
+Epoch 52/200, Loss: 1.9733
+Epoch 53/200, Loss: 1.9738
+Epoch 54/200, Loss: 1.9739
+Epoch 55/200, Loss: 1.9734
+Epoch 56/200, Loss: 1.9736
+Epoch 57/200, Loss: 1.9729
+Epoch 58/200, Loss: 1.9734
+Epoch 59/200, Loss: 1.9731
+Epoch 60/200, Loss: 1.9733
+Epoch 61/200, Loss: 1.9732
+Epoch 62/200, Loss: 1.9737
+Epoch 63/200, Loss: 1.9735
+Epoch 64/200, Loss: 1.9736
+Epoch 65/200, Loss: 1.9733
+Epoch 66/200, Loss: 1.9732
+Epoch 67/200, Loss: 1.9731
+Epoch 68/200, Loss: 1.9728
+Epoch 69/200, Loss: 1.9731
+Epoch 70/200, Loss: 1.9733
+Epoch 71/200, Loss: 1.9727
+Epoch 72/200, Loss: 1.9729
+Epoch 73/200, Loss: 1.9731
+Epoch 74/200, Loss: 1.9727
+Epoch 75/200, Loss: 1.9730
+Epoch 76/200, Loss: 1.9726
+Epoch 77/200, Loss: 1.9729
+Epoch 78/200, Loss: 1.9729
+Epoch 79/200, Loss: 1.9729
+Epoch 80/200, Loss: 1.9727
+Epoch 81/200, Loss: 1.9730
+Epoch 82/200, Loss: 1.9725
+Epoch 83/200, Loss: 1.9727
+Epoch 84/200, Loss: 1.9727
+Epoch 85/200, Loss: 1.9728
+Epoch 86/200, Loss: 1.9727
+Epoch 87/200, Loss: 1.9727
+Epoch 88/200, Loss: 1.9727
+Epoch 89/200, Loss: 1.9727
+Epoch 90/200, Loss: 1.9722
+Epoch 91/200, Loss: 1.9719
+Epoch 92/200, Loss: 1.9717
+Epoch 93/200, Loss: 1.9715
+Epoch 94/200, Loss: 1.9715
+Epoch 95/200, Loss: 1.9715
+Epoch 96/200, Loss: 1.9714
+Epoch 97/200, Loss: 1.9714
+Epoch 98/200, Loss: 1.9713
+Epoch 99/200, Loss: 1.9713
+Epoch 100/200, Loss: 1.9716
+Epoch 101/200, Loss: 1.9710
+Epoch 102/200, Loss: 1.9712
+Epoch 103/200, Loss: 1.9713
+Epoch 104/200, Loss: 1.9713
+Epoch 105/200, Loss: 1.9710
+Epoch 106/200, Loss: 1.9709
+Epoch 107/200, Loss: 1.9711
+Epoch 108/200, Loss: 1.9713
+Epoch 109/200, Loss: 1.9713
+Epoch 110/200, Loss: 1.9711
+Epoch 111/200, Loss: 1.9710
+Epoch 112/200, Loss: 1.9709
+Epoch 113/200, Loss: 1.9708
+Epoch 114/200, Loss: 1.9707
+Epoch 115/200, Loss: 1.9708
+Epoch 116/200, Loss: 1.9707
+Epoch 117/200, Loss: 1.9703
+Epoch 118/200, Loss: 1.9709
+Epoch 119/200, Loss: 1.9706
+Epoch 120/200, Loss: 1.9704
+Epoch 121/200, Loss: 1.9706
+Epoch 122/200, Loss: 1.9704
+Epoch 123/200, Loss: 1.9704
+Epoch 124/200, Loss: 1.9701
+Epoch 125/200, Loss: 1.9704
+Epoch 126/200, Loss: 1.9702
+Epoch 127/200, Loss: 1.9702
+Epoch 128/200, Loss: 1.9699
+Epoch 129/200, Loss: 1.9699
+Epoch 130/200, Loss: 1.9702
+Epoch 131/200, Loss: 1.9701
+Epoch 132/200, Loss: 1.9700
+Epoch 133/200, Loss: 1.9702
+Epoch 134/200, Loss: 1.9700
+Epoch 135/200, Loss: 1.9703
+Epoch 136/200, Loss: 1.9699
+Epoch 137/200, Loss: 1.9698
+Epoch 138/200, Loss: 1.9699
+Epoch 139/200, Loss: 1.9699
+Epoch 140/200, Loss: 1.9698
+Epoch 141/200, Loss: 1.9699
+Epoch 142/200, Loss: 1.9697
+Epoch 143/200, Loss: 1.9697
+Epoch 144/200, Loss: 1.9695
+Epoch 145/200, Loss: 1.9698
+Epoch 146/200, Loss: 1.9698
+Epoch 147/200, Loss: 1.9697
+Epoch 148/200, Loss: 1.9698
+Epoch 149/200, Loss: 1.9696
+Epoch 150/200, Loss: 1.9698
+Epoch 151/200, Loss: 1.9696
+Epoch 152/200, Loss: 1.9698
+Epoch 153/200, Loss: 1.9692
+Epoch 154/200, Loss: 1.9699
+Epoch 155/200, Loss: 1.9696
+Epoch 156/200, Loss: 1.9695
+Epoch 157/200, Loss: 1.9697
+Epoch 158/200, Loss: 1.9697
+Epoch 159/200, Loss: 1.9697
+Epoch 160/200, Loss: 1.9696
+Epoch 161/200, Loss: 1.9694
+Epoch 162/200, Loss: 1.9694
+Epoch 163/200, Loss: 1.9695
+Epoch 164/200, Loss: 1.9695
+Epoch 165/200, Loss: 1.9696
+Epoch 166/200, Loss: 1.9693
+Epoch 167/200, Loss: 1.9694
+Epoch 168/200, Loss: 1.9695
+Epoch 169/200, Loss: 1.9692
+Epoch 170/200, Loss: 1.9693
+Epoch 171/200, Loss: 1.9692
+Epoch 172/200, Loss: 1.9692
+Epoch 173/200, Loss: 1.9693
+Epoch 174/200, Loss: 1.9693
+Epoch 175/200, Loss: 1.9690
+Epoch 176/200, Loss: 1.9692
+Epoch 177/200, Loss: 1.9694
+Epoch 178/200, Loss: 1.9691
+Epoch 179/200, Loss: 1.9692
+Epoch 180/200, Loss: 1.9691
+Epoch 181/200, Loss: 1.9694
+Epoch 182/200, Loss: 1.9691
+Epoch 183/200, Loss: 1.9690
+Epoch 184/200, Loss: 1.9691
+Epoch 185/200, Loss: 1.9691
+Epoch 186/200, Loss: 1.9689
+Epoch 187/200, Loss: 1.9691
+Epoch 188/200, Loss: 1.9691
+Epoch 189/200, Loss: 1.9688
+Epoch 190/200, Loss: 1.9686
+Epoch 191/200, Loss: 1.9685
+Epoch 192/200, Loss: 1.9685
+Epoch 193/200, Loss: 1.9686
+Epoch 194/200, Loss: 1.9688
+Epoch 195/200, Loss: 1.9685
+Epoch 196/200, Loss: 1.9684
+Epoch 197/200, Loss: 1.9686
+Epoch 198/200, Loss: 1.9682
+Epoch 199/200, Loss: 1.9683
+Epoch 200/200, Loss: 1.9686
+Model saved in saved_models/rae2_f1_rep1.pth
+✅ RAE Treinado!
+Starting fine tuning...
+Learning rate: 0.0001, number of epochs: 50
+Epoch 1/50, Loss: 1.0838, Train Acc: 41.58%, Val Acc: 66.67%
+Epoch 2/50, Loss: 1.0505, Train Acc: 53.19%, Val Acc: 66.67%
+Epoch 3/50, Loss: 1.0183, Train Acc: 60.91%, Val Acc: 66.67%
+Epoch 4/50, Loss: 0.9860, Train Acc: 65.13%, Val Acc: 67.33%
+Epoch 5/50, Loss: 0.9449, Train Acc: 69.11%, Val Acc: 67.23%
+Epoch 6/50, Loss: 0.9109, Train Acc: 70.17%, Val Acc: 68.37%
+Epoch 7/50, Loss: 0.8768, Train Acc: 71.51%, Val Acc: 68.84%
+Epoch 8/50, Loss: 0.8411, Train Acc: 72.71%, Val Acc: 69.12%
+Epoch 9/50, Loss: 0.8111, Train Acc: 73.76%, Val Acc: 69.78%
+Epoch 10/50, Loss: 0.7853, Train Acc: 73.09%, Val Acc: 69.31%
+Epoch 11/50, Loss: 0.7568, Train Acc: 73.91%, Val Acc: 70.92%
+Epoch 12/50, Loss: 0.7231, Train Acc: 74.82%, Val Acc: 70.82%
+Epoch 13/50, Loss: 0.7179, Train Acc: 74.72%, Val Acc: 71.29%
+Epoch 14/50, Loss: 0.6867, Train Acc: 74.92%, Val Acc: 71.48%
+Epoch 15/50, Loss: 0.6789, Train Acc: 75.92%, Val Acc: 71.67%
+Epoch 16/50, Loss: 0.6563, Train Acc: 75.83%, Val Acc: 70.54%
+Epoch 17/50, Loss: 0.6572, Train Acc: 74.68%, Val Acc: 70.54%
+Epoch 18/50, Loss: 0.6334, Train Acc: 75.30%, Val Acc: 71.01%
+Epoch 19/50, Loss: 0.6217, Train Acc: 75.73%, Val Acc: 71.86%
+Epoch 20/50, Loss: 0.6062, Train Acc: 75.78%, Val Acc: 70.16%
+Epoch 21/50, Loss: 0.6049, Train Acc: 75.97%, Val Acc: 71.20%
+Epoch 22/50, Loss: 0.6005, Train Acc: 76.21%, Val Acc: 72.33%
+Epoch 23/50, Loss: 0.5924, Train Acc: 75.68%, Val Acc: 71.48%
+Epoch 24/50, Loss: 0.5797, Train Acc: 76.98%, Val Acc: 71.20%
+Epoch 25/50, Loss: 0.5796, Train Acc: 76.55%, Val Acc: 72.71%
+Epoch 26/50, Loss: 0.5784, Train Acc: 76.02%, Val Acc: 72.52%
+Epoch 27/50, Loss: 0.5630, Train Acc: 76.16%, Val Acc: 70.92%
+Epoch 28/50, Loss: 0.5511, Train Acc: 77.79%, Val Acc: 71.58%
+Epoch 29/50, Loss: 0.5493, Train Acc: 78.23%, Val Acc: 70.63%
+Epoch 30/50, Loss: 0.5525, Train Acc: 77.31%, Val Acc: 73.09%
+Epoch 31/50, Loss: 0.5364, Train Acc: 77.89%, Val Acc: 71.20%
+Epoch 32/50, Loss: 0.5412, Train Acc: 77.94%, Val Acc: 70.54%
+Epoch 33/50, Loss: 0.5397, Train Acc: 77.51%, Val Acc: 71.86%
+Epoch 34/50, Loss: 0.5207, Train Acc: 78.23%, Val Acc: 71.29%
+Epoch 35/50, Loss: 0.5300, Train Acc: 77.99%, Val Acc: 71.10%
+Epoch 36/50, Loss: 0.5195, Train Acc: 78.51%, Val Acc: 71.01%
+Epoch 37/50, Loss: 0.5144, Train Acc: 77.99%, Val Acc: 70.82%
+Epoch 38/50, Loss: 0.5216, Train Acc: 78.37%, Val Acc: 71.01%
+Epoch 39/50, Loss: 0.4942, Train Acc: 79.90%, Val Acc: 70.73%
+Epoch 40/50, Loss: 0.5128, Train Acc: 78.56%, Val Acc: 71.20%
+Epoch 41/50, Loss: 0.4952, Train Acc: 79.23%, Val Acc: 71.01%
+Epoch 42/50, Loss: 0.5211, Train Acc: 78.80%, Val Acc: 70.54%
+Epoch 43/50, Loss: 0.4954, Train Acc: 79.52%, Val Acc: 71.10%
+Epoch 44/50, Loss: 0.4913, Train Acc: 79.52%, Val Acc: 70.54%
+Epoch 45/50, Loss: 0.4872, Train Acc: 79.38%, Val Acc: 71.39%
+Epoch 46/50, Loss: 0.4828, Train Acc: 79.62%, Val Acc: 71.67%
+Epoch 47/50, Loss: 0.4846, Train Acc: 80.72%, Val Acc: 70.92%
+Epoch 48/50, Loss: 0.5008, Train Acc: 79.71%, Val Acc: 71.77%
+Epoch 49/50, Loss: 0.4842, Train Acc: 79.81%, Val Acc: 71.29%
+Epoch 50/50, Loss: 0.4813, Train Acc: 80.14%, Val Acc: 69.78%
+Model saved in saved_models/rae_cls2_f1_rep1.pth
+✅ Fine-Tuning Concluído!
+
+🎯 Accuracy on the test set: 69.78%
+
+📊 Confusion Matrix:
+[[ 33   0 320]
+ [  0 353   0]
+ [  0   0 353]]
+Fold 2
+ Training datasets: ['data/spectrogram/cwru_7', 'data/spectrogram/cwru_21', 'data/spectrogram/uored', 'data/spectrogram/hust', 'data/spectrogram/paderborn']
+ Fine-tuning datasets: ['data/spectrogram/cwru_7', 'data/spectrogram/cwru_21']
+ Testing dataset: data/spectrogram/cwru_14
+Starting training...
+Learning rate: 0.001, number of epochs: 200
+Epoch 1/200, Loss: 2.1418
+Epoch 2/200, Loss: 2.0224
+Epoch 3/200, Loss: 2.0126
+Epoch 4/200, Loss: 2.0085
+Epoch 5/200, Loss: 2.0062
+Epoch 6/200, Loss: 2.0048
+Epoch 7/200, Loss: 2.0028
+Epoch 8/200, Loss: 2.0020
+Epoch 9/200, Loss: 1.9995
+Epoch 10/200, Loss: 1.9987
+Epoch 11/200, Loss: 1.9973
+Epoch 12/200, Loss: 1.9957
+Epoch 13/200, Loss: 1.9934
+Epoch 14/200, Loss: 1.9914
+Epoch 15/200, Loss: 1.9930
+Epoch 16/200, Loss: 1.9909
+Epoch 17/200, Loss: 1.9911
+Epoch 18/200, Loss: 1.9930
+Epoch 19/200, Loss: 1.9899
+Epoch 20/200, Loss: 1.9893
+Epoch 21/200, Loss: 1.9897
+Epoch 22/200, Loss: 1.9940
+Epoch 23/200, Loss: 1.9898
+Epoch 24/200, Loss: 1.9890
+Epoch 25/200, Loss: 1.9885
+Epoch 26/200, Loss: 1.9879
+Epoch 27/200, Loss: 1.9884
+Epoch 28/200, Loss: 1.9879
+Epoch 29/200, Loss: 1.9882
+Epoch 30/200, Loss: 1.9879
+Epoch 31/200, Loss: 1.9877
+Epoch 32/200, Loss: 1.9868
+Epoch 33/200, Loss: 1.9872
+Epoch 34/200, Loss: 1.9863
+Epoch 35/200, Loss: 1.9862
+Epoch 36/200, Loss: 1.9864
+Epoch 37/200, Loss: 1.9870
+Epoch 38/200, Loss: 1.9855
+Epoch 39/200, Loss: 1.9860
+Epoch 40/200, Loss: 1.9854
+Epoch 41/200, Loss: 1.9851
+Epoch 42/200, Loss: 1.9854
+Epoch 43/200, Loss: 1.9856
+Epoch 44/200, Loss: 1.9853
+Epoch 45/200, Loss: 1.9858
+Epoch 46/200, Loss: 1.9854
+Epoch 47/200, Loss: 1.9848
+Epoch 48/200, Loss: 1.9852
+Epoch 49/200, Loss: 1.9866
+Epoch 50/200, Loss: 1.9864
+Epoch 51/200, Loss: 1.9853
+Epoch 52/200, Loss: 1.9846
+Epoch 53/200, Loss: 1.9851
+Epoch 54/200, Loss: 1.9852
+Epoch 55/200, Loss: 1.9850
+Epoch 56/200, Loss: 1.9855
+Epoch 57/200, Loss: 1.9843
+Epoch 58/200, Loss: 1.9842
+Epoch 59/200, Loss: 1.9875
+Epoch 60/200, Loss: 1.9851
+Epoch 61/200, Loss: 1.9847
+Epoch 62/200, Loss: 1.9843
+Epoch 63/200, Loss: 1.9855
+Epoch 64/200, Loss: 1.9847
+Epoch 65/200, Loss: 1.9839
+Epoch 66/200, Loss: 1.9841
+Epoch 67/200, Loss: 1.9843
+Epoch 68/200, Loss: 1.9847
+Epoch 69/200, Loss: 1.9848
+Epoch 70/200, Loss: 1.9848
+Epoch 71/200, Loss: 1.9837
+Epoch 72/200, Loss: 1.9846
+Epoch 73/200, Loss: 1.9843
+Epoch 74/200, Loss: 1.9836
+Epoch 75/200, Loss: 1.9847
+Epoch 76/200, Loss: 1.9837
+Epoch 77/200, Loss: 1.9841
+Epoch 78/200, Loss: 1.9843
+Epoch 79/200, Loss: 1.9832
+Epoch 80/200, Loss: 1.9844
+Epoch 81/200, Loss: 1.9839
+Epoch 82/200, Loss: 1.9832
+Epoch 83/200, Loss: 1.9832
+Epoch 84/200, Loss: 1.9828
+Epoch 85/200, Loss: 1.9832
+Epoch 86/200, Loss: 1.9832
+Epoch 87/200, Loss: 1.9837
+Epoch 88/200, Loss: 1.9837
+Epoch 89/200, Loss: 1.9836
+Epoch 90/200, Loss: 1.9834
+Epoch 91/200, Loss: 1.9833
+Epoch 92/200, Loss: 1.9832
+Epoch 93/200, Loss: 1.9830
+Epoch 94/200, Loss: 1.9830
+Epoch 95/200, Loss: 1.9832
+Epoch 96/200, Loss: 1.9828
+Epoch 97/200, Loss: 1.9831
+Epoch 98/200, Loss: 1.9844
+Epoch 99/200, Loss: 1.9837
+Epoch 100/200, Loss: 1.9830
+Epoch 101/200, Loss: 1.9829
+Epoch 102/200, Loss: 1.9832
+Epoch 103/200, Loss: 1.9834
+Epoch 104/200, Loss: 1.9830
+Epoch 105/200, Loss: 1.9836
+Epoch 106/200, Loss: 1.9831
+Epoch 107/200, Loss: 1.9827
+Epoch 108/200, Loss: 1.9824
+Epoch 109/200, Loss: 1.9831
+Epoch 110/200, Loss: 1.9829
+Epoch 111/200, Loss: 1.9828
+Epoch 112/200, Loss: 1.9821
+Epoch 113/200, Loss: 1.9832
+Epoch 114/200, Loss: 1.9855
+Epoch 115/200, Loss: 1.9840
+Epoch 116/200, Loss: 1.9831
+Epoch 117/200, Loss: 1.9827
+Epoch 118/200, Loss: 1.9817
+Epoch 119/200, Loss: 1.9823
+Epoch 120/200, Loss: 1.9827
+Epoch 121/200, Loss: 1.9822
+Epoch 122/200, Loss: 1.9828
+Epoch 123/200, Loss: 1.9825
+Epoch 124/200, Loss: 1.9823
+Epoch 125/200, Loss: 1.9822
+Epoch 126/200, Loss: 1.9822
+Epoch 127/200, Loss: 1.9827
+Epoch 128/200, Loss: 1.9824
+Epoch 129/200, Loss: 1.9825
+Epoch 130/200, Loss: 1.9824
+Epoch 131/200, Loss: 1.9821
+Epoch 132/200, Loss: 1.9819
+Epoch 133/200, Loss: 1.9828
+Epoch 134/200, Loss: 1.9827
+Epoch 135/200, Loss: 1.9830
+Epoch 136/200, Loss: 1.9829
+Epoch 137/200, Loss: 1.9833
+Epoch 138/200, Loss: 1.9825
+Epoch 139/200, Loss: 1.9823
+Epoch 140/200, Loss: 1.9827
+Epoch 141/200, Loss: 1.9819
+Epoch 142/200, Loss: 1.9818
+Epoch 143/200, Loss: 1.9820
+Epoch 144/200, Loss: 1.9817
+Epoch 145/200, Loss: 1.9821
+Epoch 146/200, Loss: 1.9816
+Epoch 147/200, Loss: 1.9825
+Epoch 148/200, Loss: 1.9819
+Epoch 149/200, Loss: 1.9816
+Epoch 150/200, Loss: 1.9820
+Epoch 151/200, Loss: 1.9823
+Epoch 152/200, Loss: 1.9821
+Epoch 153/200, Loss: 1.9825
+Epoch 154/200, Loss: 1.9824
+Epoch 155/200, Loss: 1.9818
+Epoch 156/200, Loss: 1.9820
+Epoch 157/200, Loss: 1.9822
+Epoch 158/200, Loss: 1.9817
+Epoch 159/200, Loss: 1.9821
+Epoch 160/200, Loss: 1.9815
+Epoch 161/200, Loss: 1.9814
+Epoch 162/200, Loss: 1.9821
+Epoch 163/200, Loss: 1.9813
+Epoch 164/200, Loss: 1.9811
+Epoch 165/200, Loss: 1.9808
+Epoch 166/200, Loss: 1.9812
+Epoch 167/200, Loss: 1.9815
+Epoch 168/200, Loss: 1.9815
+Epoch 169/200, Loss: 1.9811
+Epoch 170/200, Loss: 1.9815
+Epoch 171/200, Loss: 1.9811
+Epoch 172/200, Loss: 1.9813
+Epoch 173/200, Loss: 1.9817
+Epoch 174/200, Loss: 1.9821
+Epoch 175/200, Loss: 1.9817
+Epoch 176/200, Loss: 1.9815
+Epoch 177/200, Loss: 1.9816
+Epoch 178/200, Loss: 1.9811
+Epoch 179/200, Loss: 1.9822
+Epoch 180/200, Loss: 1.9814
+Epoch 181/200, Loss: 1.9813
+Epoch 182/200, Loss: 1.9813
+Epoch 183/200, Loss: 1.9808
+Epoch 184/200, Loss: 1.9812
+Epoch 185/200, Loss: 1.9810
+Epoch 186/200, Loss: 1.9809
+Epoch 187/200, Loss: 1.9814
+Epoch 188/200, Loss: 1.9810
+Epoch 189/200, Loss: 1.9815
+Epoch 190/200, Loss: 1.9807
+Epoch 191/200, Loss: 1.9809
+Epoch 192/200, Loss: 1.9821
+Epoch 193/200, Loss: 1.9807
+Epoch 194/200, Loss: 1.9816
+Epoch 195/200, Loss: 1.9809
+Epoch 196/200, Loss: 1.9809
+Epoch 197/200, Loss: 1.9811
+Epoch 198/200, Loss: 1.9812
+Epoch 199/200, Loss: 1.9811
+Epoch 200/200, Loss: 1.9809
+Model saved in saved_models/rae2_f2_rep1.pth
+✅ RAE Treinado!
+Starting fine tuning...
+Learning rate: 0.0001, number of epochs: 50
+Epoch 1/50, Loss: 1.0536, Train Acc: 59.55%, Val Acc: 39.59%
+Epoch 2/50, Loss: 0.9700, Train Acc: 73.74%, Val Acc: 43.01%
+Epoch 3/50, Loss: 0.8893, Train Acc: 77.51%, Val Acc: 53.86%
+Epoch 4/50, Loss: 0.8124, Train Acc: 76.19%, Val Acc: 51.32%
+Epoch 5/50, Loss: 0.7429, Train Acc: 79.96%, Val Acc: 51.52%
+Epoch 6/50, Loss: 0.6830, Train Acc: 84.02%, Val Acc: 41.54%
+Epoch 7/50, Loss: 0.6184, Train Acc: 85.29%, Val Acc: 41.15%
+Epoch 8/50, Loss: 0.5762, Train Acc: 87.51%, Val Acc: 39.30%
+Epoch 9/50, Loss: 0.5467, Train Acc: 88.07%, Val Acc: 39.78%
+Epoch 10/50, Loss: 0.4951, Train Acc: 91.14%, Val Acc: 41.64%
+Epoch 11/50, Loss: 0.4504, Train Acc: 92.13%, Val Acc: 38.32%
+Epoch 12/50, Loss: 0.4093, Train Acc: 93.82%, Val Acc: 39.98%
+Epoch 13/50, Loss: 0.3840, Train Acc: 94.63%, Val Acc: 38.12%
+Epoch 14/50, Loss: 0.3583, Train Acc: 94.39%, Val Acc: 37.54%
+Epoch 15/50, Loss: 0.3356, Train Acc: 94.39%, Val Acc: 36.36%
+Epoch 16/50, Loss: 0.3122, Train Acc: 95.24%, Val Acc: 36.56%
+Epoch 17/50, Loss: 0.2842, Train Acc: 95.24%, Val Acc: 39.78%
+Epoch 18/50, Loss: 0.2715, Train Acc: 95.00%, Val Acc: 38.91%
+Epoch 19/50, Loss: 0.2670, Train Acc: 95.38%, Val Acc: 35.39%
+Epoch 20/50, Loss: 0.2461, Train Acc: 95.52%, Val Acc: 37.93%
+Epoch 21/50, Loss: 0.2369, Train Acc: 95.95%, Val Acc: 36.95%
+Epoch 22/50, Loss: 0.2250, Train Acc: 95.52%, Val Acc: 38.51%
+Epoch 23/50, Loss: 0.2019, Train Acc: 96.46%, Val Acc: 36.46%
+Epoch 24/50, Loss: 0.2047, Train Acc: 95.62%, Val Acc: 34.31%
+Epoch 25/50, Loss: 0.1957, Train Acc: 96.42%, Val Acc: 36.75%
+Epoch 26/50, Loss: 0.1738, Train Acc: 96.89%, Val Acc: 37.93%
+Epoch 27/50, Loss: 0.1792, Train Acc: 96.23%, Val Acc: 38.32%
+Epoch 28/50, Loss: 0.1772, Train Acc: 96.23%, Val Acc: 36.27%
+Epoch 29/50, Loss: 0.1775, Train Acc: 95.85%, Val Acc: 35.19%
+Epoch 30/50, Loss: 0.1583, Train Acc: 96.56%, Val Acc: 35.48%
+Epoch 31/50, Loss: 0.1536, Train Acc: 96.37%, Val Acc: 35.68%
+Epoch 32/50, Loss: 0.1540, Train Acc: 96.79%, Val Acc: 36.46%
+Epoch 33/50, Loss: 0.1571, Train Acc: 96.61%, Val Acc: 35.39%
+Epoch 34/50, Loss: 0.1486, Train Acc: 96.65%, Val Acc: 35.19%
+Epoch 35/50, Loss: 0.1612, Train Acc: 96.56%, Val Acc: 36.66%
+Epoch 36/50, Loss: 0.1359, Train Acc: 96.32%, Val Acc: 34.60%
+Epoch 37/50, Loss: 0.1300, Train Acc: 97.08%, Val Acc: 36.07%
+Epoch 38/50, Loss: 0.1351, Train Acc: 96.84%, Val Acc: 35.97%
+Epoch 39/50, Loss: 0.1395, Train Acc: 96.84%, Val Acc: 34.80%
+Epoch 40/50, Loss: 0.1301, Train Acc: 96.28%, Val Acc: 33.53%
+Epoch 41/50, Loss: 0.1399, Train Acc: 96.56%, Val Acc: 35.39%
+Epoch 42/50, Loss: 0.1186, Train Acc: 97.12%, Val Acc: 36.46%
+Epoch 43/50, Loss: 0.1195, Train Acc: 96.98%, Val Acc: 35.19%
+Epoch 44/50, Loss: 0.1293, Train Acc: 96.65%, Val Acc: 35.09%
+Epoch 45/50, Loss: 0.1151, Train Acc: 96.98%, Val Acc: 34.70%
+Epoch 46/50, Loss: 0.1099, Train Acc: 97.22%, Val Acc: 33.82%
+Epoch 47/50, Loss: 0.1235, Train Acc: 96.89%, Val Acc: 37.54%
+Epoch 48/50, Loss: 0.1101, Train Acc: 97.36%, Val Acc: 34.80%
+Epoch 49/50, Loss: 0.1080, Train Acc: 97.12%, Val Acc: 35.48%
+Epoch 50/50, Loss: 0.1071, Train Acc: 97.36%, Val Acc: 32.16%
+Model saved in saved_models/rae_cls2_f2_rep1.pth
+✅ Fine-Tuning Concluído!
+
+🎯 Accuracy on the test set: 32.16%
+
+📊 Confusion Matrix:
+[[223   2 129]
+ [101  97 118]
+ [344   0   9]]
+Fold 3
+ Training datasets: ['data/spectrogram/cwru_7', 'data/spectrogram/cwru_14', 'data/spectrogram/uored', 'data/spectrogram/hust', 'data/spectrogram/paderborn']
+ Fine-tuning datasets: ['data/spectrogram/cwru_7', 'data/spectrogram/cwru_14']
+ Testing dataset: data/spectrogram/cwru_21
+Starting training...
+Learning rate: 0.001, number of epochs: 200
+Epoch 1/200, Loss: 2.1402
+Epoch 2/200, Loss: 2.0228
+Epoch 3/200, Loss: 2.0161
+Epoch 4/200, Loss: 2.0140
+Epoch 5/200, Loss: 2.0124
+Epoch 6/200, Loss: 2.0116
+Epoch 7/200, Loss: 2.0072
+Epoch 8/200, Loss: 2.0078
+Epoch 9/200, Loss: 2.0083
+Epoch 10/200, Loss: 2.0069
+Epoch 11/200, Loss: 2.0064
+Epoch 12/200, Loss: 2.0047
+Epoch 13/200, Loss: 2.0043
+Epoch 14/200, Loss: 2.0038
+Epoch 15/200, Loss: 2.0020
+Epoch 16/200, Loss: 2.0021
+Epoch 17/200, Loss: 2.0010
+Epoch 18/200, Loss: 1.9996
+Epoch 19/200, Loss: 1.9990
+Epoch 20/200, Loss: 1.9989
+Epoch 21/200, Loss: 1.9978
+Epoch 22/200, Loss: 1.9976
+Epoch 23/200, Loss: 1.9970
+Epoch 24/200, Loss: 1.9968
+Epoch 25/200, Loss: 1.9963
+Epoch 26/200, Loss: 1.9973
+Epoch 27/200, Loss: 1.9962
+Epoch 28/200, Loss: 1.9974
+Epoch 29/200, Loss: 1.9959
+Epoch 30/200, Loss: 1.9962
+Epoch 31/200, Loss: 1.9958
+Epoch 32/200, Loss: 1.9957
+Epoch 33/200, Loss: 1.9954
+Epoch 34/200, Loss: 1.9953
+Epoch 35/200, Loss: 1.9953
+Epoch 36/200, Loss: 1.9957
+Epoch 37/200, Loss: 1.9949
+Epoch 38/200, Loss: 1.9952
+Epoch 39/200, Loss: 1.9952
+Epoch 40/200, Loss: 1.9945
+Epoch 41/200, Loss: 1.9943
+Epoch 42/200, Loss: 1.9939
+Epoch 43/200, Loss: 1.9941
+Epoch 44/200, Loss: 1.9934
+Epoch 45/200, Loss: 1.9930
+Epoch 46/200, Loss: 1.9930
+Epoch 47/200, Loss: 1.9925
+Epoch 48/200, Loss: 1.9922
+Epoch 49/200, Loss: 1.9923
+Epoch 50/200, Loss: 1.9917
+Epoch 51/200, Loss: 1.9919
+Epoch 52/200, Loss: 1.9917
+Epoch 53/200, Loss: 1.9913
+Epoch 54/200, Loss: 1.9915
+Epoch 55/200, Loss: 1.9916
+Epoch 56/200, Loss: 1.9912
+Epoch 57/200, Loss: 1.9912
+Epoch 58/200, Loss: 1.9910
+Epoch 59/200, Loss: 1.9913
+Epoch 60/200, Loss: 1.9908
+Epoch 61/200, Loss: 1.9907
+Epoch 62/200, Loss: 1.9908
+Epoch 63/200, Loss: 1.9906
+Epoch 64/200, Loss: 1.9907
+Epoch 65/200, Loss: 1.9902
+Epoch 66/200, Loss: 1.9902
+Epoch 67/200, Loss: 1.9902
+Epoch 68/200, Loss: 1.9904
+Epoch 69/200, Loss: 1.9899
+Epoch 70/200, Loss: 1.9901
+Epoch 71/200, Loss: 1.9904
+Epoch 72/200, Loss: 1.9905
+Epoch 73/200, Loss: 1.9901
+Epoch 74/200, Loss: 1.9905
+Epoch 75/200, Loss: 1.9901
+Epoch 76/200, Loss: 1.9899
+Epoch 77/200, Loss: 1.9901
+Epoch 78/200, Loss: 1.9896
+Epoch 79/200, Loss: 1.9900
+Epoch 80/200, Loss: 1.9896
+Epoch 81/200, Loss: 1.9900
+Epoch 82/200, Loss: 1.9898
+Epoch 83/200, Loss: 1.9900
+Epoch 84/200, Loss: 1.9896
+Epoch 85/200, Loss: 1.9898
+Epoch 86/200, Loss: 1.9893
+Epoch 87/200, Loss: 1.9897
+Epoch 88/200, Loss: 1.9895
+Epoch 89/200, Loss: 1.9897
+Epoch 90/200, Loss: 1.9891
+Epoch 91/200, Loss: 1.9894
+Epoch 92/200, Loss: 1.9897
+Epoch 93/200, Loss: 1.9892
+Epoch 94/200, Loss: 1.9892
+Epoch 95/200, Loss: 1.9893
+Epoch 96/200, Loss: 1.9889
+Epoch 97/200, Loss: 1.9896
+Epoch 98/200, Loss: 1.9894
+Epoch 99/200, Loss: 1.9893
+Epoch 100/200, Loss: 1.9887
+Epoch 101/200, Loss: 1.9892
+Epoch 102/200, Loss: 1.9893
+Epoch 103/200, Loss: 1.9889
+Epoch 104/200, Loss: 1.9888
+Epoch 105/200, Loss: 1.9893
+Epoch 106/200, Loss: 1.9892
+Epoch 107/200, Loss: 1.9889
+Epoch 108/200, Loss: 1.9892
+Epoch 109/200, Loss: 1.9891
+Epoch 110/200, Loss: 1.9888
+Epoch 111/200, Loss: 1.9890
+Epoch 112/200, Loss: 1.9889
+Epoch 113/200, Loss: 1.9889
+Epoch 114/200, Loss: 1.9890
+Epoch 115/200, Loss: 1.9889
+Epoch 116/200, Loss: 1.9888
+Epoch 117/200, Loss: 1.9888
+Epoch 118/200, Loss: 1.9891
+Epoch 119/200, Loss: 1.9887
+Epoch 120/200, Loss: 1.9888
+Epoch 121/200, Loss: 1.9888
+Epoch 122/200, Loss: 1.9888
+Epoch 123/200, Loss: 1.9884
+Epoch 124/200, Loss: 1.9886
+Epoch 125/200, Loss: 1.9887
+Epoch 126/200, Loss: 1.9887
+Epoch 127/200, Loss: 1.9884
+Epoch 128/200, Loss: 1.9886
+Epoch 129/200, Loss: 1.9887
+Epoch 130/200, Loss: 1.9886
+Epoch 131/200, Loss: 1.9889
+Epoch 132/200, Loss: 1.9887
+Epoch 133/200, Loss: 1.9886
+Epoch 134/200, Loss: 1.9886
+Epoch 135/200, Loss: 1.9888
+Epoch 136/200, Loss: 1.9887
+Epoch 137/200, Loss: 1.9886
+Epoch 138/200, Loss: 1.9886
+Epoch 139/200, Loss: 1.9885
+Epoch 140/200, Loss: 1.9884
+Epoch 141/200, Loss: 1.9886
+Epoch 142/200, Loss: 1.9888
+Epoch 143/200, Loss: 1.9885
+Epoch 144/200, Loss: 1.9887
+Epoch 145/200, Loss: 1.9884
+Epoch 146/200, Loss: 1.9883
+Epoch 147/200, Loss: 1.9887
+Epoch 148/200, Loss: 1.9886
+Epoch 149/200, Loss: 1.9888
+Epoch 150/200, Loss: 1.9889
+Epoch 151/200, Loss: 1.9887
+Epoch 152/200, Loss: 1.9886
+Epoch 153/200, Loss: 1.9886
+Epoch 154/200, Loss: 1.9884
+Epoch 155/200, Loss: 1.9885
+Epoch 156/200, Loss: 1.9883
+Epoch 157/200, Loss: 1.9880
+Epoch 158/200, Loss: 1.9882
+Epoch 159/200, Loss: 1.9884
+Epoch 160/200, Loss: 1.9884
+Epoch 161/200, Loss: 1.9887
+Epoch 162/200, Loss: 1.9885
+Epoch 163/200, Loss: 1.9887
+Epoch 164/200, Loss: 1.9884
+Epoch 165/200, Loss: 1.9888
+Epoch 166/200, Loss: 1.9885
+Epoch 167/200, Loss: 1.9884
+Epoch 168/200, Loss: 1.9883
+Epoch 169/200, Loss: 1.9883
+Epoch 170/200, Loss: 1.9885
+Epoch 171/200, Loss: 1.9883
+Epoch 172/200, Loss: 1.9883
+Epoch 173/200, Loss: 1.9883
+Epoch 174/200, Loss: 1.9885
+Epoch 175/200, Loss: 1.9884
+Epoch 176/200, Loss: 1.9884
+Epoch 177/200, Loss: 1.9886
+Epoch 178/200, Loss: 1.9882
+Epoch 179/200, Loss: 1.9883
+Epoch 180/200, Loss: 1.9881
+Epoch 181/200, Loss: 1.9883
+Epoch 182/200, Loss: 1.9884
+Epoch 183/200, Loss: 1.9884
+Epoch 184/200, Loss: 1.9883
+Epoch 185/200, Loss: 1.9883
+Epoch 186/200, Loss: 1.9885
+Epoch 187/200, Loss: 1.9882
+Epoch 188/200, Loss: 1.9883
+Epoch 189/200, Loss: 1.9880
+Epoch 190/200, Loss: 1.9881
+Epoch 191/200, Loss: 1.9884
+Epoch 192/200, Loss: 1.9882
+Epoch 193/200, Loss: 1.9882
+Epoch 194/200, Loss: 1.9880
+Epoch 195/200, Loss: 1.9882
+Epoch 196/200, Loss: 1.9882
+Epoch 197/200, Loss: 1.9879
+Epoch 198/200, Loss: 1.9881
+Epoch 199/200, Loss: 1.9883
+Epoch 200/200, Loss: 1.9881
+Model saved in saved_models/rae2_f3_rep1.pth
+✅ RAE Treinado!
+Starting fine tuning...
+Learning rate: 0.0001, number of epochs: 50
+Epoch 1/50, Loss: 1.0682, Train Acc: 54.03%, Val Acc: 16.38%
+Epoch 2/50, Loss: 1.0140, Train Acc: 61.38%, Val Acc: 39.74%
+Epoch 3/50, Loss: 0.9485, Train Acc: 64.75%, Val Acc: 38.04%
+Epoch 4/50, Loss: 0.8938, Train Acc: 65.99%, Val Acc: 41.43%
+Epoch 5/50, Loss: 0.8456, Train Acc: 64.94%, Val Acc: 41.43%
+Epoch 6/50, Loss: 0.8143, Train Acc: 66.14%, Val Acc: 41.24%
+Epoch 7/50, Loss: 0.7940, Train Acc: 65.47%, Val Acc: 43.50%
+Epoch 8/50, Loss: 0.7578, Train Acc: 67.72%, Val Acc: 46.99%
+Epoch 9/50, Loss: 0.7329, Train Acc: 66.47%, Val Acc: 46.33%
+Epoch 10/50, Loss: 0.7165, Train Acc: 66.23%, Val Acc: 46.70%
+Epoch 11/50, Loss: 0.7080, Train Acc: 68.78%, Val Acc: 50.09%
+Epoch 12/50, Loss: 0.6927, Train Acc: 68.88%, Val Acc: 52.17%
+Epoch 13/50, Loss: 0.6750, Train Acc: 69.31%, Val Acc: 52.26%
+Epoch 14/50, Loss: 0.6632, Train Acc: 70.70%, Val Acc: 55.65%
+Epoch 15/50, Loss: 0.6520, Train Acc: 70.75%, Val Acc: 59.04%
+Epoch 16/50, Loss: 0.6293, Train Acc: 72.81%, Val Acc: 51.79%
+Epoch 17/50, Loss: 0.6409, Train Acc: 72.05%, Val Acc: 59.32%
+Epoch 18/50, Loss: 0.6070, Train Acc: 73.73%, Val Acc: 61.21%
+Epoch 19/50, Loss: 0.5963, Train Acc: 74.26%, Val Acc: 60.36%
+Epoch 20/50, Loss: 0.5952, Train Acc: 75.31%, Val Acc: 63.75%
+Epoch 21/50, Loss: 0.5956, Train Acc: 74.93%, Val Acc: 64.97%
+Epoch 22/50, Loss: 0.5794, Train Acc: 76.13%, Val Acc: 65.82%
+Epoch 23/50, Loss: 0.5624, Train Acc: 74.59%, Val Acc: 65.25%
+Epoch 24/50, Loss: 0.5446, Train Acc: 76.08%, Val Acc: 65.82%
+Epoch 25/50, Loss: 0.5518, Train Acc: 75.98%, Val Acc: 67.14%
+Epoch 26/50, Loss: 0.5376, Train Acc: 77.38%, Val Acc: 67.61%
+Epoch 27/50, Loss: 0.5292, Train Acc: 76.13%, Val Acc: 68.74%
+Epoch 28/50, Loss: 0.5293, Train Acc: 77.28%, Val Acc: 67.89%
+Epoch 29/50, Loss: 0.5110, Train Acc: 78.39%, Val Acc: 66.57%
+Epoch 30/50, Loss: 0.5134, Train Acc: 78.19%, Val Acc: 67.23%
+Epoch 31/50, Loss: 0.5068, Train Acc: 78.29%, Val Acc: 70.15%
+Epoch 32/50, Loss: 0.5057, Train Acc: 77.71%, Val Acc: 68.93%
+Epoch 33/50, Loss: 0.4907, Train Acc: 77.76%, Val Acc: 68.83%
+Epoch 34/50, Loss: 0.4840, Train Acc: 79.01%, Val Acc: 68.83%
+Epoch 35/50, Loss: 0.4831, Train Acc: 79.54%, Val Acc: 66.10%
+Epoch 36/50, Loss: 0.4799, Train Acc: 78.77%, Val Acc: 70.06%
+Epoch 37/50, Loss: 0.4661, Train Acc: 79.01%, Val Acc: 67.23%
+Epoch 38/50, Loss: 0.4713, Train Acc: 79.30%, Val Acc: 68.55%
+Epoch 39/50, Loss: 0.4675, Train Acc: 77.43%, Val Acc: 66.95%
+Epoch 40/50, Loss: 0.4652, Train Acc: 79.30%, Val Acc: 65.63%
+Epoch 41/50, Loss: 0.4957, Train Acc: 78.82%, Val Acc: 68.17%
+Epoch 42/50, Loss: 0.4604, Train Acc: 79.20%, Val Acc: 66.10%
+Epoch 43/50, Loss: 0.4597, Train Acc: 78.63%, Val Acc: 68.64%
+Epoch 44/50, Loss: 0.4529, Train Acc: 80.02%, Val Acc: 70.81%
+Epoch 45/50, Loss: 0.4651, Train Acc: 77.81%, Val Acc: 69.30%
+Epoch 46/50, Loss: 0.4426, Train Acc: 80.12%, Val Acc: 70.06%
+Epoch 47/50, Loss: 0.4321, Train Acc: 79.01%, Val Acc: 68.46%
+Epoch 48/50, Loss: 0.4359, Train Acc: 79.88%, Val Acc: 68.08%
+Epoch 49/50, Loss: 0.4368, Train Acc: 80.07%, Val Acc: 69.96%
+Epoch 50/50, Loss: 0.4327, Train Acc: 78.91%, Val Acc: 68.64%
+Model saved in saved_models/rae_cls2_f3_rep1.pth
+✅ Fine-Tuning Concluído!
+
+🎯 Accuracy on the test set: 68.64%
+
+📊 Confusion Matrix:
+[[267  79   7]
+ [ 15 340   0]
+ [116 116 122]]
+Repetition 3/4
+Fold 1
+ Training datasets: ['data/spectrogram/cwru_14', 'data/spectrogram/cwru_21', 'data/spectrogram/uored', 'data/spectrogram/hust', 'data/spectrogram/paderborn']
+ Fine-tuning datasets: ['data/spectrogram/cwru_14', 'data/spectrogram/cwru_21']
+ Testing dataset: data/spectrogram/cwru_7
+Starting training...
+Learning rate: 0.001, number of epochs: 200
+Epoch 1/200, Loss: 2.1442
+Epoch 2/200, Loss: 2.0116
+Epoch 3/200, Loss: 1.9970
+Epoch 4/200, Loss: 2.0007
+Epoch 5/200, Loss: 1.9980
+Epoch 6/200, Loss: 1.9956
+Epoch 7/200, Loss: 1.9943
+Epoch 8/200, Loss: 1.9919
+Epoch 9/200, Loss: 1.9925
+Epoch 10/200, Loss: 1.9893
+Epoch 11/200, Loss: 1.9880
+Epoch 12/200, Loss: 1.9859
+Epoch 13/200, Loss: 1.9849
+Epoch 14/200, Loss: 1.9828
+Epoch 15/200, Loss: 1.9786
+Epoch 16/200, Loss: 1.9780
+Epoch 17/200, Loss: 1.9769
+Epoch 18/200, Loss: 1.9770
+Epoch 19/200, Loss: 1.9763
+Epoch 20/200, Loss: 1.9761
+Epoch 21/200, Loss: 1.9763
+Epoch 22/200, Loss: 1.9754
+Epoch 23/200, Loss: 1.9758
+Epoch 24/200, Loss: 1.9752
+Epoch 25/200, Loss: 1.9755
+Epoch 26/200, Loss: 1.9750
+Epoch 27/200, Loss: 1.9753
+Epoch 28/200, Loss: 1.9748
+Epoch 29/200, Loss: 1.9753
+Epoch 30/200, Loss: 1.9751
+Epoch 31/200, Loss: 1.9749
+Epoch 32/200, Loss: 1.9747
+Epoch 33/200, Loss: 1.9750
+Epoch 34/200, Loss: 1.9746
+Epoch 35/200, Loss: 1.9743
+Epoch 36/200, Loss: 1.9738
+Epoch 37/200, Loss: 1.9736
+Epoch 38/200, Loss: 1.9730
+Epoch 39/200, Loss: 1.9731
+Epoch 40/200, Loss: 1.9733
+Epoch 41/200, Loss: 1.9732
+Epoch 42/200, Loss: 1.9734
+Epoch 43/200, Loss: 1.9730
+Epoch 44/200, Loss: 1.9729
+Epoch 45/200, Loss: 1.9725
+Epoch 46/200, Loss: 1.9725
+Epoch 47/200, Loss: 1.9725
+Epoch 48/200, Loss: 1.9726
+Epoch 49/200, Loss: 1.9727
+Epoch 50/200, Loss: 1.9724
+Epoch 51/200, Loss: 1.9727
+Epoch 52/200, Loss: 1.9730
+Epoch 53/200, Loss: 1.9726
+Epoch 54/200, Loss: 1.9724
+Epoch 55/200, Loss: 1.9722
+Epoch 56/200, Loss: 1.9720
+Epoch 57/200, Loss: 1.9723
+Epoch 58/200, Loss: 1.9723
+Epoch 59/200, Loss: 1.9721
+Epoch 60/200, Loss: 1.9724
+Epoch 61/200, Loss: 1.9722
+Epoch 62/200, Loss: 1.9722
+Epoch 63/200, Loss: 1.9719
+Epoch 64/200, Loss: 1.9720
+Epoch 65/200, Loss: 1.9721
+Epoch 66/200, Loss: 1.9722
+Epoch 67/200, Loss: 1.9719
+Epoch 68/200, Loss: 1.9722
+Epoch 69/200, Loss: 1.9722
+Epoch 70/200, Loss: 1.9715
+Epoch 71/200, Loss: 1.9716
+Epoch 72/200, Loss: 1.9721
+Epoch 73/200, Loss: 1.9717
+Epoch 74/200, Loss: 1.9713
+Epoch 75/200, Loss: 1.9718
+Epoch 76/200, Loss: 1.9717
+Epoch 77/200, Loss: 1.9719
+Epoch 78/200, Loss: 1.9715
+Epoch 79/200, Loss: 1.9718
+Epoch 80/200, Loss: 1.9714
+Epoch 81/200, Loss: 1.9716
+Epoch 82/200, Loss: 1.9715
+Epoch 83/200, Loss: 1.9712
+Epoch 84/200, Loss: 1.9718
+Epoch 85/200, Loss: 1.9713
+Epoch 86/200, Loss: 1.9714
+Epoch 87/200, Loss: 1.9712
+Epoch 88/200, Loss: 1.9713
+Epoch 89/200, Loss: 1.9713
+Epoch 90/200, Loss: 1.9713
+Epoch 91/200, Loss: 1.9715
+Epoch 92/200, Loss: 1.9711
+Epoch 93/200, Loss: 1.9711
+Epoch 94/200, Loss: 1.9710
+Epoch 95/200, Loss: 1.9713
+Epoch 96/200, Loss: 1.9712
+Epoch 97/200, Loss: 1.9710
+Epoch 98/200, Loss: 1.9714
+Epoch 99/200, Loss: 1.9709
+Epoch 100/200, Loss: 1.9712
+Epoch 101/200, Loss: 1.9713
+Epoch 102/200, Loss: 1.9710
+Epoch 103/200, Loss: 1.9712
+Epoch 104/200, Loss: 1.9709
+Epoch 105/200, Loss: 1.9710
+Epoch 106/200, Loss: 1.9710
+Epoch 107/200, Loss: 1.9710
+Epoch 108/200, Loss: 1.9711
+Epoch 109/200, Loss: 1.9709
+Epoch 110/200, Loss: 1.9711
+Epoch 111/200, Loss: 1.9709
+Epoch 112/200, Loss: 1.9712
+Epoch 113/200, Loss: 1.9710
+Epoch 114/200, Loss: 1.9711
+Epoch 115/200, Loss: 1.9710
+Epoch 116/200, Loss: 1.9709
+Epoch 117/200, Loss: 1.9710
+Epoch 118/200, Loss: 1.9709
+Epoch 119/200, Loss: 1.9709
+Epoch 120/200, Loss: 1.9710
+Epoch 121/200, Loss: 1.9708
+Epoch 122/200, Loss: 1.9707
+Epoch 123/200, Loss: 1.9707
+Epoch 124/200, Loss: 1.9709
+Epoch 125/200, Loss: 1.9709
+Epoch 126/200, Loss: 1.9709
+Epoch 127/200, Loss: 1.9708
+Epoch 128/200, Loss: 1.9707
+Epoch 129/200, Loss: 1.9706
+Epoch 130/200, Loss: 1.9707
+Epoch 131/200, Loss: 1.9706
+Epoch 132/200, Loss: 1.9706
+Epoch 133/200, Loss: 1.9707
+Epoch 134/200, Loss: 1.9705
+Epoch 135/200, Loss: 1.9708
+Epoch 136/200, Loss: 1.9703
+Epoch 137/200, Loss: 1.9705
+Epoch 138/200, Loss: 1.9708
+Epoch 139/200, Loss: 1.9704
+Epoch 140/200, Loss: 1.9702
+Epoch 141/200, Loss: 1.9706
+Epoch 142/200, Loss: 1.9701
+Epoch 143/200, Loss: 1.9704
+Epoch 144/200, Loss: 1.9702
+Epoch 145/200, Loss: 1.9703
+Epoch 146/200, Loss: 1.9699
+Epoch 147/200, Loss: 1.9698
+Epoch 148/200, Loss: 1.9698
+Epoch 149/200, Loss: 1.9701
+Epoch 150/200, Loss: 1.9696
+Epoch 151/200, Loss: 1.9697
+Epoch 152/200, Loss: 1.9701
+Epoch 153/200, Loss: 1.9696
+Epoch 154/200, Loss: 1.9695
+Epoch 155/200, Loss: 1.9693
+Epoch 156/200, Loss: 1.9695
+Epoch 157/200, Loss: 1.9697
+Epoch 158/200, Loss: 1.9694
+Epoch 159/200, Loss: 1.9693
+Epoch 160/200, Loss: 1.9693
+Epoch 161/200, Loss: 1.9691
+Epoch 162/200, Loss: 1.9695
+Epoch 163/200, Loss: 1.9697
+Epoch 164/200, Loss: 1.9693
+Epoch 165/200, Loss: 1.9692
+Epoch 166/200, Loss: 1.9692
+Epoch 167/200, Loss: 1.9690
+Epoch 168/200, Loss: 1.9692
+Epoch 169/200, Loss: 1.9693
+Epoch 170/200, Loss: 1.9691
+Epoch 171/200, Loss: 1.9692
+Epoch 172/200, Loss: 1.9693
+Epoch 173/200, Loss: 1.9692
+Epoch 174/200, Loss: 1.9689
+Epoch 175/200, Loss: 1.9689
+Epoch 176/200, Loss: 1.9691
+Epoch 177/200, Loss: 1.9687
+Epoch 178/200, Loss: 1.9685
+Epoch 179/200, Loss: 1.9687
+Epoch 180/200, Loss: 1.9684
+Epoch 181/200, Loss: 1.9685
+Epoch 182/200, Loss: 1.9684
+Epoch 183/200, Loss: 1.9688
+Epoch 184/200, Loss: 1.9686
+Epoch 185/200, Loss: 1.9685
+Epoch 186/200, Loss: 1.9683
+Epoch 187/200, Loss: 1.9684
+Epoch 188/200, Loss: 1.9687
+Epoch 189/200, Loss: 1.9685
+Epoch 190/200, Loss: 1.9683
+Epoch 191/200, Loss: 1.9683
+Epoch 192/200, Loss: 1.9687
+Epoch 193/200, Loss: 1.9684
+Epoch 194/200, Loss: 1.9683
+Epoch 195/200, Loss: 1.9683
+Epoch 196/200, Loss: 1.9683
+Epoch 197/200, Loss: 1.9686
+Epoch 198/200, Loss: 1.9684
+Epoch 199/200, Loss: 1.9685
+Epoch 200/200, Loss: 1.9685
+Model saved in saved_models/rae2_f1_rep2.pth
+✅ RAE Treinado!
+Starting fine tuning...
+Learning rate: 0.0001, number of epochs: 50
+Epoch 1/50, Loss: 1.0914, Train Acc: 32.23%, Val Acc: 33.33%
+Epoch 2/50, Loss: 1.0727, Train Acc: 38.27%, Val Acc: 36.36%
+Epoch 3/50, Loss: 1.0509, Train Acc: 53.33%, Val Acc: 51.75%
+Epoch 4/50, Loss: 1.0266, Train Acc: 61.82%, Val Acc: 60.06%
+Epoch 5/50, Loss: 0.9996, Train Acc: 67.19%, Val Acc: 67.99%
+Epoch 6/50, Loss: 0.9678, Train Acc: 68.01%, Val Acc: 71.67%
+Epoch 7/50, Loss: 0.9416, Train Acc: 69.64%, Val Acc: 69.50%
+Epoch 8/50, Loss: 0.9061, Train Acc: 69.06%, Val Acc: 70.16%
+Epoch 9/50, Loss: 0.8769, Train Acc: 69.21%, Val Acc: 71.95%
+Epoch 10/50, Loss: 0.8437, Train Acc: 71.08%, Val Acc: 75.45%
+Epoch 11/50, Loss: 0.8153, Train Acc: 71.32%, Val Acc: 76.86%
+Epoch 12/50, Loss: 0.7887, Train Acc: 71.46%, Val Acc: 78.94%
+Epoch 13/50, Loss: 0.7660, Train Acc: 71.41%, Val Acc: 78.56%
+Epoch 14/50, Loss: 0.7450, Train Acc: 71.61%, Val Acc: 76.86%
+Epoch 15/50, Loss: 0.7275, Train Acc: 71.61%, Val Acc: 81.68%
+Epoch 16/50, Loss: 0.7076, Train Acc: 71.80%, Val Acc: 79.32%
+Epoch 17/50, Loss: 0.6893, Train Acc: 72.47%, Val Acc: 75.17%
+Epoch 18/50, Loss: 0.6779, Train Acc: 71.75%, Val Acc: 81.87%
+Epoch 19/50, Loss: 0.6698, Train Acc: 71.13%, Val Acc: 81.49%
+Epoch 20/50, Loss: 0.6775, Train Acc: 70.36%, Val Acc: 81.96%
+Epoch 21/50, Loss: 0.6492, Train Acc: 71.80%, Val Acc: 77.34%
+Epoch 22/50, Loss: 0.6472, Train Acc: 71.65%, Val Acc: 77.53%
+Epoch 23/50, Loss: 0.6370, Train Acc: 72.04%, Val Acc: 79.89%
+Epoch 24/50, Loss: 0.6283, Train Acc: 71.80%, Val Acc: 80.36%
+Epoch 25/50, Loss: 0.6162, Train Acc: 72.61%, Val Acc: 77.53%
+Epoch 26/50, Loss: 0.6182, Train Acc: 71.85%, Val Acc: 83.10%
+Epoch 27/50, Loss: 0.6125, Train Acc: 72.23%, Val Acc: 78.28%
+Epoch 28/50, Loss: 0.6095, Train Acc: 73.09%, Val Acc: 81.96%
+Epoch 29/50, Loss: 0.6140, Train Acc: 71.89%, Val Acc: 77.43%
+Epoch 30/50, Loss: 0.5974, Train Acc: 71.56%, Val Acc: 79.41%
+Epoch 31/50, Loss: 0.5916, Train Acc: 73.14%, Val Acc: 76.02%
+Epoch 32/50, Loss: 0.5889, Train Acc: 72.71%, Val Acc: 79.32%
+Epoch 33/50, Loss: 0.5891, Train Acc: 72.66%, Val Acc: 74.03%
+Epoch 34/50, Loss: 0.5846, Train Acc: 73.19%, Val Acc: 79.79%
+Epoch 35/50, Loss: 0.5764, Train Acc: 71.99%, Val Acc: 77.71%
+Epoch 36/50, Loss: 0.5750, Train Acc: 72.81%, Val Acc: 77.81%
+Epoch 37/50, Loss: 0.5779, Train Acc: 72.95%, Val Acc: 78.56%
+Epoch 38/50, Loss: 0.5590, Train Acc: 73.33%, Val Acc: 81.11%
+Epoch 39/50, Loss: 0.5649, Train Acc: 73.09%, Val Acc: 74.69%
+Epoch 40/50, Loss: 0.5579, Train Acc: 73.53%, Val Acc: 73.28%
+Epoch 41/50, Loss: 0.5652, Train Acc: 72.52%, Val Acc: 77.53%
+Epoch 42/50, Loss: 0.5557, Train Acc: 73.00%, Val Acc: 75.45%
+Epoch 43/50, Loss: 0.5543, Train Acc: 73.24%, Val Acc: 78.75%
+Epoch 44/50, Loss: 0.5573, Train Acc: 73.24%, Val Acc: 73.65%
+Epoch 45/50, Loss: 0.5495, Train Acc: 73.62%, Val Acc: 77.53%
+Epoch 46/50, Loss: 0.5542, Train Acc: 73.29%, Val Acc: 75.54%
+Epoch 47/50, Loss: 0.5449, Train Acc: 74.00%, Val Acc: 78.09%
+Epoch 48/50, Loss: 0.5438, Train Acc: 73.86%, Val Acc: 73.56%
+Epoch 49/50, Loss: 0.5458, Train Acc: 73.09%, Val Acc: 75.45%
+Epoch 50/50, Loss: 0.5416, Train Acc: 73.76%, Val Acc: 76.39%
+Model saved in saved_models/rae_cls2_f1_rep2.pth
+✅ Fine-Tuning Concluído!
+
+🎯 Accuracy on the test set: 76.39%
+
+📊 Confusion Matrix:
+[[109   0 244]
+ [  0 353   0]
+ [  0   6 347]]
+Fold 2
+ Training datasets: ['data/spectrogram/cwru_7', 'data/spectrogram/cwru_21', 'data/spectrogram/uored', 'data/spectrogram/hust', 'data/spectrogram/paderborn']
+ Fine-tuning datasets: ['data/spectrogram/cwru_7', 'data/spectrogram/cwru_21']
+ Testing dataset: data/spectrogram/cwru_14
+Starting training...
+Learning rate: 0.001, number of epochs: 200
+Epoch 1/200, Loss: 2.1353
+Epoch 2/200, Loss: 2.0207
+Epoch 3/200, Loss: 2.0197
+Epoch 4/200, Loss: 2.0158
+Epoch 5/200, Loss: 2.0138
+Epoch 6/200, Loss: 2.0138
+Epoch 7/200, Loss: 2.0106
+Epoch 8/200, Loss: 2.0091
+Epoch 9/200, Loss: 2.0223
+Epoch 10/200, Loss: 2.0102
+Epoch 11/200, Loss: 2.0059
+Epoch 12/200, Loss: 2.0056
+Epoch 13/200, Loss: 1.9971
+Epoch 14/200, Loss: 1.9957
+Epoch 15/200, Loss: 1.9974
+Epoch 16/200, Loss: 1.9951
+Epoch 17/200, Loss: 1.9946
+Epoch 18/200, Loss: 1.9933
+Epoch 19/200, Loss: 1.9931
+Epoch 20/200, Loss: 1.9916
+Epoch 21/200, Loss: 1.9927
+Epoch 22/200, Loss: 1.9920
+Epoch 23/200, Loss: 1.9931
+Epoch 24/200, Loss: 1.9912
+Epoch 25/200, Loss: 1.9907
+Epoch 26/200, Loss: 1.9909
+Epoch 27/200, Loss: 1.9908
+Epoch 28/200, Loss: 1.9907
+Epoch 29/200, Loss: 1.9904
+Epoch 30/200, Loss: 1.9904
+Epoch 31/200, Loss: 1.9908
+Epoch 32/200, Loss: 1.9898
+Epoch 33/200, Loss: 1.9893
+Epoch 34/200, Loss: 1.9885
+Epoch 35/200, Loss: 1.9912
+Epoch 36/200, Loss: 1.9876
+Epoch 37/200, Loss: 1.9867
+Epoch 38/200, Loss: 1.9871
+Epoch 39/200, Loss: 1.9861
+Epoch 40/200, Loss: 1.9873
+Epoch 41/200, Loss: 1.9861
+Epoch 42/200, Loss: 1.9872
+Epoch 43/200, Loss: 1.9863
+Epoch 44/200, Loss: 1.9865
+Epoch 45/200, Loss: 1.9855
+Epoch 46/200, Loss: 1.9859
+Epoch 47/200, Loss: 1.9869
+Epoch 48/200, Loss: 1.9869
+Epoch 49/200, Loss: 1.9856
+Epoch 50/200, Loss: 1.9857
+Epoch 51/200, Loss: 1.9854
+Epoch 52/200, Loss: 1.9851
+Epoch 53/200, Loss: 1.9847
+Epoch 54/200, Loss: 1.9849
+Epoch 55/200, Loss: 1.9846
+Epoch 56/200, Loss: 1.9847
+Epoch 57/200, Loss: 1.9847
+Epoch 58/200, Loss: 1.9849
+Epoch 59/200, Loss: 1.9843
+Epoch 60/200, Loss: 1.9852
+Epoch 61/200, Loss: 1.9845
+Epoch 62/200, Loss: 1.9844
+Epoch 63/200, Loss: 1.9843
+Epoch 64/200, Loss: 1.9850
+Epoch 65/200, Loss: 1.9851
+Epoch 66/200, Loss: 1.9845
+Epoch 67/200, Loss: 1.9844
+Epoch 68/200, Loss: 1.9845
+Epoch 69/200, Loss: 1.9840
+Epoch 70/200, Loss: 1.9842
+Epoch 71/200, Loss: 1.9840
+Epoch 72/200, Loss: 1.9840
+Epoch 73/200, Loss: 1.9838
+Epoch 74/200, Loss: 1.9844
+Epoch 75/200, Loss: 1.9843
+Epoch 76/200, Loss: 1.9843
+Epoch 77/200, Loss: 1.9844
+Epoch 78/200, Loss: 1.9839
+Epoch 79/200, Loss: 1.9845
+Epoch 80/200, Loss: 1.9842
+Epoch 81/200, Loss: 1.9838
+Epoch 82/200, Loss: 1.9843
+Epoch 83/200, Loss: 1.9837
+Epoch 84/200, Loss: 1.9828
+Epoch 85/200, Loss: 1.9835
+Epoch 86/200, Loss: 1.9833
+Epoch 87/200, Loss: 1.9845
+Epoch 88/200, Loss: 1.9829
+Epoch 89/200, Loss: 1.9833
+Epoch 90/200, Loss: 1.9837
+Epoch 91/200, Loss: 1.9837
+Epoch 92/200, Loss: 1.9835
+Epoch 93/200, Loss: 1.9833
+Epoch 94/200, Loss: 1.9833
+Epoch 95/200, Loss: 1.9833
+Epoch 96/200, Loss: 1.9837
+Epoch 97/200, Loss: 1.9838
+Epoch 98/200, Loss: 1.9826
+Epoch 99/200, Loss: 1.9836
+Epoch 100/200, Loss: 1.9832
+Epoch 101/200, Loss: 1.9830
+Epoch 102/200, Loss: 1.9834
+Epoch 103/200, Loss: 1.9836
+Epoch 104/200, Loss: 1.9830
+Epoch 105/200, Loss: 1.9828
+Epoch 106/200, Loss: 1.9829
+Epoch 107/200, Loss: 1.9832
+Epoch 108/200, Loss: 1.9828
+Epoch 109/200, Loss: 1.9828
+Epoch 110/200, Loss: 1.9823
+Epoch 111/200, Loss: 1.9828
+Epoch 112/200, Loss: 1.9831
+Epoch 113/200, Loss: 1.9826
+Epoch 114/200, Loss: 1.9826
+Epoch 115/200, Loss: 1.9830
+Epoch 116/200, Loss: 1.9829
+Epoch 117/200, Loss: 1.9825
+Epoch 118/200, Loss: 1.9838
+Epoch 119/200, Loss: 1.9829
+Epoch 120/200, Loss: 1.9826
+Epoch 121/200, Loss: 1.9829
+Epoch 122/200, Loss: 1.9830
+Epoch 123/200, Loss: 1.9832
+Epoch 124/200, Loss: 1.9829
+Epoch 125/200, Loss: 1.9824
+Epoch 126/200, Loss: 1.9830
+Epoch 127/200, Loss: 1.9841
+Epoch 128/200, Loss: 1.9837
+Epoch 129/200, Loss: 1.9831
+Epoch 130/200, Loss: 1.9829
+Epoch 131/200, Loss: 1.9830
+Epoch 132/200, Loss: 1.9825
+Epoch 133/200, Loss: 1.9827
+Epoch 134/200, Loss: 1.9826
+Epoch 135/200, Loss: 1.9827
+Epoch 136/200, Loss: 1.9821
+Epoch 137/200, Loss: 1.9823
+Epoch 138/200, Loss: 1.9829
+Epoch 139/200, Loss: 1.9829
+Epoch 140/200, Loss: 1.9826
+Epoch 141/200, Loss: 1.9824
+Epoch 142/200, Loss: 1.9831
+Epoch 143/200, Loss: 1.9820
+Epoch 144/200, Loss: 1.9822
+Epoch 145/200, Loss: 1.9826
+Epoch 146/200, Loss: 1.9829
+Epoch 147/200, Loss: 1.9828
+Epoch 148/200, Loss: 1.9822
+Epoch 149/200, Loss: 1.9822
+Epoch 150/200, Loss: 1.9826
+Epoch 151/200, Loss: 1.9822
+Epoch 152/200, Loss: 1.9823
+Epoch 153/200, Loss: 1.9824
+Epoch 154/200, Loss: 1.9821
+Epoch 155/200, Loss: 1.9818
+Epoch 156/200, Loss: 1.9822
+Epoch 157/200, Loss: 1.9824
+Epoch 158/200, Loss: 1.9831
+Epoch 159/200, Loss: 1.9820
+Epoch 160/200, Loss: 1.9821
+Epoch 161/200, Loss: 1.9825
+Epoch 162/200, Loss: 1.9818
+Epoch 163/200, Loss: 1.9823
+Epoch 164/200, Loss: 1.9825
+Epoch 165/200, Loss: 1.9824
+Epoch 166/200, Loss: 1.9828
+Epoch 167/200, Loss: 1.9823
+Epoch 168/200, Loss: 1.9824
+Epoch 169/200, Loss: 1.9818
+Epoch 170/200, Loss: 1.9825
+Epoch 171/200, Loss: 1.9819
+Epoch 172/200, Loss: 1.9821
+Epoch 173/200, Loss: 1.9816
+Epoch 174/200, Loss: 1.9823
+Epoch 175/200, Loss: 1.9813
+Epoch 176/200, Loss: 1.9819
+Epoch 177/200, Loss: 1.9822
+Epoch 178/200, Loss: 1.9819
+Epoch 179/200, Loss: 1.9812
+Epoch 180/200, Loss: 1.9814
+Epoch 181/200, Loss: 1.9813
+Epoch 182/200, Loss: 1.9812
+Epoch 183/200, Loss: 1.9814
+Epoch 184/200, Loss: 1.9812
+Epoch 185/200, Loss: 1.9817
+Epoch 186/200, Loss: 1.9815
+Epoch 187/200, Loss: 1.9814
+Epoch 188/200, Loss: 1.9818
+Epoch 189/200, Loss: 1.9823
+Epoch 190/200, Loss: 1.9821
+Epoch 191/200, Loss: 1.9812
+Epoch 192/200, Loss: 1.9815
+Epoch 193/200, Loss: 1.9819
+Epoch 194/200, Loss: 1.9816
+Epoch 195/200, Loss: 1.9817
+Epoch 196/200, Loss: 1.9817
+Epoch 197/200, Loss: 1.9808
+Epoch 198/200, Loss: 1.9815
+Epoch 199/200, Loss: 1.9810
+Epoch 200/200, Loss: 1.9807
+Model saved in saved_models/rae2_f2_rep2.pth
+✅ RAE Treinado!
+Starting fine tuning...
+Learning rate: 0.0001, number of epochs: 50
+Epoch 1/50, Loss: 1.0728, Train Acc: 44.84%, Val Acc: 55.62%
+Epoch 2/50, Loss: 1.0186, Train Acc: 53.18%, Val Acc: 53.57%
+Epoch 3/50, Loss: 0.9654, Train Acc: 58.56%, Val Acc: 54.74%
+Epoch 4/50, Loss: 0.9164, Train Acc: 69.78%, Val Acc: 53.76%
+Epoch 5/50, Loss: 0.8751, Train Acc: 77.04%, Val Acc: 55.82%
+Epoch 6/50, Loss: 0.8396, Train Acc: 81.52%, Val Acc: 56.99%
+Epoch 7/50, Loss: 0.8076, Train Acc: 83.92%, Val Acc: 56.11%
+Epoch 8/50, Loss: 0.7675, Train Acc: 89.20%, Val Acc: 58.65%
+Epoch 9/50, Loss: 0.7337, Train Acc: 90.76%, Val Acc: 59.73%
+Epoch 10/50, Loss: 0.6962, Train Acc: 94.06%, Val Acc: 59.24%
+Epoch 11/50, Loss: 0.6656, Train Acc: 94.15%, Val Acc: 60.22%
+Epoch 12/50, Loss: 0.6312, Train Acc: 95.62%, Val Acc: 61.68%
+Epoch 13/50, Loss: 0.6019, Train Acc: 94.63%, Val Acc: 61.09%
+Epoch 14/50, Loss: 0.5732, Train Acc: 95.38%, Val Acc: 60.41%
+Epoch 15/50, Loss: 0.5433, Train Acc: 95.71%, Val Acc: 62.07%
+Epoch 16/50, Loss: 0.5147, Train Acc: 96.51%, Val Acc: 62.37%
+Epoch 17/50, Loss: 0.4822, Train Acc: 96.13%, Val Acc: 61.58%
+Epoch 18/50, Loss: 0.4505, Train Acc: 96.84%, Val Acc: 62.66%
+Epoch 19/50, Loss: 0.4324, Train Acc: 96.84%, Val Acc: 62.46%
+Epoch 20/50, Loss: 0.3969, Train Acc: 97.31%, Val Acc: 62.76%
+Epoch 21/50, Loss: 0.3784, Train Acc: 97.08%, Val Acc: 63.34%
+Epoch 22/50, Loss: 0.3522, Train Acc: 97.22%, Val Acc: 63.34%
+Epoch 23/50, Loss: 0.3364, Train Acc: 97.03%, Val Acc: 63.54%
+Epoch 24/50, Loss: 0.3105, Train Acc: 97.31%, Val Acc: 63.15%
+Epoch 25/50, Loss: 0.2953, Train Acc: 97.31%, Val Acc: 63.44%
+Epoch 26/50, Loss: 0.2800, Train Acc: 96.89%, Val Acc: 63.05%
+Epoch 27/50, Loss: 0.2637, Train Acc: 97.55%, Val Acc: 63.15%
+Epoch 28/50, Loss: 0.2449, Train Acc: 97.08%, Val Acc: 63.44%
+Epoch 29/50, Loss: 0.2457, Train Acc: 97.22%, Val Acc: 63.64%
+Epoch 30/50, Loss: 0.2224, Train Acc: 97.60%, Val Acc: 63.34%
+Epoch 31/50, Loss: 0.2061, Train Acc: 97.93%, Val Acc: 63.44%
+Epoch 32/50, Loss: 0.2023, Train Acc: 97.88%, Val Acc: 63.44%
+Epoch 33/50, Loss: 0.1960, Train Acc: 97.60%, Val Acc: 63.44%
+Epoch 34/50, Loss: 0.1818, Train Acc: 97.74%, Val Acc: 63.34%
+Epoch 35/50, Loss: 0.1787, Train Acc: 97.17%, Val Acc: 63.34%
+Epoch 36/50, Loss: 0.1712, Train Acc: 97.88%, Val Acc: 63.44%
+Epoch 37/50, Loss: 0.1668, Train Acc: 97.41%, Val Acc: 62.46%
+Epoch 38/50, Loss: 0.1509, Train Acc: 98.02%, Val Acc: 63.25%
+Epoch 39/50, Loss: 0.1490, Train Acc: 97.78%, Val Acc: 63.15%
+Epoch 40/50, Loss: 0.1469, Train Acc: 97.97%, Val Acc: 62.95%
+Epoch 41/50, Loss: 0.1355, Train Acc: 98.16%, Val Acc: 63.05%
+Epoch 42/50, Loss: 0.1378, Train Acc: 97.69%, Val Acc: 62.95%
+Epoch 43/50, Loss: 0.1401, Train Acc: 97.93%, Val Acc: 62.95%
+Epoch 44/50, Loss: 0.1360, Train Acc: 97.74%, Val Acc: 63.25%
+Epoch 45/50, Loss: 0.1249, Train Acc: 97.93%, Val Acc: 63.25%
+Epoch 46/50, Loss: 0.1208, Train Acc: 97.97%, Val Acc: 63.05%
+Epoch 47/50, Loss: 0.1088, Train Acc: 98.30%, Val Acc: 62.56%
+Epoch 48/50, Loss: 0.1116, Train Acc: 98.02%, Val Acc: 62.95%
+Epoch 49/50, Loss: 0.1107, Train Acc: 98.11%, Val Acc: 62.95%
+Epoch 50/50, Loss: 0.1028, Train Acc: 98.26%, Val Acc: 62.85%
+Model saved in saved_models/rae_cls2_f2_rep2.pth
+✅ Fine-Tuning Concluído!
+
+🎯 Accuracy on the test set: 62.85%
+
+📊 Confusion Matrix:
+[[348   4   2]
+ [ 21 295   0]
+ [353   0   0]]
+Fold 3
+ Training datasets: ['data/spectrogram/cwru_7', 'data/spectrogram/cwru_14', 'data/spectrogram/uored', 'data/spectrogram/hust', 'data/spectrogram/paderborn']
+ Fine-tuning datasets: ['data/spectrogram/cwru_7', 'data/spectrogram/cwru_14']
+ Testing dataset: data/spectrogram/cwru_21
+Starting training...
+Learning rate: 0.001, number of epochs: 200
+Epoch 1/200, Loss: 2.2014
+Epoch 2/200, Loss: 2.0326
+Epoch 3/200, Loss: 2.0232
+Epoch 4/200, Loss: 2.0187
+Epoch 5/200, Loss: 2.0142
+Epoch 6/200, Loss: 2.0115
+Epoch 7/200, Loss: 2.0121
+Epoch 8/200, Loss: 2.0075
+Epoch 9/200, Loss: 2.0085
+Epoch 10/200, Loss: 2.0068
+Epoch 11/200, Loss: 2.0047
+Epoch 12/200, Loss: 2.0051
+Epoch 13/200, Loss: 2.0022
+Epoch 14/200, Loss: 2.0012
+Epoch 15/200, Loss: 1.9996
+Epoch 16/200, Loss: 1.9993
+Epoch 17/200, Loss: 1.9983
+Epoch 18/200, Loss: 1.9971
+Epoch 19/200, Loss: 1.9974
+Epoch 20/200, Loss: 1.9974
+Epoch 21/200, Loss: 1.9978
+Epoch 22/200, Loss: 1.9976
+Epoch 23/200, Loss: 1.9967
+Epoch 24/200, Loss: 1.9969
+Epoch 25/200, Loss: 1.9965
+Epoch 26/200, Loss: 1.9964
+Epoch 27/200, Loss: 1.9963
+Epoch 28/200, Loss: 1.9956
+Epoch 29/200, Loss: 1.9954
+Epoch 30/200, Loss: 1.9949
+Epoch 31/200, Loss: 1.9952
+Epoch 32/200, Loss: 1.9943
+Epoch 33/200, Loss: 1.9944
+Epoch 34/200, Loss: 1.9937
+Epoch 35/200, Loss: 1.9934
+Epoch 36/200, Loss: 1.9929
+Epoch 37/200, Loss: 1.9929
+Epoch 38/200, Loss: 1.9924
+Epoch 39/200, Loss: 1.9926
+Epoch 40/200, Loss: 1.9923
+Epoch 41/200, Loss: 1.9918
+Epoch 42/200, Loss: 1.9921
+Epoch 43/200, Loss: 1.9920
+Epoch 44/200, Loss: 1.9918
+Epoch 45/200, Loss: 1.9915
+Epoch 46/200, Loss: 1.9913
+Epoch 47/200, Loss: 1.9915
+Epoch 48/200, Loss: 1.9916
+Epoch 49/200, Loss: 1.9914
+Epoch 50/200, Loss: 1.9911
+Epoch 51/200, Loss: 1.9908
+Epoch 52/200, Loss: 1.9906
+Epoch 53/200, Loss: 1.9901
+Epoch 54/200, Loss: 1.9903
+Epoch 55/200, Loss: 1.9904
+Epoch 56/200, Loss: 1.9901
+Epoch 57/200, Loss: 1.9899
+Epoch 58/200, Loss: 1.9900
+Epoch 59/200, Loss: 1.9898
+Epoch 60/200, Loss: 1.9892
+Epoch 61/200, Loss: 1.9895
+Epoch 62/200, Loss: 1.9896
+Epoch 63/200, Loss: 1.9892
+Epoch 64/200, Loss: 1.9893
+Epoch 65/200, Loss: 1.9893
+Epoch 66/200, Loss: 1.9892
+Epoch 67/200, Loss: 1.9892
+Epoch 68/200, Loss: 1.9889
+Epoch 69/200, Loss: 1.9893
+Epoch 70/200, Loss: 1.9890
+Epoch 71/200, Loss: 1.9891
+Epoch 72/200, Loss: 1.9894
+Epoch 73/200, Loss: 1.9890
+Epoch 74/200, Loss: 1.9887
+Epoch 75/200, Loss: 1.9890
+Epoch 76/200, Loss: 1.9888
+Epoch 77/200, Loss: 1.9887
+Epoch 78/200, Loss: 1.9888
+Epoch 79/200, Loss: 1.9887
+Epoch 80/200, Loss: 1.9889
+Epoch 81/200, Loss: 1.9885
+Epoch 82/200, Loss: 1.9888
+Epoch 83/200, Loss: 1.9886
+Epoch 84/200, Loss: 1.9887
+Epoch 85/200, Loss: 1.9885
+Epoch 86/200, Loss: 1.9888
+Epoch 87/200, Loss: 1.9887
+Epoch 88/200, Loss: 1.9885
+Epoch 89/200, Loss: 1.9887
+Epoch 90/200, Loss: 1.9886
+Epoch 91/200, Loss: 1.9884
+Epoch 92/200, Loss: 1.9885
+Epoch 93/200, Loss: 1.9885
+Epoch 94/200, Loss: 1.9884
+Epoch 95/200, Loss: 1.9886
+Epoch 96/200, Loss: 1.9884
+Epoch 97/200, Loss: 1.9885
+Epoch 98/200, Loss: 1.9884
+Epoch 99/200, Loss: 1.9885
+Epoch 100/200, Loss: 1.9885
+Epoch 101/200, Loss: 1.9884
+Epoch 102/200, Loss: 1.9882
+Epoch 103/200, Loss: 1.9885
+Epoch 104/200, Loss: 1.9882
+Epoch 105/200, Loss: 1.9883
+Epoch 106/200, Loss: 1.9884
+Epoch 107/200, Loss: 1.9882
+Epoch 108/200, Loss: 1.9881
+Epoch 109/200, Loss: 1.9883
+Epoch 110/200, Loss: 1.9882
+Epoch 111/200, Loss: 1.9881
+Epoch 112/200, Loss: 1.9883
+Epoch 113/200, Loss: 1.9882
+Epoch 114/200, Loss: 1.9882
+Epoch 115/200, Loss: 1.9880
+Epoch 116/200, Loss: 1.9881
+Epoch 117/200, Loss: 1.9883
+Epoch 118/200, Loss: 1.9882
+Epoch 119/200, Loss: 1.9883
+Epoch 120/200, Loss: 1.9881
+Epoch 121/200, Loss: 1.9883
+Epoch 122/200, Loss: 1.9884
+Epoch 123/200, Loss: 1.9879
+Epoch 124/200, Loss: 1.9878
+Epoch 125/200, Loss: 1.9881
+Epoch 126/200, Loss: 1.9882
+Epoch 127/200, Loss: 1.9886
+Epoch 128/200, Loss: 1.9883
+Epoch 129/200, Loss: 1.9878
+Epoch 130/200, Loss: 1.9880
+Epoch 131/200, Loss: 1.9880
+Epoch 132/200, Loss: 1.9880
+Epoch 133/200, Loss: 1.9879
+Epoch 134/200, Loss: 1.9880
+Epoch 135/200, Loss: 1.9882
+Epoch 136/200, Loss: 1.9880
+Epoch 137/200, Loss: 1.9879
+Epoch 138/200, Loss: 1.9878
+Epoch 139/200, Loss: 1.9879
+Epoch 140/200, Loss: 1.9880
+Epoch 141/200, Loss: 1.9878
+Epoch 142/200, Loss: 1.9879
+Epoch 143/200, Loss: 1.9878
+Epoch 144/200, Loss: 1.9879
+Epoch 145/200, Loss: 1.9878
+Epoch 146/200, Loss: 1.9880
+Epoch 147/200, Loss: 1.9879
+Epoch 148/200, Loss: 1.9880
+Epoch 149/200, Loss: 1.9878
+Epoch 150/200, Loss: 1.9879
+Epoch 151/200, Loss: 1.9877
+Epoch 152/200, Loss: 1.9881
+Epoch 153/200, Loss: 1.9877
+Epoch 154/200, Loss: 1.9878
+Epoch 155/200, Loss: 1.9877
+Epoch 156/200, Loss: 1.9876
+Epoch 157/200, Loss: 1.9878
+Epoch 158/200, Loss: 1.9877
+Epoch 159/200, Loss: 1.9875
+Epoch 160/200, Loss: 1.9877
+Epoch 161/200, Loss: 1.9880
+Epoch 162/200, Loss: 1.9875
+Epoch 163/200, Loss: 1.9875
+Epoch 164/200, Loss: 1.9875
+Epoch 165/200, Loss: 1.9874
+Epoch 166/200, Loss: 1.9872
+Epoch 167/200, Loss: 1.9874
+Epoch 168/200, Loss: 1.9874
+Epoch 169/200, Loss: 1.9873
+Epoch 170/200, Loss: 1.9874
+Epoch 171/200, Loss: 1.9871
+Epoch 172/200, Loss: 1.9870
+Epoch 173/200, Loss: 1.9869
+Epoch 174/200, Loss: 1.9876
+Epoch 175/200, Loss: 1.9872
+Epoch 176/200, Loss: 1.9870
+Epoch 177/200, Loss: 1.9872
+Epoch 178/200, Loss: 1.9870
+Epoch 179/200, Loss: 1.9869
+Epoch 180/200, Loss: 1.9871
+Epoch 181/200, Loss: 1.9869
+Epoch 182/200, Loss: 1.9869
+Epoch 183/200, Loss: 1.9869
+Epoch 184/200, Loss: 1.9870
+Epoch 185/200, Loss: 1.9869
+Epoch 186/200, Loss: 1.9867
+Epoch 187/200, Loss: 1.9868
+Epoch 188/200, Loss: 1.9869
+Epoch 189/200, Loss: 1.9870
+Epoch 190/200, Loss: 1.9868
+Epoch 191/200, Loss: 1.9865
+Epoch 192/200, Loss: 1.9867
+Epoch 193/200, Loss: 1.9870
+Epoch 194/200, Loss: 1.9869
+Epoch 195/200, Loss: 1.9867
+Epoch 196/200, Loss: 1.9867
+Epoch 197/200, Loss: 1.9868
+Epoch 198/200, Loss: 1.9868
+Epoch 199/200, Loss: 1.9870
+Epoch 200/200, Loss: 1.9868
+Model saved in saved_models/rae2_f3_rep2.pth
+✅ RAE Treinado!
+Starting fine tuning...
+Learning rate: 0.0001, number of epochs: 50
+Epoch 1/50, Loss: 1.0880, Train Acc: 37.37%, Val Acc: 33.24%
+Epoch 2/50, Loss: 1.0570, Train Acc: 55.76%, Val Acc: 32.67%
+Epoch 3/50, Loss: 1.0195, Train Acc: 57.88%, Val Acc: 31.45%
+Epoch 4/50, Loss: 0.9749, Train Acc: 60.23%, Val Acc: 31.45%
+Epoch 5/50, Loss: 0.9275, Train Acc: 62.30%, Val Acc: 32.86%
+Epoch 6/50, Loss: 0.8868, Train Acc: 63.83%, Val Acc: 34.84%
+Epoch 7/50, Loss: 0.8386, Train Acc: 65.85%, Val Acc: 36.35%
+Epoch 8/50, Loss: 0.8058, Train Acc: 67.10%, Val Acc: 43.13%
+Epoch 9/50, Loss: 0.7678, Train Acc: 71.28%, Val Acc: 42.47%
+Epoch 10/50, Loss: 0.7529, Train Acc: 71.52%, Val Acc: 55.27%
+Epoch 11/50, Loss: 0.7141, Train Acc: 72.62%, Val Acc: 60.55%
+Epoch 12/50, Loss: 0.6999, Train Acc: 75.17%, Val Acc: 63.75%
+Epoch 13/50, Loss: 0.6826, Train Acc: 75.89%, Val Acc: 62.52%
+Epoch 14/50, Loss: 0.6651, Train Acc: 76.42%, Val Acc: 64.41%
+Epoch 15/50, Loss: 0.6352, Train Acc: 76.80%, Val Acc: 65.35%
+Epoch 16/50, Loss: 0.6281, Train Acc: 78.10%, Val Acc: 64.97%
+Epoch 17/50, Loss: 0.6055, Train Acc: 78.19%, Val Acc: 67.42%
+Epoch 18/50, Loss: 0.6009, Train Acc: 78.87%, Val Acc: 63.94%
+Epoch 19/50, Loss: 0.5917, Train Acc: 77.81%, Val Acc: 66.29%
+Epoch 20/50, Loss: 0.5727, Train Acc: 78.96%, Val Acc: 63.84%
+Epoch 21/50, Loss: 0.5544, Train Acc: 80.55%, Val Acc: 72.13%
+Epoch 22/50, Loss: 0.5537, Train Acc: 79.39%, Val Acc: 65.25%
+Epoch 23/50, Loss: 0.5407, Train Acc: 80.12%, Val Acc: 71.19%
+Epoch 24/50, Loss: 0.5400, Train Acc: 79.83%, Val Acc: 65.82%
+Epoch 25/50, Loss: 0.5240, Train Acc: 80.40%, Val Acc: 65.73%
+Epoch 26/50, Loss: 0.5128, Train Acc: 79.78%, Val Acc: 71.28%
+Epoch 27/50, Loss: 0.5098, Train Acc: 81.56%, Val Acc: 65.82%
+Epoch 28/50, Loss: 0.5092, Train Acc: 80.16%, Val Acc: 65.82%
+Epoch 29/50, Loss: 0.5020, Train Acc: 80.31%, Val Acc: 69.68%
+Epoch 30/50, Loss: 0.4841, Train Acc: 80.93%, Val Acc: 68.17%
+Epoch 31/50, Loss: 0.4906, Train Acc: 80.36%, Val Acc: 68.08%
+Epoch 32/50, Loss: 0.4766, Train Acc: 81.08%, Val Acc: 69.77%
+Epoch 33/50, Loss: 0.4673, Train Acc: 82.08%, Val Acc: 67.98%
+Epoch 34/50, Loss: 0.4610, Train Acc: 81.60%, Val Acc: 69.77%
+Epoch 35/50, Loss: 0.4550, Train Acc: 81.17%, Val Acc: 68.83%
+Epoch 36/50, Loss: 0.4633, Train Acc: 81.41%, Val Acc: 67.23%
+Epoch 37/50, Loss: 0.4500, Train Acc: 82.08%, Val Acc: 68.27%
+Epoch 38/50, Loss: 0.4500, Train Acc: 81.36%, Val Acc: 70.72%
+Epoch 39/50, Loss: 0.4361, Train Acc: 81.46%, Val Acc: 70.06%
+Epoch 40/50, Loss: 0.4391, Train Acc: 80.98%, Val Acc: 69.49%
+Epoch 41/50, Loss: 0.4223, Train Acc: 82.76%, Val Acc: 69.30%
+Epoch 42/50, Loss: 0.4201, Train Acc: 83.24%, Val Acc: 69.02%
+Epoch 43/50, Loss: 0.4294, Train Acc: 81.84%, Val Acc: 68.08%
+Epoch 44/50, Loss: 0.4214, Train Acc: 82.37%, Val Acc: 68.36%
+Epoch 45/50, Loss: 0.4222, Train Acc: 83.09%, Val Acc: 69.96%
+Epoch 46/50, Loss: 0.4103, Train Acc: 82.32%, Val Acc: 69.02%
+Epoch 47/50, Loss: 0.4108, Train Acc: 81.94%, Val Acc: 69.40%
+Epoch 48/50, Loss: 0.4012, Train Acc: 82.95%, Val Acc: 68.46%
+Epoch 49/50, Loss: 0.4136, Train Acc: 82.85%, Val Acc: 70.43%
+Epoch 50/50, Loss: 0.4012, Train Acc: 83.14%, Val Acc: 70.62%
+Model saved in saved_models/rae_cls2_f3_rep2.pth
+✅ Fine-Tuning Concluído!
+
+🎯 Accuracy on the test set: 70.62%
+
+📊 Confusion Matrix:
+[[231  80  42]
+ [ 15 302  38]
+ [  7 130 217]]
+Repetition 4/4
+Fold 1
+ Training datasets: ['data/spectrogram/cwru_14', 'data/spectrogram/cwru_21', 'data/spectrogram/uored', 'data/spectrogram/hust', 'data/spectrogram/paderborn']
+ Fine-tuning datasets: ['data/spectrogram/cwru_14', 'data/spectrogram/cwru_21']
+ Testing dataset: data/spectrogram/cwru_7
+Starting training...
+Learning rate: 0.001, number of epochs: 200
+Epoch 1/200, Loss: 2.1371
+Epoch 2/200, Loss: 2.0024
+Epoch 3/200, Loss: 2.0014
+Epoch 4/200, Loss: 1.9976
+Epoch 5/200, Loss: 1.9973
+Epoch 6/200, Loss: 1.9955
+Epoch 7/200, Loss: 1.9949
+Epoch 8/200, Loss: 1.9928
+Epoch 9/200, Loss: 1.9892
+Epoch 10/200, Loss: 1.9903
+Epoch 11/200, Loss: 1.9868
+Epoch 12/200, Loss: 1.9856
+Epoch 13/200, Loss: 1.9813
+Epoch 14/200, Loss: 1.9779
+Epoch 15/200, Loss: 1.9769
+Epoch 16/200, Loss: 1.9772
+Epoch 17/200, Loss: 1.9768
+Epoch 18/200, Loss: 1.9765
+Epoch 19/200, Loss: 1.9762
+Epoch 20/200, Loss: 1.9757
+Epoch 21/200, Loss: 1.9757
+Epoch 22/200, Loss: 1.9759
+Epoch 23/200, Loss: 1.9754
+Epoch 24/200, Loss: 1.9754
+Epoch 25/200, Loss: 1.9757
+Epoch 26/200, Loss: 1.9750
+Epoch 27/200, Loss: 1.9756
+Epoch 28/200, Loss: 1.9751
+Epoch 29/200, Loss: 1.9748
+Epoch 30/200, Loss: 1.9750
+Epoch 31/200, Loss: 1.9750
+Epoch 32/200, Loss: 1.9750
+Epoch 33/200, Loss: 1.9749
+Epoch 34/200, Loss: 1.9751
+Epoch 35/200, Loss: 1.9748
+Epoch 36/200, Loss: 1.9749
+Epoch 37/200, Loss: 1.9744
+Epoch 38/200, Loss: 1.9745
+Epoch 39/200, Loss: 1.9741
+Epoch 40/200, Loss: 1.9742
+Epoch 41/200, Loss: 1.9748
+Epoch 42/200, Loss: 1.9742
+Epoch 43/200, Loss: 1.9739
+Epoch 44/200, Loss: 1.9740
+Epoch 45/200, Loss: 1.9738
+Epoch 46/200, Loss: 1.9737
+Epoch 47/200, Loss: 1.9739
+Epoch 48/200, Loss: 1.9737
+Epoch 49/200, Loss: 1.9737
+Epoch 50/200, Loss: 1.9739
+Epoch 51/200, Loss: 1.9737
+Epoch 52/200, Loss: 1.9735
+Epoch 53/200, Loss: 1.9735
+Epoch 54/200, Loss: 1.9738
+Epoch 55/200, Loss: 1.9740
+Epoch 56/200, Loss: 1.9733
+Epoch 57/200, Loss: 1.9736
+Epoch 58/200, Loss: 1.9740
+Epoch 59/200, Loss: 1.9736
+Epoch 60/200, Loss: 1.9732
+Epoch 61/200, Loss: 1.9733
+Epoch 62/200, Loss: 1.9730
+Epoch 63/200, Loss: 1.9732
+Epoch 64/200, Loss: 1.9733
+Epoch 65/200, Loss: 1.9729
+Epoch 66/200, Loss: 1.9726
+Epoch 67/200, Loss: 1.9730
+Epoch 68/200, Loss: 1.9722
+Epoch 69/200, Loss: 1.9721
+Epoch 70/200, Loss: 1.9724
+Epoch 71/200, Loss: 1.9723
+Epoch 72/200, Loss: 1.9724
+Epoch 73/200, Loss: 1.9719
+Epoch 74/200, Loss: 1.9719
+Epoch 75/200, Loss: 1.9721
+Epoch 76/200, Loss: 1.9715
+Epoch 77/200, Loss: 1.9715
+Epoch 78/200, Loss: 1.9718
+Epoch 79/200, Loss: 1.9718
+Epoch 80/200, Loss: 1.9718
+Epoch 81/200, Loss: 1.9715
+Epoch 82/200, Loss: 1.9718
+Epoch 83/200, Loss: 1.9715
+Epoch 84/200, Loss: 1.9717
+Epoch 85/200, Loss: 1.9712
+Epoch 86/200, Loss: 1.9713
+Epoch 87/200, Loss: 1.9713
+Epoch 88/200, Loss: 1.9712
+Epoch 89/200, Loss: 1.9714
+Epoch 90/200, Loss: 1.9714
+Epoch 91/200, Loss: 1.9714
+Epoch 92/200, Loss: 1.9713
+Epoch 93/200, Loss: 1.9716
+Epoch 94/200, Loss: 1.9711
+Epoch 95/200, Loss: 1.9715
+Epoch 96/200, Loss: 1.9710
+Epoch 97/200, Loss: 1.9713
+Epoch 98/200, Loss: 1.9713
+Epoch 99/200, Loss: 1.9715
+Epoch 100/200, Loss: 1.9711
+Epoch 101/200, Loss: 1.9715
+Epoch 102/200, Loss: 1.9708
+Epoch 103/200, Loss: 1.9713
+Epoch 104/200, Loss: 1.9712
+Epoch 105/200, Loss: 1.9709
+Epoch 106/200, Loss: 1.9710
+Epoch 107/200, Loss: 1.9713
+Epoch 108/200, Loss: 1.9711
+Epoch 109/200, Loss: 1.9710
+Epoch 110/200, Loss: 1.9711
+Epoch 111/200, Loss: 1.9708
+Epoch 112/200, Loss: 1.9712
+Epoch 113/200, Loss: 1.9709
+Epoch 114/200, Loss: 1.9706
+Epoch 115/200, Loss: 1.9709
+Epoch 116/200, Loss: 1.9709
+Epoch 117/200, Loss: 1.9708
+Epoch 118/200, Loss: 1.9709
+Epoch 119/200, Loss: 1.9711
+Epoch 120/200, Loss: 1.9710
+Epoch 121/200, Loss: 1.9711
+Epoch 122/200, Loss: 1.9710
+Epoch 123/200, Loss: 1.9710
+Epoch 124/200, Loss: 1.9708
+Epoch 125/200, Loss: 1.9708
+Epoch 126/200, Loss: 1.9708
+Epoch 127/200, Loss: 1.9703
+Epoch 128/200, Loss: 1.9706
+Epoch 129/200, Loss: 1.9705
+Epoch 130/200, Loss: 1.9707
+Epoch 131/200, Loss: 1.9706
+Epoch 132/200, Loss: 1.9703
+Epoch 133/200, Loss: 1.9706
+Epoch 134/200, Loss: 1.9709
+Epoch 135/200, Loss: 1.9704
+Epoch 136/200, Loss: 1.9705
+Epoch 137/200, Loss: 1.9703
+Epoch 138/200, Loss: 1.9703
+Epoch 139/200, Loss: 1.9701
+Epoch 140/200, Loss: 1.9700
+Epoch 141/200, Loss: 1.9699
+Epoch 142/200, Loss: 1.9701
+Epoch 143/200, Loss: 1.9700
+Epoch 144/200, Loss: 1.9704
+Epoch 145/200, Loss: 1.9700
+Epoch 146/200, Loss: 1.9698
+Epoch 147/200, Loss: 1.9698
+Epoch 148/200, Loss: 1.9700
+Epoch 149/200, Loss: 1.9700
+Epoch 150/200, Loss: 1.9700
+Epoch 151/200, Loss: 1.9699
+Epoch 152/200, Loss: 1.9698
+Epoch 153/200, Loss: 1.9698
+Epoch 154/200, Loss: 1.9697
+Epoch 155/200, Loss: 1.9697
+Epoch 156/200, Loss: 1.9698
+Epoch 157/200, Loss: 1.9699
+Epoch 158/200, Loss: 1.9700
+Epoch 159/200, Loss: 1.9697
+Epoch 160/200, Loss: 1.9696
+Epoch 161/200, Loss: 1.9695
+Epoch 162/200, Loss: 1.9699
+Epoch 163/200, Loss: 1.9701
+Epoch 164/200, Loss: 1.9698
+Epoch 165/200, Loss: 1.9695
+Epoch 166/200, Loss: 1.9696
+Epoch 167/200, Loss: 1.9699
+Epoch 168/200, Loss: 1.9694
+Epoch 169/200, Loss: 1.9697
+Epoch 170/200, Loss: 1.9696
+Epoch 171/200, Loss: 1.9698
+Epoch 172/200, Loss: 1.9695
+Epoch 173/200, Loss: 1.9694
+Epoch 174/200, Loss: 1.9697
+Epoch 175/200, Loss: 1.9695
+Epoch 176/200, Loss: 1.9696
+Epoch 177/200, Loss: 1.9698
+Epoch 178/200, Loss: 1.9696
+Epoch 179/200, Loss: 1.9694
+Epoch 180/200, Loss: 1.9696
+Epoch 181/200, Loss: 1.9695
+Epoch 182/200, Loss: 1.9696
+Epoch 183/200, Loss: 1.9693
+Epoch 184/200, Loss: 1.9693
+Epoch 185/200, Loss: 1.9694
+Epoch 186/200, Loss: 1.9696
+Epoch 187/200, Loss: 1.9695
+Epoch 188/200, Loss: 1.9692
+Epoch 189/200, Loss: 1.9693
+Epoch 190/200, Loss: 1.9695
+Epoch 191/200, Loss: 1.9692
+Epoch 192/200, Loss: 1.9695
+Epoch 193/200, Loss: 1.9693
+Epoch 194/200, Loss: 1.9693
+Epoch 195/200, Loss: 1.9694
+Epoch 196/200, Loss: 1.9694
+Epoch 197/200, Loss: 1.9692
+Epoch 198/200, Loss: 1.9694
+Epoch 199/200, Loss: 1.9693
+Epoch 200/200, Loss: 1.9693
+Model saved in saved_models/rae2_f1_rep3.pth
+✅ RAE Treinado!
+Starting fine tuning...
+Learning rate: 0.0001, number of epochs: 50
+Epoch 1/50, Loss: 1.0831, Train Acc: 45.04%, Val Acc: 33.33%
+Epoch 2/50, Loss: 1.0555, Train Acc: 55.54%, Val Acc: 35.22%
+Epoch 3/50, Loss: 1.0341, Train Acc: 62.73%, Val Acc: 45.04%
+Epoch 4/50, Loss: 1.0121, Train Acc: 65.32%, Val Acc: 38.05%
+Epoch 5/50, Loss: 0.9827, Train Acc: 64.36%, Val Acc: 46.18%
+Epoch 6/50, Loss: 0.9536, Train Acc: 66.33%, Val Acc: 48.73%
+Epoch 7/50, Loss: 0.9239, Train Acc: 66.14%, Val Acc: 71.67%
+Epoch 8/50, Loss: 0.8923, Train Acc: 67.24%, Val Acc: 80.93%
+Epoch 9/50, Loss: 0.8659, Train Acc: 67.72%, Val Acc: 81.59%
+Epoch 10/50, Loss: 0.8369, Train Acc: 68.06%, Val Acc: 84.32%
+Epoch 11/50, Loss: 0.8105, Train Acc: 68.82%, Val Acc: 85.93%
+Epoch 12/50, Loss: 0.7892, Train Acc: 68.35%, Val Acc: 87.06%
+Epoch 13/50, Loss: 0.7707, Train Acc: 69.30%, Val Acc: 83.47%
+Epoch 14/50, Loss: 0.7518, Train Acc: 69.59%, Val Acc: 82.06%
+Epoch 15/50, Loss: 0.7255, Train Acc: 69.93%, Val Acc: 85.36%
+Epoch 16/50, Loss: 0.7122, Train Acc: 70.55%, Val Acc: 83.85%
+Epoch 17/50, Loss: 0.7037, Train Acc: 69.88%, Val Acc: 85.08%
+Epoch 18/50, Loss: 0.6915, Train Acc: 69.64%, Val Acc: 84.14%
+Epoch 19/50, Loss: 0.6787, Train Acc: 70.36%, Val Acc: 84.89%
+Epoch 20/50, Loss: 0.6646, Train Acc: 70.89%, Val Acc: 87.44%
+Epoch 21/50, Loss: 0.6658, Train Acc: 69.16%, Val Acc: 87.06%
+Epoch 22/50, Loss: 0.6643, Train Acc: 69.21%, Val Acc: 88.10%
+Epoch 23/50, Loss: 0.6474, Train Acc: 70.55%, Val Acc: 86.50%
+Epoch 24/50, Loss: 0.6420, Train Acc: 70.79%, Val Acc: 87.16%
+Epoch 25/50, Loss: 0.6378, Train Acc: 70.41%, Val Acc: 81.68%
+Epoch 26/50, Loss: 0.6312, Train Acc: 71.08%, Val Acc: 84.32%
+Epoch 27/50, Loss: 0.6345, Train Acc: 69.93%, Val Acc: 84.51%
+Epoch 28/50, Loss: 0.6196, Train Acc: 71.13%, Val Acc: 88.10%
+Epoch 29/50, Loss: 0.6220, Train Acc: 70.31%, Val Acc: 87.63%
+Epoch 30/50, Loss: 0.6244, Train Acc: 70.94%, Val Acc: 86.40%
+Epoch 31/50, Loss: 0.6071, Train Acc: 70.60%, Val Acc: 88.29%
+Epoch 32/50, Loss: 0.6007, Train Acc: 71.08%, Val Acc: 87.25%
+Epoch 33/50, Loss: 0.6163, Train Acc: 70.26%, Val Acc: 85.36%
+Epoch 34/50, Loss: 0.5898, Train Acc: 71.37%, Val Acc: 83.38%
+Epoch 35/50, Loss: 0.6153, Train Acc: 71.37%, Val Acc: 88.95%
+Epoch 36/50, Loss: 0.5876, Train Acc: 70.36%, Val Acc: 83.76%
+Epoch 37/50, Loss: 0.5951, Train Acc: 70.89%, Val Acc: 85.27%
+Epoch 38/50, Loss: 0.5802, Train Acc: 71.51%, Val Acc: 82.72%
+Epoch 39/50, Loss: 0.5859, Train Acc: 71.03%, Val Acc: 81.11%
+Epoch 40/50, Loss: 0.5788, Train Acc: 72.37%, Val Acc: 85.08%
+Epoch 41/50, Loss: 0.5737, Train Acc: 72.52%, Val Acc: 81.49%
+Epoch 42/50, Loss: 0.5771, Train Acc: 71.65%, Val Acc: 85.17%
+Epoch 43/50, Loss: 0.5951, Train Acc: 71.70%, Val Acc: 87.25%
+Epoch 44/50, Loss: 0.5924, Train Acc: 71.51%, Val Acc: 88.48%
+Epoch 45/50, Loss: 0.5643, Train Acc: 72.52%, Val Acc: 85.46%
+Epoch 46/50, Loss: 0.5614, Train Acc: 73.14%, Val Acc: 80.55%
+Epoch 47/50, Loss: 0.5682, Train Acc: 73.33%, Val Acc: 81.96%
+Epoch 48/50, Loss: 0.5647, Train Acc: 72.57%, Val Acc: 81.59%
+Epoch 49/50, Loss: 0.5525, Train Acc: 73.29%, Val Acc: 80.17%
+Epoch 50/50, Loss: 0.5583, Train Acc: 72.76%, Val Acc: 81.40%
+Model saved in saved_models/rae_cls2_f1_rep3.pth
+✅ Fine-Tuning Concluído!
+
+🎯 Accuracy on the test set: 81.40%
+
+📊 Confusion Matrix:
+[[164   0 189]
+ [  0 353   0]
+ [  0   8 345]]
+Fold 2
+ Training datasets: ['data/spectrogram/cwru_7', 'data/spectrogram/cwru_21', 'data/spectrogram/uored', 'data/spectrogram/hust', 'data/spectrogram/paderborn']
+ Fine-tuning datasets: ['data/spectrogram/cwru_7', 'data/spectrogram/cwru_21']
+ Testing dataset: data/spectrogram/cwru_14
+Starting training...
+Learning rate: 0.001, number of epochs: 200
+Epoch 1/200, Loss: 2.1615
+Epoch 2/200, Loss: 2.0279
+Epoch 3/200, Loss: 2.0169
+Epoch 4/200, Loss: 2.0145
+Epoch 5/200, Loss: 2.0135
+Epoch 6/200, Loss: 2.0092
+Epoch 7/200, Loss: 2.0096
+Epoch 8/200, Loss: 2.0058
+Epoch 9/200, Loss: 2.0114
+Epoch 10/200, Loss: 2.0020
+Epoch 11/200, Loss: 2.0025
+Epoch 12/200, Loss: 1.9993
+Epoch 13/200, Loss: 2.0004
+Epoch 14/200, Loss: 2.0088
+Epoch 15/200, Loss: 1.9970
+Epoch 16/200, Loss: 1.9953
+Epoch 17/200, Loss: 1.9944
+Epoch 18/200, Loss: 1.9932
+Epoch 19/200, Loss: 1.9938
+Epoch 20/200, Loss: 1.9920
+Epoch 21/200, Loss: 1.9922
+Epoch 22/200, Loss: 1.9919
+Epoch 23/200, Loss: 1.9919
+Epoch 24/200, Loss: 1.9904
+Epoch 25/200, Loss: 1.9894
+Epoch 26/200, Loss: 1.9900
+Epoch 27/200, Loss: 1.9905
+Epoch 28/200, Loss: 1.9893
+Epoch 29/200, Loss: 1.9891
+Epoch 30/200, Loss: 1.9888
+Epoch 31/200, Loss: 1.9886
+Epoch 32/200, Loss: 1.9903
+Epoch 33/200, Loss: 1.9911
+Epoch 34/200, Loss: 1.9888
+Epoch 35/200, Loss: 1.9885
+Epoch 36/200, Loss: 1.9875
+Epoch 37/200, Loss: 1.9876
+Epoch 38/200, Loss: 1.9877
+Epoch 39/200, Loss: 1.9875
+Epoch 40/200, Loss: 1.9875
+Epoch 41/200, Loss: 1.9876
+Epoch 42/200, Loss: 1.9886
+Epoch 43/200, Loss: 1.9867
+Epoch 44/200, Loss: 1.9871
+Epoch 45/200, Loss: 1.9855
+Epoch 46/200, Loss: 1.9865
+Epoch 47/200, Loss: 1.9856
+Epoch 48/200, Loss: 1.9861
+Epoch 49/200, Loss: 1.9860
+Epoch 50/200, Loss: 1.9866
+Epoch 51/200, Loss: 1.9871
+Epoch 52/200, Loss: 1.9858
+Epoch 53/200, Loss: 1.9860
+Epoch 54/200, Loss: 1.9855
+Epoch 55/200, Loss: 1.9852
+Epoch 56/200, Loss: 1.9868
+Epoch 57/200, Loss: 1.9856
+Epoch 58/200, Loss: 1.9849
+Epoch 59/200, Loss: 1.9855
+Epoch 60/200, Loss: 1.9853
+Epoch 61/200, Loss: 1.9852
+Epoch 62/200, Loss: 1.9858
+Epoch 63/200, Loss: 1.9849
+Epoch 64/200, Loss: 1.9845
+Epoch 65/200, Loss: 1.9848
+Epoch 66/200, Loss: 1.9851
+Epoch 67/200, Loss: 1.9853
+Epoch 68/200, Loss: 1.9868
+Epoch 69/200, Loss: 1.9842
+Epoch 70/200, Loss: 1.9843
+Epoch 71/200, Loss: 1.9839
+Epoch 72/200, Loss: 1.9845
+Epoch 73/200, Loss: 1.9842
+Epoch 74/200, Loss: 1.9842
+Epoch 75/200, Loss: 1.9836
+Epoch 76/200, Loss: 1.9844
+Epoch 77/200, Loss: 1.9840
+Epoch 78/200, Loss: 1.9842
+Epoch 79/200, Loss: 1.9839
+Epoch 80/200, Loss: 1.9836
+Epoch 81/200, Loss: 1.9839
+Epoch 82/200, Loss: 1.9842
+Epoch 83/200, Loss: 1.9836
+Epoch 84/200, Loss: 1.9840
+Epoch 85/200, Loss: 1.9833
+Epoch 86/200, Loss: 1.9832
+Epoch 87/200, Loss: 1.9840
+Epoch 88/200, Loss: 1.9841
+Epoch 89/200, Loss: 1.9840
+Epoch 90/200, Loss: 1.9850
+Epoch 91/200, Loss: 1.9839
+Epoch 92/200, Loss: 1.9832
+Epoch 93/200, Loss: 1.9840
+Epoch 94/200, Loss: 1.9835
+Epoch 95/200, Loss: 1.9836
+Epoch 96/200, Loss: 1.9832
+Epoch 97/200, Loss: 1.9829
+Epoch 98/200, Loss: 1.9834
+Epoch 99/200, Loss: 1.9836
+Epoch 100/200, Loss: 1.9833
+Epoch 101/200, Loss: 1.9838
+Epoch 102/200, Loss: 1.9826
+Epoch 103/200, Loss: 1.9831
+Epoch 104/200, Loss: 1.9833
+Epoch 105/200, Loss: 1.9833
+Epoch 106/200, Loss: 1.9832
+Epoch 107/200, Loss: 1.9831
+Epoch 108/200, Loss: 1.9826
+Epoch 109/200, Loss: 1.9829
+Epoch 110/200, Loss: 1.9833
+Epoch 111/200, Loss: 1.9826
+Epoch 112/200, Loss: 1.9830
+Epoch 113/200, Loss: 1.9829
+Epoch 114/200, Loss: 1.9830
+Epoch 115/200, Loss: 1.9828
+Epoch 116/200, Loss: 1.9829
+Epoch 117/200, Loss: 1.9831
+Epoch 118/200, Loss: 1.9837
+Epoch 119/200, Loss: 1.9835
+Epoch 120/200, Loss: 1.9831
+Epoch 121/200, Loss: 1.9829
+Epoch 122/200, Loss: 1.9823
+Epoch 123/200, Loss: 1.9840
+Epoch 124/200, Loss: 1.9826
+Epoch 125/200, Loss: 1.9828
+Epoch 126/200, Loss: 1.9829
+Epoch 127/200, Loss: 1.9830
+Epoch 128/200, Loss: 1.9825
+Epoch 129/200, Loss: 1.9832
+Epoch 130/200, Loss: 1.9827
+Epoch 131/200, Loss: 1.9828
+Epoch 132/200, Loss: 1.9834
+Epoch 133/200, Loss: 1.9835
+Epoch 134/200, Loss: 1.9823
+Epoch 135/200, Loss: 1.9828
+Epoch 136/200, Loss: 1.9823
+Epoch 137/200, Loss: 1.9825
+Epoch 138/200, Loss: 1.9829
+Epoch 139/200, Loss: 1.9827
+Epoch 140/200, Loss: 1.9831
+Epoch 141/200, Loss: 1.9824
+Epoch 142/200, Loss: 1.9826
+Epoch 143/200, Loss: 1.9831
+Epoch 144/200, Loss: 1.9822
+Epoch 145/200, Loss: 1.9828
+Epoch 146/200, Loss: 1.9826
+Epoch 147/200, Loss: 1.9826
+Epoch 148/200, Loss: 1.9821
+Epoch 149/200, Loss: 1.9828
+Epoch 150/200, Loss: 1.9829
+Epoch 151/200, Loss: 1.9822
+Epoch 152/200, Loss: 1.9830
+Epoch 153/200, Loss: 1.9833
+Epoch 154/200, Loss: 1.9837
+Epoch 155/200, Loss: 1.9827
+Epoch 156/200, Loss: 1.9827
+Epoch 157/200, Loss: 1.9821
+Epoch 158/200, Loss: 1.9823
+Epoch 159/200, Loss: 1.9824
+Epoch 160/200, Loss: 1.9829
+Epoch 161/200, Loss: 1.9829
+Epoch 162/200, Loss: 1.9822
+Epoch 163/200, Loss: 1.9823
+Epoch 164/200, Loss: 1.9827
+Epoch 165/200, Loss: 1.9819
+Epoch 166/200, Loss: 1.9825
+Epoch 167/200, Loss: 1.9827
+Epoch 168/200, Loss: 1.9826
+Epoch 169/200, Loss: 1.9831
+Epoch 170/200, Loss: 1.9821
+Epoch 171/200, Loss: 1.9828
+Epoch 172/200, Loss: 1.9825
+Epoch 173/200, Loss: 1.9819
+Epoch 174/200, Loss: 1.9820
+Epoch 175/200, Loss: 1.9823
+Epoch 176/200, Loss: 1.9823
+Epoch 177/200, Loss: 1.9830
+Epoch 178/200, Loss: 1.9829
+Epoch 179/200, Loss: 1.9822
+Epoch 180/200, Loss: 1.9828
+Epoch 181/200, Loss: 1.9822
+Epoch 182/200, Loss: 1.9824
+Epoch 183/200, Loss: 1.9816
+Epoch 184/200, Loss: 1.9821
+Epoch 185/200, Loss: 1.9827
+Epoch 186/200, Loss: 1.9828
+Epoch 187/200, Loss: 1.9818
+Epoch 188/200, Loss: 1.9822
+Epoch 189/200, Loss: 1.9829
+Epoch 190/200, Loss: 1.9830
+Epoch 191/200, Loss: 1.9824
+Epoch 192/200, Loss: 1.9822
+Epoch 193/200, Loss: 1.9823
+Epoch 194/200, Loss: 1.9827
+Epoch 195/200, Loss: 1.9820
+Epoch 196/200, Loss: 1.9823
+Epoch 197/200, Loss: 1.9824
+Epoch 198/200, Loss: 1.9817
+Epoch 199/200, Loss: 1.9820
+Epoch 200/200, Loss: 1.9818
+Model saved in saved_models/rae2_f2_rep3.pth
+✅ RAE Treinado!
+Starting fine tuning...
+Learning rate: 0.0001, number of epochs: 50
+Epoch 1/50, Loss: 1.0762, Train Acc: 50.54%, Val Acc: 43.79%
+Epoch 2/50, Loss: 1.0308, Train Acc: 67.66%, Val Acc: 43.89%
+Epoch 3/50, Loss: 0.9793, Train Acc: 74.59%, Val Acc: 43.70%
+Epoch 4/50, Loss: 0.9346, Train Acc: 73.69%, Val Acc: 44.18%
+Epoch 5/50, Loss: 0.8879, Train Acc: 78.03%, Val Acc: 43.70%
+Epoch 6/50, Loss: 0.8384, Train Acc: 80.67%, Val Acc: 43.60%
+Epoch 7/50, Loss: 0.7871, Train Acc: 83.69%, Val Acc: 43.79%
+Epoch 8/50, Loss: 0.7529, Train Acc: 85.38%, Val Acc: 43.99%
+Epoch 9/50, Loss: 0.7113, Train Acc: 89.53%, Val Acc: 46.82%
+Epoch 10/50, Loss: 0.6693, Train Acc: 89.91%, Val Acc: 50.64%
+Epoch 11/50, Loss: 0.6381, Train Acc: 91.89%, Val Acc: 52.49%
+Epoch 12/50, Loss: 0.5879, Train Acc: 93.26%, Val Acc: 54.06%
+Epoch 13/50, Loss: 0.5587, Train Acc: 94.48%, Val Acc: 54.64%
+Epoch 14/50, Loss: 0.5226, Train Acc: 94.63%, Val Acc: 54.25%
+Epoch 15/50, Loss: 0.4831, Train Acc: 95.57%, Val Acc: 55.82%
+Epoch 16/50, Loss: 0.4577, Train Acc: 95.76%, Val Acc: 54.84%
+Epoch 17/50, Loss: 0.4380, Train Acc: 95.14%, Val Acc: 55.82%
+Epoch 18/50, Loss: 0.3996, Train Acc: 96.18%, Val Acc: 56.30%
+Epoch 19/50, Loss: 0.3779, Train Acc: 95.99%, Val Acc: 58.46%
+Epoch 20/50, Loss: 0.3564, Train Acc: 95.47%, Val Acc: 58.16%
+Epoch 21/50, Loss: 0.3421, Train Acc: 96.13%, Val Acc: 58.16%
+Epoch 22/50, Loss: 0.3216, Train Acc: 96.23%, Val Acc: 58.65%
+Epoch 23/50, Loss: 0.3006, Train Acc: 97.22%, Val Acc: 58.16%
+Epoch 24/50, Loss: 0.2804, Train Acc: 96.65%, Val Acc: 58.94%
+Epoch 25/50, Loss: 0.2656, Train Acc: 96.75%, Val Acc: 56.99%
+Epoch 26/50, Loss: 0.2612, Train Acc: 96.70%, Val Acc: 58.06%
+Epoch 27/50, Loss: 0.2353, Train Acc: 96.98%, Val Acc: 58.36%
+Epoch 28/50, Loss: 0.2294, Train Acc: 96.65%, Val Acc: 57.97%
+Epoch 29/50, Loss: 0.2205, Train Acc: 97.45%, Val Acc: 58.85%
+Epoch 30/50, Loss: 0.2074, Train Acc: 96.65%, Val Acc: 58.16%
+Epoch 31/50, Loss: 0.1996, Train Acc: 97.12%, Val Acc: 57.97%
+Epoch 32/50, Loss: 0.1969, Train Acc: 96.98%, Val Acc: 57.97%
+Epoch 33/50, Loss: 0.1841, Train Acc: 97.41%, Val Acc: 57.67%
+Epoch 34/50, Loss: 0.1775, Train Acc: 97.27%, Val Acc: 57.87%
+Epoch 35/50, Loss: 0.1787, Train Acc: 96.70%, Val Acc: 58.16%
+Epoch 36/50, Loss: 0.1710, Train Acc: 97.31%, Val Acc: 57.58%
+Epoch 37/50, Loss: 0.1583, Train Acc: 97.27%, Val Acc: 58.16%
+Epoch 38/50, Loss: 0.1585, Train Acc: 97.60%, Val Acc: 57.87%
+Epoch 39/50, Loss: 0.1560, Train Acc: 97.03%, Val Acc: 56.60%
+Epoch 40/50, Loss: 0.1471, Train Acc: 96.61%, Val Acc: 57.77%
+Epoch 41/50, Loss: 0.1417, Train Acc: 97.55%, Val Acc: 57.87%
+Epoch 42/50, Loss: 0.1392, Train Acc: 97.64%, Val Acc: 57.77%
+Epoch 43/50, Loss: 0.1353, Train Acc: 97.55%, Val Acc: 58.36%
+Epoch 44/50, Loss: 0.1368, Train Acc: 97.41%, Val Acc: 57.48%
+Epoch 45/50, Loss: 0.1304, Train Acc: 97.74%, Val Acc: 57.38%
+Epoch 46/50, Loss: 0.1220, Train Acc: 97.50%, Val Acc: 57.87%
+Epoch 47/50, Loss: 0.1255, Train Acc: 96.89%, Val Acc: 57.97%
+Epoch 48/50, Loss: 0.1221, Train Acc: 97.41%, Val Acc: 57.77%
+Epoch 49/50, Loss: 0.1180, Train Acc: 98.02%, Val Acc: 56.21%
+Epoch 50/50, Loss: 0.1176, Train Acc: 97.64%, Val Acc: 56.60%
+Model saved in saved_models/rae_cls2_f2_rep3.pth
+✅ Fine-Tuning Concluído!
+
+🎯 Accuracy on the test set: 56.60%
+
+📊 Confusion Matrix:
+[[329  17   8]
+ [ 80 232   4]
+ [335   0  18]]
+Fold 3
+ Training datasets: ['data/spectrogram/cwru_7', 'data/spectrogram/cwru_14', 'data/spectrogram/uored', 'data/spectrogram/hust', 'data/spectrogram/paderborn']
+ Fine-tuning datasets: ['data/spectrogram/cwru_7', 'data/spectrogram/cwru_14']
+ Testing dataset: data/spectrogram/cwru_21
+Starting training...
+Learning rate: 0.001, number of epochs: 200
+Epoch 1/200, Loss: 2.1624
+Epoch 2/200, Loss: 2.0286
+Epoch 3/200, Loss: 2.0173
+Epoch 4/200, Loss: 2.0128
+Epoch 5/200, Loss: 2.0124
+Epoch 6/200, Loss: 2.0104
+Epoch 7/200, Loss: 2.0091
+Epoch 8/200, Loss: 2.0111
+Epoch 9/200, Loss: 2.0100
+Epoch 10/200, Loss: 2.0082
+Epoch 11/200, Loss: 2.0074
+Epoch 12/200, Loss: 2.0072
+Epoch 13/200, Loss: 2.0064
+Epoch 14/200, Loss: 2.0074
+Epoch 15/200, Loss: 2.0053
+Epoch 16/200, Loss: 2.0057
+Epoch 17/200, Loss: 2.0055
+Epoch 18/200, Loss: 2.0051
+Epoch 19/200, Loss: 2.0035
+Epoch 20/200, Loss: 2.0041
+Epoch 21/200, Loss: 2.0042
+Epoch 22/200, Loss: 2.0017
+Epoch 23/200, Loss: 2.0013
+Epoch 24/200, Loss: 2.0009
+Epoch 25/200, Loss: 2.0000
+Epoch 26/200, Loss: 1.9999
+Epoch 27/200, Loss: 1.9990
+Epoch 28/200, Loss: 1.9990
+Epoch 29/200, Loss: 1.9983
+Epoch 30/200, Loss: 1.9977
+Epoch 31/200, Loss: 1.9969
+Epoch 32/200, Loss: 1.9967
+Epoch 33/200, Loss: 1.9960
+Epoch 34/200, Loss: 1.9959
+Epoch 35/200, Loss: 1.9947
+Epoch 36/200, Loss: 1.9947
+Epoch 37/200, Loss: 1.9940
+Epoch 38/200, Loss: 1.9935
+Epoch 39/200, Loss: 1.9933
+Epoch 40/200, Loss: 1.9931
+Epoch 41/200, Loss: 1.9926
+Epoch 42/200, Loss: 1.9926
+Epoch 43/200, Loss: 1.9925
+Epoch 44/200, Loss: 1.9921
+Epoch 45/200, Loss: 1.9920
+Epoch 46/200, Loss: 1.9919
+Epoch 47/200, Loss: 1.9920
+Epoch 48/200, Loss: 1.9918
+Epoch 49/200, Loss: 1.9913
+Epoch 50/200, Loss: 1.9915
+Epoch 51/200, Loss: 1.9914
+Epoch 52/200, Loss: 1.9908
+Epoch 53/200, Loss: 1.9911
+Epoch 54/200, Loss: 1.9912
+Epoch 55/200, Loss: 1.9908
+Epoch 56/200, Loss: 1.9908
+Epoch 57/200, Loss: 1.9906
+Epoch 58/200, Loss: 1.9905
+Epoch 59/200, Loss: 1.9903
+Epoch 60/200, Loss: 1.9906
+Epoch 61/200, Loss: 1.9907
+Epoch 62/200, Loss: 1.9905
+Epoch 63/200, Loss: 1.9905
+Epoch 64/200, Loss: 1.9902
+Epoch 65/200, Loss: 1.9904
+Epoch 66/200, Loss: 1.9903
+Epoch 67/200, Loss: 1.9903
+Epoch 68/200, Loss: 1.9904
+Epoch 69/200, Loss: 1.9905
+Epoch 70/200, Loss: 1.9899
+Epoch 71/200, Loss: 1.9902
+Epoch 72/200, Loss: 1.9902
+Epoch 73/200, Loss: 1.9900
+Epoch 74/200, Loss: 1.9903
+Epoch 75/200, Loss: 1.9901
+Epoch 76/200, Loss: 1.9899
+Epoch 77/200, Loss: 1.9905
+Epoch 78/200, Loss: 1.9898
+Epoch 79/200, Loss: 1.9897
+Epoch 80/200, Loss: 1.9901
+Epoch 81/200, Loss: 1.9897
+Epoch 82/200, Loss: 1.9900
+Epoch 83/200, Loss: 1.9897
+Epoch 84/200, Loss: 1.9900
+Epoch 85/200, Loss: 1.9898
+Epoch 86/200, Loss: 1.9893
+Epoch 87/200, Loss: 1.9897
+Epoch 88/200, Loss: 1.9895
+Epoch 89/200, Loss: 1.9895
+Epoch 90/200, Loss: 1.9895
+Epoch 91/200, Loss: 1.9898
+Epoch 92/200, Loss: 1.9897
+Epoch 93/200, Loss: 1.9895
+Epoch 94/200, Loss: 1.9896
+Epoch 95/200, Loss: 1.9894
+Epoch 96/200, Loss: 1.9893
+Epoch 97/200, Loss: 1.9894
+Epoch 98/200, Loss: 1.9894
+Epoch 99/200, Loss: 1.9892
+Epoch 100/200, Loss: 1.9890
+Epoch 101/200, Loss: 1.9893
+Epoch 102/200, Loss: 1.9892
+Epoch 103/200, Loss: 1.9890
+Epoch 104/200, Loss: 1.9891
+Epoch 105/200, Loss: 1.9893
+Epoch 106/200, Loss: 1.9889
+Epoch 107/200, Loss: 1.9889
+Epoch 108/200, Loss: 1.9891
+Epoch 109/200, Loss: 1.9891
+Epoch 110/200, Loss: 1.9889
+Epoch 111/200, Loss: 1.9889
+Epoch 112/200, Loss: 1.9888
+Epoch 113/200, Loss: 1.9894
+Epoch 114/200, Loss: 1.9890
+Epoch 115/200, Loss: 1.9894
+Epoch 116/200, Loss: 1.9887
+Epoch 117/200, Loss: 1.9889
+Epoch 118/200, Loss: 1.9888
+Epoch 119/200, Loss: 1.9888
+Epoch 120/200, Loss: 1.9893
+Epoch 121/200, Loss: 1.9888
+Epoch 122/200, Loss: 1.9889
+Epoch 123/200, Loss: 1.9886
+Epoch 124/200, Loss: 1.9887
+Epoch 125/200, Loss: 1.9885
+Epoch 126/200, Loss: 1.9886
+Epoch 127/200, Loss: 1.9888
+Epoch 128/200, Loss: 1.9888
+Epoch 129/200, Loss: 1.9884
+Epoch 130/200, Loss: 1.9886
+Epoch 131/200, Loss: 1.9885
+Epoch 132/200, Loss: 1.9887
+Epoch 133/200, Loss: 1.9886
+Epoch 134/200, Loss: 1.9887
+Epoch 135/200, Loss: 1.9888
+Epoch 136/200, Loss: 1.9886
+Epoch 137/200, Loss: 1.9885
+Epoch 138/200, Loss: 1.9886
+Epoch 139/200, Loss: 1.9886
+Epoch 140/200, Loss: 1.9889
+Epoch 141/200, Loss: 1.9889
+Epoch 142/200, Loss: 1.9888
+Epoch 143/200, Loss: 1.9886
+Epoch 144/200, Loss: 1.9886
+Epoch 145/200, Loss: 1.9885
+Epoch 146/200, Loss: 1.9883
+Epoch 147/200, Loss: 1.9885
+Epoch 148/200, Loss: 1.9886
+Epoch 149/200, Loss: 1.9884
+Epoch 150/200, Loss: 1.9886
+Epoch 151/200, Loss: 1.9883
+Epoch 152/200, Loss: 1.9887
+Epoch 153/200, Loss: 1.9884
+Epoch 154/200, Loss: 1.9883
+Epoch 155/200, Loss: 1.9886
+Epoch 156/200, Loss: 1.9884
+Epoch 157/200, Loss: 1.9885
+Epoch 158/200, Loss: 1.9884
+Epoch 159/200, Loss: 1.9887
+Epoch 160/200, Loss: 1.9883
+Epoch 161/200, Loss: 1.9880
+Epoch 162/200, Loss: 1.9885
+Epoch 163/200, Loss: 1.9883
+Epoch 164/200, Loss: 1.9883
+Epoch 165/200, Loss: 1.9884
+Epoch 166/200, Loss: 1.9883
+Epoch 167/200, Loss: 1.9884
+Epoch 168/200, Loss: 1.9884
+Epoch 169/200, Loss: 1.9883
+Epoch 170/200, Loss: 1.9885
+Epoch 171/200, Loss: 1.9883
+Epoch 172/200, Loss: 1.9882
+Epoch 173/200, Loss: 1.9883
+Epoch 174/200, Loss: 1.9881
+Epoch 175/200, Loss: 1.9885
+Epoch 176/200, Loss: 1.9885
+Epoch 177/200, Loss: 1.9882
+Epoch 178/200, Loss: 1.9885
+Epoch 179/200, Loss: 1.9887
+Epoch 180/200, Loss: 1.9883
+Epoch 181/200, Loss: 1.9883
+Epoch 182/200, Loss: 1.9880
+Epoch 183/200, Loss: 1.9881
+Epoch 184/200, Loss: 1.9880
+Epoch 185/200, Loss: 1.9882
+Epoch 186/200, Loss: 1.9882
+Epoch 187/200, Loss: 1.9881
+Epoch 188/200, Loss: 1.9881
+Epoch 189/200, Loss: 1.9879
+Epoch 190/200, Loss: 1.9881
+Epoch 191/200, Loss: 1.9877
+Epoch 192/200, Loss: 1.9879
+Epoch 193/200, Loss: 1.9881
+Epoch 194/200, Loss: 1.9878
+Epoch 195/200, Loss: 1.9884
+Epoch 196/200, Loss: 1.9884
+Epoch 197/200, Loss: 1.9878
+Epoch 198/200, Loss: 1.9879
+Epoch 199/200, Loss: 1.9878
+Epoch 200/200, Loss: 1.9881
+Model saved in saved_models/rae2_f3_rep3.pth
+✅ RAE Treinado!
+Starting fine tuning...
+Learning rate: 0.0001, number of epochs: 50
+Epoch 1/50, Loss: 1.0622, Train Acc: 32.13%, Val Acc: 33.43%
+Epoch 2/50, Loss: 0.9771, Train Acc: 41.07%, Val Acc: 51.32%
+Epoch 3/50, Loss: 0.9112, Train Acc: 65.08%, Val Acc: 63.94%
+Epoch 4/50, Loss: 0.8591, Train Acc: 66.67%, Val Acc: 63.56%
+Epoch 5/50, Loss: 0.8216, Train Acc: 68.01%, Val Acc: 65.16%
+Epoch 6/50, Loss: 0.8164, Train Acc: 66.19%, Val Acc: 62.34%
+Epoch 7/50, Loss: 0.7864, Train Acc: 64.27%, Val Acc: 62.43%
+Epoch 8/50, Loss: 0.7532, Train Acc: 67.20%, Val Acc: 64.12%
+Epoch 9/50, Loss: 0.7579, Train Acc: 66.57%, Val Acc: 64.31%
+Epoch 10/50, Loss: 0.7199, Train Acc: 70.51%, Val Acc: 64.50%
+Epoch 11/50, Loss: 0.7099, Train Acc: 69.98%, Val Acc: 62.52%
+Epoch 12/50, Loss: 0.7002, Train Acc: 69.16%, Val Acc: 63.84%
+Epoch 13/50, Loss: 0.6841, Train Acc: 69.69%, Val Acc: 64.97%
+Epoch 14/50, Loss: 0.6877, Train Acc: 71.66%, Val Acc: 65.44%
+Epoch 15/50, Loss: 0.6704, Train Acc: 70.94%, Val Acc: 64.97%
+Epoch 16/50, Loss: 0.6684, Train Acc: 70.17%, Val Acc: 64.78%
+Epoch 17/50, Loss: 0.6447, Train Acc: 70.99%, Val Acc: 64.88%
+Epoch 18/50, Loss: 0.6603, Train Acc: 70.17%, Val Acc: 65.54%
+Epoch 19/50, Loss: 0.6608, Train Acc: 71.04%, Val Acc: 65.25%
+Epoch 20/50, Loss: 0.6160, Train Acc: 72.00%, Val Acc: 56.97%
+Epoch 21/50, Loss: 0.6246, Train Acc: 72.67%, Val Acc: 65.35%
+Epoch 22/50, Loss: 0.5949, Train Acc: 73.15%, Val Acc: 60.92%
+Epoch 23/50, Loss: 0.6091, Train Acc: 73.34%, Val Acc: 64.78%
+Epoch 24/50, Loss: 0.6087, Train Acc: 72.81%, Val Acc: 64.97%
+Epoch 25/50, Loss: 0.5903, Train Acc: 73.92%, Val Acc: 64.31%
+Epoch 26/50, Loss: 0.5738, Train Acc: 74.88%, Val Acc: 62.81%
+Epoch 27/50, Loss: 0.5779, Train Acc: 74.98%, Val Acc: 61.68%
+Epoch 28/50, Loss: 0.5638, Train Acc: 76.08%, Val Acc: 64.31%
+Epoch 29/50, Loss: 0.5732, Train Acc: 75.60%, Val Acc: 64.78%
+Epoch 30/50, Loss: 0.5486, Train Acc: 76.90%, Val Acc: 63.56%
+Epoch 31/50, Loss: 0.5465, Train Acc: 76.75%, Val Acc: 64.41%
+Epoch 32/50, Loss: 0.5512, Train Acc: 77.33%, Val Acc: 63.28%
+Epoch 33/50, Loss: 0.5325, Train Acc: 76.99%, Val Acc: 63.28%
+Epoch 34/50, Loss: 0.5387, Train Acc: 77.38%, Val Acc: 62.90%
+Epoch 35/50, Loss: 0.5305, Train Acc: 78.19%, Val Acc: 62.43%
+Epoch 36/50, Loss: 0.5244, Train Acc: 77.47%, Val Acc: 61.68%
+Epoch 37/50, Loss: 0.5199, Train Acc: 78.05%, Val Acc: 48.78%
+Epoch 38/50, Loss: 0.4990, Train Acc: 79.01%, Val Acc: 58.47%
+Epoch 39/50, Loss: 0.5075, Train Acc: 78.15%, Val Acc: 61.86%
+Epoch 40/50, Loss: 0.5045, Train Acc: 78.10%, Val Acc: 62.24%
+Epoch 41/50, Loss: 0.5041, Train Acc: 79.06%, Val Acc: 61.58%
+Epoch 42/50, Loss: 0.5288, Train Acc: 79.73%, Val Acc: 61.49%
+Epoch 43/50, Loss: 0.4917, Train Acc: 79.06%, Val Acc: 57.53%
+Epoch 44/50, Loss: 0.5081, Train Acc: 79.39%, Val Acc: 53.77%
+Epoch 45/50, Loss: 0.4818, Train Acc: 79.44%, Val Acc: 47.83%
+Epoch 46/50, Loss: 0.4726, Train Acc: 79.63%, Val Acc: 52.26%
+Epoch 47/50, Loss: 0.4697, Train Acc: 80.69%, Val Acc: 60.26%
+Epoch 48/50, Loss: 0.4770, Train Acc: 79.44%, Val Acc: 56.21%
+Epoch 49/50, Loss: 0.4573, Train Acc: 79.63%, Val Acc: 52.45%
+Epoch 50/50, Loss: 0.4762, Train Acc: 79.30%, Val Acc: 59.60%
+Model saved in saved_models/rae_cls2_f3_rep3.pth
+✅ Fine-Tuning Concluído!
+
+🎯 Accuracy on the test set: 59.60%
+
+📊 Confusion Matrix:
+[[289  47  17]
+ [ 22 333   0]
+ [194 149  11]]
+Mean accuracy for fold 1: 67.68%, Std: 14.75%
+Mean accuracy for fold 2: 48.70%, Std: 11.9%
+Mean accuracy for fold 3: 64.69%, Std: 4.99%
