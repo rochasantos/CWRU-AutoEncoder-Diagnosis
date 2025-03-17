@@ -1,4 +1,4 @@
-from datasets import CWRU, UORED, Hust, Paderborn
+from datasets import CWRU, UORED, Hust, Paderborn, SU
 
 def download(dataset_name):
     if dataset_name.lower() == "cwru":
@@ -9,5 +9,7 @@ def download(dataset_name):
         Hust().download()
     elif dataset_name.lower() == "uored":
         UORED().download()
+    elif dataset_name.lower() == "su":
+        SU().download()
     else:
         print("Please provide a valid dataset.")     

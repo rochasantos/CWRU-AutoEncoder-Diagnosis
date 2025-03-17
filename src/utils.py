@@ -13,7 +13,27 @@ def display_progress_bar(progress, total_size, done=False):
     else:
         done_percentage = int(50 * progress / total_size)
         print(f"\r[{'=' * done_percentage}{' ' * (50 - done_percentage)}] {progress / (1024*1024):.2f}/{total_size / (1024*1024):.2f} MB", end='')
-        
+
+from tqdm import tqdm
+
+def display_progress_bar_tqdm(progress, total_size, done=False, tqdm_bar=None):
+    """Function responsible for displaying the progress bar using tqdm.
+    
+    If done is True, closes the tqdm progress bar.
+    """
+    if done:
+        if tqdm_bar is not None:
+            tqdm_bar.n = total_size
+            tqdm_bar.last_print_n = total_size
+            tqdm_bar.refresh()
+            tqdm_bar.close()
+        print(f"\n{total_size / (1024*1024):.2f} MB - Done!")
+    else:
+        if tqdm_bar is not None:
+            tqdm_bar.n = progress
+            tqdm_bar.refresh()
+
+
 
 def print_confusion_matrix(true_labels, pred_labels, class_names):
     cm = confusion_matrix(true_labels, pred_labels)
@@ -42,6 +62,8 @@ def download_file(url_base, url_suffix, output_path):
         f = urllib.request.urlopen(req)
         file_size = int(f.headers['Content-Length'])
 
+        tqdm_bar = tqdm(total=file_size, unit='B', unit_scale=True, desc="Downloading")
+
         # Check if the file already exists and if not, download it
         if not os.path.exists(output_path):
             # Open the connection and the file in write-binary mode
@@ -56,10 +78,10 @@ def download_file(url_base, url_suffix, output_path):
                         break
                     out_file.write(chunk)
                     progress += len(chunk)
-                    display_progress_bar(progress, file_size)  # Update the progress bar
+                    display_progress_bar_tqdm(progress, file_size, tqdm_bar=tqdm_bar)  # Update the progress bar
 
             # After the download is complete, display final progress bar with "Download complete"
-            display_progress_bar(progress, file_size, done=True)
+            display_progress_bar_tqdm(progress, file_size, done=True, tqdm_bar=tqdm_bar)
 
             # Verify if the downloaded file size matches the expected size
             downloaded_file_size = os.stat(output_path).st_size
@@ -210,3 +232,8 @@ class LoggerWriter:
 
     def flush(self):
         pass
+
+def z_score_normalize(signal):
+    mean_val = np.mean(signal)
+    std_val = np.std(signal)
+    return (signal - mean_val) / std_val
