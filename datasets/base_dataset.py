@@ -3,6 +3,7 @@ import numpy as np
 import librosa
 from src.utils import download_file, extract_rar
 from src.data_processing.data_manager import DatasetManager
+from src.utils import z_score_normalize
 
 
 from abc import ABC, abstractmethod
@@ -68,18 +69,20 @@ class BaseDataset(ABC):
         if segment_size:
             if root_dir.split("/")[-1] == 'cwru':
                 for info in metainfo:
-                    basename = info["filename"]        
+                    basename = info["filename"]
+                    orig_sr = int(info["sampling_rate"])       
                     filepath = os.path.join('data/raw/', self.__class__.__name__.lower(), basename+'.mat')            
                     signal, label = self._extract_data(filepath)
                     if target_sr:
-                        signal = librosa.resample(signal, orig_sr=self.sampling_rate, target_sr=target_sr)
+                        signal = librosa.resample(signal, orig_sr=orig_sr, target_sr=target_sr)
                     # split the signal into segments
                     n_segments = signal.shape[0] // segment_size
                     for i in range(n_segments):
                         sample = signal[(i * segment_size):((i + 1) * segment_size)]
                         label_value = np.array([class_names.index(label)])
-                        data = np.hstack((sample, label_value))
-                        np.save(f"{root_dir}/{info['extent_damage']}/{info['label']}/{basename}_{i}.npy", data)
+                        # data = np.hstack((sample, label_value))
+                        normalized_signal = z_score_normalize(sample)
+                        np.save(f"{root_dir}/{info['extent_damage']}/{info['label']}/{basename}_{i}.npy", normalized_signal)
             elif root_dir.split("/")[-1] == 'paderborn':
                 for folder in data_filter:
                     label_map = {'KA':'O', 'KI':'I'}[folder[:2]]
@@ -95,22 +98,23 @@ class BaseDataset(ABC):
                         for i in range(n_segments):
                             sample = signal[(i * segment_size):((i + 1) * segment_size)]
                             label_value = np.array([class_names.index(label)])
-                            data = np.hstack((sample, label_value))
-                            np.save(f"{root_dir}/{label_map}/{folder}_{i}.npy", data)
+                            # data = np.hstack((sample, label_value))
+                            normalized_signal = z_score_normalize(sample)
+                            np.save(f"{root_dir}/{label_map}/{folder}_{i}.npy", normalized_signal)
             else:
                 for info in metainfo:
-                    basename = info["filename"]        
+                    basename = info["filename"]
+                    orig_sr = int(info["sampling_rate"])    
                     filepath = os.path.join('data/raw/', self.__class__.__name__.lower(), basename+'.mat')            
                     signal, label = self._extract_data(filepath)
                     if target_sr:
-                        signal = librosa.resample(signal, orig_sr=self.sampling_rate, target_sr=target_sr)
+                        signal = librosa.resample(signal, orig_sr=orig_sr, target_sr=target_sr)
                     # split the signal into segments
                     n_segments = signal.shape[0] // segment_size
                     for i in range(n_segments):
                         sample = signal[(i * segment_size):((i + 1) * segment_size)]
-                        label_value = np.array([class_names.index(label)])
-                        data = np.hstack((sample, label_value))
-                        np.save(f"{root_dir}/{info['label']}/{basename}_{i}.npy", data)
+                        normalized_signal = z_score_normalize(sample)
+                        np.save(f"{root_dir}/{info['label']}/{basename}_{i}.npy", normalized_signal)
 
         else:
             for info in metainfo:
