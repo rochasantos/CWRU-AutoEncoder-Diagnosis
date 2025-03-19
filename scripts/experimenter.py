@@ -1,92 +1,54 @@
 import numpy as np
 import torch
-from torch.utils.data import ConcatDataset
-from torchvision.datasets import ImageFolder
-from torchvision.transforms import transforms
-
-from src.models.rae import RAE
-from src.training.train import train_rae
-from src.models.rae_classifier import RAEClassifier
-from src.training.finetune import finetune_rae_classifier
-from src.training.test import test_rae_classifier
+import torch.nn as nn
+import torch.optim as optim
+from torch.utils.data import DataLoader
+from sklearn.model_selection import GroupKFold
+from datasets import SU, CWRU
+from datasets.vibration_dataset import VibrationDataset
+from src.models.cnn1d import CNN1D
+from src.training.train import train
+from src.training.test import test
 
 
 def experimenter():
-    
-    tr_num_epochs = 200
-    tr_lr = 0.001
-    ft_num_epochs = 2
-    ft_lr = 0.001
-    repetition = 4
-    
-    class_names = ["I", "O", "B"]
-    
-    transform = transforms.Compose([
-        transforms.Resize((224, 224)),
-        transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-    ]) 
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    print(f"Device: {device}")
 
-    datasets = [
-        ImageFolder("data/spectrogram/cwru_7", transform=transform),
-        ImageFolder("data/spectrogram/cwru_14", transform=transform),
-        ImageFolder("data/spectrogram/cwru_21", transform=transform),
-        ImageFolder("data/spectrogram/uored", transform=transform),
-        ImageFolder("data/spectrogram/hust", transform=transform),
-        ImageFolder("data/spectrogram/paderborn", transform=transform),
-    ]
+    dataset = CWRU()
+    sample_size = 4200
+    num_epochs = 30
 
-    print("Experimenter with RAE\n")
-    print("Parameters")
-    print("------------")
-    print(" Training")
-    print(f" * Number of epochs: {tr_num_epochs}")
-    print(f" * Learning rate: {tr_lr}")
-    print(" Fine-tuning")
-    print(f" * Number of epochs: {tr_num_epochs}")
-    print(f" * Learning rate: {tr_lr}")
-    print("----------------------------------------------")
+    data_groups = dataset.group_by("hp", sample_size=sample_size, filter={"sampling_rate":"48000"})
+    groups = np.array([t[0] for t in data_groups])  # Obtém os grupos (n_group)
+    ids = np.array([t[1] for t in data_groups])  # Obtém os identificadores (id)
+    y = np.array([t[2] for t in data_groups])  # Obtém os rótulos (label)
+    start_position = np.array([t[3] for t in data_groups])
 
-    total_accuracy = []
-    for rep in range(repetition):
-        print(f"Repetition {rep+1}/{repetition}")
-        accuracies = []
-        for fold in [1,2,3]:
-            print(f"Fold {fold}")
-            save_model = f"saved_models/rae1_f{fold}_rep{rep}.pth"
-            save_cls = f"saved_models/rae_cls1_f{fold}_rep{rep}.pth"
-            save_best_model_path = f"saved_models/best_rae1_f{fold}_rep{rep}.pth"
 
-            datasets_copy = datasets[:]
-            te_dataset = datasets_copy.pop(fold-1)
-            tr_dataset = ConcatDataset(datasets_copy)    
-            ft_dataset = ConcatDataset(datasets_copy[:2])
-            val_dataset = te_dataset
+    # Criando GroupKFold com 5 divisões
+    n_splits=len(np.unique(groups))
+    gkf = GroupKFold(n_splits=n_splits)
 
-            print(f" Training datasets: {[ds.root for ds in datasets_copy]}")
-            print(f" Fine-tuning datasets: {[ds.root for ds in datasets_copy[:2]]}")
-            print(f" Testing dataset: {te_dataset.root}")
-            
-            # train
-            rae = RAE()
-            train_rae(rae, tr_dataset, num_epochs=tr_num_epochs, learning_rate=tr_lr, freeze_layers_idx=[0, 1, 2, 3], save_path=save_model)
+    # Aplicando GroupKFold
+    for fold, (train_idx, test_idx) in enumerate(gkf.split(ids, y, groups)):
+        print(f"Fold {fold + 1}")
+        print(f"Number of train samples: {len(train_idx)}")
+        print(f"Number of test samples: {len(test_idx)}")
+        # print(ids[train_idx])
+        group_info_train = (ids[train_idx], y[train_idx], start_position[train_idx])
+        group_info_test = ( ids[test_idx], y[test_idx], start_position[test_idx])
+        train_dataset = VibrationDataset(dataset, group_info_train, sample_size)
+        test_dataset = VibrationDataset(dataset, group_info_test, sample_size)
 
-            # finetune
-            # rae.load_state_dict(torch.load(save_model, weights_only=True))  # Carrega os pesos salvos
-            rae.eval()    
-            classifier = RAEClassifier(rae.encoder, num_classes=3)
-            finetune_rae_classifier(classifier, ft_dataset, val_dataset, num_epochs=ft_num_epochs, learning_rate=ft_lr, save_path=save_cls,
-                                    save_best_model_path=save_best_model_path, eary_stopping_enabled=True)
+        train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
+        test_loader = DataLoader(test_dataset, batch_size=32)
 
-            # test
-            # classifier.load_state_dict(torch.load(save_cls, weights_only=True))  # Carrega os pesos salvos
-            accuracy, cm = test_rae_classifier(classifier, te_dataset, class_names)
-            print(f"\n🎯 Accuracy on the test set: {accuracy:.2f}%\n")
-            print("📊 Confusion Matrix:")
-            print(cm)
-            accuracies.append(accuracy)
-        total_accuracy.append(accuracies)
-    mean_accuracy = np.mean(total_accuracy, axis=0)
-    std = np.std(total_accuracy, axis=0)
-    for i, accuracy in enumerate(mean_accuracy, start=1):
-        print(f'Mean accuracy for fold {i}: {accuracy:.2f}%, Std: {np.round(std[i-1], 2)}%')
+        model = CNN1D(num_classes=4)
+        torch.save(model.state_dict(), f"saved_models/cnn1d_f{fold}.pth")
+        criterion = nn.CrossEntropyLoss()
+        optimizer = optim.Adam(model.parameters(), lr=0.0005)
+
+        train(model, train_loader, criterion, optimizer, num_epochs=num_epochs, device=device)
+        test(model, test_loader, device)
+        print("-" * 50)
