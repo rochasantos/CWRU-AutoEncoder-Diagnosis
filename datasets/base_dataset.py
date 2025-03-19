@@ -125,6 +125,24 @@ class BaseDataset(ABC):
                     data = librosa.resample(data, orig_sr=self.sampling_rate, target_sr=target_sr)
                 np.save(f"{root_dir}/{info['extent_damage']}/{info['label']}/{basename}.npy", np.array([data, label], dtype=object))
 
+    def load_file(self, filepath):
+        signal, label = self._extract_data(filepath)
+        return signal, label
+
+    def group_by(self, feature, filter=None, sample_size=None):
+        metainfo = self.get_metainfo(filter)
+        groups = []
+        hash = dict()
+        for i in metainfo:
+            ftr = i[feature]
+            if ftr not in hash:
+                hash[ftr] = len(hash)
+            if sample_size:
+                for j in range(int(i["signal_length"])//sample_size):
+                    groups.append((hash[ftr], i["filename"], i["label"], j))
+            else:
+                groups.append((hash[ftr], i["filename"], i["label"], 0))
+        return np.array(groups)
     
     def get_metainfo(self, filter=None):
         return self._metainfo.filter_data(filter)
