@@ -242,7 +242,7 @@ class SU(BaseDataset):
         file_info = list(filter(lambda x: x["filename"]==basename, self.get_metainfo()))[0]
         
         label = file_info["label"]
-        data = matlab_file[basename][:, 0]
+        data = matlab_file["Data"][:, 0]
          
         if self.acquisition_maxsize:
             return data[:self.acquisition_maxsize], label
