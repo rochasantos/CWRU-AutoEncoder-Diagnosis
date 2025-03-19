@@ -2,36 +2,50 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-
 class CNN1D(nn.Module):
-    def __init__(self, num_classes=4):
+    def __init__(self, input_channels=1, num_classes=5):
         super(CNN1D, self).__init__()
-
-        self.conv1 = nn.Conv1d(1, 16, kernel_size=5, stride=1, padding=2)
-        self.bn1 = nn.BatchNorm1d(16)
-        self.conv2 = nn.Conv1d(16, 32, kernel_size=5, stride=1, padding=2)
-        self.bn2 = nn.BatchNorm1d(32)
-        self.conv3 = nn.Conv1d(32, 64, kernel_size=5, stride=1, padding=2)
-        self.bn3 = nn.BatchNorm1d(64)
-        self.conv4 = nn.Conv1d(64, 128, kernel_size=5, stride=1, padding=2)
-        self.bn4 = nn.BatchNorm1d(128)
         
-        self.global_pool = nn.AdaptiveAvgPool1d(1)
-        self.fc = nn.Linear(128, num_classes)
-
+        # Basic Convolutional (BC) modules
+        self.bc1 = nn.Sequential(
+            nn.Conv1d(in_channels=input_channels, out_channels=4, kernel_size=3, stride=2, padding=1),
+            nn.BatchNorm1d(4),
+            nn.LeakyReLU(),
+            nn.MaxPool1d(kernel_size=3, stride=2, padding=1)
+        )
+        
+        self.bc2 = nn.Sequential(
+            nn.Conv1d(in_channels=4, out_channels=8, kernel_size=3, stride=2, padding=1),
+            nn.BatchNorm1d(8),
+            nn.LeakyReLU(),
+            nn.MaxPool1d(kernel_size=3, stride=2, padding=1)
+        )
+        
+        self.bc3 = nn.Sequential(
+            nn.Conv1d(in_channels=8, out_channels=12, kernel_size=3, stride=2, padding=1),
+            nn.BatchNorm1d(12),
+            nn.LeakyReLU(),
+            nn.MaxPool1d(kernel_size=3, stride=2, padding=1)
+        )
+        
+        self.bc4 = nn.Sequential(
+            nn.Conv1d(in_channels=12, out_channels=16, kernel_size=3, stride=2, padding=1),
+            nn.BatchNorm1d(16),
+            nn.LeakyReLU(),
+            nn.MaxPool1d(kernel_size=3, stride=2, padding=1)
+        )
+        
+        # Fully Connected (FC) Module
+        self.flatten = nn.Flatten()
+        self.fc = nn.Linear(2640, num_classes)  # Assumindo que o tamanho da entrada é 10k e a saída da CNN é B×16×40
+        self.dropout = nn.Dropout(p=0.1)
+        
     def forward(self, x):
-
-        x = F.relu(self.bn1(self.conv1(x)))
-        x = F.max_pool1d(x, kernel_size=2)
-
-        x = F.relu(self.bn2(self.conv2(x)))
-        x = F.max_pool1d(x, kernel_size=2)
-
-        x = F.relu(self.bn3(self.conv3(x)))
-        x = F.max_pool1d(x, kernel_size=2)
-
-        x = F.relu(self.bn4(self.conv4(x)))
-        x = self.global_pool(x)
-        x = x.view(x.size(0), -1)
+        x = self.bc1(x)
+        x = self.bc2(x)
+        x = self.bc3(x)
+        x = self.bc4(x)
+        x = self.flatten(x)
+        x = self.dropout(x)
         x = self.fc(x)
         return x
