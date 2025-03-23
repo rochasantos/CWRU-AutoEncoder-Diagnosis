@@ -5,7 +5,7 @@ from src.utils import LoggerWriter
 
 from scripts.download import download
 from scripts.process_signal import process_signal
-from scripts.create_spectrogram import create_spectrogram
+# from scripts.experimenter import experimenter
 from scripts.experimenter import experimenter
 
 
@@ -24,8 +24,8 @@ if __name__ == "__main__":
     sys.stdout = LoggerWriter(logging.info, "log")
 
     # create_directory_structure()
-    # download()
-    # process_signal(dataset_name="paderborn")
+    # download("su")
+    # process_signal(dataset_name="hust_8", target_sr=42000)
     # create_spectrogram()    
     experimenter()
     

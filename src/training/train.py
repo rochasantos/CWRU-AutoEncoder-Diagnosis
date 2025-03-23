@@ -1,11 +1,8 @@
 import torch
-import torch.nn as nn
-import torch.optim as optim
-from torch.utils.data import DataLoader
 from tqdm import tqdm
-from sklearn.metrics import accuracy_score
+from src.training.early_stopping import EarlyStopping
 
-def train(model, train_loader, criterion, optimizer, num_epochs, device):
+def train(model, train_loader, criterion, optimizer, num_epochs, device, early_stopping=None):
     """
     Trains a CNN for vibration signal classification.
 
@@ -62,5 +59,9 @@ def train(model, train_loader, criterion, optimizer, num_epochs, device):
         accuracy_history.append(accuracy)
 
         print(f"Epoch [{epoch+1}/{num_epochs}] - Loss: {avg_loss:.4f} - Accuracy: {accuracy:.4f}")
+
+        if early_stopping and early_stopping(avg_loss, model):
+            print(f"Early stopping at epoch {epoch+1}")
+            break
 
     return loss_history, accuracy_history

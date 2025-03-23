@@ -3,6 +3,7 @@ import torch
 from scipy.io import loadmat
 from torch.utils.data import Dataset
 
+
 class VibrationDataset(Dataset):
     def __init__(self, dataset, group_info, sample_size, transform=None):        
         self.dataset = dataset
@@ -21,23 +22,22 @@ class VibrationDataset(Dataset):
         }
 
     def _load_file_paths(self, ids):        
-        file_paths = []
-        for id in ids:
-            path = os.path.join(self.dataset.rawfilesdir, id+".mat")
-            file_paths.append(path)
-        return file_paths
+        return [os.path.join(self.dataset.rawfilesdir, id+".mat") for id in ids]
     
     def load_file(self, filepath, start_position=0):
-        signal, label =  self.dataset.load_file(filepath)
-        return signal[start_position:start_position+self.sample_size], label
+        signal, label = self.dataset.load_file(filepath)
+        signal = signal[start_position:start_position+self.sample_size]
+        return signal, label
     
     def __len__(self):
         return len(self.file_list)
 
     def __getitem__(self, idx):
         signal, label = self.load_file(self.file_list[idx], int(self.start_position[idx]))
-        
         signal = torch.tensor(signal, dtype=torch.float32).unsqueeze(0)
         label = torch.tensor(self.label_mapping[label], dtype=torch.long)
-
+        
+        if self.transform:
+            signal = self.transform(signal)
+        
         return signal, label

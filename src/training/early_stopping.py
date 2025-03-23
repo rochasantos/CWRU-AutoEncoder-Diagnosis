@@ -1,34 +1,62 @@
-import torch
+import copy
 
 class EarlyStopping:
-    """Stop training if validation accuracy does not improve after a number of epochs."""
-
-    def __init__(self, patience=10, save_path="best_model.pth", enabled=True):
+    def __init__(self, patience=5, min_delta=0.0, verbose=False, restore_best_weights=True):
         """
-        patience: Number of epochs without improvement before stopping training.
-        save_path: Path to save the best model.
-        enabled: If False, Early Stopping will not be applied.
+        Stops training early if the validation loss doesn't improve after a given patience.
+
+        Args:
+            patience (int): Number of epochs with no improvement after which training will be stopped.
+            min_delta (float): Minimum change in the monitored loss to qualify as improvement.
+            verbose (bool): Whether to print messages when loss improves or not.
+            restore_best_weights (bool): Whether to restore model weights from the epoch with the best loss.
         """
         self.patience = patience
-        self.best_val_acc = 0.0  # Inicializa a melhor acurácia como 0
+        self.min_delta = min_delta
+        self.verbose = verbose
+        self.restore_best_weights = restore_best_weights
+
+        self.best_loss = None
         self.counter = 0
-        self.save_path = save_path
-        self.enabled = enabled  # Define se o Early Stopping estará ativo
+        self.early_stop = False
+        self.best_model_state = None
 
-    def __call__(self, val_acc, model):
+    def __call__(self, current_loss, model):
         """
-        Called every season.
-        """
-        if not self.enabled:
-            return False  # Se desativado, nunca interrompe o treinamento
+        Call this method at the end of each epoch.
 
-        if val_acc > self.best_val_acc:
-            print(f"🔹 New better accuracy! Saving model... (Accuracy: {val_acc:.4f})")
-            self.best_val_acc = val_acc
-            self.counter = 0
-            torch.save(model.state_dict(), self.save_path)  # Salva o melhor modelo
-        else:
+        Args:
+            current_loss (float): Current validation loss.
+            model (torch.nn.Module): The model being trained.
+
+        Returns:
+            bool: True if training should stop early, False otherwise.
+        """
+        if self.best_loss is None:
+            self.best_loss = current_loss
+            if self.restore_best_weights:
+                self.best_model_state = copy.deepcopy(model.state_dict())
+            return False
+
+        if current_loss > self.best_loss - self.min_delta:
             self.counter += 1
-            print(f"🔸 EarlyStopping: {self.counter}/{self.patience} times without improvement.")
+            if self.verbose:
+                print(f"EarlyStopping: No improvement in loss ({self.counter}/{self.patience})")
+            if self.counter >= self.patience:
+                self.early_stop = True
+                if self.verbose:
+                    print("EarlyStopping: Stopping training.")
+                if self.restore_best_weights and self.best_model_state is not None:
+                    model.load_state_dict(self.best_model_state)
+                    if self.verbose:
+                        print("EarlyStopping: Restored best model weights.")
+                return True
+        else:
+            if self.verbose:
+                print(f"EarlyStopping: Improvement in loss from {self.best_loss:.4f} to {current_loss:.4f}")
+            self.best_loss = current_loss
+            self.counter = 0
+            if self.restore_best_weights:
+                self.best_model_state = copy.deepcopy(model.state_dict())
 
-        return self.counter >= self.patience  # Retorna True se o limite de paciência foi atingido
+        return False

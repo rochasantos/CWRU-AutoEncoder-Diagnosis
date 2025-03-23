@@ -37,4 +37,4 @@ def test(model, test_loader, device):
     print("Confusion Matrix:")
     print(cm)
 
-    return accuracy, cm
+    return accuracy

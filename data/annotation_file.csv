@@ -1,8 +1,8 @@
 dataset_name,filename,label,sampling_rate,rpm,hp,load,extent_damage,damage_method,bearing_type,condition_bearing_health,manufacturer,sensor_position,component_condition,signal_length
-CWRU,97,N,48000,1797,0,no,000,no,6205,healthy,manu_cwru,no,I,243938
-CWRU,98,N,48000,1772,1,no,000,no,6205,healthy,manu_cwru,no,I,483903
-CWRU,99,N,48000,1750,2,no,000,no,6205,healthy,manu_cwru,no,I,483903
-CWRU,100,N,48000,1730,3,no,000,no,6205,healthy,manu_cwru,no,I,485643
+CWRU,97,N,48000,1797,0,no,007,no,6205,healthy,manu_cwru,no,I,243938
+CWRU,98,N,48000,1772,1,no,014,no,6205,healthy,manu_cwru,no,I,483903
+CWRU,99,N,48000,1750,2,no,021,no,6205,healthy,manu_cwru,no,I,483903
+CWRU,100,N,48000,1730,3,no,028,no,6205,healthy,manu_cwru,no,I,485643
 CWRU,105,I,12000,1797,0,no,007,EDM,6205,faulty,manu_cwru,no,I,121265
 CWRU,106,I,12000,1772,1,no,007,EDM,6205,faulty,manu_cwru,no,I,121991
 CWRU,107,I,12000,1750,2,no,007,EDM,6205,faulty,manu_cwru,no,I,122136
@@ -160,66 +160,66 @@ CWRU,3005,B,12000,1797,0,no,028,EDM,6205,faulty,manu_cwru,no,I,120801
 CWRU,3006,B,12000,1772,1,no,028,EDM,6205,faulty,manu_cwru,no,I,121351
 CWRU,3007,B,12000,1750,2,no,028,EDM,6205,faulty,manu_cwru,no,I,120984
 CWRU,3008,B,12000,1730,3,no,028,EDM,6205,faulty,manu_cwru,no,I,120984
-UORED,H_1_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,sl
-UORED,H_2_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,sl
-UORED,H_3_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,sl
-UORED,H_4_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,sl
-UORED,H_5_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,sl
-UORED,H_6_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,sl
-UORED,H_7_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,sl
-UORED,H_8_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,sl
-UORED,H_9_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,sl
-UORED,H_10_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,sl
-UORED,H_11_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,sl
-UORED,H_12_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,sl
-UORED,H_13_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,sl
-UORED,H_14_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,sl
-UORED,H_15_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,sl
-UORED,H_16_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,sl
-UORED,H_17_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,sl
-UORED,H_18_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,sl
-UORED,H_19_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,sl
-UORED,H_20_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,sl
-UORED,I_1_1,I,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,sl
-UORED,I_2_1,I,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,sl
-UORED,I_3_1,I,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,sl
-UORED,I_4_1,I,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,sl
-UORED,I_5_1,I,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,sl
-UORED,I_1_2,I,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,sl
-UORED,I_2_2,I,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,sl
-UORED,I_3_2,I,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,sl
-UORED,I_4_2,I,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,sl
-UORED,I_5_2,I,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,sl
-UORED,O_6_1,O,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,sl
-UORED,O_7_1,O,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,sl
-UORED,O_8_1,O,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,sl
-UORED,O_9_1,O,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,sl
-UORED,O_10_1,O,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,sl
-UORED,O_6_2,O,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,sl
-UORED,O_7_2,O,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,sl
-UORED,O_8_2,O,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,sl
-UORED,O_9_2,O,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,sl
-UORED,O_10_2,O,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,sl
-UORED,B_11_1,B,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,sl
-UORED,B_12_1,B,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,sl
-UORED,B_13_1,B,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,sl
-UORED,B_14_1,B,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,sl
-UORED,B_15_1,B,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,sl
-UORED,B_11_2,B,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,sl
-UORED,B_12_2,B,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,sl
-UORED,B_13_2,B,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,sl
-UORED,B_14_2,B,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,sl
-UORED,B_15_2,B,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,sl
-UORED,C_16_1,C,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,sl
-UORED,C_17_1,C,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,sl
-UORED,C_18_1,C,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,sl
-UORED,C_19_1,C,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,sl
-UORED,C_20_1,C,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,sl
-UORED,C_16_2,C,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,sl
-UORED,C_17_2,C,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,sl
-UORED,C_18_2,C,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,sl
-UORED,C_19_2,C,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,sl
-UORED,C_20_2,C,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,sl
+UORED,H_1_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,420000
+UORED,H_2_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,420000
+UORED,H_3_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,420000
+UORED,H_4_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,420000
+UORED,H_5_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,420000
+UORED,H_6_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,420000
+UORED,H_7_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,420000
+UORED,H_8_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,420000
+UORED,H_9_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,420000
+UORED,H_10_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,420000
+UORED,H_11_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,420000
+UORED,H_12_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,420000
+UORED,H_13_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,420000
+UORED,H_14_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,420000
+UORED,H_15_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,420000
+UORED,H_16_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,420000
+UORED,H_17_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,420000
+UORED,H_18_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,420000
+UORED,H_19_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,420000
+UORED,H_20_0,N,42000,1750,no,400,no,no,6203,healthy,manu_uored,no,I,420000
+UORED,I_1_1,I,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,420000
+UORED,I_2_1,I,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,420000
+UORED,I_3_1,I,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,420000
+UORED,I_4_1,I,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,420000
+UORED,I_5_1,I,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,420000
+UORED,I_1_2,I,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,420000
+UORED,I_2_2,I,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,420000
+UORED,I_3_2,I,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,420000
+UORED,I_4_2,I,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,420000
+UORED,I_5_2,I,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,420000
+UORED,O_6_1,O,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,420000
+UORED,O_7_1,O,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,420000
+UORED,O_8_1,O,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,420000
+UORED,O_9_1,O,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,420000
+UORED,O_10_1,O,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,420000
+UORED,O_6_2,O,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,420000
+UORED,O_7_2,O,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,420000
+UORED,O_8_2,O,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,420000
+UORED,O_9_2,O,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,420000
+UORED,O_10_2,O,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,420000
+UORED,B_11_1,B,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,420000
+UORED,B_12_1,B,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,420000
+UORED,B_13_1,B,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,420000
+UORED,B_14_1,B,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,420000
+UORED,B_15_1,B,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,420000
+UORED,B_11_2,B,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,420000
+UORED,B_12_2,B,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,420000
+UORED,B_13_2,B,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,420000
+UORED,B_14_2,B,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,420000
+UORED,B_15_2,B,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,420000
+UORED,C_16_1,C,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,420000
+UORED,C_17_1,C,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,420000
+UORED,C_18_1,C,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,420000
+UORED,C_19_1,C,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,420000
+UORED,C_20_1,C,42000,1750,no,400,no,ADSR,6203,developing,manu_uored,no,I,420000
+UORED,C_16_2,C,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,420000
+UORED,C_17_2,C,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,420000
+UORED,C_18_2,C,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,420000
+UORED,C_19_2,C,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,420000
+UORED,C_20_2,C,42000,1750,no,400,no,ADSR,6203,faulty,manu_uored,no,I,420000
 Paderborn,N15_M07_F04_K001_1,N,64000,1500,0.15,400,000,no,6203,healthy,IBU,no,I,sl
 Paderborn,N09_M07_F10_K001_6,N,64000,900,0.09,1000,000,no,6203,healthy,IBU,no,I,sl
 Paderborn,N15_M07_F10_K001_3,N,64000,1500,0.15,1000,000,no,6203,healthy,IBU,no,I,sl
@@ -2460,294 +2460,294 @@ Paderborn,N15_M07_F10_KI21_14,I,64000,1500,0.15,1000,1,LFT,6203,faulty,FAG,no,I,
 Paderborn,N15_M07_F04_KI21_6,I,64000,1500,0.15,400,1,LFT,6203,faulty,FAG,no,I,sl
 Paderborn,N09_M07_F10_KI21_8,I,64000,900,0.09,1000,1,LFT,6203,faulty,FAG,no,I,sl
 Paderborn,N15_M07_F10_KI21_8,I,64000,1500,0.15,1000,1,LFT,6203,faulty,FAG,no,I,sl
-Hust,IO600,IO,51200,no,0.0,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
-Hust,IB500,IB,51200,no,0.0,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
-Hust,IO500,IO,51200,no,0.0,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
-Hust,IO702,IO,51200,no,0.26820,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
-Hust,OB400,OB,51200,no,0.0,no,no,wire-cutting,6204,faulty,KG Bearing India,no,I
-Hust,N802,N,51200,no,0.26820,no,no,wire-cutting,6208,healthy,KG Bearing India,no,I
-Hust,N702,N,51200,no,0.26820,no,no,wire-cutting,6207,healthy,KG Bearing India,no,I
-Hust,OB702,OB,51200,no,0.26820,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
-Hust,B700,B,51200,no,0.0,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
-Hust,B702,B,51200,no,0.26820,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
-Hust,I504,I,51200,no,0.53640,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
-Hust,IO602,IO,51200,no,0.26820,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
-Hust,B704,B,51200,no,0.53640,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
-Hust,OB700,OB,51200,no,0.0,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
-Hust,IB802,IB,51200,no,0.26820,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
-Hust,I802,I,51200,no,0.26820,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
-Hust,IO502,IO,51200,no,0.26820,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
-Hust,IO802,IO,51200,no,0.26820,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
-Hust,B804,B,51200,no,0.53640,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
-Hust,I800,I,51200,no,0.0,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
-Hust,I604,I,51200,no,0.53640,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
-Hust,IB800,IB,51200,no,0.0,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
-Hust,O502,O,51200,no,0.26820,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
-Hust,IO800,IO,51200,no,0.0,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
-Hust,B802,B,51200,no,0.26820,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
-Hust,OB500,OB,51200,no,0.0,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
-Hust,OB404,OB,51200,no,0.53640,no,no,wire-cutting,6204,faulty,KG Bearing India,no,I
-Hust,N800,N,51200,no,0.0,no,no,wire-cutting,6208,healthy,KG Bearing India,no,I
-Hust,I502,I,51200,no,0.26820,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
-Hust,OB504,OB,51200,no,0.53640,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
-Hust,IO604,IO,51200,no,0.53640,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
-Hust,N602,N,51200,no,0.26820,no,no,wire-cutting,6206,healthy,KG Bearing India,no,I
-Hust,IB804,IB,51200,no,0.53640,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
-Hust,OB804,OB,51200,no,0.53640,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
-Hust,N400,N,51200,no,0.0,no,no,wire-cutting,6204,healthy,KG Bearing India,no,I
-Hust,O500,O,51200,no,0.0,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
-Hust,N600,N,51200,no,0.0,no,no,wire-cutting,6206,healthy,KG Bearing India,no,I
-Hust,IB600,IB,51200,no,0.0,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
-Hust,IO704,IO,51200,no,0.53640,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
-Hust,O700,O,51200,no,0.0,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
-Hust,I702,I,51200,no,0.26820,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
-Hust,O800,O,51200,no,0.0,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
-Hust,O400,O,51200,no,0.0,no,no,wire-cutting,6204,faulty,KG Bearing India,no,I
-Hust,I700,I,51200,no,0.0,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
-Hust,I500,I,51200,no,0.0,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
-Hust,IB604,IB,51200,no,0.53640,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
-Hust,O600,O,51200,no,0.0,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
-Hust,B504,B,51200,no,0.53640,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
-Hust,IO404,IO,51200,no,0.53640,no,no,wire-cutting,6204,faulty,KG Bearing India,no,I
-Hust,O404,O,51200,no,0.53640,no,no,wire-cutting,6204,faulty,KG Bearing India,no,I
-Hust,IB704,IB,51200,no,0.53640,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
-Hust,N704,N,51200,no,0.53640,no,no,wire-cutting,6207,healthy,KG Bearing India,no,I
-Hust,OB402,OB,51200,no,0.26820,no,no,wire-cutting,6204,faulty,KG Bearing India,no,I
-Hust,B502,B,51200,no,0.26820,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
-Hust,IB702,IB,51200,no,0.26820,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
-Hust,O802,O,51200,no,0.26820,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
-Hust,B800,B,51200,no,0.0,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
-Hust,B604,B,51200,no,0.53640,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
-Hust,O702,O,51200,no,0.26820,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
-Hust,IB602,IB,51200,no,0.26820,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
-Hust,B600,B,51200,no,0.0,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
-Hust,IO402,IO,51200,no,0.26820,no,no,wire-cutting,6204,faulty,KG Bearing India,no,I
-Hust,N700,N,51200,no,0.0,no,no,wire-cutting,6207,healthy,KG Bearing India,no,I
-Hust,O504,O,51200,no,0.53640,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
-Hust,B500,B,51200,no,0.0,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
-Hust,O704,O,51200,no,0.53640,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
-Hust,OB800,OB,51200,no,0.0,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
-Hust,OB600,OB,51200,no,0.0,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
-Hust,I602,I,51200,no,0.26820,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
-Hust,I804,I,51200,no,0.53640,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
-Hust,I404,I,51200,no,0.53640,no,no,wire-cutting,6204,faulty,KG Bearing India,no,I
-Hust,IB700,IB,51200,no,0.0,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
-Hust,O602,O,51200,no,0.26820,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
-Hust,I704,I,51200,no,0.53640,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
-Hust,N804,N,51200,no,0.53640,no,no,wire-cutting,6208,healthy,KG Bearing India,no,I
-Hust,N404,N,51200,no,0.53640,no,no,wire-cutting,6204,healthy,KG Bearing India,no,I
-Hust,N402,N,51200,no,0.26820,no,no,wire-cutting,6204,healthy,KG Bearing India,no,I
-Hust,B602,B,51200,no,0.26820,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
-Hust,IO504,IO,51200,no,0.53640,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
-Hust,I402,I,51200,no,0.26820,no,no,wire-cutting,6204,faulty,KG Bearing India,no,I
-Hust,IO804,IO,51200,no,0.53640,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
-Hust,N500,N,51200,no,0.0,no,no,wire-cutting,6205,healthy,KG Bearing India,no,I
-Hust,OB602,OB,51200,no,0.26820,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
-Hust,IB502,IB,51200,no,0.26820,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
-Hust,O604,O,51200,no,0.53640,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
-Hust,N504,N,51200,no,0.53640,no,no,wire-cutting,6205,healthy,KG Bearing India,no,I
-Hust,IB504,IB,51200,no,0.53640,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
-Hust,N502,N,51200,no,0.26820,no,no,wire-cutting,6205,healthy,KG Bearing India,no,I
-Hust,IO700,IO,51200,no,0.0,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
-Hust,IO400,IO,51200,no,0.0,no,no,wire-cutting,6204,faulty,KG Bearing India,no,I
-Hust,I600,I,51200,no,0.0,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
-Hust,OB604,OB,51200,no,0.53640,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
-Hust,O402,O,51200,no,0.26820,no,no,wire-cutting,6204,faulty,KG Bearing India,no,I
-Hust,OB802,OB,51200,no,0.26820,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
-Hust,OB502,OB,51200,no,0.26820,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
-Hust,I400,I,51200,no,0.0,no,no,wire-cutting,6204,faulty,KG Bearing India,no,I
-Hust,OB704,OB,51200,no,0.53640,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
-Hust,O804,O,51200,no,0.53640,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
-Hust,N604,N,51200,no,0.53640,no,no,wire-cutting,6206,healthy,KG Bearing India,no,I
-SU,L_B_16_6204_1200,B,1600,1200.mat,no,no,no,no,6204,faulty,no,no,L,1280000
-SU,U3_B_16_6204_1000,B,1600,1000.mat,no,no,3,no,6204,faulty,no,no,U,1280000
-SU,U3_OR_16_6204_600,O,1600,600.mat,no,no,3,no,6204,faulty,no,no,U,1280000
-SU,U3_OR_16_6204_1200,O,1600,1200.mat,no,no,3,no,6204,faulty,no,no,U,1280000
-SU,U3_H_16_6204_1600,N,1600,1600.mat,no,no,3,no,6204,healthy,no,no,U,1280000
-SU,M3_OR_16_6204_1600,O,1600,1600.mat,no,no,3,no,6204,faulty,no,no,M,1280000
-SU,U1_B_16_6204_1000,B,1600,1000.mat,no,no,1,no,6204,faulty,no,no,U,1280000
-SU,U2_IR_16_6204_1600,I,1600,1600.mat,no,no,2,no,6204,faulty,no,no,U,1280000
-SU,U1_H_16_6204_600,N,1600,600.mat,no,no,1,no,6204,healthy,no,no,U,1280000
-SU,U2_OR_16_6204_1600,O,1600,1600.mat,no,no,2,no,6204,faulty,no,no,U,1280000
-SU,M1_B_16_6204_800,B,1600,800.mat,no,no,1,no,6204,faulty,no,no,M,1280000
-SU,L_B_16_6204_1400,B,1600,1400.mat,no,no,no,no,6204,faulty,no,no,L,1280000
-SU,L_B_16_6204_1000,B,1600,1000.mat,no,no,no,no,6204,faulty,no,no,L,1280000
-SU,U2_B_16_6204_1200,B,1600,1200.mat,no,no,2,no,6204,faulty,no,no,U,1280000
-SU,M1_B_16_6204_1200,B,1600,1200.mat,no,no,1,no,6204,faulty,no,no,M,1280000
-SU,U2_B_16_6204_600,B,1600,600.mat,no,no,2,no,6204,faulty,no,no,U,1280000
-SU,M2_OR_16_6204_800,O,1600,800.mat,no,no,2,no,6204,faulty,no,no,M,1280000
-SU,M2_H_16_6204_1200,N,1600,1200.mat,no,no,2,no,6204,healthy,no,no,M,1280000
-SU,M2_H_16_6204_600,N,1600,600.mat,no,no,2,no,6204,healthy,no,no,M,1280000
-SU,H_IR_16_6204_600,I,1600,600.mat,no,no,no,no,6204,faulty,no,no,I,1280000
-SU,M3_B_16_6204_800,B,1600,800.mat,no,no,3,no,6204,faulty,no,no,M,1280000
-SU,L_OR_16_6204_1200,O,1600,1200.mat,no,no,no,no,6204,faulty,no,no,L,1280000
-SU,U1_IR_16_6204_800,I,1600,800.mat,no,no,1,no,6204,faulty,no,no,U,1280000
-SU,M2_OR_16_6204_1200,O,1600,1200.mat,no,no,2,no,6204,faulty,no,no,M,1280000
-SU,H_OR_16_6204_800,O,1600,800.mat,no,no,no,no,6204,faulty,no,no,I,1280000
-SU,U3_B_16_6204_600,B,1600,600.mat,no,no,3,no,6204,faulty,no,no,U,1280000
-SU,H_OR_16_6204_1000,O,1600,1000.mat,no,no,no,no,6204,faulty,no,no,I,1280000
-SU,U3_OR_16_6204_1600,O,1600,1600.mat,no,no,3,no,6204,faulty,no,no,U,1280000
-SU,M1_B_16_6204_1000,B,1600,1000.mat,no,no,1,no,6204,faulty,no,no,M,1280000
-SU,U3_B_16_6204_1600,B,1600,1600.mat,no,no,3,no,6204,faulty,no,no,U,1280000
-SU,U3_IR_16_6204_1600,I,1600,1600.mat,no,no,3,no,6204,faulty,no,no,U,1280000
-SU,M3_B_16_6204_600,B,1600,600.mat,no,no,3,no,6204,faulty,no,no,M,1280000
-SU,M2_OR_16_6204_1000,O,1600,1000.mat,no,no,2,no,6204,faulty,no,no,M,1280000
-SU,H_IR_16_6204_1600,I,1600,1600.mat,no,no,no,no,6204,faulty,no,no,I,1280000
-SU,H_H_16_6204_1400,N,1600,1400.mat,no,no,no,no,6204,healthy,no,no,I,1280000
-SU,L_IR_16_6204_1200,I,1600,1200.mat,no,no,no,no,6204,faulty,no,no,L,1280000
-SU,H_OR_16_6204_1400,O,1600,1400.mat,no,no,no,no,6204,faulty,no,no,I,1280000
-SU,U3_IR_16_6204_600,I,1600,600.mat,no,no,3,no,6204,faulty,no,no,U,1280000
-SU,M2_OR_16_6204_600,O,1600,600.mat,no,no,2,no,6204,faulty,no,no,M,1280000
-SU,U1_H_16_6204_800,N,1600,800.mat,no,no,1,no,6204,healthy,no,no,U,1280000
-SU,U2_B_16_6204_1000,B,1600,1000.mat,no,no,2,no,6204,faulty,no,no,U,1280000
-SU,U3_H_16_6204_1400,N,1600,1400.mat,no,no,3,no,6204,healthy,no,no,U,1280000
-SU,H_H_16_6204_1600,N,1600,1600.mat,no,no,no,no,6204,healthy,no,no,I,1280000
-SU,M2_B_16_6204_600,B,1600,600.mat,no,no,2,no,6204,faulty,no,no,M,1280000
-SU,U1_IR_16_6204_1400,I,1600,1400.mat,no,no,1,no,6204,faulty,no,no,U,1280000
-SU,M2_IR_16_6204_800,I,1600,800.mat,no,no,2,no,6204,faulty,no,no,M,1280000
-SU,U2_OR_16_6204_600,O,1600,600.mat,no,no,2,no,6204,faulty,no,no,U,1280000
-SU,H_H_16_6204_800,N,1600,800.mat,no,no,no,no,6204,healthy,no,no,I,1280000
-SU,U2_IR_16_6204_800,I,1600,800.mat,no,no,2,no,6204,faulty,no,no,U,1280000
-SU,H_B_16_6204_1400,B,1600,1400.mat,no,no,no,no,6204,faulty,no,no,I,1280000
-SU,U3_B_16_6204_800,B,1600,800.mat,no,no,3,no,6204,faulty,no,no,U,1280000
-SU,L_IR_16_6204_1400,I,1600,1400.mat,no,no,no,no,6204,faulty,no,no,L,1280000
-SU,U1_OR_16_6204_800,O,1600,800.mat,no,no,1,no,6204,faulty,no,no,U,1280000
-SU,M3_OR_16_6204_800,O,1600,800.mat,no,no,3,no,6204,faulty,no,no,M,1280000
-SU,M2_IR_16_6204_1000,I,1600,1000.mat,no,no,2,no,6204,faulty,no,no,M,1280000
-SU,U1_IR_16_6204_1600,I,1600,1600.mat,no,no,1,no,6204,faulty,no,no,U,1280000
-SU,M1_OR_16_6204_1400,O,1600,1400.mat,no,no,1,no,6204,faulty,no,no,M,1280000
-SU,U1_IR_16_6204_1200,I,1600,1200.mat,no,no,1,no,6204,faulty,no,no,U,1280000
-SU,U3_IR_16_6204_800,I,1600,800.mat,no,no,3,no,6204,faulty,no,no,U,1280000
-SU,M2_H_16_6204_1600,N,1600,1600.mat,no,no,2,no,6204,healthy,no,no,M,1280000
-SU,M1_H_16_6204_800,N,1600,800.mat,no,no,1,no,6204,healthy,no,no,M,1280000
-SU,M3_B_16_6204_1400,B,1600,1400.mat,no,no,3,no,6204,faulty,no,no,M,1280000
-SU,U2_H_16_6204_1000,N,1600,1000.mat,no,no,2,no,6204,healthy,no,no,U,1280000
-SU,L_H_16_6204_800,N,1600,800.mat,no,no,no,no,6204,healthy,no,no,L,1280000
-SU,M1_OR_16_6204_1200,O,1600,1200.mat,no,no,1,no,6204,faulty,no,no,M,1280000
-SU,M1_IR_16_6204_1000,I,1600,1000.mat,no,no,1,no,6204,faulty,no,no,M,1280000
-SU,H_OR_16_6204_600,O,1600,600.mat,no,no,no,no,6204,faulty,no,no,I,1280000
-SU,U1_IR_16_6204_1000,I,1600,1000.mat,no,no,1,no,6204,faulty,no,no,U,1280000
-SU,U2_IR_16_6204_1400,I,1600,1400.mat,no,no,2,no,6204,faulty,no,no,U,1280000
-SU,U3_OR_16_6204_1000,O,1600,1000.mat,no,no,3,no,6204,faulty,no,no,U,1280000
-SU,M2_IR_16_6204_600,I,1600,600.mat,no,no,2,no,6204,faulty,no,no,M,1280000
-SU,M1_IR_16_6204_1600,I,1600,1600.mat,no,no,1,no,6204,faulty,no,no,M,1280000
-SU,M2_B_16_6204_1600,B,1600,1600.mat,no,no,2,no,6204,faulty,no,no,M,1280000
-SU,H_IR_16_6204_1400,I,1600,1400.mat,no,no,no,no,6204,faulty,no,no,I,1280000
-SU,M3_IR_16_6204_1600,I,1600,1600.mat,no,no,3,no,6204,faulty,no,no,M,1280000
-SU,M2_H_16_6204_1400,N,1600,1400.mat,no,no,2,no,6204,healthy,no,no,M,1280000
-SU,M2_IR_16_6204_1600,I,1600,1600.mat,no,no,2,no,6204,faulty,no,no,M,1280000
-SU,M2_OR_16_6204_1600,O,1600,1600.mat,no,no,2,no,6204,faulty,no,no,M,1280000
-SU,H_B_16_6204_800,B,1600,800.mat,no,no,no,no,6204,faulty,no,no,I,1280000
-SU,M1_OR_16_6204_1600,O,1600,1600.mat,no,no,1,no,6204,faulty,no,no,M,1280000
-SU,H_IR_16_6204_1000,I,1600,1000.mat,no,no,no,no,6204,faulty,no,no,I,1280000
-SU,H_IR_16_6204_800,I,1600,800.mat,no,no,no,no,6204,faulty,no,no,I,1280000
-SU,U2_IR_16_6204_1000,I,1600,1000.mat,no,no,2,no,6204,faulty,no,no,U,1280000
-SU,M3_H_16_6204_600,N,1600,600.mat,no,no,3,no,6204,healthy,no,no,M,1280000
-SU,U1_OR_16_6204_1000,O,1600,1000.mat,no,no,1,no,6204,faulty,no,no,U,1280000
-SU,M3_B_16_6204_1600,B,1600,1600.mat,no,no,3,no,6204,faulty,no,no,M,1280000
-SU,M3_H_16_6204_800,N,1600,800.mat,no,no,3,no,6204,healthy,no,no,M,1280000
-SU,U1_B_16_6204_1600,B,1600,1600.mat,no,no,1,no,6204,faulty,no,no,U,1280000
-SU,M1_H_16_6204_1600,N,1600,1600.mat,no,no,1,no,6204,healthy,no,no,M,1280000
-SU,U2_IR_16_6204_1200,I,1600,1200.mat,no,no,2,no,6204,faulty,no,no,U,1280000
-SU,L_B_16_6204_600,B,1600,600.mat,no,no,no,no,6204,faulty,no,no,L,1280000
-SU,U1_OR_16_6204_1200,O,1600,1200.mat,no,no,1,no,6204,faulty,no,no,U,1280000
-SU,M2_B_16_6204_1000,B,1600,1000.mat,no,no,2,no,6204,faulty,no,no,M,1280000
-SU,M3_B_16_6204_1000,B,1600,1000.mat,no,no,3,no,6204,faulty,no,no,M,1280000
-SU,U3_IR_16_6204_1000,I,1600,1000.mat,no,no,3,no,6204,faulty,no,no,U,1280000
-SU,M2_OR_16_6204_1400,O,1600,1400.mat,no,no,2,no,6204,faulty,no,no,M,1280000
-SU,M1_H_16_6204_1200,N,1600,1200.mat,no,no,1,no,6204,healthy,no,no,M,1280000
-SU,M2_H_16_6204_800,N,1600,800.mat,no,no,2,no,6204,healthy,no,no,M,1280000
-SU,M3_OR_16_6204_1200,O,1600,1200.mat,no,no,3,no,6204,faulty,no,no,M,1280000
-SU,U2_OR_16_6204_800,O,1600,800.mat,no,no,2,no,6204,faulty,no,no,U,1280000
-SU,M3_IR_16_6204_1200,I,1600,1200.mat,no,no,3,no,6204,faulty,no,no,M,1280000
-SU,U1_B_16_6204_1200,B,1600,1200.mat,no,no,1,no,6204,faulty,no,no,U,1280000
-SU,H_OR_16_6204_1600,O,1600,1600.mat,no,no,no,no,6204,faulty,no,no,I,1280000
-SU,L_B_16_6204_800,B,1600,800.mat,no,no,no,no,6204,faulty,no,no,L,1280000
-SU,U1_H_16_6204_1000,N,1600,1000.mat,no,no,1,no,6204,healthy,no,no,U,1280000
-SU,M3_H_16_6204_1400,N,1600,1400.mat,no,no,3,no,6204,healthy,no,no,M,1280000
-SU,M1_H_16_6204_1000,N,1600,1000.mat,no,no,1,no,6204,healthy,no,no,M,1280000
-SU,M1_IR_16_6204_1400,I,1600,1400.mat,no,no,1,no,6204,faulty,no,no,M,1280000
-SU,L_OR_16_6204_800,O,1600,800.mat,no,no,no,no,6204,faulty,no,no,L,1280000
-SU,H_B_16_6204_600,B,1600,600.mat,no,no,no,no,6204,faulty,no,no,I,1280000
-SU,H_H_16_6204_600,N,1600,600.mat,no,no,no,no,6204,healthy,no,no,I,1280000
-SU,U2_OR_16_6204_1400,O,1600,1400.mat,no,no,2,no,6204,faulty,no,no,U,1280000
-SU,U1_H_16_6204_1400,N,1600,1400.mat,no,no,1,no,6204,healthy,no,no,U,1280000
-SU,L_IR_16_6204_1600,I,1600,1600.mat,no,no,no,no,6204,faulty,no,no,L,1280000
-SU,M1_IR_16_6204_600,I,1600,600.mat,no,no,1,no,6204,faulty,no,no,M,1280000
-SU,H_IR_16_6204_1200,I,1600,1200.mat,no,no,no,no,6204,faulty,no,no,I,1280000
-SU,M2_B_16_6204_1200,B,1600,1200.mat,no,no,2,no,6204,faulty,no,no,M,1280000
-SU,U1_OR_16_6204_1400,O,1600,1400.mat,no,no,1,no,6204,faulty,no,no,U,1280000
-SU,M3_H_16_6204_1200,N,1600,1200.mat,no,no,3,no,6204,healthy,no,no,M,1280000
-SU,U3_OR_16_6204_1400,O,1600,1400.mat,no,no,3,no,6204,faulty,no,no,U,1280000
-SU,U2_OR_16_6204_1200,O,1600,1200.mat,no,no,2,no,6204,faulty,no,no,U,1280000
-SU,H_H_16_6204_1200,N,1600,1200.mat,no,no,no,no,6204,healthy,no,no,I,1280000
-SU,U2_H_16_6204_800,N,1600,800.mat,no,no,2,no,6204,healthy,no,no,U,1280000
-SU,M2_H_16_6204_1000,N,1600,1000.mat,no,no,2,no,6204,healthy,no,no,M,1280000
-SU,L_IR_16_6204_1000,I,1600,1000.mat,no,no,no,no,6204,faulty,no,no,L,1280000
-SU,H_OR_16_6204_1200,O,1600,1200.mat,no,no,no,no,6204,faulty,no,no,I,1280000
-SU,U1_B_16_6204_800,B,1600,800.mat,no,no,1,no,6204,faulty,no,no,U,1280000
-SU,U1_B_16_6204_600,B,1600,600.mat,no,no,1,no,6204,faulty,no,no,U,1280000
-SU,U3_H_16_6204_1000,N,1600,1000.mat,no,no,3,no,6204,healthy,no,no,U,1280000
-SU,L_H_16_6204_1000,N,1600,1000.mat,no,no,no,no,6204,healthy,no,no,L,1280000
-SU,L_OR_16_6204_1400,O,1600,1400.mat,no,no,no,no,6204,faulty,no,no,L,1280000
-SU,M1_IR_16_6204_800,I,1600,800.mat,no,no,1,no,6204,faulty,no,no,M,1280000
-SU,H_H_16_6204_1000,N,1600,1000.mat,no,no,no,no,6204,healthy,no,no,I,1280000
-SU,M1_OR_16_6204_600,O,1600,600.mat,no,no,1,no,6204,faulty,no,no,M,1280000
-SU,U2_B_16_6204_1600,B,1600,1600.mat,no,no,2,no,6204,faulty,no,no,U,1280000
-SU,H_B_16_6204_1600,B,1600,1600.mat,no,no,no,no,6204,faulty,no,no,I,1280000
-SU,U2_OR_16_6204_1000,O,1600,1000.mat,no,no,2,no,6204,faulty,no,no,U,1280000
-SU,U1_H_16_6204_1600,N,1600,1600.mat,no,no,1,no,6204,healthy,no,no,U,1280000
-SU,U3_IR_16_6204_1400,I,1600,1400.mat,no,no,3,no,6204,faulty,no,no,U,1280000
-SU,M3_OR_16_6204_1400,O,1600,1400.mat,no,no,3,no,6204,faulty,no,no,M,1280000
-SU,L_OR_16_6204_1000,O,1600,1000.mat,no,no,no,no,6204,faulty,no,no,L,1280000
-SU,L_H_16_6204_600,N,1600,600.mat,no,no,no,no,6204,healthy,no,no,L,1280000
-SU,L_OR_16_6204_600,O,1600,600.mat,no,no,no,no,6204,faulty,no,no,L,1280000
-SU,U3_H_16_6204_1200,N,1600,1200.mat,no,no,3,no,6204,healthy,no,no,U,1280000
-SU,M1_B_16_6204_1400,B,1600,1400.mat,no,no,1,no,6204,faulty,no,no,M,1280000
-SU,U1_B_16_6204_1400,B,1600,1400.mat,no,no,1,no,6204,faulty,no,no,U,1280000
-SU,L_H_16_6204_1400,N,1600,1400.mat,no,no,no,no,6204,healthy,no,no,L,1280000
-SU,M1_OR_16_6204_800,O,1600,800.mat,no,no,1,no,6204,faulty,no,no,M,1280000
-SU,M1_OR_16_6204_1000,O,1600,1000.mat,no,no,1,no,6204,faulty,no,no,M,1280000
-SU,U3_OR_16_6204_800,O,1600,800.mat,no,no,3,no,6204,faulty,no,no,U,1280000
-SU,M2_IR_16_6204_1200,I,1600,1200.mat,no,no,2,no,6204,faulty,no,no,M,1280000
-SU,M3_IR_16_6204_1000,I,1600,1000.mat,no,no,3,no,6204,faulty,no,no,M,1280000
-SU,L_OR_16_6204_1600,O,1600,1600.mat,no,no,no,no,6204,faulty,no,no,L,1280000
-SU,U2_H_16_6204_1200,N,1600,1200.mat,no,no,2,no,6204,healthy,no,no,U,1280000
-SU,U1_IR_16_6204_600,I,1600,600.mat,no,no,1,no,6204,faulty,no,no,U,1280000
-SU,M3_IR_16_6204_800,I,1600,800.mat,no,no,3,no,6204,faulty,no,no,M,1280000
-SU,M1_H_16_6204_1400,N,1600,1400.mat,no,no,1,no,6204,healthy,no,no,M,1280000
-SU,U1_OR_16_6204_600,O,1600,600.mat,no,no,1,no,6204,faulty,no,no,U,1280000
-SU,M2_IR_16_6204_1400,I,1600,1400.mat,no,no,2,no,6204,faulty,no,no,M,1280000
-SU,M3_H_16_6204_1600,N,1600,1600.mat,no,no,3,no,6204,healthy,no,no,M,1280000
-SU,M1_B_16_6204_600,B,1600,600.mat,no,no,1,no,6204,faulty,no,no,M,1280000
-SU,L_IR_16_6204_800,I,1600,800.mat,no,no,no,no,6204,faulty,no,no,L,1280000
-SU,U1_OR_16_6204_1600,O,1600,1600.mat,no,no,1,no,6204,faulty,no,no,U,1280000
-SU,M1_H_16_6204_600,N,1600,600.mat,no,no,1,no,6204,healthy,no,no,M,1280000
-SU,U2_B_16_6204_1400,B,1600,1400.mat,no,no,2,no,6204,faulty,no,no,U,1280000
-SU,U3_H_16_6204_800,N,1600,800.mat,no,no,3,no,6204,healthy,no,no,U,1280000
-SU,M3_IR_16_6204_600,I,1600,600.mat,no,no,3,no,6204,faulty,no,no,M,1280000
-SU,M3_OR_16_6204_1000,O,1600,1000.mat,no,no,3,no,6204,faulty,no,no,M,1280000
-SU,U3_B_16_6204_1400,B,1600,1400.mat,no,no,3,no,6204,faulty,no,no,U,1280000
-SU,U2_H_16_6204_1400,N,1600,1400.mat,no,no,2,no,6204,healthy,no,no,U,1280000
-SU,M3_H_16_6204_1000,N,1600,1000.mat,no,no,3,no,6204,healthy,no,no,M,1280000
-SU,U2_H_16_6204_1600,N,1600,1600.mat,no,no,2,no,6204,healthy,no,no,U,1280000
-SU,L_IR_16_6204_600,I,1600,600.mat,no,no,no,no,6204,faulty,no,no,L,1280000
-SU,H_B_16_6204_1000,B,1600,1000.mat,no,no,no,no,6204,faulty,no,no,I,1280000
-SU,L_H_16_6204_1200,N,1600,1200.mat,no,no,no,no,6204,healthy,no,no,L,1280000
-SU,M1_B_16_6204_1600,B,1600,1600.mat,no,no,1,no,6204,faulty,no,no,M,1280000
-SU,M2_B_16_6204_800,B,1600,800.mat,no,no,2,no,6204,faulty,no,no,M,1280000
-SU,M3_B_16_6204_1200,B,1600,1200.mat,no,no,3,no,6204,faulty,no,no,M,1280000
-SU,U2_H_16_6204_600,N,1600,600.mat,no,no,2,no,6204,healthy,no,no,U,1280000
-SU,L_H_16_6204_1600,N,1600,1600.mat,no,no,no,no,6204,healthy,no,no,L,1280000
-SU,M1_IR_16_6204_1200,I,1600,1200.mat,no,no,1,no,6204,faulty,no,no,M,1280000
-SU,M3_IR_16_6204_1400,I,1600,1400.mat,no,no,3,no,6204,faulty,no,no,M,1280000
-SU,U3_H_16_6204_600,N,1600,600.mat,no,no,3,no,6204,healthy,no,no,U,1280000
-SU,U3_B_16_6204_1200,B,1600,1200.mat,no,no,3,no,6204,faulty,no,no,U,1280000
-SU,U1_H_16_6204_1200,N,1600,1200.mat,no,no,1,no,6204,healthy,no,no,U,1280000
-SU,M3_OR_16_6204_600,O,1600,600.mat,no,no,3,no,6204,faulty,no,no,M,1280000
-SU,L_B_16_6204_1600,B,1600,1600.mat,no,no,no,no,6204,faulty,no,no,L,1280000
-SU,U2_IR_16_6204_600,I,1600,600.mat,no,no,2,no,6204,faulty,no,no,U,1280000
-SU,M2_B_16_6204_1400,B,1600,1400.mat,no,no,2,no,6204,faulty,no,no,M,1280000
-SU,U2_B_16_6204_800,B,1600,800.mat,no,no,2,no,6204,faulty,no,no,U,1280000
-SU,U3_IR_16_6204_1200,I,1600,1200.mat,no,no,3,no,6204,faulty,no,no,U,1280000
-SU,H_B_16_6204_1200,B,1600,1200.mat,no,no,no,no,6204,faulty,no,no,I,1280000
+Hust,IO600,IO,51200,24.86,0.0,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
+Hust,IB500,IB,51200,24.83,0.0,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
+Hust,IO500,IO,51200,24.88,0.0,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
+Hust,IO702,IO,51200,24.01,0.26820,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
+Hust,OB400,OB,51200,24.96,0.0,no,no,wire-cutting,6204,faulty,KG Bearing India,no,I
+Hust,N802,N,51200,24.22,0.26820,no,no,wire-cutting,6208,healthy,KG Bearing India,no,I
+Hust,N702,N,51200,24.37,0.26820,no,no,wire-cutting,6207,healthy,KG Bearing India,no,I
+Hust,OB702,OB,51200,23.96,0.26820,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
+Hust,B700,B,51200,24.83,0.0,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
+Hust,B702,B,51200,24.01,0.26820,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
+Hust,I504,I,51200,22.73,0.53640,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
+Hust,IO602,IO,51200,22.89,0.26820,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
+Hust,B704,B,51200,22.83,0.53640,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
+Hust,OB700,OB,51200,24.83,0.0,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
+Hust,IB802,IB,51200,23.96,0.26820,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
+Hust,I802,I,51200,24.12,0.26820,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
+Hust,IO502,IO,51200,24.14,0.26820,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
+Hust,IO802,IO,51200,24.06,0.26820,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
+Hust,B804,B,51200,22.84,0.53640,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
+Hust,I800,I,51200,24.73,0.0,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
+Hust,I604,I,51200,22.84,0.53640,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
+Hust,IB800,IB,51200,24.78,0.0,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
+Hust,O502,O,51200,24.16,0.26820,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
+Hust,IO800,IO,51200,24.73,0.0,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
+Hust,B802,B,51200,24.06,0.26820,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
+Hust,OB500,OB,51200,24.88,0.0,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
+Hust,OB404,OB,51200,23.1,0.53640,no,no,wire-cutting,6204,faulty,KG Bearing India,no,I
+Hust,N800,N,51200,24.93,0.0,no,no,wire-cutting,6208,healthy,KG Bearing India,no,I
+Hust,I502,I,51200,24.11,0.26820,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
+Hust,OB504,OB,51200,22.89,0.53640,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
+Hust,IO604,IO,51200,22.89,0.53640,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
+Hust,N602,N,51200,24.22,0.26820,no,no,wire-cutting,6206,healthy,KG Bearing India,no,I
+Hust,IB804,IB,51200,22.73,0.53640,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
+Hust,OB804,OB,51200,22.53,0.53640,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
+Hust,N400,N,51200,24.93,0.0,no,no,wire-cutting,6204,healthy,KG Bearing India,no,I
+Hust,O500,O,51200,24.88,0.0,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
+Hust,N600,N,51200,24.88,0.0,no,no,wire-cutting,6206,healthy,KG Bearing India,no,I
+Hust,IB600,IB,51200,24.83,0.0,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
+Hust,IO704,IO,51200,23.09,0.53640,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
+Hust,O700,O,51200,24.83,0.0,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
+Hust,I702,I,51200,24.17,0.26820,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
+Hust,O800,O,51200,24.73,0.0,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
+Hust,O400,O,51200,24.93,0.0,no,no,wire-cutting,6204,faulty,KG Bearing India,no,I
+Hust,I700,I,51200,24.83,0.0,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
+Hust,I500,I,51200,24.88,0.0,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
+Hust,IB604,IB,51200,22.89,0.53640,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
+Hust,O600,O,51200,24.83,0.0,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
+Hust,B504,B,51200,22.86,0.53640,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
+Hust,IO404,IO,51200,23.24,0.53640,no,no,wire-cutting,6204,faulty,KG Bearing India,no,I
+Hust,O404,O,51200,23.12,0.53640,no,no,wire-cutting,6204,faulty,KG Bearing India,no,I
+Hust,IB704,IB,51200,22.68,0.53640,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
+Hust,N704,N,51200,22.84,0.53640,no,no,wire-cutting,6207,healthy,KG Bearing India,no,I
+Hust,OB402,OB,51200,24.31,0.26820,no,no,wire-cutting,6204,faulty,KG Bearing India,no,I
+Hust,B502,B,51200,24.16,0.26820,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
+Hust,IB702,IB,51200,24.01,0.26820,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
+Hust,O802,O,51200,24.06,0.26820,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
+Hust,B800,B,51200,24.78,0.0,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
+Hust,B604,B,51200,22.7,0.53640,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
+Hust,O702,O,51200,24.01,0.26820,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
+Hust,IB602,IB,51200,24.19,0.26820,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
+Hust,B600,B,51200,24.85,0.0,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
+Hust,IO402,IO,51200,24.42,0.26820,no,no,wire-cutting,6204,faulty,KG Bearing India,no,I
+Hust,N700,N,51200,24.83,0.0,no,no,wire-cutting,6207,healthy,KG Bearing India,no,I
+Hust,O504,O,51200,22.88,0.53640,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
+Hust,B500,B,51200,24.93,0.0,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
+Hust,O704,O,51200,22.63,0.53640,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
+Hust,OB800,OB,51200,24.73,0.0,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
+Hust,OB600,OB,51200,24.83,0.0,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
+Hust,I602,I,51200,24.17,0.26820,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
+Hust,I804,I,51200,22.84,0.53640,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
+Hust,I404,I,51200,23.09,0.53640,no,no,wire-cutting,6204,faulty,KG Bearing India,no,I
+Hust,IB700,IB,51200,24.83,0.0,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
+Hust,O602,O,51200,24.22,0.26820,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
+Hust,I704,I,51200,22.94,0.53640,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
+Hust,N804,N,51200,23.04,0.53640,no,no,wire-cutting,6208,healthy,KG Bearing India,no,I
+Hust,N404,N,51200,23.14,0.53640,no,no,wire-cutting,6204,healthy,KG Bearing India,no,I
+Hust,N402,N,51200,24.22,0.26820,no,no,wire-cutting,6204,healthy,KG Bearing India,no,I
+Hust,B602,B,51200,24.07,0.26820,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
+Hust,IO504,IO,51200,22.86,0.53640,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
+Hust,I402,I,51200,24.27,0.26820,no,no,wire-cutting,6204,faulty,KG Bearing India,no,I
+Hust,IO804,IO,51200,22.73,0.53640,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
+Hust,N500,N,51200,24.93,0.0,no,no,wire-cutting,6205,healthy,KG Bearing India,no,I
+Hust,OB602,OB,51200,24.12,0.26820,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
+Hust,IB502,IB,51200,24.22,0.26820,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
+Hust,O604,O,51200,23.01,0.53640,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
+Hust,N504,N,51200,22.99,0.53640,no,no,wire-cutting,6205,healthy,KG Bearing India,no,I
+Hust,IB504,IB,51200,22.99,0.53640,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
+Hust,N502,N,51200,24.22,0.26820,no,no,wire-cutting,6205,healthy,KG Bearing India,no,I
+Hust,IO700,IO,51200,24.83,0.0,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
+Hust,IO400,IO,51200,24.88,0.0,no,no,wire-cutting,6204,faulty,KG Bearing India,no,I
+Hust,I600,I,51200,24.83,0.0,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
+Hust,OB604,OB,51200,22.99,0.53640,no,no,wire-cutting,6206,faulty,KG Bearing India,no,I
+Hust,O402,O,51200,24.22,0.26820,no,no,wire-cutting,6204,faulty,KG Bearing India,no,I
+Hust,OB802,OB,51200,24.01,0.26820,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
+Hust,OB502,OB,51200,24.22,0.26820,no,no,wire-cutting,6205,faulty,KG Bearing India,no,I
+Hust,I400,I,51200,24.93,0.0,no,no,wire-cutting,6204,faulty,KG Bearing India,no,I
+Hust,OB704,OB,51200,22.63,0.53640,no,no,wire-cutting,6207,faulty,KG Bearing India,no,I
+Hust,O804,O,51200,22.86,0.53640,no,no,wire-cutting,6208,faulty,KG Bearing India,no,I
+Hust,N604,N,51200,23.14,0.53640,no,no,wire-cutting,6206,healthy,KG Bearing India,no,I
+SU,L_B_16_6204_1200,B,16000,1200,no,no,no,no,6204,faulty,no,no,L,1280000
+SU,U3_B_16_6204_1000,B,16000,1000,no,no,3,no,6204,faulty,no,no,U,1280000
+SU,U3_OR_16_6204_600,O,16000,600,no,no,3,no,6204,faulty,no,no,U,1280000
+SU,U3_OR_16_6204_1200,O,16000,1200,no,no,3,no,6204,faulty,no,no,U,1280000
+SU,U3_H_16_6204_1600,N,16000,1600,no,no,3,no,6204,healthy,no,no,U,1280000
+SU,M3_OR_16_6204_1600,O,16000,1600,no,no,3,no,6204,faulty,no,no,M,1280000
+SU,U1_B_16_6204_1000,B,16000,1000,no,no,1,no,6204,faulty,no,no,U,1280000
+SU,U2_IR_16_6204_1600,I,16000,1600,no,no,2,no,6204,faulty,no,no,U,1280000
+SU,U1_H_16_6204_600,N,16000,600,no,no,1,no,6204,healthy,no,no,U,1280000
+SU,U2_OR_16_6204_1600,O,16000,1600,no,no,2,no,6204,faulty,no,no,U,1280000
+SU,M1_B_16_6204_800,B,16000,800,no,no,1,no,6204,faulty,no,no,M,1280000
+SU,L_B_16_6204_1400,B,16000,1400,no,no,no,no,6204,faulty,no,no,L,1280000
+SU,L_B_16_6204_1000,B,16000,1000,no,no,no,no,6204,faulty,no,no,L,1280000
+SU,U2_B_16_6204_1200,B,16000,1200,no,no,2,no,6204,faulty,no,no,U,1280000
+SU,M1_B_16_6204_1200,B,16000,1200,no,no,1,no,6204,faulty,no,no,M,1280000
+SU,U2_B_16_6204_600,B,16000,600,no,no,2,no,6204,faulty,no,no,U,1280000
+SU,M2_OR_16_6204_800,O,16000,800,no,no,2,no,6204,faulty,no,no,M,1280000
+SU,M2_H_16_6204_1200,N,16000,1200,no,no,2,no,6204,healthy,no,no,M,1280000
+SU,M2_H_16_6204_600,N,16000,600,no,no,2,no,6204,healthy,no,no,M,1280000
+SU,H_IR_16_6204_600,I,16000,600,no,no,no,no,6204,faulty,no,no,I,1280000
+SU,M3_B_16_6204_800,B,16000,800,no,no,3,no,6204,faulty,no,no,M,1280000
+SU,L_OR_16_6204_1200,O,16000,1200,no,no,no,no,6204,faulty,no,no,L,1280000
+SU,U1_IR_16_6204_800,I,16000,800,no,no,1,no,6204,faulty,no,no,U,1280000
+SU,M2_OR_16_6204_1200,O,16000,1200,no,no,2,no,6204,faulty,no,no,M,1280000
+SU,H_OR_16_6204_800,O,16000,800,no,no,no,no,6204,faulty,no,no,I,1280000
+SU,U3_B_16_6204_600,B,16000,600,no,no,3,no,6204,faulty,no,no,U,1280000
+SU,H_OR_16_6204_1000,O,16000,1000,no,no,no,no,6204,faulty,no,no,I,1280000
+SU,U3_OR_16_6204_1600,O,16000,1600,no,no,3,no,6204,faulty,no,no,U,1280000
+SU,M1_B_16_6204_1000,B,16000,1000,no,no,1,no,6204,faulty,no,no,M,1280000
+SU,U3_B_16_6204_1600,B,16000,1600,no,no,3,no,6204,faulty,no,no,U,1280000
+SU,U3_IR_16_6204_1600,I,16000,1600,no,no,3,no,6204,faulty,no,no,U,1280000
+SU,M3_B_16_6204_600,B,16000,600,no,no,3,no,6204,faulty,no,no,M,1280000
+SU,M2_OR_16_6204_1000,O,16000,1000,no,no,2,no,6204,faulty,no,no,M,1280000
+SU,H_IR_16_6204_1600,I,16000,1600,no,no,no,no,6204,faulty,no,no,I,1280000
+SU,H_H_16_6204_1400,N,16000,1400,no,no,no,no,6204,healthy,no,no,I,1280000
+SU,L_IR_16_6204_1200,I,16000,1200,no,no,no,no,6204,faulty,no,no,L,1280000
+SU,H_OR_16_6204_1400,O,16000,1400,no,no,no,no,6204,faulty,no,no,I,1280000
+SU,U3_IR_16_6204_600,I,16000,600,no,no,3,no,6204,faulty,no,no,U,1280000
+SU,M2_OR_16_6204_600,O,16000,600,no,no,2,no,6204,faulty,no,no,M,1280000
+SU,U1_H_16_6204_800,N,16000,800,no,no,1,no,6204,healthy,no,no,U,1280000
+SU,U2_B_16_6204_1000,B,16000,1000,no,no,2,no,6204,faulty,no,no,U,1280000
+SU,U3_H_16_6204_1400,N,16000,1400,no,no,3,no,6204,healthy,no,no,U,1280000
+SU,H_H_16_6204_1600,N,16000,1600,no,no,no,no,6204,healthy,no,no,I,1280000
+SU,M2_B_16_6204_600,B,16000,600,no,no,2,no,6204,faulty,no,no,M,1280000
+SU,U1_IR_16_6204_1400,I,16000,1400,no,no,1,no,6204,faulty,no,no,U,1280000
+SU,M2_IR_16_6204_800,I,16000,800,no,no,2,no,6204,faulty,no,no,M,1280000
+SU,U2_OR_16_6204_600,O,16000,600,no,no,2,no,6204,faulty,no,no,U,1280000
+SU,H_H_16_6204_800,N,16000,800,no,no,no,no,6204,healthy,no,no,I,1280000
+SU,U2_IR_16_6204_800,I,16000,800,no,no,2,no,6204,faulty,no,no,U,1280000
+SU,H_B_16_6204_1400,B,16000,1400,no,no,no,no,6204,faulty,no,no,I,1280000
+SU,U3_B_16_6204_800,B,16000,800,no,no,3,no,6204,faulty,no,no,U,1280000
+SU,L_IR_16_6204_1400,I,16000,1400,no,no,no,no,6204,faulty,no,no,L,1280000
+SU,U1_OR_16_6204_800,O,16000,800,no,no,1,no,6204,faulty,no,no,U,1280000
+SU,M3_OR_16_6204_800,O,16000,800,no,no,3,no,6204,faulty,no,no,M,1280000
+SU,M2_IR_16_6204_1000,I,16000,1000,no,no,2,no,6204,faulty,no,no,M,1280000
+SU,U1_IR_16_6204_1600,I,16000,1600,no,no,1,no,6204,faulty,no,no,U,1280000
+SU,M1_OR_16_6204_1400,O,16000,1400,no,no,1,no,6204,faulty,no,no,M,1280000
+SU,U1_IR_16_6204_1200,I,16000,1200,no,no,1,no,6204,faulty,no,no,U,1280000
+SU,U3_IR_16_6204_800,I,16000,800,no,no,3,no,6204,faulty,no,no,U,1280000
+SU,M2_H_16_6204_1600,N,16000,1600,no,no,2,no,6204,healthy,no,no,M,1280000
+SU,M1_H_16_6204_800,N,16000,800,no,no,1,no,6204,healthy,no,no,M,1280000
+SU,M3_B_16_6204_1400,B,16000,1400,no,no,3,no,6204,faulty,no,no,M,1280000
+SU,U2_H_16_6204_1000,N,16000,1000,no,no,2,no,6204,healthy,no,no,U,1280000
+SU,L_H_16_6204_800,N,16000,800,no,no,no,no,6204,healthy,no,no,L,1280000
+SU,M1_OR_16_6204_1200,O,16000,1200,no,no,1,no,6204,faulty,no,no,M,1280000
+SU,M1_IR_16_6204_1000,I,16000,1000,no,no,1,no,6204,faulty,no,no,M,1280000
+SU,H_OR_16_6204_600,O,16000,600,no,no,no,no,6204,faulty,no,no,I,1280000
+SU,U1_IR_16_6204_1000,I,16000,1000,no,no,1,no,6204,faulty,no,no,U,1280000
+SU,U2_IR_16_6204_1400,I,16000,1400,no,no,2,no,6204,faulty,no,no,U,1280000
+SU,U3_OR_16_6204_1000,O,16000,1000,no,no,3,no,6204,faulty,no,no,U,1280000
+SU,M2_IR_16_6204_600,I,16000,600,no,no,2,no,6204,faulty,no,no,M,1280000
+SU,M1_IR_16_6204_1600,I,16000,1600,no,no,1,no,6204,faulty,no,no,M,1280000
+SU,M2_B_16_6204_1600,B,16000,1600,no,no,2,no,6204,faulty,no,no,M,1280000
+SU,H_IR_16_6204_1400,I,16000,1400,no,no,no,no,6204,faulty,no,no,I,1280000
+SU,M3_IR_16_6204_1600,I,16000,1600,no,no,3,no,6204,faulty,no,no,M,1280000
+SU,M2_H_16_6204_1400,N,16000,1400,no,no,2,no,6204,healthy,no,no,M,1280000
+SU,M2_IR_16_6204_1600,I,16000,1600,no,no,2,no,6204,faulty,no,no,M,1280000
+SU,M2_OR_16_6204_1600,O,16000,1600,no,no,2,no,6204,faulty,no,no,M,1280000
+SU,H_B_16_6204_800,B,16000,800,no,no,no,no,6204,faulty,no,no,I,1280000
+SU,M1_OR_16_6204_1600,O,16000,1600,no,no,1,no,6204,faulty,no,no,M,1280000
+SU,H_IR_16_6204_1000,I,16000,1000,no,no,no,no,6204,faulty,no,no,I,1280000
+SU,H_IR_16_6204_800,I,16000,800,no,no,no,no,6204,faulty,no,no,I,1280000
+SU,U2_IR_16_6204_1000,I,16000,1000,no,no,2,no,6204,faulty,no,no,U,1280000
+SU,M3_H_16_6204_600,N,16000,600,no,no,3,no,6204,healthy,no,no,M,1280000
+SU,U1_OR_16_6204_1000,O,16000,1000,no,no,1,no,6204,faulty,no,no,U,1280000
+SU,M3_B_16_6204_1600,B,16000,1600,no,no,3,no,6204,faulty,no,no,M,1280000
+SU,M3_H_16_6204_800,N,16000,800,no,no,3,no,6204,healthy,no,no,M,1280000
+SU,U1_B_16_6204_1600,B,16000,1600,no,no,1,no,6204,faulty,no,no,U,1280000
+SU,M1_H_16_6204_1600,N,16000,1600,no,no,1,no,6204,healthy,no,no,M,1280000
+SU,U2_IR_16_6204_1200,I,16000,1200,no,no,2,no,6204,faulty,no,no,U,1280000
+SU,L_B_16_6204_600,B,16000,600,no,no,no,no,6204,faulty,no,no,L,1280000
+SU,U1_OR_16_6204_1200,O,16000,1200,no,no,1,no,6204,faulty,no,no,U,1280000
+SU,M2_B_16_6204_1000,B,16000,1000,no,no,2,no,6204,faulty,no,no,M,1280000
+SU,M3_B_16_6204_1000,B,16000,1000,no,no,3,no,6204,faulty,no,no,M,1280000
+SU,U3_IR_16_6204_1000,I,16000,1000,no,no,3,no,6204,faulty,no,no,U,1280000
+SU,M2_OR_16_6204_1400,O,16000,1400,no,no,2,no,6204,faulty,no,no,M,1280000
+SU,M1_H_16_6204_1200,N,16000,1200,no,no,1,no,6204,healthy,no,no,M,1280000
+SU,M2_H_16_6204_800,N,16000,800,no,no,2,no,6204,healthy,no,no,M,1280000
+SU,M3_OR_16_6204_1200,O,16000,1200,no,no,3,no,6204,faulty,no,no,M,1280000
+SU,U2_OR_16_6204_800,O,16000,800,no,no,2,no,6204,faulty,no,no,U,1280000
+SU,M3_IR_16_6204_1200,I,16000,1200,no,no,3,no,6204,faulty,no,no,M,1280000
+SU,U1_B_16_6204_1200,B,16000,1200,no,no,1,no,6204,faulty,no,no,U,1280000
+SU,H_OR_16_6204_1600,O,16000,1600,no,no,no,no,6204,faulty,no,no,I,1280000
+SU,L_B_16_6204_800,B,16000,800,no,no,no,no,6204,faulty,no,no,L,1280000
+SU,U1_H_16_6204_1000,N,16000,1000,no,no,1,no,6204,healthy,no,no,U,1280000
+SU,M3_H_16_6204_1400,N,16000,1400,no,no,3,no,6204,healthy,no,no,M,1280000
+SU,M1_H_16_6204_1000,N,16000,1000,no,no,1,no,6204,healthy,no,no,M,1280000
+SU,M1_IR_16_6204_1400,I,16000,1400,no,no,1,no,6204,faulty,no,no,M,1280000
+SU,L_OR_16_6204_800,O,16000,800,no,no,no,no,6204,faulty,no,no,L,1280000
+SU,H_B_16_6204_600,B,16000,600,no,no,no,no,6204,faulty,no,no,I,1280000
+SU,H_H_16_6204_600,N,16000,600,no,no,no,no,6204,healthy,no,no,I,1280000
+SU,U2_OR_16_6204_1400,O,16000,1400,no,no,2,no,6204,faulty,no,no,U,1280000
+SU,U1_H_16_6204_1400,N,16000,1400,no,no,1,no,6204,healthy,no,no,U,1280000
+SU,L_IR_16_6204_1600,I,16000,1600,no,no,no,no,6204,faulty,no,no,L,1280000
+SU,M1_IR_16_6204_600,I,16000,600,no,no,1,no,6204,faulty,no,no,M,1280000
+SU,H_IR_16_6204_1200,I,16000,1200,no,no,no,no,6204,faulty,no,no,I,1280000
+SU,M2_B_16_6204_1200,B,16000,1200,no,no,2,no,6204,faulty,no,no,M,1280000
+SU,U1_OR_16_6204_1400,O,16000,1400,no,no,1,no,6204,faulty,no,no,U,1280000
+SU,M3_H_16_6204_1200,N,16000,1200,no,no,3,no,6204,healthy,no,no,M,1280000
+SU,U3_OR_16_6204_1400,O,16000,1400,no,no,3,no,6204,faulty,no,no,U,1280000
+SU,U2_OR_16_6204_1200,O,16000,1200,no,no,2,no,6204,faulty,no,no,U,1280000
+SU,H_H_16_6204_1200,N,16000,1200,no,no,no,no,6204,healthy,no,no,I,1280000
+SU,U2_H_16_6204_800,N,16000,800,no,no,2,no,6204,healthy,no,no,U,1280000
+SU,M2_H_16_6204_1000,N,16000,1000,no,no,2,no,6204,healthy,no,no,M,1280000
+SU,L_IR_16_6204_1000,I,16000,1000,no,no,no,no,6204,faulty,no,no,L,1280000
+SU,H_OR_16_6204_1200,O,16000,1200,no,no,no,no,6204,faulty,no,no,I,1280000
+SU,U1_B_16_6204_800,B,16000,800,no,no,1,no,6204,faulty,no,no,U,1280000
+SU,U1_B_16_6204_600,B,16000,600,no,no,1,no,6204,faulty,no,no,U,1280000
+SU,U3_H_16_6204_1000,N,16000,1000,no,no,3,no,6204,healthy,no,no,U,1280000
+SU,L_H_16_6204_1000,N,16000,1000,no,no,no,no,6204,healthy,no,no,L,1280000
+SU,L_OR_16_6204_1400,O,16000,1400,no,no,no,no,6204,faulty,no,no,L,1280000
+SU,M1_IR_16_6204_800,I,16000,800,no,no,1,no,6204,faulty,no,no,M,1280000
+SU,H_H_16_6204_1000,N,16000,1000,no,no,no,no,6204,healthy,no,no,I,1280000
+SU,M1_OR_16_6204_600,O,16000,600,no,no,1,no,6204,faulty,no,no,M,1280000
+SU,U2_B_16_6204_1600,B,16000,1600,no,no,2,no,6204,faulty,no,no,U,1280000
+SU,H_B_16_6204_1600,B,16000,1600,no,no,no,no,6204,faulty,no,no,I,1280000
+SU,U2_OR_16_6204_1000,O,16000,1000,no,no,2,no,6204,faulty,no,no,U,1280000
+SU,U1_H_16_6204_1600,N,16000,1600,no,no,1,no,6204,healthy,no,no,U,1280000
+SU,U3_IR_16_6204_1400,I,16000,1400,no,no,3,no,6204,faulty,no,no,U,1280000
+SU,M3_OR_16_6204_1400,O,16000,1400,no,no,3,no,6204,faulty,no,no,M,1280000
+SU,L_OR_16_6204_1000,O,16000,1000,no,no,no,no,6204,faulty,no,no,L,1280000
+SU,L_H_16_6204_600,N,16000,600,no,no,no,no,6204,healthy,no,no,L,1280000
+SU,L_OR_16_6204_600,O,16000,600,no,no,no,no,6204,faulty,no,no,L,1280000
+SU,U3_H_16_6204_1200,N,16000,1200,no,no,3,no,6204,healthy,no,no,U,1280000
+SU,M1_B_16_6204_1400,B,16000,1400,no,no,1,no,6204,faulty,no,no,M,1280000
+SU,U1_B_16_6204_1400,B,16000,1400,no,no,1,no,6204,faulty,no,no,U,1280000
+SU,L_H_16_6204_1400,N,16000,1400,no,no,no,no,6204,healthy,no,no,L,1280000
+SU,M1_OR_16_6204_800,O,16000,800,no,no,1,no,6204,faulty,no,no,M,1280000
+SU,M1_OR_16_6204_1000,O,16000,1000,no,no,1,no,6204,faulty,no,no,M,1280000
+SU,U3_OR_16_6204_800,O,16000,800,no,no,3,no,6204,faulty,no,no,U,1280000
+SU,M2_IR_16_6204_1200,I,16000,1200,no,no,2,no,6204,faulty,no,no,M,1280000
+SU,M3_IR_16_6204_1000,I,16000,1000,no,no,3,no,6204,faulty,no,no,M,1280000
+SU,L_OR_16_6204_1600,O,16000,1600,no,no,no,no,6204,faulty,no,no,L,1280000
+SU,U2_H_16_6204_1200,N,16000,1200,no,no,2,no,6204,healthy,no,no,U,1280000
+SU,U1_IR_16_6204_600,I,16000,600,no,no,1,no,6204,faulty,no,no,U,1280000
+SU,M3_IR_16_6204_800,I,16000,800,no,no,3,no,6204,faulty,no,no,M,1280000
+SU,M1_H_16_6204_1400,N,16000,1400,no,no,1,no,6204,healthy,no,no,M,1280000
+SU,U1_OR_16_6204_600,O,16000,600,no,no,1,no,6204,faulty,no,no,U,1280000
+SU,M2_IR_16_6204_1400,I,16000,1400,no,no,2,no,6204,faulty,no,no,M,1280000
+SU,M3_H_16_6204_1600,N,16000,1600,no,no,3,no,6204,healthy,no,no,M,1280000
+SU,M1_B_16_6204_600,B,16000,600,no,no,1,no,6204,faulty,no,no,M,1280000
+SU,L_IR_16_6204_800,I,16000,800,no,no,no,no,6204,faulty,no,no,L,1280000
+SU,U1_OR_16_6204_1600,O,16000,1600,no,no,1,no,6204,faulty,no,no,U,1280000
+SU,M1_H_16_6204_600,N,16000,600,no,no,1,no,6204,healthy,no,no,M,1280000
+SU,U2_B_16_6204_1400,B,16000,1400,no,no,2,no,6204,faulty,no,no,U,1280000
+SU,U3_H_16_6204_800,N,16000,800,no,no,3,no,6204,healthy,no,no,U,1280000
+SU,M3_IR_16_6204_600,I,16000,600,no,no,3,no,6204,faulty,no,no,M,1280000
+SU,M3_OR_16_6204_1000,O,16000,1000,no,no,3,no,6204,faulty,no,no,M,1280000
+SU,U3_B_16_6204_1400,B,16000,1400,no,no,3,no,6204,faulty,no,no,U,1280000
+SU,U2_H_16_6204_1400,N,16000,1400,no,no,2,no,6204,healthy,no,no,U,1280000
+SU,M3_H_16_6204_1000,N,16000,1000,no,no,3,no,6204,healthy,no,no,M,1280000
+SU,U2_H_16_6204_1600,N,16000,1600,no,no,2,no,6204,healthy,no,no,U,1280000
+SU,L_IR_16_6204_600,I,16000,600,no,no,no,no,6204,faulty,no,no,L,1280000
+SU,H_B_16_6204_1000,B,16000,1000,no,no,no,no,6204,faulty,no,no,I,1280000
+SU,L_H_16_6204_1200,N,16000,1200,no,no,no,no,6204,healthy,no,no,L,1280000
+SU,M1_B_16_6204_1600,B,16000,1600,no,no,1,no,6204,faulty,no,no,M,1280000
+SU,M2_B_16_6204_800,B,16000,800,no,no,2,no,6204,faulty,no,no,M,1280000
+SU,M3_B_16_6204_1200,B,16000,1200,no,no,3,no,6204,faulty,no,no,M,1280000
+SU,U2_H_16_6204_600,N,16000,600,no,no,2,no,6204,healthy,no,no,U,1280000
+SU,L_H_16_6204_1600,N,16000,1600,no,no,no,no,6204,healthy,no,no,L,1280000
+SU,M1_IR_16_6204_1200,I,16000,1200,no,no,1,no,6204,faulty,no,no,M,1280000
+SU,M3_IR_16_6204_1400,I,16000,1400,no,no,3,no,6204,faulty,no,no,M,1280000
+SU,U3_H_16_6204_600,N,16000,600,no,no,3,no,6204,healthy,no,no,U,1280000
+SU,U3_B_16_6204_1200,B,16000,1200,no,no,3,no,6204,faulty,no,no,U,1280000
+SU,U1_H_16_6204_1200,N,16000,1200,no,no,1,no,6204,healthy,no,no,U,1280000
+SU,M3_OR_16_6204_600,O,16000,600,no,no,3,no,6204,faulty,no,no,M,1280000
+SU,L_B_16_6204_1600,B,16000,1600,no,no,no,no,6204,faulty,no,no,L,1280000
+SU,U2_IR_16_6204_600,I,16000,600,no,no,2,no,6204,faulty,no,no,U,1280000
+SU,M2_B_16_6204_1400,B,16000,1400,no,no,2,no,6204,faulty,no,no,M,1280000
+SU,U2_B_16_6204_800,B,16000,800,no,no,2,no,6204,faulty,no,no,U,1280000
+SU,U3_IR_16_6204_1200,I,16000,1200,no,no,3,no,6204,faulty,no,no,U,1280000
+SU,H_B_16_6204_1200,B,16000,1200,no,no,no,no,6204,faulty,no,no,I,1280000

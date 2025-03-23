@@ -37,7 +37,7 @@ class CNN1D(nn.Module):
         
         # Fully Connected (FC) Module
         self.flatten = nn.Flatten()
-        self.fc = nn.Linear(2640, num_classes)  # Assumindo que o tamanho da entrada é 10k e a saída da CNN é B×16×40
+        self.fc = nn.Linear(400, num_classes)  # Assumindo que o tamanho da entrada é 10k e a saída da CNN é B×16×40
         self.dropout = nn.Dropout(p=0.1)
         
     def forward(self, x):
