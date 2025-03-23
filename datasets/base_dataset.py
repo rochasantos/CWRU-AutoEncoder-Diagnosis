@@ -45,6 +45,8 @@ class BaseDataset(ABC):
         unit = '.mat'
         if dataset_name == "paderborn":
             unit = '.rar'
+        if dataset_name == "muet":
+            unit = '.csv'
         for bearing in list_of_bearings:
             sufix_url = bearing[1]
             output_path = os.path.join('data/raw', dataset_name, bearing[0]+unit)
@@ -54,7 +56,14 @@ class BaseDataset(ABC):
                 extract_rar(output_path, output_path[:-4])
         print("Download finished.")
 
-    def save_signal(self, root_dir, data_filter=None, segment_size=None, target_sr=None, class_names=["I", "O", "B"]):        
+    def save_signal(self, root_dir, data_filter=None, segment_size=None, target_sr=None, class_names=["N", "I", "O", "B"]):
+        label_mapping = {
+            "N": 0,  # Normal
+            "I": 1,  # Inner Race Fault
+            "O": 2,  # Outer Race Fault
+            "B": 3,  # Ball Fault
+            "H": 4   # Hybrid Fault (se aplicável)
+        }    
         for cl in class_names:
             if root_dir.split("/")[-1] == 'cwru':
                 for severity in ["007", "014", "021", "028"]:
@@ -123,13 +132,18 @@ class BaseDataset(ABC):
                 data, label = self._extract_data(filepath)
                 if target_sr:
                     data = librosa.resample(data, orig_sr=self.sampling_rate, target_sr=target_sr)
-                np.save(f"{root_dir}/{info['extent_damage']}/{info['label']}/{basename}.npy", np.array([data, label], dtype=object))
+                data_with_label = np.append(data, label_mapping[label])
+                if self.__class__.__name__.lower() == "cwru":
+                    outpath = f"{root_dir}/{info['extent_damage']}/{info['label']}/{basename}.npy"
+                else:
+                    outpath = f"{root_dir}/{info['label']}/{basename}.npy"
+                np.save(outpath, data_with_label)
 
     def load_file(self, filepath):
         signal, label = self._extract_data(filepath)
         return signal, label
 
-    def group_by(self, feature, filter=None, sample_size=None):
+    def group_by(self, feature, filter=None, sample_size=None, target_sr=42000):
         metainfo = self.get_metainfo(filter)
         groups = []
         hash = dict()
@@ -138,11 +152,16 @@ class BaseDataset(ABC):
             if ftr not in hash:
                 hash[ftr] = len(hash)
             if sample_size:
-                for j in range(int(i["signal_length"])//sample_size):
+                signal_length = compute_resampled_sample_size(int(i["signal_length"]), int(i["sampling_rate"]), target_sr)
+                for j in range(signal_length//sample_size):
                     groups.append((hash[ftr], i["filename"], i["label"], j))
             else:
                 groups.append((hash[ftr], i["filename"], i["label"], 0))
-        return np.array(groups)
+        data_groups = np.array([t[0] for t in groups])
+        ids = np.array([t[1] for t in groups])
+        labels = np.array([t[2] for t in groups])
+        start_position = np.array([t[3] for t in groups])
+        return data_groups, ids, labels, start_position
     
     def get_metainfo(self, filter=None):
         return self._metainfo.filter_data(filter)
@@ -160,4 +179,9 @@ class BaseDataset(ABC):
     @property
     def metainfo(self):
         return self._metainfo
-    
+
+
+def compute_resampled_sample_size(original_size, original_rate, new_rate):
+    resampling_factor = new_rate / original_rate
+    new_size = int(round(original_size * resampling_factor))
+    return new_size
