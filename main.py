@@ -5,9 +5,9 @@ from src.utils import LoggerWriter
 
 from scripts.download import download
 from scripts.process_signal import process_signal
-# from scripts.experimenter import experimenter
-from scripts.experimenter import experimenter
-
+from scripts.create_spectrogram import create_spectrogram
+from scripts.experimenter_spectronet import experimenter
+from scripts.spectrogram_chunker import generate_chunk
 
 def create_directory_structure():
     root_dir = "data/spectrograms"
@@ -25,7 +25,8 @@ if __name__ == "__main__":
 
     # create_directory_structure()
     # download("su")
-    # process_signal(dataset_name="hust_8", target_sr=42000)
-    # create_spectrogram()    
+    # process_signal(dataset_name="cwru", target_sr=42000)
+    # create_spectrogram()   
+    # generate_chunk()
     experimenter()
     

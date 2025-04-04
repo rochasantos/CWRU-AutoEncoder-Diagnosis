@@ -89,7 +89,7 @@ class BaseDataset(ABC):
                     for i in range(n_segments):
                         sample = signal[(i * segment_size):((i + 1) * segment_size)]
                         label_value = np.array([class_names.index(label)])
-                        # data = np.hstack((sample, label_value))
+                        data = np.hstack((sample, label_value))
                         normalized_signal = z_score_normalize(sample)
                         np.save(f"{root_dir}/{info['extent_damage']}/{info['label']}/{basename}_{i}.npy", normalized_signal)
             elif root_dir.split("/")[-1] == 'paderborn':
@@ -107,9 +107,9 @@ class BaseDataset(ABC):
                         for i in range(n_segments):
                             sample = signal[(i * segment_size):((i + 1) * segment_size)]
                             label_value = np.array([class_names.index(label)])
-                            # data = np.hstack((sample, label_value))
-                            normalized_signal = z_score_normalize(sample)
-                            np.save(f"{root_dir}/{label_map}/{folder}_{i}.npy", normalized_signal)
+                            data = np.hstack((sample, label_value))
+                            # normalized_signal = z_score_normalize(data)
+                            np.save(f"{root_dir}/{label_map}/{folder}_{i}.npy", data)
             else:
                 for info in metainfo:
                     basename = info["filename"]
@@ -122,8 +122,10 @@ class BaseDataset(ABC):
                     n_segments = signal.shape[0] // segment_size
                     for i in range(n_segments):
                         sample = signal[(i * segment_size):((i + 1) * segment_size)]
-                        normalized_signal = z_score_normalize(sample)
-                        np.save(f"{root_dir}/{info['label']}/{basename}_{i}.npy", normalized_signal)
+                        label_value = np.array([class_names.index(label)])
+                        data = np.hstack((sample, label_value))
+                        # normalized_signal = z_score_normalize(sample)
+                        np.save(f"{root_dir}/{info['label']}/{basename}_{i}.npy", data)
 
         else:
             for info in metainfo:

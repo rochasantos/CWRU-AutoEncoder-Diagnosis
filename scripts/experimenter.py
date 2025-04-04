@@ -71,18 +71,18 @@ def experimenter():
 
             # training
             print("Starting training.")
-            train(model, train_loader, criterion, optimizer, num_epochs=70, device=device, early_stopping=early_stopper)
+            train(model, train_loader, criterion, optimizer, num_epochs=70, device=device, early_stopping=None)
             
-            # finetuning
-            print("Starting finetuning.")
-            for param in model.parameters():
-                param.requires_grad = False
-            for param in model.fc.parameters():
-                param.requires_grad = True
-            criterion_ft = nn.CrossEntropyLoss()
-            optimizer_ft = optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), lr=0.00001)
-            train(model, DataLoader(train_dataset_cwru, batch_size=32, shuffle=True), criterion_ft, optimizer_ft, 
-                  num_epochs=200, device=device, early_stopping=early_stopper_ft)
+            # # finetuning
+            # print("Starting finetuning.")
+            # for param in model.parameters():
+            #     param.requires_grad = False
+            # for param in model.fc.parameters():
+            #     param.requires_grad = True
+            # criterion_ft = nn.CrossEntropyLoss()
+            # optimizer_ft = optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), lr=0.00001)
+            # train(model, DataLoader(train_dataset_cwru, batch_size=32, shuffle=True), criterion_ft, optimizer_ft, 
+            #       num_epochs=200, device=device, early_stopping=early_stopper_ft)
             
             # testing
             accuracy = test(model, test_loader, device)

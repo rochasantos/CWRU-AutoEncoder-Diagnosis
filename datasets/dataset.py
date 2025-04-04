@@ -24,14 +24,12 @@ class PtDataset(Dataset):
             for filename in files:
                 full_path = os.path.join(root, filename)
                 file_paths.append(full_path)
-        print("_list_all_files_")
-        print(f"length list_files: {len(file_paths)}")
         file_paths_splited = []
         for path in file_paths:
             sample_size = np.load(path, allow_pickle=True).shape[0]-1
             for idx in range(sample_size//self.segment_size):
                 file_paths_splited.append((path, idx*self.segment_size))
-        print(f"length list_files_segmented: {len(file_paths_splited)}")
+        print(f"Number of samples files: {len(file_paths_splited)}")
         return file_paths_splited
     
     def load_file(self, filepath, start_position=0):
