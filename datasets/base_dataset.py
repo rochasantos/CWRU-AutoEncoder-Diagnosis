@@ -56,95 +56,67 @@ class BaseDataset(ABC):
                 extract_rar(output_path, output_path[:-4])
         print("Download finished.")
 
-    def save_signal(self, root_dir, data_filter=None, segment_size=None, target_sr=None, class_names=["N", "I", "O", "B"]):
-        label_mapping = {
-            "N": 0,  # Normal
-            "I": 1,  # Inner Race Fault
-            "O": 2,  # Outer Race Fault
-            "B": 3,  # Ball Fault
-            "H": 4   # Hybrid Fault (se aplicável)
-        }    
-        for cl in class_names:
-            if root_dir.split("/")[-1] == 'cwru':
-                for severity in ["007", "014", "021", "028"]:
-                    if not os.path.exists(os.path.join(root_dir, cl)): 
-                        os.makedirs(os.path.join(f"{root_dir}/{severity}", cl), exist_ok=True)
-            elif not os.path.exists(os.path.join(root_dir, cl)): 
-                os.makedirs(os.path.join(root_dir, cl), exist_ok=True)
+
+    def process_and_save_signal(self, output_root=None, filter=None, segment_size=None, max_size=None, pipeline_transforms=None):
         
-        if isinstance(data_filter, dict):
-            metainfo = self._metainfo.filter_data(data_filter)
+        dataset_name = self.__class__.__name__.lower()
+        
+        if output_root is None:
+            output_root = f"data/processed/{dataset_name}" # Adjust as needed on case CWRU severity /007, /014 or /021
+        
+        metainfo = self._metainfo.filter_data(filter)
+        print(f"Metainfo: {metainfo}")
+        segments_counter = 0  
+        for info in metainfo:
+            basename = info["filename"]
+            original_fs = int(info["sampling_rate"])
+            label = info["label"]
+            
+            output_dir = os.path.join(output_root, label)
+            os.makedirs(output_dir, exist_ok=True)
 
-        if segment_size:
-            if root_dir.split("/")[-1] == 'cwru':
-                for info in metainfo:
-                    basename = info["filename"]
-                    orig_sr = int(info["sampling_rate"])       
-                    filepath = os.path.join('data/raw/', self.__class__.__name__.lower(), basename+'.mat')            
-                    signal, label = self._extract_data(filepath)
-                    if target_sr:
-                        signal = librosa.resample(signal, orig_sr=orig_sr, target_sr=target_sr)
-                    # split the signal into segments
-                    n_segments = signal.shape[0] // segment_size
-                    for i in range(n_segments):
-                        sample = signal[(i * segment_size):((i + 1) * segment_size)]
-                        label_value = np.array([class_names.index(label)])
-                        data = np.hstack((sample, label_value))
-                        normalized_signal = z_score_normalize(sample)
-                        np.save(f"{root_dir}/{info['extent_damage']}/{info['label']}/{basename}_{i}.npy", normalized_signal)
-            elif root_dir.split("/")[-1] == 'paderborn':
-                for folder in data_filter:
-                    label_map = {'KA':'O', 'KI':'I'}[folder[:2]]
-                    for file in os.listdir(os.path.join("data/raw/paderborn",folder, folder)):
-                        if os.path.splitext(file)[1] != ".mat":
-                            continue
-                        filepath = os.path.join('data/raw/paderborn', folder, folder, file)
-                        signal, label = self._extract_data(filepath)
-                        if target_sr:
-                            signal = librosa.resample(signal, orig_sr=self.sampling_rate, target_sr=target_sr)
-                        # split the signal into segments
-                        n_segments = signal.shape[0] // segment_size
-                        for i in range(n_segments):
-                            sample = signal[(i * segment_size):((i + 1) * segment_size)]
-                            label_value = np.array([class_names.index(label)])
-                            data = np.hstack((sample, label_value))
-                            # normalized_signal = z_score_normalize(data)
-                            np.save(f"{root_dir}/{label_map}/{folder}_{i}.npy", data)
-            else:
-                for info in metainfo:
-                    basename = info["filename"]
-                    orig_sr = int(info["sampling_rate"])    
-                    filepath = os.path.join('data/raw/', self.__class__.__name__.lower(), basename+'.mat')            
-                    signal, label = self._extract_data(filepath)
-                    if target_sr:
-                        signal = librosa.resample(signal, orig_sr=orig_sr, target_sr=target_sr)
-                    # split the signal into segments
-                    n_segments = signal.shape[0] // segment_size
-                    for i in range(n_segments):
-                        sample = signal[(i * segment_size):((i + 1) * segment_size)]
-                        label_value = np.array([class_names.index(label)])
-                        data = np.hstack((sample, label_value))
-                        # normalized_signal = z_score_normalize(sample)
-                        np.save(f"{root_dir}/{info['label']}/{basename}_{i}.npy", data)
+            filepath = os.path.join('data/raw/', self.__class__.__name__.lower(), basename+'.mat')            
+            signal, label = self._extract_data(filepath)   
 
-        else:
-            for info in metainfo:
-                basename = info["filename"]        
-                filepath = os.path.join('data/raw/', self.__class__.__name__.lower(), basename+'.mat')            
-                data, label = self._extract_data(filepath)
-                if target_sr:
-                    data = librosa.resample(data, orig_sr=self.sampling_rate, target_sr=target_sr)
-                data_with_label = np.append(data, label_mapping[label])
-                if self.__class__.__name__.lower() == "cwru":
-                    outpath = f"{root_dir}/{info['extent_damage']}/{info['label']}/{basename}.npy"
-                else:
-                    outpath = f"{root_dir}/{info['label']}/{basename}.npy"
-                np.save(outpath, data_with_label)
+            if max_size and len(signal) > max_size:
+                signal = signal[:max_size]
+            if max_size and len(signal) < max_size:
+                print(f"Signal length {len(signal)} in the filename {basename}.mat is less than max size {max_size}. Skipping.")
+                continue
 
+            if segment_size:                
+                for segment in range(0, len(signal), segment_size):
+                    segment_signal = signal[segment:segment + segment_size]
+                    if len(segment_signal) < segment_size:
+                        continue
+                    if pipeline_transforms:
+                        segment_signal = pipeline_transforms.apply(segment_signal, original_fs)
+                    # Save the processed signal
+                    segments_counter += 1
+                    np.save(os.path.join(output_dir, f"{basename}_{segment//segment_size}.npy"), segment_signal)
+
+        print(f"Processed {segments_counter} segments from {len(metainfo)} files.")
+
+    
     def load_file(self, filepath):
         signal, label = self._extract_data(filepath)
         return signal, label
+    
 
+    def load_data(self, filter=None):                    
+        metainfo = self._metainfo.filter_data(filter)
+        signals = []
+        labels = []
+        fs = []
+        for info in metainfo:
+            basename = info["filename"]
+            filepath = os.path.join('data/raw/', self.__class__.__name__.lower(), basename+'.mat')
+            signal, label = self._extract_data(filepath)
+            signals.append(signal)
+            labels.append(label)
+            fs.append(int(info["sampling_rate"]))
+        return signals, labels, fs
+    
     def group_by(self, feature, filter=None, sample_size=None, target_sr=42000):
         metainfo = self.get_metainfo(filter)
         groups = []
