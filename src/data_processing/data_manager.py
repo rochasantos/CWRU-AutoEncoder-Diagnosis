@@ -4,7 +4,6 @@ import yaml
 class DatasetManager:
     def __init__(self, dataset_name=None):
         self.annotation_file = self._load_annotation_file()
-        self.filter_config = self._load_config("config/filters_config.yaml")
         self.dataset_name=dataset_name
 
     def _load_annotation_file(self):
