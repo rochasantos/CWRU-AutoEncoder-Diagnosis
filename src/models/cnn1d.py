@@ -3,49 +3,34 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 class CNN1D(nn.Module):
-    def __init__(self, input_channels=1, num_classes=5):
+    def __init__(self, input_length, num_classes=4):
         super(CNN1D, self).__init__()
-        
-        # Basic Convolutional (BC) modules
-        self.bc1 = nn.Sequential(
-            nn.Conv1d(in_channels=input_channels, out_channels=4, kernel_size=3, stride=2, padding=1),
-            nn.BatchNorm1d(4),
-            nn.LeakyReLU(),
-            nn.MaxPool1d(kernel_size=3, stride=2, padding=1)
-        )
-        
-        self.bc2 = nn.Sequential(
-            nn.Conv1d(in_channels=4, out_channels=8, kernel_size=3, stride=2, padding=1),
-            nn.BatchNorm1d(8),
-            nn.LeakyReLU(),
-            nn.MaxPool1d(kernel_size=3, stride=2, padding=1)
-        )
-        
-        self.bc3 = nn.Sequential(
-            nn.Conv1d(in_channels=8, out_channels=12, kernel_size=3, stride=2, padding=1),
-            nn.BatchNorm1d(12),
-            nn.LeakyReLU(),
-            nn.MaxPool1d(kernel_size=3, stride=2, padding=1)
-        )
-        
-        self.bc4 = nn.Sequential(
-            nn.Conv1d(in_channels=12, out_channels=16, kernel_size=3, stride=2, padding=1),
-            nn.BatchNorm1d(16),
-            nn.LeakyReLU(),
-            nn.MaxPool1d(kernel_size=3, stride=2, padding=1)
-        )
-        
-        # Fully Connected (FC) Module
-        self.flatten = nn.Flatten()
-        self.fc = nn.Linear(400, num_classes)  # Assumindo que o tamanho da entrada é 10k e a saída da CNN é B×16×40
-        self.dropout = nn.Dropout(p=0.1)
-        
+
+        self.conv1 = nn.Conv1d(in_channels=1, out_channels=32, kernel_size=16)
+        # self.bn1 = nn.BatchNorm1d(num_features=32)
+        self.pool1 = nn.MaxPool1d(kernel_size=8)
+
+        self.conv2 = nn.Conv1d(in_channels=32, out_channels=32, kernel_size=16)
+        # self.bn2 = nn.BatchNorm1d(num_features=32)
+        self.pool2 = nn.MaxPool1d(kernel_size=8)
+
+        # Cálculo dinâmico do tamanho da camada densa
+        self._to_linear = self._get_conv_output(input_length)
+
+        self.fc1 = nn.Linear(self._to_linear, 64)
+        self.dropout = nn.Dropout(p=0.3)
+        self.fc2 = nn.Linear(64, num_classes)
+
+    def _get_conv_output(self, input_length):
+        x = torch.zeros(1, 1, input_length)
+        x = self.pool1(F.relu(self.conv1(x)))
+        x = self.pool2(F.relu(self.conv2(x)))
+        return x.view(1, -1).shape[1]
+
     def forward(self, x):
-        x = self.bc1(x)
-        x = self.bc2(x)
-        x = self.bc3(x)
-        x = self.bc4(x)
-        x = self.flatten(x)
-        x = self.dropout(x)
-        x = self.fc(x)
-        return x
+        x = self.pool1(F.relu(self.conv1(x)))
+        x = self.pool2(F.relu(self.conv2(x)))
+        x = x.view(x.size(0), -1)
+        x = F.relu(self.fc1(x))
+        # x = self.dropout(x)
+        return self.fc2(x)
