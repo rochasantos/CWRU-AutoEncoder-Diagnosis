@@ -1,13 +1,6 @@
 import os
-import sys
-import logging
-from src.utils import LoggerWriter
+from datasets import CWRU
 
-from scripts.download import download
-from scripts.process_signal import process_signal
-from scripts.create_spectrogram import create_spectrogram
-from scripts.experimenter_spectronet import experimenter
-from scripts.spectrogram_chunker import generate_chunk
 
 def create_directory_structure():
     root_dir = "data/spectrograms"
@@ -21,12 +14,5 @@ def create_directory_structure():
 
 
 if __name__ == "__main__":
-    sys.stdout = LoggerWriter(logging.info, "log")
-
-    # create_directory_structure()
-    # download("su")
-    # process_signal(dataset_name="cwru", target_sr=42000)
-    # create_spectrogram()   
-    # generate_chunk()
-    experimenter()
-    
+    create_directory_structure()
+    # CWRU().download()    
