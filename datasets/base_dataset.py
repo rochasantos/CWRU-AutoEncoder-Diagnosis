@@ -1,9 +1,7 @@
 import os
 import numpy as np
-import librosa
 from src.utils import download_file, extract_rar
 from src.data_processing.data_manager import DatasetManager
-from src.utils import z_score_normalize
 
 
 from abc import ABC, abstractmethod
@@ -57,15 +55,24 @@ class BaseDataset(ABC):
         print("Download finished.")
 
 
-    def process_and_save_signal(self, output_root=None, filter=None, segment_size=None, max_size=None, pipeline_transforms=None):
+    def process_and_save_signal(self, output_root=None, filter=None, max_size=None, pipeline_transforms=None):
         
         dataset_name = self.__class__.__name__.lower()
         
         if output_root is None:
             output_root = f"data/processed/{dataset_name}" # Adjust as needed on case CWRU severity /007, /014 or /021
         
-        metainfo = self._metainfo.filter_data(filter)
-        print(f"Metainfo: {metainfo}")
+        if filter:
+            if isinstance(filter, list): # paderborn case
+                print(self._metainfo.filter_data()[0]["filename"])
+                metainfo = [info for info in self._metainfo.filter_data() if info["filename"].split("_")[3] in filter]
+            if isinstance(filter, dict):
+                print(f"Filter: {filter} is dict")
+                metainfo = self._metainfo.filter_data(filter)
+        else:
+            metainfo = self._metainfo.filter_data()
+
+        print(f"Metainfo: {len(metainfo)}")
         segments_counter = 0  
         for info in metainfo:
             basename = info["filename"]
@@ -75,7 +82,10 @@ class BaseDataset(ABC):
             output_dir = os.path.join(output_root, label)
             os.makedirs(output_dir, exist_ok=True)
 
-            filepath = os.path.join('data/raw/', self.__class__.__name__.lower(), basename+'.mat')            
+            filepath = os.path.join('data/raw/', self.__class__.__name__.lower(), basename+'.mat')
+            if dataset_name == "paderborn":
+                subdir = basename.split("_")[3]
+                filepath = os.path.join('data/raw/', self.__class__.__name__.lower(), subdir, subdir, basename)  
             signal, label = self._extract_data(filepath)   
 
             if max_size and len(signal) > max_size:
@@ -83,17 +93,20 @@ class BaseDataset(ABC):
             if max_size and len(signal) < max_size:
                 print(f"Signal length {len(signal)} in the filename {basename}.mat is less than max size {max_size}. Skipping.")
                 continue
-
-            if segment_size:                
-                for segment in range(0, len(signal), segment_size):
-                    segment_signal = signal[segment:segment + segment_size]
-                    if len(segment_signal) < segment_size:
-                        continue
-                    if pipeline_transforms:
-                        segment_signal = pipeline_transforms.apply(segment_signal, original_fs)
-                    # Save the processed signal
-                    segments_counter += 1
-                    np.save(os.path.join(output_dir, f"{basename}_{segment//segment_size}.npy"), segment_signal)
+            if pipeline_transforms:
+                signal = pipeline_transforms.apply(signal, original_fs)
+            np.save(os.path.join(output_dir, f"{basename}.npy"), signal)
+            
+            # if segment_size:                
+            #     for segment in range(0, len(signal), segment_size):
+            #         segment_signal = signal[segment:segment + segment_size]
+            #         if len(segment_signal) < segment_size:
+            #             continue
+            #         if pipeline_transforms:
+            #             segment_signal = pipeline_transforms.apply(segment_signal, original_fs)
+            #         # Save the processed signal
+            #         segments_counter += 1
+            #         np.save(os.path.join(output_dir, f"{basename}_{segment//segment_size}.npy"), segment_signal)
 
         print(f"Processed {segments_counter} segments from {len(metainfo)} files.")
 
@@ -104,19 +117,34 @@ class BaseDataset(ABC):
     
 
     def load_data(self, filter=None):                    
-        metainfo = self._metainfo.filter_data(filter)
-        signals = []
-        labels = []
-        fs = []
+        if filter:
+            if isinstance(filter, list): # paderborn case
+                print(self._metainfo.filter_data()[0]["filename"])
+                metainfo = [info for info in self._metainfo.filter_data() if info["filename"].split("_")[3] in filter]
+            if isinstance(filter, dict):
+                print(f"Filter: {filter} is dict")
+                metainfo = self._metainfo.filter_data(filter)
+        else:
+            metainfo = self._metainfo.filter_data()
+
+        dataset_name = self.__class__.__name__.lower()
         for info in metainfo:
             basename = info["filename"]
-            filepath = os.path.join('data/raw/', self.__class__.__name__.lower(), basename+'.mat')
+            filepath = os.path.join('data/raw/', dataset_name, basename+'.mat')
+            # if dataset_name == "cwru":
+            #     if info["hp"] == "0": # skip 0 HP
+            #         continue
+            if dataset_name == "paderborn":
+                rotation_label = basename.split("_")[0]
+                if rotation_label != "N15": # skip N15
+                    continue
+                if basename == "N15_M07_F10_KA01_8":
+                    continue
+                subdir = basename.split("_")[3]
+                filepath = os.path.join('data/raw/', dataset_name, subdir, subdir, basename)
             signal, label = self._extract_data(filepath)
-            signals.append(signal)
-            labels.append(label)
-            fs.append(int(info["sampling_rate"]))
-        return signals, labels, fs
-    
+            yield signal, label, int(info["sampling_rate"]), basename
+            
     def group_by(self, feature, filter=None, sample_size=None, target_sr=42000):
         metainfo = self.get_metainfo(filter)
         groups = []
