@@ -41,9 +41,15 @@ class Paderborn(BaseDataset):
             for downloading vibration data.
         """
         return [
+        # Reference
         ("K001", "K001.rar"), ("K002", "K002.rar"), ("K003", "K003.rar"), ("K004", "K004.rar"), ("K005", "K005.rar"), ("K006", "K006.rar"), 
-        ("KA01", "KA01.rar"), ("KA03", "KA03.rar"), ("KA04", "KA04.rar"), ("KA05", "KA05.rar"), ("KA06", "KA06.rar"), ("KA07", "KA07.rar"), ("KA09", "KA09.rar"), ("KA15", "KA15.rar"), ("KA16", "KA16.rar"), ("KA22", "KA22.rar"), ("KA30", "KA30.rar"), 
-        ("KI01", "KI01.rar"), ("KI03", "KI03.rar"), ("KI04", "KI04.rar"), ("KI05", "KI05.rar"), ("KI07", "KI07.rar"), ("KI08", "KI08.rar"), ("KI14", "KI14.rar"), ("KI16", "KI16.rar"), ("KI17", "KI17.rar"), ("KI18", "KI18.rar"), ("KI21", "KI21.rar"), 
+        # Artificial
+        ("KA01", "KA01.rar"), ("KA03", "KA03.rar"), 
+        ("KA05", "KA05.rar"), ("KA06", "KA06.rar"), ("KA07", "KA07.rar"), ("KA09", "KA09.rar"),  
+        ("KI01", "KI01.rar"), ("KI03", "KI03.rar"),  ("KI05", "KI05.rar"), ("KI07", "KI07.rar"), ("KI08", "KI08.rar"),  ("KI17", "KI17.rar"),  
+        # Real
+        ("KI04", "KI04.rar"), ("KI14", "KI14.rar"), ("KI16", "KI16.rar"), ("KI18", "KI18.rar"), ("KI21", "KI21.rar"),
+        ("KA04", "KA04.rar"), ("KA15", "KA15.rar"), ("KA16", "KA16.rar"), ("KA22", "KA22.rar"), ("KA30", "KA30.rar"),
         ]
     
     def _extract_rar(self):
