@@ -1,21 +1,8 @@
 import torch
 import pandas as pd
-from sklearn.metrics import accuracy_score, confusion_matrix
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 
 def test(model, test_loader, device="cuda", class_names=None):
-    """
-    Tests a CNN model and computes accuracy and confusion matrix.
-
-    Args:
-        model (torch.nn.Module): Trained model.
-        test_loader (DataLoader): DataLoader for test data.
-        device (str): "cuda" for GPU or "cpu".
-        class_names (list or None): Optional list of class names for the confusion matrix.
-
-    Returns:
-        float: Test accuracy.
-        ndarray: Confusion matrix.
-    """
     model.to(device)
     model.eval()
     all_preds = []
@@ -44,5 +31,10 @@ def test(model, test_loader, device="cuda", class_names=None):
     df_cm = pd.DataFrame(cm, index=class_names, columns=class_names)
     print("\n[CONFUSION MATRIX]")
     print(df_cm)
+
+    # Classification report
+    report = classification_report(all_labels, all_preds, target_names=class_names, digits=4)
+    print("\n[CLASSIFICATION REPORT]")
+    print(report)
 
     return acc

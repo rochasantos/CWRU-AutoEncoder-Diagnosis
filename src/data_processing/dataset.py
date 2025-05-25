@@ -37,8 +37,9 @@ class VibrationMapBuilder:
         train_map = [self.base_map[i] for i in train_idx]
         val_map = [self.base_map[i] for i in val_idx]
         return train_map, val_map
-
-
+    
+    def get_test_map(self):
+        return self.base_map
 
 
 class VibrationDatasetFromMap(Dataset):
@@ -58,12 +59,11 @@ class VibrationDatasetFromMap(Dataset):
         entry = self.sample_map[idx]
         sample = np.load(entry["path"], allow_pickle=True).item()
         signal = sample["signal"]
+        signal = signal[:,0]
         label = self.class_map[sample["label"]]
 
         if self.transform:
             signal = self.transform(signal)
-        else:
-            signal = (signal - np.mean(signal)) / (np.std(signal) + 1e-8)
 
         x = torch.tensor(signal.copy(), dtype=torch.float32).unsqueeze(0)
         y = torch.tensor(label, dtype=torch.long)

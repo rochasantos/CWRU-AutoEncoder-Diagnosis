@@ -114,7 +114,7 @@ class BaseDataset(ABC):
     def load_file(self, filepath):
         signal, label = self._extract_data(filepath)
         return signal, label
-    
+        
 
     def load_data(self, filter=None):                    
         if filter:
@@ -122,7 +122,6 @@ class BaseDataset(ABC):
                 print(self._metainfo.filter_data()[0]["filename"])
                 metainfo = [info for info in self._metainfo.filter_data() if info["filename"].split("_")[3] in filter]
             if isinstance(filter, dict):
-                print(f"Filter: {filter} is dict")
                 metainfo = self._metainfo.filter_data(filter)
         else:
             metainfo = self._metainfo.filter_data()

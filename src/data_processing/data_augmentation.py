@@ -13,8 +13,8 @@ class TransformDataAugmentation:
     def __call__(self, signal):
         signal = signal.astype(np.float32)
 
-        if self.normalize:
-            signal = (signal - np.mean(signal)) / (np.std(signal) + 1e-8)
+        # if self.normalize:
+        #     signal = (signal - np.mean(signal)) / (np.std(signal) + 1e-8)
 
         if np.random.rand() > self.prob:
             return signal
@@ -29,7 +29,8 @@ class TransformDataAugmentation:
             self.local_data_zooming,
             self.global_data_zooming,
             lambda x: self.local_segment_splicing(x),
-            self.add_gaussian_noise
+            self.add_gaussian_noise,
+            self.permute_signal
         ]
         method = np.random.choice(methods)
         return method(signal)
@@ -85,3 +86,15 @@ class TransformDataAugmentation:
         segments = np.array_split(signal[:M * segment_len], M)
         np.random.shuffle(segments)
         return np.concatenate(segments)
+    
+    def permute_signal(self, signal, n_segments=6, seed=None):        
+        if seed is not None:
+            np.random.seed(seed)
+        if len(signal) % n_segments != 0:
+            raise ValueError("Signal length must be divisible by n_segments.")        
+        segments = np.array_split(signal, n_segments)
+        permuted_indices = np.random.permutation(n_segments)
+        permuted_segments = [segments[i] for i in permuted_indices]
+        permuted_signal = np.concatenate(permuted_segments)
+
+        return permuted_signal

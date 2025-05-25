@@ -1,25 +1,14 @@
-import sys
-import logging
-from src.utils import LoggerWriter
-
 import numpy as np
-
 import pickle
-
 import torch
-
 from torch.utils.data import DataLoader
-from torch import optim
 from src.training import train, test
-from src.models import ModelFactory, CNN1D
-from src.models.hpso_cnn_lstm import HPSO_CNN_LSTM
 from src.data_processing import VibrationMapBuilder, VibrationDatasetFromMap
-from src.data_processing.data_augmentation import TransformDataAugmentation
-
 
 # K-fold cross-validation
-def run_kfold(lr, num_epochs, history_path, num_repetitions, model_factory, root_dir, device='cuda'):
-    
+def kfold_runner(root_dir, learning_rate, num_epochs, batch_size, 
+                 num_repetitions, model_factory, experiment_key, title, device='cuda'):
+
     print(f"Model: {model_factory.build()}")
 
     total_accuracy = []
@@ -49,24 +38,23 @@ def run_kfold(lr, num_epochs, history_path, num_repetitions, model_factory, root
             val_dataset = VibrationDatasetFromMap(val_map)            
             test_dataset = VibrationDatasetFromMap(test_map)       
 
-            train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
-            val_loader = DataLoader(val_dataset, batch_size=32)
-            test_loader = DataLoader(test_dataset, batch_size=32)
+            train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+            val_loader = DataLoader(val_dataset, batch_size=batch_size)
+            test_loader = DataLoader(test_dataset, batch_size=batch_size)
 
             # Starting train            
-            model = HPSO_CNN_LSTM() #model_factory.build()
-            # model.load_state_dict(torch.load("checkpoint/cnn3conv_uored.pth", weights_only=True)['model_state_dict'])
+            model = model_factory.build()
+            model.load_state_dict(torch.load("checkpoint/cnn13_uored.pth", weights_only=True)['model_state_dict'])
 
-            # for name, param in model.named_parameters():
-            #     if "conv" in name:
-            #         param.requires_grad = False
+            for name, param in model.named_parameters():
+                if "conv" in name:
+                    param.requires_grad = False
                 
-            optimizer = torch.optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), lr=lr)
+            optimizer = torch.optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), lr=learning_rate)
             criterion = torch.nn.CrossEntropyLoss()
-            scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.4)
             checkpoint_path = f"checkpoint/best_model_{n_fold}.pth"
             loss_history, accuracy_history, val_loss_history, val_accuracy_history = train(model, train_loader, val_loader, criterion, optimizer, 
-                            num_epochs=num_epochs, device=device, checkpoint_path=checkpoint_path, early_stopping=None, scheduler=scheduler ) #EarlyStopping(patience=5, start_threshold=0.06, min_delta=0.005)
+                            num_epochs=num_epochs, device=device, checkpoint_path=checkpoint_path, early_stopping=None ) #EarlyStopping(patience=5, start_threshold=0.06, min_delta=0.005)
 
             # Avaliação final no conjunto de teste
             model.load_state_dict(torch.load(checkpoint_path, weights_only=True)['model_state_dict'])
@@ -89,22 +77,6 @@ def run_kfold(lr, num_epochs, history_path, num_repetitions, model_factory, root
     print(f"Standard Deviation: {np.std(total_accuracy):.4f}")
     print("-------------------------------------------")
     
+    history_path = f"pkl_files/{experiment_key}.pkl"
     with open(history_path, "wb") as f:
         pickle.dump([total_history, total_accuracy], f)
-
-
-if __name__ == "__main__":
-    # Redirect console output to logger
-    experiment_title = f"cnn_ln_0001"
-    root_dir = "data/processed/cwru/bi"
-    history_path = f"pkl_files/{experiment_title}.pkl"
-    sys.stdout = LoggerWriter(logging.info, experiment_title)
-
-    # Parameters
-    num_repetitions = 1
-    lr = 0.01
-    num_epochs=50
-
-    model_factory = ModelFactory(model_class=CNN1D, input_length=9600 , num_classes=2)
-
-    run_kfold(lr, num_epochs, history_path, num_repetitions, model_factory, root_dir)

@@ -65,23 +65,21 @@ def process_and_save_signal(dataset, filter, output_dir, target_sr=48000, segmen
 
     print("[INFO] Starting processing data.")    
 
-    # Get data from the dataset
     for signal, label, original_sr, basename in dataset.load_data(filter):
         max_sample_size = (len(signal) // segment_size) * segment_size if max_sample_size is None else max_sample_size
-        # Process the data
-        # signal = preprocess_signal(signal, original_sr, target_sr)
-        if max_sample_size is not None:
-            signal = signal[:max_sample_size]
-        # Ensure output directory exists
+        signal = signal[:max_sample_size]
         os.makedirs(os.path.join(output_dir), exist_ok=True)
-        # Save processed signal
-        segments = [seg for seg in np.array_split(signal, len(signal) // segment_size)]
-        for i, seg in enumerate(segments):
-            if augment: # if augmentations
-                seg = apply_augmentations(seg)
-            output_path = f"{output_dir}/{basename}_{i}"
-            # Save signal
+        
+        counter=0
+        print(len(signal))
+        
+        for i in range(0, len(signal), segment_size):
+            seg = signal[i:i+segment_size]
+            output_path = f"{output_dir}/{basename}_{i//segment_size}"
             np.save(output_path, {"signal": seg, "label": label})
+            counter += 1
+
+        print(counter)
 
     print("[INFO] All data has been processed successfully.")
 
@@ -91,23 +89,28 @@ if __name__ == "__main__":
     
     dataset = CWRU()
 
+    output_dir=f"data/processed/bi/fold2/test"
+    filter = filters["cwru_48k_14_bi"]
+    process_and_save_signal(dataset, filter, output_dir, target_sr=48000, segment_size=9600, augment=False)
+
+
     # output_dir = os.path.join("data/processed/", filter_key)
     
-    folds_idx = [1, 2, 3]
-    severities = ["7", "14", "21"]
-    for k, severity in enumerate(severities):
-        i = k+1
-        copy_idx = [*folds_idx]
-        test_idx = copy_idx.pop(k)
-        train_idx = copy_idx
+    # folds_idx = [1, 2, 3]
+    # severities = ["7", "14", "21"]
+    # for k, severity in enumerate(severities):
+    #     i = k+1
+    #     copy_idx = [*folds_idx]
+    #     test_idx = copy_idx.pop(k)
+    #     train_idx = copy_idx
 
-        filter_key = f"cwru_48k_{severity}_io"
-        output_dirs = [
-            f"data/processed/{filter_key[-2:]}/fold{test_idx}/test",
-            f"data/processed/{filter_key[-2:]}/fold{train_idx[0]}/train",
-            f"data/processed/{filter_key[-2:]}/fold{train_idx[1]}/train",
-        ]
+    #     filter_key = f"cwru_48k_{severity}_io"
+    #     output_dirs = [
+    #         f"data/processed/{filter_key[-2:]}/fold{test_idx}/test",
+    #         f"data/processed/{filter_key[-2:]}/fold{train_idx[0]}/train",
+    #         f"data/processed/{filter_key[-2:]}/fold{train_idx[1]}/train",
+    #     ]
 
-        for output_dir in output_dirs:
-            print(output_dir)
-            process_and_save_signal(dataset, filters[filter_key], output_dir, target_sr=48000, segment_size=9600, augment=False)
+    #     for output_dir in output_dirs:
+    #         print(output_dir)
+    #         process_and_save_signal(dataset, filters[filter_key], output_dir, target_sr=48000, segment_size=9600, augment=False)
