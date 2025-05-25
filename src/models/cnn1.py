@@ -15,9 +15,11 @@ class BinaryCNN(nn.Module):
 
         self.ln = nn.LayerNorm(input_length)
         self.conv1 = nn.Conv1d(input_channels, out_channels=16, kernel_size=16, padding=1)
+        self.ln1 = nn.LayerNorm([16, 1198])
         self.pool1 = nn.MaxPool1d(8)
 
         self.conv2 = nn.Conv1d(16, out_channels=32, kernel_size=32, padding=1)
+        self.ln2 = nn.LayerNorm([32, 146])
         self.pool2 = nn.MaxPool1d(8)
 
         # Dynamically compute flatten size
@@ -43,9 +45,11 @@ class BinaryCNN(nn.Module):
         x = self.ln(x)
         x = F.relu(self.conv1(x))
         x = self.pool1(x)
+        # x = self.ln1(x)
 
         x = F.relu(self.conv2(x))
         x = self.pool2(x)
+        # x = self.ln2(x)
 
         x = x.view(x.size(0), -1)
         x = F.relu(self.fc1(x))
