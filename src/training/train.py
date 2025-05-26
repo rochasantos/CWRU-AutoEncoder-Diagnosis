@@ -1,6 +1,6 @@
 import torch
 
-def train(model, train_loader, val_loader, criterion, optimizer, num_epochs, device="cuda", checkpoint_path = 'best_model.pth', scheduler=None, early_stopping=None):
+def train(model, train_loader, val_loader, criterion, optimizer, num_epochs, labels_map, device="cuda", checkpoint_path = 'best_model.pth', scheduler=None, early_stopping=None):
     model.to(device)
     loss_history = []
     accuracy_history = []
@@ -16,6 +16,10 @@ def train(model, train_loader, val_loader, criterion, optimizer, num_epochs, dev
         correct = 0
         total = 0
         for signals, labels in train_loader:
+            if labels_map is not None:
+                # Convert labels to binary format if a mapping function is provided
+                # This assumes labels_map returns a tensor of binary labels
+                labels = labels_map(labels)
             signals, labels = signals.to(device), labels.to(device)
             outputs = model(signals)
             loss = criterion(outputs, labels)
@@ -44,6 +48,8 @@ def train(model, train_loader, val_loader, criterion, optimizer, num_epochs, dev
             val_total = 0
             with torch.no_grad():
                 for val_signals, val_labels in val_loader:
+                    if labels_map is not None:
+                        val_labels = labels_map(val_labels)
                     val_signals, val_labels = val_signals.to(device), val_labels.to(device)
                     val_outputs = model(val_signals)
                     val_loss += criterion(val_outputs, val_labels).item()
