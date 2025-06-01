@@ -2,7 +2,7 @@ import torch
 import pandas as pd
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 
-def test(model, test_loader, labels_map, device="cuda", class_names=None):
+def test(model, test_loader, device="cuda", class_names=None):
     model.to(device)
     model.eval()
     all_preds = []
@@ -10,7 +10,6 @@ def test(model, test_loader, labels_map, device="cuda", class_names=None):
 
     with torch.no_grad():
         for signals, labels in test_loader:
-            labels = labels_map(labels) if labels_map else labels
             signals, labels = signals.to(device), labels.to(device)
 
             outputs = model(signals)

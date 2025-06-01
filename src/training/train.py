@@ -1,13 +1,12 @@
 import torch
 
-def train(model, train_loader, val_loader, criterion, optimizer, num_epochs, labels_map, device="cuda", checkpoint_path = 'best_model.pth', scheduler=None, early_stopping=None):
+def train(model, train_loader, val_loader, criterion, optimizer, num_epochs, device="cuda", checkpoint_path = 'best_model.pth', scheduler=None, early_stopping=None):
     model.to(device)
     loss_history = []
     accuracy_history = []
     val_loss_history = []
     val_accuracy_history = []
 
-    # best_val_loss = float('inf')    
     best_acc = 0.0
 
     for epoch in range(num_epochs):
@@ -16,23 +15,16 @@ def train(model, train_loader, val_loader, criterion, optimizer, num_epochs, lab
         correct = 0
         total = 0
         for signals, labels in train_loader:
-            if labels_map is not None:
-                # Convert labels to binary format if a mapping function is provided
-                # This assumes labels_map returns a tensor of binary labels
-                labels = labels_map(labels)
             signals, labels = signals.to(device), labels.to(device)
             outputs = model(signals)
             loss = criterion(outputs, labels)
-            # loss = criterion(outputs, labels.float().unsqueeze(1)) # BCEWithLogitsLoss
             
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
 
             epoch_loss += loss.item()
-            _, predicted = torch.max(outputs, 1)
-            # probs = torch.sigmoid(outputs)
-            # predicted = (probs >= 0.5).float()
+            _, predicted = torch.max(outputs, 1)           
             correct += (predicted == labels).sum().item()
             total += labels.size(0)
 
@@ -47,16 +39,12 @@ def train(model, train_loader, val_loader, criterion, optimizer, num_epochs, lab
             val_correct = 0
             val_total = 0
             with torch.no_grad():
+                print("Validando modelo...")
                 for val_signals, val_labels in val_loader:
-                    if labels_map is not None:
-                        val_labels = labels_map(val_labels)
                     val_signals, val_labels = val_signals.to(device), val_labels.to(device)
                     val_outputs = model(val_signals)
                     val_loss += criterion(val_outputs, val_labels).item()
-                    _, val_predicted = torch.max(val_outputs, 1)
-                    # val_loss += criterion(val_outputs, val_labels.float().unsqueeze(1)).item()
-                    # probs = torch.sigmoid(val_outputs)
-                    # val_predicted = (probs >= 0.5).float()
+                    _, val_predicted = torch.max(val_outputs, 1)                    
                     val_correct += (val_predicted == val_labels).sum().item()
                     val_total += val_labels.size(0)
             avg_val_loss = val_loss / len(val_loader)
