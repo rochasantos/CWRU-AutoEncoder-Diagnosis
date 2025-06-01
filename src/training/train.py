@@ -1,13 +1,31 @@
 import torch
+from collections import Counter
 
-def train(model, train_loader, val_loader, criterion, optimizer, num_epochs, device="cuda", checkpoint_path = 'best_model.pth', scheduler=None, early_stopping=None):
+def train(model, train_loader, val_loader, criterion, optimizer, num_epochs, device="cuda",
+          checkpoint_path='best_model.pth', scheduler=None, early_stopping=None):
+
     model.to(device)
     loss_history = []
     accuracy_history = []
     val_loss_history = []
     val_accuracy_history = []
-
     best_acc = 0.0
+
+    # === Cálculo dos pesos de classe ===
+    print("🔎 Calculando pesos de classe...")
+    all_labels = []
+    for _, labels in train_loader:
+        all_labels.extend(labels.tolist())
+
+    counts = Counter(all_labels)  # Ex: Counter({1: 90, 0: 10})
+    num_samples = sum(counts.values())
+    num_classes = len(counts)
+    weights = [num_samples / (num_classes * counts[i]) for i in range(num_classes)]
+    class_weights = torch.tensor(weights, dtype=torch.float32).to(device)
+
+    # Substitui o criterion com os pesos
+    criterion = torch.nn.CrossEntropyLoss(weight=class_weights)
+    print(f"✅ Pesos aplicados: {weights}")
 
     for epoch in range(num_epochs):
         model.train()
@@ -18,13 +36,13 @@ def train(model, train_loader, val_loader, criterion, optimizer, num_epochs, dev
             signals, labels = signals.to(device), labels.to(device)
             outputs = model(signals)
             loss = criterion(outputs, labels)
-            
+
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
 
             epoch_loss += loss.item()
-            _, predicted = torch.max(outputs, 1)           
+            _, predicted = torch.max(outputs, 1)
             correct += (predicted == labels).sum().item()
             total += labels.size(0)
 
@@ -44,7 +62,7 @@ def train(model, train_loader, val_loader, criterion, optimizer, num_epochs, dev
                     val_signals, val_labels = val_signals.to(device), val_labels.to(device)
                     val_outputs = model(val_signals)
                     val_loss += criterion(val_outputs, val_labels).item()
-                    _, val_predicted = torch.max(val_outputs, 1)                    
+                    _, val_predicted = torch.max(val_outputs, 1)
                     val_correct += (val_predicted == val_labels).sum().item()
                     val_total += val_labels.size(0)
             avg_val_loss = val_loss / len(val_loader)
@@ -53,7 +71,7 @@ def train(model, train_loader, val_loader, criterion, optimizer, num_epochs, dev
             val_accuracy_history.append(val_acc)
 
             print(f"Epoch [{epoch+1}/{num_epochs}] - Train Loss: {avg_loss:.4f}, Train Acc: {accuracy:.4f} - Val Loss: {avg_val_loss:.4f}, Val Acc: {val_acc:.4f}")
-            
+
             if val_acc > best_acc:
                 best_acc = val_acc
                 torch.save({
@@ -64,15 +82,16 @@ def train(model, train_loader, val_loader, criterion, optimizer, num_epochs, dev
                     'val_accuracy': val_acc
                 }, checkpoint_path)
                 print(f"✅ Checkpoint salvo no epoch {epoch+1} com Val Accuracy {val_acc:.4f}")
-            
+
             if early_stopping and early_stopping(avg_val_loss, model):
-                print(f"Early stopping at epoch {epoch+1}")
+                print(f"🛑 Early stopping at epoch {epoch+1}")
                 break
         else:
             print(f"Epoch [{epoch+1}/{num_epochs}] - Loss: {avg_loss:.4f} - Accuracy: {accuracy:.4f}")
             if early_stopping and early_stopping(avg_loss, model):
-                print(f"Early stopping at epoch {epoch+1}")
+                print(f"🛑 Early stopping at epoch {epoch+1}")
                 break
+
         if scheduler:
             scheduler.step()
 

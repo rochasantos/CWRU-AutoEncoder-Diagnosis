@@ -13,6 +13,7 @@ def test(model, test_loader, device="cuda", class_names=None):
             signals, labels = signals.to(device), labels.to(device)
 
             outputs = model(signals)
+            print(f"Outputs: {outputs.cpu().numpy()}")
             _, preds = torch.max(outputs, 1)
 
             all_preds.extend(preds.cpu().numpy())
