@@ -6,15 +6,16 @@ from torch.utils.data import Dataset
 
 
 class VibrationMapBuilder:
-    def __init__(self, data_dir):
+    def __init__(self, data_dir, list_files=None):
         self.data_dir = data_dir
+        self.list_files = list_files or None
         self.base_map = self._build_map()
 
     def _build_map(self):
         files = sorted([
             os.path.join(self.data_dir, f)
             for f in os.listdir(self.data_dir)
-            if f.endswith(".npy")
+            if f.endswith(".npy") and (any(f.startswith(prefix) for prefix in self.list_files) if self.list_files else True)
         ])
         map_list = []
         for idx, file in enumerate(files):
@@ -65,6 +66,11 @@ class VibrationDatasetFromMap(Dataset):
         if self.transform:
             signal = self.transform(signal)
 
-        x = torch.tensor(signal.copy(), dtype=torch.float32).unsqueeze(0)
+        if isinstance(signal, np.ndarray):
+            x = torch.tensor(signal.copy(), dtype=torch.float32).unsqueeze(0)
+        elif isinstance(signal, torch.Tensor):
+            x = signal  # ou sem unsqueeze se já tiver
+        else:
+            raise TypeError(f"Tipo não suportado: {type(signal)}")
         y = torch.tensor(label, dtype=torch.long)
         return x, y

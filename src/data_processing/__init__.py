@@ -7,7 +7,7 @@ from .preprocessing import (
     PreprocessingPipeline,
 )
 from .data_manager import DatasetManager
-from .vibration_dataset import VibrationDataset, split_vibration_dataset
+from .vibration_dataset import VibrationDataset
 from .data_augmentation import TransformDataAugmentation
 from .dataset import VibrationMapBuilder, VibrationDatasetFromMap
 from .fft import fft_signal

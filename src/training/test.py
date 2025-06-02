@@ -13,11 +13,12 @@ def test(model, test_loader, device="cuda", class_names=None):
             signals, labels = signals.to(device), labels.to(device)
 
             outputs = model(signals)
-            print(f"Outputs: {outputs.cpu().numpy()}")
+            # print(f"Outputs: {outputs.cpu().numpy()}")
             _, preds = torch.max(outputs, 1)
-
+            # print(f"Labels: {labels.cpu().numpy()}, Predictions: {preds.cpu().numpy()}")
             all_preds.extend(preds.cpu().numpy())
             all_labels.extend(labels.cpu().numpy())
+
 
     acc = accuracy_score(all_labels, all_preds)
     cm = confusion_matrix(all_labels, all_preds)

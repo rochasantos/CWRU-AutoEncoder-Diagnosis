@@ -2,9 +2,9 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-class BinaryCNN(nn.Module):
-    def __init__(self, input_channels=1, input_length=9600):        
-        super(BinaryCNN, self).__init__()
+class CNN1(nn.Module):
+    def __init__(self, input_channels=1, input_length=4096):        
+        super(CNN1, self).__init__()
         self.input_channels = input_channels
         self.input_length = input_length
 
