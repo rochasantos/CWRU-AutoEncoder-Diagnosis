@@ -2,37 +2,57 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-# CNN 1D model
-# This model is a simple 1D CNN with three convolutional layers followed by max pooling
-# and two fully connected layers. And sigmoid activation in the final layer.
-class CNN1D(nn.Module):
+class CNN10(nn.Module):
     def __init__(self, input_length, num_classes=2):
-        super(CNN1D, self).__init__()
+        super(CNN10, self).__init__()
 
-        self.conv1 = nn.Conv1d(in_channels=1, out_channels=16, kernel_size=16)
+        # Camada 1
+        self.conv1 = nn.Conv1d(in_channels=1, out_channels=32, kernel_size=16)
+        self.bn1 = nn.BatchNorm1d(32)
         self.pool1 = nn.MaxPool1d(kernel_size=8)
 
-        self.conv2 = nn.Conv1d(in_channels=16, out_channels=32, kernel_size=16)
+        # Camada 2
+        self.conv2 = nn.Conv1d(in_channels=32, out_channels=64, kernel_size=16)
+        self.bn2 = nn.BatchNorm1d(64)
         self.pool2 = nn.MaxPool1d(kernel_size=8)
 
-        self.conv3 = nn.Conv1d(in_channels=32, out_channels=64, kernel_size=16)
-        self.pool3 = nn.MaxPool1d(kernel_size=16)
+        # Camada 3
+        self.conv3 = nn.Conv1d(in_channels=64, out_channels=64, kernel_size=16)
+        self.bn3 = nn.BatchNorm1d(64)
+        self.pool3 = nn.MaxPool1d(kernel_size=8)
 
-        # Dummy input to calculate sizes after conv/pool
-        dummy_input = torch.zeros(1, 1, input_length)
-        out = self.pool1(F.relu(self.conv1(dummy_input)))
-        out = self.pool2(F.relu(self.conv2(out)))
-        out = self.pool3(F.relu(self.conv3(out)))
+        # Bottleneck
+        self.conv4 = nn.Conv1d(in_channels=64, out_channels=16, kernel_size=1)
+        self.conv5 = nn.Conv1d(in_channels=16, out_channels=16, kernel_size=7, padding=3)
+        self.conv6 = nn.Conv1d(in_channels=16, out_channels=32, kernel_size=1)
 
-        self._to_linear = out.view(1, -1).shape[1]
+        # Cálculo do tamanho para a camada linear
+        with torch.no_grad():
+            dummy = torch.zeros(1, 1, input_length)
+            x = self.pool1(F.relu(self.bn1(self.conv1(dummy))))
+            x = self.pool2(F.relu(self.bn2(self.conv2(x))))
+            x = self.pool3(F.relu(self.bn3(self.conv3(x))))
+            x = F.relu(self.conv4(x))
+            x = F.relu(self.conv5(x))
+            x = F.relu(self.conv6(x))
+            self._to_linear = x.view(1, -1).shape[1]
 
-        self.fc1 = nn.Linear(self._to_linear, 64)
-        self.fc2 = nn.Linear(64, num_classes)
+        # Fully connected
+        self.dropout = nn.Dropout(0.4)
+        self.fc1 = nn.Linear(self._to_linear, 16)
+        self.fc2 = nn.Linear(16, num_classes)
 
     def forward(self, x):
-        x = self.pool1(F.relu(self.conv1(x)))
-        x = self.pool2(F.relu(self.conv2(x)))
-        x = self.pool3(F.relu(self.conv3(x)))
+        x = self.pool1(F.relu(self.bn1(self.conv1(x))))
+        x = self.pool2(F.relu(self.bn2(self.conv2(x))))
+        x = self.pool3(F.relu(self.bn3(self.conv3(x))))
+
+        x = F.relu(self.conv4(x))
+        x = F.relu(self.conv5(x))
+        x = F.relu(self.conv6(x))
+
         x = x.view(x.size(0), -1)
+        x = self.dropout(x)
         x = F.relu(self.fc1(x))
-        return torch.sigmoid(self.fc2(x))
+        x = self.fc2(x)
+        return x

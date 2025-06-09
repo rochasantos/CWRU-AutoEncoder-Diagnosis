@@ -1,25 +1,29 @@
 import torch
 from collections import Counter
 
-def train(model, train_loader, val_loader, criterion, optimizer, num_epochs, device="cuda",
+def train(model, train_loader, val_loader1=None, val_loader2=None,
+          criterion=None, optimizer=None, num_epochs=10, device="cuda",
           checkpoint_path='best_model.pth', scheduler=None, early_stopping=None,
           use_class_weights=False, checkpoint_mode="val_accuracy"):
 
     model.to(device)
     loss_history = []
     accuracy_history = []
-    val_loss_history = []
-    val_accuracy_history = []
+    val1_loss_history = []
+    val1_accuracy_history = []
+    val2_loss_history = []
+    val2_accuracy_history = []
 
     best_acc = 0.0
+    best_acc_acu = []
     best_loss = float('inf')
 
+    # Class weights
     if use_class_weights:
         print("🔎 Calculando pesos de classe...")
         all_labels = []
         for _, labels in train_loader:
             all_labels.extend(labels.tolist())
-
         counts = Counter(all_labels)
         num_samples = sum(counts.values())
         num_classes = len(counts)
@@ -27,6 +31,8 @@ def train(model, train_loader, val_loader, criterion, optimizer, num_epochs, dev
         class_weights = torch.tensor(weights, dtype=torch.float32).to(device)
         criterion = torch.nn.CrossEntropyLoss(weight=class_weights)
         print(f"✅ Pesos aplicados: {weights}")
+    else:
+        criterion = criterion or torch.nn.CrossEntropyLoss()
 
     for epoch in range(num_epochs):
         model.train()
@@ -52,57 +58,79 @@ def train(model, train_loader, val_loader, criterion, optimizer, num_epochs, dev
         loss_history.append(avg_loss)
         accuracy_history.append(accuracy)
 
-        if val_loader:
-            model.eval()
-            val_loss = 0.0
-            val_correct = 0
-            val_total = 0
-            with torch.no_grad():
-                for val_signals, val_labels in val_loader:
+        model.eval()
+        with torch.no_grad():
+
+            # === Validação no val_loader1 ===
+            if val_loader1:
+                val1_loss = 0.0
+                val1_correct = 0
+                val1_total = 0
+                for val_signals, val_labels in val_loader1:
                     val_signals, val_labels = val_signals.to(device), val_labels.to(device)
                     val_outputs = model(val_signals)
-                    val_loss += criterion(val_outputs, val_labels).item()
+                    val1_loss += criterion(val_outputs, val_labels).item()
                     _, val_predicted = torch.max(val_outputs, 1)
-                    val_correct += (val_predicted == val_labels).sum().item()
-                    val_total += val_labels.size(0)
+                    val1_correct += (val_predicted == val_labels).sum().item()
+                    val1_total += val_labels.size(0)
+                avg_val1_loss = val1_loss / len(val_loader1)
+                val1_acc = val1_correct / val1_total
+                best_acc_acu.append(val1_acc)
+                val1_loss_history.append(avg_val1_loss)
+                val1_accuracy_history.append(val1_acc)
 
-            avg_val_loss = val_loss / len(val_loader)
-            val_acc = val_correct / val_total
-            val_loss_history.append(avg_val_loss)
-            val_accuracy_history.append(val_acc)
+                print(f"Epoch [{epoch+1}/{num_epochs}] - "
+                      f"Train Loss: {avg_loss:.4f}, Train Acc: {accuracy:.4f} - "
+                      f"Val1 Loss: {avg_val1_loss:.4f}, Val1 Acc: {val1_acc:.4f}")
 
+                save_checkpoint = False
+                metric_value = val1_acc if checkpoint_mode == "val_accuracy" else avg_val1_loss
+                if checkpoint_mode == "val_accuracy" and val1_acc > best_acc:
+                    best_acc = val1_acc
+                    save_checkpoint = True
+                elif checkpoint_mode == "val_loss" and avg_val1_loss < best_loss:
+                    best_loss = avg_val1_loss
+                    save_checkpoint = True
+
+                if save_checkpoint:
+                    torch.save({
+                        'epoch': epoch,
+                        'model_state_dict': model.state_dict(),
+                        'optimizer_state_dict': optimizer.state_dict(),
+                        'val_loss': avg_val1_loss,
+                        'val_accuracy': val1_acc
+                    }, checkpoint_path)
+                    print(f"✅ Checkpoint salvo no epoch {epoch+1} com "
+                          f"{'Val Accuracy' if checkpoint_mode == 'val_accuracy' else 'Val Loss'} {metric_value:.4f}")
+
+                if early_stopping and early_stopping(avg_val1_loss, model):
+                    print(f"🛑 Early stopping at epoch {epoch+1}")
+                    break
+
+            # === Validação no val_loader2 ===
+            if val_loader2:
+                val2_loss = 0.0
+                val2_correct = 0
+                val2_total = 0
+                for val_signals, val_labels in val_loader2:
+                    val_signals, val_labels = val_signals.to(device), val_labels.to(device)
+                    val_outputs = model(val_signals)
+                    val2_loss += criterion(val_outputs, val_labels).item()
+                    _, val_predicted = torch.max(val_outputs, 1)
+                    val2_correct += (val_predicted == val_labels).sum().item()
+                    val2_total += val_labels.size(0)
+                avg_val2_loss = val2_loss / len(val_loader2)
+                val2_acc = val2_correct / val2_total
+                val2_loss_history.append(avg_val2_loss)
+                val2_accuracy_history.append(val2_acc)
+
+                print(f"Epoch [{epoch+1}/{num_epochs}] - "
+                      f"Val2 Loss: {avg_val2_loss:.4f}, Val2 Acc: {val2_acc:.4f}")
+
+        # Caso nenhum val_loader esteja presente
+        if not val_loader1 and not val_loader2:
             print(f"Epoch [{epoch+1}/{num_epochs}] - "
-                  f"Train Loss: {avg_loss:.4f}, Train Acc: {accuracy:.4f} - "
-                  f"Val Loss: {avg_val_loss:.4f}, Val Acc: {val_acc:.4f}")
-
-            # === Condição para salvar o checkpoint ===
-            save_checkpoint = False
-            if checkpoint_mode == "val_accuracy" and val_acc > best_acc:
-                best_acc = val_acc
-                save_checkpoint = True
-            elif checkpoint_mode == "val_loss" and avg_val_loss < best_loss:
-                best_loss = avg_val_loss
-                save_checkpoint = True
-
-            if save_checkpoint:
-                torch.save({
-                    'epoch': epoch,
-                    'model_state_dict': model.state_dict(),
-                    'optimizer_state_dict': optimizer.state_dict(),
-                    'val_loss': avg_val_loss,
-                    'val_accuracy': val_acc
-                }, checkpoint_path)
-
-                metric_name = "Val Accuracy" if checkpoint_mode == "val_accuracy" else "Val Loss"
-                metric_value = val_acc if checkpoint_mode == "val_accuracy" else avg_val_loss
-                print(f"✅ Checkpoint salvo no epoch {epoch+1} com {metric_name} {metric_value:.4f}")
-
-            if early_stopping and early_stopping(avg_val_loss, model):
-                print(f"🛑 Early stopping at epoch {epoch+1}")
-                break
-
-        else:
-            print(f"Epoch [{epoch+1}/{num_epochs}] - Loss: {avg_loss:.4f} - Accuracy: {accuracy:.4f}")
+                  f"Loss: {avg_loss:.4f} - Accuracy: {accuracy:.4f}")
             if early_stopping and early_stopping(avg_loss, model):
                 print(f"🛑 Early stopping at epoch {epoch+1}")
                 break
@@ -110,4 +138,6 @@ def train(model, train_loader, val_loader, criterion, optimizer, num_epochs, dev
         if scheduler:
             scheduler.step()
 
-    return loss_history, accuracy_history, val_loss_history, val_accuracy_history
+    return (loss_history, accuracy_history,
+            val1_loss_history, val1_accuracy_history,
+            val2_loss_history, val2_accuracy_history)
