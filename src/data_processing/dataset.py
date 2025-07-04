@@ -60,7 +60,7 @@ class VibrationDatasetFromMap(Dataset):
         entry = self.sample_map[idx]
         sample = np.load(entry["path"], allow_pickle=True).item()
         signal = sample["signal"]
-        signal = signal[:,0]
+        # signal = signal[:,0]
         label = self.class_map[sample["label"]]
 
         if self.transform:

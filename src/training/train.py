@@ -1,6 +1,5 @@
 import torch
 from collections import Counter
-
 def train(model, train_loader, val_loader1=None, val_loader2=None,
           criterion=None, optimizer=None, num_epochs=10, device="cuda",
           checkpoint_path='best_model.pth', scheduler=None, early_stopping=None,
@@ -14,9 +13,8 @@ def train(model, train_loader, val_loader1=None, val_loader2=None,
     val2_loss_history = []
     val2_accuracy_history = []
 
-    best_acc = 0.0
+    best_metric = None
     best_acc_acu = []
-    best_loss = float('inf')
 
     # Class weights
     if use_class_weights:
@@ -61,7 +59,7 @@ def train(model, train_loader, val_loader1=None, val_loader2=None,
         model.eval()
         with torch.no_grad():
 
-            # === Validação no val_loader1 ===
+            val1_acc, avg_val1_loss = None, None
             if val_loader1:
                 val1_loss = 0.0
                 val1_correct = 0
@@ -83,31 +81,6 @@ def train(model, train_loader, val_loader1=None, val_loader2=None,
                       f"Train Loss: {avg_loss:.4f}, Train Acc: {accuracy:.4f} - "
                       f"Val1 Loss: {avg_val1_loss:.4f}, Val1 Acc: {val1_acc:.4f}")
 
-                save_checkpoint = False
-                metric_value = val1_acc if checkpoint_mode == "val_accuracy" else avg_val1_loss
-                if checkpoint_mode == "val_accuracy" and val1_acc > best_acc:
-                    best_acc = val1_acc
-                    save_checkpoint = True
-                elif checkpoint_mode == "val_loss" and avg_val1_loss < best_loss:
-                    best_loss = avg_val1_loss
-                    save_checkpoint = True
-
-                if save_checkpoint:
-                    torch.save({
-                        'epoch': epoch,
-                        'model_state_dict': model.state_dict(),
-                        'optimizer_state_dict': optimizer.state_dict(),
-                        'val_loss': avg_val1_loss,
-                        'val_accuracy': val1_acc
-                    }, checkpoint_path)
-                    print(f"✅ Checkpoint salvo no epoch {epoch+1} com "
-                          f"{'Val Accuracy' if checkpoint_mode == 'val_accuracy' else 'Val Loss'} {metric_value:.4f}")
-
-                if early_stopping and early_stopping(avg_val1_loss, model):
-                    print(f"🛑 Early stopping at epoch {epoch+1}")
-                    break
-
-            # === Validação no val_loader2 ===
             if val_loader2:
                 val2_loss = 0.0
                 val2_correct = 0
@@ -127,13 +100,46 @@ def train(model, train_loader, val_loader1=None, val_loader2=None,
                 print(f"Epoch [{epoch+1}/{num_epochs}] - "
                       f"Val2 Loss: {avg_val2_loss:.4f}, Val2 Acc: {val2_acc:.4f}")
 
-        # Caso nenhum val_loader esteja presente
-        if not val_loader1 and not val_loader2:
-            print(f"Epoch [{epoch+1}/{num_epochs}] - "
-                  f"Loss: {avg_loss:.4f} - Accuracy: {accuracy:.4f}")
-            if early_stopping and early_stopping(avg_loss, model):
+        # === Selecione a métrica de checkpoint ===
+        metric_name = checkpoint_mode.lower()
+        metric_value = {
+            "val_accuracy": val1_acc,
+            "val_loss": avg_val1_loss,
+            "train_accuracy": accuracy,
+            "train_loss": avg_loss
+        }.get(metric_name, None)
+
+        save_checkpoint = False
+        if metric_value is not None:
+            if best_metric is None:
+                save_checkpoint = True
+            elif 'loss' in metric_name and metric_value < best_metric:
+                save_checkpoint = True
+            elif 'accuracy' in metric_name and metric_value > best_metric:
+                save_checkpoint = True
+
+        if save_checkpoint and metric_value is not None:
+            torch.save({
+                'epoch': epoch,
+                'model_state_dict': model.state_dict(),
+                'optimizer_state_dict': optimizer.state_dict(),
+                'val_loss': avg_val1_loss if avg_val1_loss is not None else avg_loss,
+                'val_accuracy': val1_acc if val1_acc is not None else accuracy
+            }, checkpoint_path)
+            best_metric = metric_value
+            print(f"✅ Checkpoint salvo no epoch {epoch+1} com {checkpoint_mode} = {metric_value:.4f}")
+
+            if checkpoint_mode == "val_accuracy" and val1_acc == 1.0:
+                break
+
+        if early_stopping:
+            loss_for_early_stopping = avg_val1_loss if val_loader1 else avg_loss
+            if early_stopping(loss_for_early_stopping, model):
                 print(f"🛑 Early stopping at epoch {epoch+1}")
                 break
+
+        if not val_loader1 and not val_loader2:
+            print(f"Epoch [{epoch+1}/{num_epochs}] - Loss: {avg_loss:.4f} - Accuracy: {accuracy:.4f}")
 
         if scheduler:
             scheduler.step()

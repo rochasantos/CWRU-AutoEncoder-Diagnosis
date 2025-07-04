@@ -143,6 +143,36 @@ class BaseDataset(ABC):
                 filepath = os.path.join('data/raw/', dataset_name, subdir, subdir, basename)
             signal, label = self._extract_data(filepath)
             yield signal, label, int(info["sampling_rate"]), basename
+
+    def load_data_f(self, filter=None):                    
+        if filter:
+            if isinstance(filter, list): # paderborn case
+                print(self._metainfo.filter_data()[0]["filename"])
+                metainfo = [info for info in self._metainfo.filter_data() if info["filename"].split("_")[3] in filter]
+            if isinstance(filter, dict):
+                metainfo = self._metainfo.filter_data(filter)
+        else:
+            metainfo = self._metainfo.filter_data()
+
+        dataset_name = self.__class__.__name__.lower()
+        for info in metainfo:
+            basename = info["filename"]
+            extent_damage = info["extent_damage"]
+            load = info["hp"]
+            filepath = os.path.join('data/raw/', dataset_name, basename+'.mat')
+            # if dataset_name == "cwru":
+            #     if info["hp"] == "0": # skip 0 HP
+            #         continue
+            if dataset_name == "paderborn":
+                rotation_label = basename.split("_")[0]
+                if rotation_label != "N15": # skip N15
+                    continue
+                if basename == "N15_M07_F10_KA01_8":
+                    continue
+                subdir = basename.split("_")[3]
+                filepath = os.path.join('data/raw/', dataset_name, subdir, subdir, basename)
+            signal, label = self._extract_data(filepath)
+            yield signal, info
             
     def group_by(self, feature, filter=None, sample_size=None, target_sr=42000):
         metainfo = self.get_metainfo(filter)

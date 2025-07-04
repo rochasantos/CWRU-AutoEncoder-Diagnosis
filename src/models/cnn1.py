@@ -3,14 +3,14 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 class CNN1(nn.Module):
-    def __init__(self, input_channels=1, input_length=4096):        
+    def __init__(self, input_channels=1, input_length=4096, num_classes=2):        
         super(CNN1, self).__init__()
         self.input_channels = input_channels
         self.input_length = input_length
 
-        self.ln = nn.LayerNorm(input_length)
+        # self.ln = nn.LayerNorm(input_length)
 
-        self.conv1 = nn.Conv1d(input_channels, out_channels=16, kernel_size=16, padding=1)
+        self.conv1 = nn.Conv1d(input_channels, out_channels=16, kernel_size=8, padding=1)
         self.pool1 = nn.MaxPool1d(8)
         self.conv2 = nn.Conv1d(16, out_channels=32, kernel_size=32, padding=1)
         self.pool2 = nn.MaxPool1d(8)
@@ -19,7 +19,7 @@ class CNN1(nn.Module):
         self.flatten_size = self._get_flatten_size()
 
         self.fc1 = nn.Linear(self.flatten_size, 64)
-        self.fc2 = nn.Linear(64, 2)
+        self.fc2 = nn.Linear(64, num_classes)
 
     def _get_flatten_size(self):
         """

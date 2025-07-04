@@ -175,3 +175,4 @@ data/
 saved_models/
 results/
 pkl_files
+checkpoint/

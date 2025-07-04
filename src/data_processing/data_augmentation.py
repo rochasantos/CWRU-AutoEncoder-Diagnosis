@@ -11,10 +11,7 @@ class TransformDataAugmentation:
         self.normalize = normalize
 
     def __call__(self, signal):
-        signal = signal.astype(np.float32)
-
-        # if self.normalize:
-        #     signal = (signal - np.mean(signal)) / (np.std(signal) + 1e-8)
+        signal = signal.astype(np.float32)       
 
         if np.random.rand() > self.prob:
             return signal
@@ -87,7 +84,7 @@ class TransformDataAugmentation:
         np.random.shuffle(segments)
         return np.concatenate(segments)
     
-    def permute_signal(self, signal, n_segments=6, seed=None):        
+    def permute_signal(self, signal, n_segments=8, seed=None):        
         if seed is not None:
             np.random.seed(seed)
         if len(signal) % n_segments != 0:

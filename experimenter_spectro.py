@@ -3,35 +3,31 @@ import logging
 import numpy as np
 
 import torch
-from torch.utils.data import DataLoader
+import torch.nn as nn
+from torch.utils.data import DataLoader, ConcatDataset
+from torchvision.models import resnet18, ResNet18_Weights
+from torchvision.datasets import ImageFolder
+from torchvision import transforms
 
 from src.utils import LoggerWriter
 from src.training import train, test
 from src.models import CNN7
 from src.models.model_factory import ModelFactory
-from src.models.fft_cnn1d import FFT1DCNN
 from src.data_processing import VibrationDataset
 
-from src.data_processing.transforms import compute_rms_fft
-
-from scipy.signal import butter, filtfilt
-import numpy as np
-
-import numpy as np
-from scipy.signal import firwin, lfilter
-
-def apply_band_filter_bank(signal, fs=48000, band=(2000, 5000), filter_order=128):
-    nyquist = fs / 2
-    low, high = band
-    # Normalize cutoff frequencies
-    low_norm = low / nyquist
-    high_norm = high / nyquist
-    # Design bandpass FIR filter
-    taps = firwin(filter_order + 1, [low_norm, high_norm], pass_zero=False)
-    # Apply the filter
-    filtered_signal = lfilter(taps, 1.0, signal)
-    return filtered_signal
-
+# learning rate scheduler
+def get_scheduler(optimizer, num_epochs=10, warmup_epochs=5):
+    """
+    Returns a learning rate scheduler that linearly increases the learning rate
+    for the first `warmup_epochs` epochs and then decays it exponentially.
+    """
+    def lr_lambda(epoch):
+        if epoch < warmup_epochs:
+            return float(epoch + 1) / warmup_epochs
+        else:
+            return 0.90 ** (epoch - warmup_epochs)
+    
+    return torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda)
 
 
 # K-fold cross-validation
@@ -44,6 +40,18 @@ def run_kfold(root_dir, lr, num_epochs, num_repetitions, model_factory,
     total_accuracy = []
     total_history = []
 
+    transform = transforms.Compose([
+        transforms.Resize((224, 224)),  # Resize to match ResNet18 expected input
+        transforms.ToTensor(),          # Convert to Tensor
+        # transforms.RandomHorizontalFlip(p=0.5),
+        # transforms.RandomVerticalFlip(p=0.5),
+        # transforms.RandomRotation(15),
+        transforms.Normalize(           # Normalize using ImageNet statistics
+            mean=[0.485, 0.456, 0.406], 
+            std=[0.229, 0.224, 0.225]
+        )
+    ])
+
     for rep in range(num_repetitions):
         print(f"\n------- Repetition: {rep + 1} / {num_repetitions} -------")
         accuracies = []
@@ -53,21 +61,29 @@ def run_kfold(root_dir, lr, num_epochs, num_repetitions, model_factory,
             fold = f"fold{n_fold}"
             print(f"\n------- Fold: {n_fold} -------")
           
-            train_dataset = VibrationDataset(f"{root_dir}/{fold}/train", labels_map=labels_map, selected_files=list(labels_map.keys()), transform=apply_band_filter_bank)
-            val_dataset = VibrationDataset(f"{root_dir}/{fold}/val", labels_map=labels_map, selected_files=list(labels_map.keys()), transform=apply_band_filter_bank)
-            test_dataset = VibrationDataset(f"{root_dir}/{fold}/test", labels_map=labels_map, selected_files=list(labels_map.keys()), transform=apply_band_filter_bank)                         
+            train_dataset = ImageFolder(f"{root_dir}/{fold}/train", transform=transform)
+            val_dataset = ImageFolder(f"{root_dir}/{fold}/val", transform=transform)
+            test_dataset = ImageFolder(f"{root_dir}/{fold}/test", transform=transform)                         
             
             train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
             val_loader = DataLoader(val_dataset, batch_size=32)
             test_loader = DataLoader(test_dataset, batch_size=32)
                        
             # Model initialization
-            model = model_factory.build()           
+            model = model_factory.build()
+
+            # for name, param in model.named_parameters():
+            #     if 'layer4' not in name and 'fc' not in name:
+            #         param.requires_grad = False       
             
             if checkpoint_pretrain:
                 print("Starting fine-tuning.")
                 # Optionally load pre-trained weights
                 model.load_state_dict(torch.load(checkpoint_pretrain, weights_only=True)['model_state_dict'])
+                
+                for name, param in model.named_parameters():
+                    if 'layer4' not in name and 'fc' not in name:
+                        param.requires_grad = False
 
                 # Fine-tuning
                 # for param in model.conv1.parameters():
@@ -85,9 +101,10 @@ def run_kfold(root_dir, lr, num_epochs, num_repetitions, model_factory,
 
             # Training
             print("\nTreining a fault detector...")
-            htr = train(model, train_loader, val_loader, None, criterion, optimizer,
+            print(type(val_loader))
+            htr = train(model, train_loader, val_loader, test_loader, criterion, optimizer,
                 num_epochs=num_epochs, device=device, use_class_weights=False,
-                checkpoint_path=checkpoint_path, checkpoint_mode="val_accuracy")
+                checkpoint_path=checkpoint_path, checkpoint_mode="val_loss")
 
             
             print("\nCarregando melhores pesos...")
@@ -125,22 +142,27 @@ def run_kfold(root_dir, lr, num_epochs, num_repetitions, model_factory,
 if __name__ == "__main__":
     
     params = {
-        'classes': ['B', 'I'],        
+        'classes': ['B', 'I'],
         'num_repetitions': 1,
         'learning_rate': 0.0001,
-        'num_epochs': 40,
-        'model': CNN7,
-        'checkpoint_pt': None
+        'num_epochs': 10,
+        'model': resnet18,
+        'checkpoint_pt': None #"checkpoint/resnet18_uored_bi.pth"
     }
-
+    num_classes = len(params['classes'])
     classes_str = "".join(params['classes'])
-    experiment_title = f"{params['model'].__name__}_{classes_str}" 
-    root_dir = "data/processed/cwru"
+    experiment_title = "Resnet18_CWRU_" + classes_str.lower()
+    root_dir = "data/spectrograms/cwru_with_outliers"
     history_path = f"pkl_files/{experiment_title}.pkl"
-    model_factory = ModelFactory(model_class=params['model'], input_length=4096, num_classes=2)
+    model_factory = ModelFactory(model_class=params['model'], 
+                                 classifier_layer=nn.Sequential(
+                                    nn.Dropout(p=0.6),
+                                    nn.Linear(512, num_classes)
+                                ),
+                                 weights= None) #ResNet18_Weights.DEFAULT)
 
         
-    # sys.stdout = LoggerWriter(logging.info, experiment_title)
+    sys.stdout = LoggerWriter(logging.info, experiment_title)
     
     labels_map = {label: index for index, label in enumerate(params['classes'])}
 
