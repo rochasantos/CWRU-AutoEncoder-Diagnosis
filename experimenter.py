@@ -1,151 +1,234 @@
 import sys
 import logging
+import os
+import random
 import numpy as np
-
 import torch
-from torch.utils.data import DataLoader
+import torch.nn as nn
+from torch.utils.data import DataLoader, ConcatDataset
 
-from src.utils import LoggerWriter
-from src.training import train, test
-from src.models import CNN7
+from src.utils import LoggerWriter, show_confusion_matrix
+from src.data_processing import VibrationDataset, BalancedBatchSampler
+from src.training import train_model, validate_model
 from src.models.model_factory import ModelFactory
-from src.models.fft_cnn1d import FFT1DCNN
-from src.data_processing import VibrationDataset
-
-from src.data_processing.transforms import compute_rms_fft
-
-from scipy.signal import butter, filtfilt
-import numpy as np
-
-import numpy as np
-from scipy.signal import firwin, lfilter
-
-def apply_band_filter_bank(signal, fs=48000, band=(2000, 5000), filter_order=128):
-    nyquist = fs / 2
-    low, high = band
-    # Normalize cutoff frequencies
-    low_norm = low / nyquist
-    high_norm = high / nyquist
-    # Design bandpass FIR filter
-    taps = firwin(filter_order + 1, [low_norm, high_norm], pass_zero=False)
-    # Apply the filter
-    filtered_signal = lfilter(taps, 1.0, signal)
-    return filtered_signal
+from src.models import BearingCNN1D, CNNLSTMCompat, TinyCNN1D, BearingCNN1D_2Convs
 
 
-
-# K-fold cross-validation
-def run_kfold(root_dir, lr, num_epochs, num_repetitions, model_factory, 
-              labels_map, use_class_weights=False, checkpoint_pretrain=None, device='cuda'):
-    print(f"Model Architecture: {model_factory.build()}")
-
-    classes_key = "".join(labels_map.keys()).lower()
-
-    total_accuracy = []
-    total_history = []
-
-    for rep in range(num_repetitions):
-        print(f"\n------- Repetition: {rep + 1} / {num_repetitions} -------")
-        accuracies = []
-        history = []
-
-        for n_fold in range(1, 4):  # 3 folds
-            fold = f"fold{n_fold}"
-            print(f"\n------- Fold: {n_fold} -------")
-          
-            train_dataset = VibrationDataset(f"{root_dir}/{fold}/train", labels_map=labels_map, selected_files=list(labels_map.keys()), transform=apply_band_filter_bank)
-            val_dataset = VibrationDataset(f"{root_dir}/{fold}/val", labels_map=labels_map, selected_files=list(labels_map.keys()), transform=apply_band_filter_bank)
-            test_dataset = VibrationDataset(f"{root_dir}/{fold}/test", labels_map=labels_map, selected_files=list(labels_map.keys()), transform=apply_band_filter_bank)                         
-            
-            train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
-            val_loader = DataLoader(val_dataset, batch_size=32)
-            test_loader = DataLoader(test_dataset, batch_size=32)
-                       
-            # Model initialization
-            model = model_factory.build()           
-            
-            if checkpoint_pretrain:
-                print("Starting fine-tuning.")
-                # Optionally load pre-trained weights
-                model.load_state_dict(torch.load(checkpoint_pretrain, weights_only=True)['model_state_dict'])
-
-                # Fine-tuning
-                # for param in model.conv1.parameters():
-                #     param.requires_grad = False
-                # for param in model.conv2.parameters():
-                #     param.requires_grad = False
-                # for param in model.conv3.parameters():
-                #     param.requires_grad = False
+def zscore(x):
+    m = x.mean()
+    s = x.std() + 1e-8
+    return (x - m) / s
 
 
-            optimizer = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=1e-4)
-            criterion = torch.nn.CrossEntropyLoss()
-            
-            checkpoint_path = f"checkpoint/cnn7_{classes_key}_f{n_fold}.pth"            
+def set_seed(seed):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
 
-            # Training
-            print("\nTreining a fault detector...")
-            htr = train(model, train_loader, val_loader, None, criterion, optimizer,
-                num_epochs=num_epochs, device=device, use_class_weights=False,
-                checkpoint_path=checkpoint_path, checkpoint_mode="val_accuracy")
 
-            
-            print("\nCarregando melhores pesos...")
-            model.load_state_dict(torch.load(checkpoint_path, weights_only=True)['model_state_dict'])
-            
-            acc = test(model, test_loader, device=device, class_names=[k for k in labels_map.keys()])
-            
-            history.append((htr, acc))
-            accuracies.append(acc)
+def make_loaders_fold(round_root, fold_name, batch_size, num_workers):
+    """Build train/val loaders for a given fold and test loader from the round."""
+    fold_root = os.path.join(round_root, fold_name)
+    train_ds = VibrationDataset(os.path.join(fold_root, "train"))
+    val_ds   = VibrationDataset(os.path.join(fold_root, "val"))
+    test_ds  = VibrationDataset(os.path.join(round_root, "test"))
 
-        total_history.append(history)
-        mean_acc = np.mean(accuracies)
-        std_acc = np.std(accuracies)
+    applying_balanced_sampler = False
+    if applying_balanced_sampler:
+        train_sampler = BalancedBatchSampler(
+            labels=train_ds.labels, batch_size=batch_size, shuffle=True, drop_last=True
+        )
+        train_loader = DataLoader(train_ds, batch_sampler=train_sampler, num_workers=num_workers)
+    else:
+        train_loader = DataLoader(train_ds, batch_size=batch_size, shuffle=True, num_workers=num_workers)
 
-        print(f"\nPartial Evaluation Summary")
-        print(f"Mean Accuracy: {mean_acc:.4f}")
-        print(f"Standard Deviation: {std_acc:.4f}")
+    val_loader  = DataLoader(val_ds,  batch_size=batch_size, shuffle=False, num_workers=num_workers)
+    test_loader = DataLoader(test_ds, batch_size=batch_size, shuffle=False, num_workers=num_workers)
+    return train_ds, val_ds, test_ds, train_loader, val_loader, test_loader
 
-        total_accuracy.append(accuracies)
 
-    # Final Summary
-    mean_accuracy_by_fold = np.round(np.mean(total_accuracy, axis=0), 4)
-    std_accuracy_by_fold = np.round(np.std(total_accuracy, axis=0), 4)
+def infer_num_classes(ds):
+    if hasattr(ds, "classes") and ds.classes:
+        return len(ds.classes)
+    if hasattr(ds, "targets") and ds.targets:
+        return int(max(ds.targets)) + 1
+    if isinstance(ds, ConcatDataset):
+        union = set()
+        for sub in ds.datasets:
+            if hasattr(sub, "classes") and sub.classes:
+                union.update(sub.classes)
+        if union:
+            return len(union)
+        mx, found = -1, False
+        for sub in ds.datasets:
+            if hasattr(sub, "targets") and sub.targets:
+                mx = max(mx, int(max(sub.targets)))
+                found = True
+        if found:
+            return mx + 1
+    try:
+        ys = [int(ds[i][1]) for i in range(min(len(ds), 2048))]
+        if ys:
+            return max(ys) + 1
+    except Exception:
+        pass
+    raise RuntimeError("Unable to infer num_classes from dataset.")
 
-    print("\nFinal Evaluation Summary:")
-    print("-------------------------------------------")
-    print(f"Mean Accuracy by Fold: {mean_accuracy_by_fold}")
-    print(f"Standard Deviation by Fold: {std_accuracy_by_fold}")
-    print("-------------------------------------------")
-    print(f"\nTotal Accuracy: {np.mean(mean_accuracy_by_fold):.4f}")
-    print(f"Standard Deviation: {np.std(total_accuracy):.4f}")
-    print("-------------------------------------------")
+
+def _discover_round_paths(data_root):
+    def is_round_dir(p):
+        return os.path.isdir(os.path.join(p, "test")) and any(
+            os.path.isdir(os.path.join(p, f"fold{i}")) for i in (1, 2, 3)
+        )
+
+    if is_round_dir(data_root):
+        return [data_root]
+
+    round_dirs = []
+    if os.path.isdir(data_root):
+        for name in sorted(os.listdir(data_root)):
+            if name.startswith("round_"):
+                candidate = os.path.join(data_root, name)
+                if is_round_dir(candidate):
+                    round_dirs.append(candidate)
+    if not round_dirs:
+        raise RuntimeError(f"Nenhum round válido encontrado em {data_root}")
+    return round_dirs
+
+
+def _build_model(config, num_classes, device):
+    kwargs = dict(config.get("model_kwargs", {}))
+    kwargs["num_classes"] = num_classes
+    model = ModelFactory(
+        model_class=config["model_class"],
+        classifier_layer=None,
+        **kwargs
+    ).build().to(device)
+    return model
+
+
+def _train_and_test_fold(round_root, fold_name, config, device, label_names):
+    """
+    Train on (train/val) of the fold, then TEST on round's test set.
+    Returns test_metrics (dict).
+    """
+    train_ds, val_ds, test_ds, train_loader, val_loader, test_loader = make_loaders_fold(
+        round_root, fold_name, config["batch_size"], config["num_workers"]
+    )
+    num_classes = infer_num_classes(train_ds)
+
+    model = _build_model(config, num_classes, device)
+    criterion = nn.CrossEntropyLoss()
+    optimizer = torch.optim.Adam(model.parameters(), lr=config["lr"])
+
+    # Train using provided training loop (with early/best checkpoint if it has)
+    model = train_model(
+        model,
+        train_loader,
+        val_loader,
+        criterion,
+        optimizer,
+        device,
+        config["epochs"],
+    )
+
+    # ---- TEST (only place where we show confusion matrix) ----
+    test_metrics = validate_model(model=model, data_loader=test_loader, device=device, criterion=None)
+    print(f"[{os.path.basename(round_root)} | {fold_name} | TEST] "
+          f"Acc: {test_metrics['acc']:.4f} | F1(macro): {test_metrics['f1']:.4f}")
+    show_confusion_matrix(test_metrics["logits"], test_metrics["targets"], label_names=label_names)
+
+    return test_metrics
+
+
+def run_repetitions(config):
+    """
+    For each round:
+      - for each seed:
+        - for each fold (fold1..fold3):
+            train on (train/val) of the fold
+            test on round's test
+            print confusion matrix (TEST only)
+      - summarize per round (mean across folds and seeds)
+    Finally, summarize across rounds.
+    """
+    device = torch.device(
+        config["device"] if config["device"] else ("cuda" if torch.cuda.is_available() else "cpu")
+    )
+    seeds = config["seeds"] if config["seeds"] else list(range(config["repeats"]))
+
+    round_paths = _discover_round_paths(config["data_root"])
+
+    all_round_acc = []
+    all_round_f1  = []
+
+    for round_path in round_paths:
+        print("\n" + "="*70)
+        print(f"🏁 Iniciando {os.path.basename(round_path)}")
+        print("="*70)
+
+        # Get label names from test set once (classes are the same)
+        _, _, test_ds_tmp, _, _, _ = make_loaders_fold(
+            round_path, "fold1", config["batch_size"], config["num_workers"]
+        )
+        label_names = getattr(test_ds_tmp, "classes", None)
+
+        round_test_accs = []
+        round_test_f1s  = []
+
+        fold_names = [d for d in ("fold1", "fold2", "fold3")
+                      if os.path.isdir(os.path.join(round_path, d))]
+        if not fold_names:
+            raise RuntimeError(f"Nenhuma fold encontrada em {round_path}")
+
+        for i, seed in enumerate(seeds, 1):
+            print(f"\n[Seed {i}/{len(seeds)}] seed={seed}")
+            set_seed(seed)
+
+            for fold_name in fold_names:
+                metrics = _train_and_test_fold(round_path, fold_name, config, device, label_names)
+                round_test_accs.append(metrics["acc"])
+                round_test_f1s.append(metrics["f1"])
+
+        # ---- Round summary (average over folds x seeds) ----
+        r_acc_mean = float(np.mean(round_test_accs))
+        r_acc_std  = float(np.std(round_test_accs, ddof=1)) if len(round_test_accs) > 1 else 0.0
+        r_f1_mean  = float(np.mean(round_test_f1s))
+        r_f1_std   = float(np.std(round_test_f1s, ddof=1)) if len(round_test_f1s) > 1 else 0.0
+
+        print("\n----- Resumo do round -----")
+        print(f"{os.path.basename(round_path)} | Acc: média={r_acc_mean:.4f} ± {r_acc_std:.4f} "
+              f"| F1(macro): média={r_f1_mean:.4f} ± {r_f1_std:.4f}")
+
+        all_round_acc.append(r_acc_mean)
+        all_round_f1.append(r_f1_mean)
+
+    # ---- Final summary across rounds ----
+    acc_mean = float(np.mean(all_round_acc))
+    acc_std  = float(np.std(all_round_acc, ddof=1)) if len(all_round_acc) > 1 else 0.0
+    f1_mean  = float(np.mean(all_round_f1))
+    f1_std   = float(np.std(all_round_f1, ddof=1)) if len(all_round_f1) > 1 else 0.0
+
+    print("\n===== Sumarização Final (todos os rounds) =====")
+    print(f"Rounds avaliados: {len(round_paths)}")
+    print(f"Accuracy   : média={acc_mean:.4f} | desvio={acc_std:.4f}")
+    print(f"Macro F1   : média={f1_mean:.4f} | desvio={f1_std:.4f}")
 
 
 if __name__ == "__main__":
-    
-    params = {
-        'classes': ['B', 'I'],        
-        'num_repetitions': 1,
-        'learning_rate': 0.0001,
-        'num_epochs': 40,
-        'model': CNN7,
-        'checkpoint_pt': None
+    config = {
+        # Pode apontar para UM round (ex.: ".../cwru_2048_48k/round_4")
+        # OU para a raiz que contém vários rounds (rodará todos).
+        "data_root": "data/processed/cwru_2048_48k",
+        "repeats": 1,
+        "seeds": [0],
+        "epochs": 15,
+        "batch_size": 64,
+        "lr": 8e-4,
+        "num_workers": 4,
+        "device": "",
+        "model_class": BearingCNN1D,
+        "model_kwargs": {"num_classes": 4}
     }
-
-    classes_str = "".join(params['classes'])
-    experiment_title = f"{params['model'].__name__}_{classes_str}" 
-    root_dir = "data/processed/cwru"
-    history_path = f"pkl_files/{experiment_title}.pkl"
-    model_factory = ModelFactory(model_class=params['model'], input_length=4096, num_classes=2)
-
-        
-    # sys.stdout = LoggerWriter(logging.info, experiment_title)
-    
-    labels_map = {label: index for index, label in enumerate(params['classes'])}
-
-    total_acc = run_kfold(root_dir, params['learning_rate'], params['num_epochs'], params['num_repetitions'], model_factory, 
-            labels_map=labels_map, checkpoint_pretrain=params['checkpoint_pt'])
- 
-        
-
+    run_repetitions(config)
