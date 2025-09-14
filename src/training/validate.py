@@ -1,46 +1,51 @@
-# training/eval.py
 import torch
-import numpy as np
-from sklearn.metrics import accuracy_score, f1_score
+from sklearn.metrics import confusion_matrix, f1_score, accuracy_score
 
-def validate_model(model, data_loader, device, criterion=None):
-    """Evaluate a model and return metrics + concatenated logits/targets."""
+def validate_model(config):
+    """
+    Validate the model using the given configuration dictionary.
+    Args:
+        config (dict): Dictionary with parameters. Must include:
+            - model: PyTorch model
+            - val_loader: DataLoader for validation
+            - criterion: Loss function
+            - device: "cuda" or "cpu"
+            - metrics (optional): dict with metric_name: function(y_true, y_pred)
+    Returns:
+        dict: validation results (loss and metrics)
+    """
+    model = config["model"]
+    val_loader = config["val_loader"]
+    criterion = config["criterion"]
+    device = config.get("device", "cpu")
+    metrics = config.get("metrics", {})
+
     model.eval()
-    total_loss = 0.0
-    n = 0
-    all_logits = []
-    all_targets = []
+    val_loss = 0.0
+    y_true, y_pred = [], []
 
     with torch.no_grad():
-        for X, y in data_loader:
-            X = X.to(device)
-            y = y.to(device)
+        for x, y in val_loader:
+            x, y = x.to(device), y.to(device)
 
-            logits = model(X)
-            if criterion is not None:
-                loss = criterion(logits, y)
-                total_loss += float(loss.item()) * y.size(0)
-            n += y.size(0)
+            outputs = model(x)
+            loss = criterion(outputs, y)
+            val_loss += loss.item() * x.size(0)
 
-            all_logits.append(logits.detach().cpu())
-            all_targets.append(y.detach().cpu())
+            preds = torch.argmax(outputs, dim=1)
+            y_true.extend(y.cpu().numpy())
+            y_pred.extend(preds.cpu().numpy())
 
-    logits_cat = torch.cat(all_logits, dim=0)
-    targets_cat = torch.cat(all_targets, dim=0)
+    val_loss /= len(val_loader.dataset)
 
-    # Metrics
-    preds = logits_cat.argmax(dim=1).numpy() if logits_cat.ndim == 2 and logits_cat.size(1) > 1 \
-            else (logits_cat.squeeze().numpy() > 0.5).astype(int)
-    targets_np = targets_cat.numpy()
+    results = {"val_loss": val_loss}
+    results["accuracy"] = accuracy_score(y_true, y_pred)
+    results["f1_macro"] = f1_score(y_true, y_pred, average="macro")
+    results["f1_micro"] = f1_score(y_true, y_pred, average="micro")
+    results["confusion_matrix"] = confusion_matrix(y_true, y_pred)
 
-    acc = accuracy_score(targets_np, preds)
-    f1  = f1_score(targets_np, preds, average="macro")
+    # Extra metrics if user passed
+    for name, func in metrics.items():
+        results[name] = func(y_true, y_pred)
 
-    metrics = {
-        "loss": (total_loss / n) if (criterion is not None and n > 0) else None,
-        "acc": float(acc),
-        "f1": float(f1),
-        "logits": logits_cat,     # tensors, para show_confusion_matrix
-        "targets": targets_cat,
-    }
-    return metrics
+    return results

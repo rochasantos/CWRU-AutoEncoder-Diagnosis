@@ -1,48 +1,67 @@
-# src/data_processing/vibration_dataset.py
 import os
+from glob import glob
 import numpy as np
 import torch
 from torch.utils.data import Dataset
 
-class VibrationDataset(Dataset):
-    def __init__(self, root_dir, classes=("N", "I", "O", "B"), transform=None):
+# Label maps
+LABELS = {
+    "bin": {"N": 0, "F": 1},                # non-fault vs fault
+    "bio": {"B": 0, "I": 1, "O": 2},        # only fault types
+    "bino": {"N": 0, "B": 1, "I": 2, "O": 3} # all classes together
+}
+
+class BearingDataset(Dataset):
+    """
+    Loads .npy 1D signals organized as:
+      root/bin/(N_1_0.npy,...,F_2_1.npy)   -> task="bin"
+      root/bio/(B_5_2.npy,...,I_9_5.npy,...) -> task="bio"
+      root/bino/(N_1_0.npy,B_2_1.npy,...) -> task="bino"
+    Label is inferred from the first char in filename.
+    """
+
+    def __init__(self, root_dir, task="bin", transform=None, target_transform=None, return_path=False):
         self.root_dir = root_dir
-        self.classes = list(classes)
-        self.class_to_idx = {c: i for i, c in enumerate(self.classes)}
-        self.transform = transform  # store user transform
+        self.task = task.lower().strip()
+        if self.task not in LABELS:
+            raise ValueError("task must be 'bin', 'bio' or 'bino'")
+        self.map = LABELS[self.task]
+        self.transform = transform
+        self.target_transform = target_transform
+        self.return_path = return_path
 
-        self.samples = []
-        for cls in self.classes:
-            class_dir = os.path.join(self.root_dir, cls)
-            if not os.path.isdir(class_dir):
-                continue
-            for fname in sorted(os.listdir(class_dir)):
-                if fname.endswith(".npy"):
-                    self.samples.append((os.path.join(class_dir, fname), self.class_to_idx[cls]))
+        # collect files
+        paths = sorted(glob(os.path.join(root_dir, "*.npy")))
+        if not paths:
+            raise FileNotFoundError("No .npy files found in %s" % root_dir)
 
-        if len(self.samples) == 0:
-            raise RuntimeError(f"No .npy files found under {self.root_dir} with classes {self.classes}")
+        # keep only files whose first char is in label map
+        self.samples = [p for p in paths if os.path.basename(p)[0] in self.map]
+        if not self.samples:
+            raise FileNotFoundError("No valid labeled files (by prefix) in %s" % root_dir)
 
-        # Expose labels for external samplers/splitters
-        self.labels = [label for _, label in self.samples]
-        self.targets = self.labels  # common alias in PyTorch
+        # store class names in index order
+        inv = sorted(self.map.items(), key=lambda x: x[1])
+        self.classes = [k for k, _ in inv]
 
     def __len__(self):
         return len(self.samples)
 
     def __getitem__(self, idx):
-        path, label = self.samples[idx]
-        x = np.load(path)  # expects 1D array [L]
+        path = self.samples[idx]
+        x = np.load(path)                 # expects 1D numpy array
+        x = torch.from_numpy(x).float()   # to float32 tensor
+        if x.ndim == 1:
+            x = x.unsqueeze(0)            # shape [1, L] for Conv1d
 
-        # Apply optional transform (accepts np.ndarray or torch.Tensor)
+        y_char = os.path.basename(path)[0]
+        y = torch.tensor(self.map[y_char], dtype=torch.long)
+
         if self.transform is not None:
             x = self.transform(x)
+        if self.target_transform is not None:
+            y = self.target_transform(y)
 
-        # Ensure torch tensor and channel-first shape
-        if not isinstance(x, torch.Tensor):
-            x = torch.from_numpy(np.asarray(x))
-        x = x.float()
-        if x.ndim == 1:
-            x = x.unsqueeze(0)  # -> [1, L]
-
-        return x, torch.tensor(label).long()
+        if self.return_path:
+            return x, y, path
+        return x, y
