@@ -1,149 +1,136 @@
+# src/training/train.py
+import os
+import time
 import torch
-from collections import Counter
-def train(model, train_loader, val_loader1=None, val_loader2=None,
-          criterion=None, optimizer=None, num_epochs=10, device="cuda",
-          checkpoint_path='best_model.pth', scheduler=None, early_stopping=None,
-          use_class_weights=False, checkpoint_mode="val_accuracy"):
+from torch import amp
 
+def _get_lr(optimizer):
+    for pg in optimizer.param_groups:
+        return pg.get("lr", None)
+
+def _safe_macro_f1(y_true, y_pred):
+    try:
+        from sklearn.metrics import f1_score
+        return float(f1_score(y_true, y_pred, average="macro"))
+    except Exception:
+        return 0.0
+        
+
+def train_model(model, train_loader, val_loader, criterion, optimizer, device, num_epochs,
+                mixed_precision=True, ckpt_path="checkpoints/best_val_acc.pt"):
+    """
+    Minimal training loop with per-epoch logs.
+    Behavior:
+      - With val_loader: track best-by-val-acc and save checkpoint; restore best at the end.
+      - Without val_loader: do NOT use best-checkpointing; save final model only (last epoch).
+    """
     model.to(device)
-    loss_history = []
-    accuracy_history = []
-    val1_loss_history = []
-    val1_accuracy_history = []
-    val2_loss_history = []
-    val2_accuracy_history = []
+    device_type = "cuda" if device.type == "cuda" else "cpu"
+    scaler = amp.GradScaler(device_type, enabled=mixed_precision)
 
-    best_metric = None
-    best_acc_acu = []
+    use_validation = val_loader is not None
 
-    # Class weights
-    if use_class_weights:
-        print("🔎 Calculando pesos de classe...")
-        all_labels = []
-        for _, labels in train_loader:
-            all_labels.extend(labels.tolist())
-        counts = Counter(all_labels)
-        num_samples = sum(counts.values())
-        num_classes = len(counts)
-        weights = [num_samples / (num_classes * counts[i]) for i in range(num_classes)]
-        class_weights = torch.tensor(weights, dtype=torch.float32).to(device)
-        criterion = torch.nn.CrossEntropyLoss(weight=class_weights)
-        print(f"✅ Pesos aplicados: {weights}")
-    else:
-        criterion = criterion or torch.nn.CrossEntropyLoss()
+    # Best checkpoint tracking only if we have validation
+    best_acc = -1.0
+    best_state = None
 
-    for epoch in range(num_epochs):
+    for epoch in range(1, num_epochs + 1):
+        t0 = time.time()
         model.train()
-        epoch_loss = 0.0
-        correct = 0
-        total = 0
-        for signals, labels in train_loader:
-            signals, labels = signals.to(device), labels.to(device)
-            outputs = model(signals)
-            loss = criterion(outputs, labels)
+        tr_loss_sum, tr_correct, tr_total = 0.0, 0, 0
 
-            optimizer.zero_grad()
-            loss.backward()
-            optimizer.step()
+        for x, y in train_loader:
+            x = x.to(device).float()
+            y = y.to(device).long()
 
-            epoch_loss += loss.item()
-            _, predicted = torch.max(outputs, 1)
-            correct += (predicted == labels).sum().item()
-            total += labels.size(0)
+            optimizer.zero_grad(set_to_none=True)
+            with amp.autocast(device_type, enabled=mixed_precision):
+                logits = model(x)
+                loss = criterion(logits, y)
 
-        avg_loss = epoch_loss / len(train_loader)
-        accuracy = correct / total
-        loss_history.append(avg_loss)
-        accuracy_history.append(accuracy)
+            scaler.scale(loss).backward()
+            scaler.step(optimizer)
+            scaler.update()
 
-        model.eval()
-        with torch.no_grad():
+            tr_loss_sum += loss.item() * x.size(0)
+            tr_correct  += (logits.detach().argmax(1) == y).sum().item()
+            tr_total    += y.numel()
 
-            val1_acc, avg_val1_loss = None, None
-            if val_loader1:
-                val1_loss = 0.0
-                val1_correct = 0
-                val1_total = 0
-                for val_signals, val_labels in val_loader1:
-                    val_signals, val_labels = val_signals.to(device), val_labels.to(device)
-                    val_outputs = model(val_signals)
-                    val1_loss += criterion(val_outputs, val_labels).item()
-                    _, val_predicted = torch.max(val_outputs, 1)
-                    val1_correct += (val_predicted == val_labels).sum().item()
-                    val1_total += val_labels.size(0)
-                avg_val1_loss = val1_loss / len(val_loader1)
-                val1_acc = val1_correct / val1_total
-                best_acc_acu.append(val1_acc)
-                val1_loss_history.append(avg_val1_loss)
-                val1_accuracy_history.append(val1_acc)
+        tr_loss = tr_loss_sum / max(tr_total, 1)
+        tr_acc  = tr_correct  / max(tr_total, 1)
 
-                print(f"Epoch [{epoch+1}/{num_epochs}] - "
-                      f"Train Loss: {avg_loss:.4f}, Train Acc: {accuracy:.4f} - "
-                      f"Val1 Loss: {avg_val1_loss:.4f}, Val1 Acc: {val1_acc:.4f}")
+        # ---- optional validation ----
+        val_loss, val_acc, val_f1 = 0.0, 0.0, 0.0
+        if use_validation:
+            model.eval()
+            val_loss_sum, val_correct, val_total = 0.0, 0, 0
+            y_true_list, y_pred_list = [], []
 
-            if val_loader2:
-                val2_loss = 0.0
-                val2_correct = 0
-                val2_total = 0
-                for val_signals, val_labels in val_loader2:
-                    val_signals, val_labels = val_signals.to(device), val_labels.to(device)
-                    val_outputs = model(val_signals)
-                    val2_loss += criterion(val_outputs, val_labels).item()
-                    _, val_predicted = torch.max(val_outputs, 1)
-                    val2_correct += (val_predicted == val_labels).sum().item()
-                    val2_total += val_labels.size(0)
-                avg_val2_loss = val2_loss / len(val_loader2)
-                val2_acc = val2_correct / val2_total
-                val2_loss_history.append(avg_val2_loss)
-                val2_accuracy_history.append(val2_acc)
+            with torch.no_grad():
+                for x, y in val_loader:
+                    x = x.to(device).float()
+                    y = y.to(device).long()
+                    with amp.autocast(device_type, enabled=mixed_precision):
+                        logits = model(x)
+                        loss = criterion(logits, y)
+                    val_loss_sum += loss.item() * x.size(0)
+                    preds = logits.argmax(1)
+                    val_correct += (preds == y).sum().item()
+                    val_total   += y.numel()
+                    y_true_list.append(y.cpu())
+                    y_pred_list.append(preds.cpu())
 
-                print(f"Epoch [{epoch+1}/{num_epochs}] - "
-                      f"Val2 Loss: {avg_val2_loss:.4f}, Val2 Acc: {val2_acc:.4f}")
+            if val_total > 0:
+                val_loss = val_loss_sum / val_total
+                val_acc  = val_correct / val_total
+                y_true   = torch.cat(y_true_list).numpy()
+                y_pred   = torch.cat(y_pred_list).numpy()
+                val_f1   = _safe_macro_f1(y_true, y_pred)
 
-        # === Selecione a métrica de checkpoint ===
-        metric_name = checkpoint_mode.lower()
-        metric_value = {
-            "val_accuracy": val1_acc,
-            "val_loss": avg_val1_loss,
-            "train_accuracy": accuracy,
-            "train_loss": avg_loss
-        }.get(metric_name, None)
+        epoch_time = time.time() - t0
+        lr = _get_lr(optimizer)
 
-        save_checkpoint = False
-        if metric_value is not None:
-            if best_metric is None:
-                save_checkpoint = True
-            elif 'loss' in metric_name and metric_value < best_metric:
-                save_checkpoint = True
-            elif 'accuracy' in metric_name and metric_value > best_metric:
-                save_checkpoint = True
+        # Logging: print val metrics only if validation is used
+        if use_validation:
+            print(
+                f"Epoch {epoch:03d}/{num_epochs} | "
+                f"lr={lr:.6f} | "
+                f"train: loss={tr_loss:.4f}, acc={tr_acc:.4f} | "
+                f"val: loss={val_loss:.4f}, acc={val_acc:.4f}, f1={val_f1:.4f} | "
+                f"time={epoch_time:.1f}s"
+            )
+        else:
+            print(
+                f"Epoch {epoch:03d}/{num_epochs} | "
+                f"lr={lr:.6f} | "
+                f"train: loss={tr_loss:.4f}, acc={tr_acc:.4f} | "
+                f"time={epoch_time:.1f}s"
+            )
 
-        if save_checkpoint and metric_value is not None:
-            torch.save({
-                'epoch': epoch,
-                'model_state_dict': model.state_dict(),
-                'optimizer_state_dict': optimizer.state_dict(),
-                'val_loss': avg_val1_loss if avg_val1_loss is not None else avg_loss,
-                'val_accuracy': val1_acc if val1_acc is not None else accuracy
-            }, checkpoint_path)
-            best_metric = metric_value
-            print(f"✅ Checkpoint salvo no epoch {epoch+1} com {checkpoint_mode} = {metric_value:.4f}")
+        # ---- checkpointing ----
+        if use_validation:
+            # Best-by-validation-accuracy checkpoint
+            if val_acc > best_acc:
+                best_acc = val_acc
+                best_state = {k: v.cpu() for k, v in model.state_dict().items()}
+                if ckpt_path:
+                    os.makedirs(os.path.dirname(ckpt_path) or ".", exist_ok=True)
+                    torch.save({"model_state": best_state, "epoch": epoch, "val_acc": float(best_acc)}, ckpt_path)
+                    print(f"  -> New best val_acc={best_acc:.4f}. Checkpoint saved to: {ckpt_path}")
 
-            if checkpoint_mode == "val_accuracy" and val1_acc == 1.0:
-                break
+    # ---- finalize ----
+    if use_validation:
+        # Restore best weights (if any) before returning
+        if best_state is not None:
+            model.load_state_dict(best_state)
+        elif ckpt_path and os.path.exists(ckpt_path):
+            ckpt = torch.load(ckpt_path, map_location=device)
+            model.load_state_dict(ckpt["model_state"])
+    else:
+        # No validation: save final model (last epoch) only
+        if ckpt_path:
+            os.makedirs(os.path.dirname(ckpt_path) or ".", exist_ok=True)
+            torch.save({"model_state": model.state_dict(), "epoch": num_epochs}, ckpt_path)
+            print(f"Final model (last epoch) saved to: {ckpt_path}")
 
-        if early_stopping:
-            loss_for_early_stopping = avg_val1_loss if val_loader1 else avg_loss
-            if early_stopping(loss_for_early_stopping, model):
-                print(f"🛑 Early stopping at epoch {epoch+1}")
-                break
-
-        if not val_loader1 and not val_loader2:
-            print(f"Epoch [{epoch+1}/{num_epochs}] - Loss: {avg_loss:.4f} - Accuracy: {accuracy:.4f}")
-
-        if scheduler:
-            scheduler.step()
-
-    return (loss_history, accuracy_history,
-            val1_loss_history, val1_accuracy_history,
-            val2_loss_history, val2_accuracy_history)
+    return model
