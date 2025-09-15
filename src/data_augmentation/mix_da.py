@@ -1,6 +1,6 @@
 import numpy as np
 
-fc = 48000  # Frequência de amostragem típica no CWRU (pode ser ajustada)
+fc = 42000  # Frequência de amostragem típica no CWRU (pode ser ajustada)
 f_o = 107.36  # BPFO em Hz
 f_i = 162.19  # BPFI em Hz
 f_b = 70.58 

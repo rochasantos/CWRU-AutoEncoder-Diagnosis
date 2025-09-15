@@ -9,9 +9,10 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader
 
-from src.models import MCNN_LSTM, MCNN_LSTM_LowFreq, BearingCNN1D, HierarchicalClassifier, ModelFactory
+from src.models import MCNN_LSTM, MCNN_LSTM_LowFreq, BearingCNN1D, HierarchicalClassifier, ModelFactory, BearingCNN1D_2Convs
 from src.data_processing import BearingDataset
 from src.training import train_model, validate_model
+import src.data_augmentation.data_augmentation as aug
 
 def fft_transform(x: torch.Tensor) -> torch.Tensor:
     """
@@ -47,16 +48,33 @@ def main(config, bin_cfg, bio_cfg, val_cfg):
     return val_results['accuracy'], val_results['confusion_matrix']
 
 def make_loaders(root, batch_size=64, num_workers=2):
-    tr_bin_ds = BearingDataset(f'{root}/bin', task="bin")
+    tr_bin_ds = BearingDataset(f'{root}/bin_aug', task="bin")
     val_bin_ds = BearingDataset(f'{root}/bin_val', task="bin")
-    tr_bio_ds = BearingDataset(f'{root}/bio', task="bio")
+    tr_bio_ds = BearingDataset(f'{root}/bio_aug', task="bio")
     te_ds = BearingDataset(f'{root}/test', task="bino")
+
+    aug_train_ds = aug.wrap_with_random_augmentation(
+        tr_bio_ds,
+        transforms=[
+            aug.add_gaussian_noise,
+            aug.local_data_reversing,
+            aug.local_random_reversing,
+            aug.global_data_reversing,
+            aug.local_data_zooming,
+            aug.global_data_zooming,
+            aug.local_segment_splicing,
+            aug.permute_signal,
+        ],
+        p=0.3,
+        enabled=True,
+        rng_seed=42,   # opcional
+    )
 
     tr_bin_loader = DataLoader(tr_bin_ds, batch_size=batch_size, shuffle=True,
                            num_workers=num_workers, pin_memory=True)
     val_bin_loader = DataLoader(val_bin_ds, batch_size=batch_size, shuffle=False,
                            num_workers=num_workers, pin_memory=True)
-    tr_bio_loader = DataLoader(tr_bio_ds, batch_size=batch_size, shuffle=True,
+    tr_bio_loader = DataLoader(aug_train_ds, batch_size=batch_size, shuffle=True,
                            num_workers=num_workers, pin_memory=True)
     te_loader = DataLoader(te_ds, batch_size=batch_size, shuffle=False,
                            num_workers=num_workers, pin_memory=True)
@@ -68,15 +86,15 @@ def make_loaders(root, batch_size=64, num_workers=2):
 if __name__ == "__main__":
 
     experiment_key = "experiment"
-    sys.stdout = LoggerWriter(logging.info, experiment_key)
+    # sys.stdout = LoggerWriter(logging.info, experiment_key)
    
     # BINARY TRAIN CONFIG
-    bin_model_fac = ModelFactory(model_class=MCNN_LSTM, num_classes=2)
+    bin_model_fac = ModelFactory(model_class=MCNN_LSTM_LowFreq, num_classes=2)
     bin_cfg = {
         'model': bin_model_fac,
         'train_loader': None, 
         'val_loader': None,
-        'epochs': 5,
+        'epochs': 7,
         'optimizer': {'name': 'adam', 'lr': 1e-4, 'weight_decay': 1e-4},
         'scheduler': {'name': 'plateau', 'factor': 0.5, 'patience': 5, 'min_lr': 1e-6},
         'criterion': torch.nn.CrossEntropyLoss(),
@@ -95,12 +113,12 @@ if __name__ == "__main__":
     bio_cfg = {
         'model': bio_model_fac,
         'val_loader': None,
-        'epochs': 10,
+        'epochs': 12,
         'optimizer': {'name': 'adam', 'lr': 1e-4, 'weight_decay': 1e-4},
         'scheduler': {'name': 'plateau', 'factor': 0.5, 'patience': 5, 'min_lr': 1e-6},
         'criterion': torch.nn.CrossEntropyLoss(),
         'amp': True,
-        'grad_clip': 1.0,
+        'grad_clip': 1.5,
         'early_stopping': {'patience': 30, 'min_delta': 0.0},
         'checkpoint_dir': 'checkpoints',
         'checkpoint_name': 'best.pt',
