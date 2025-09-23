@@ -39,7 +39,7 @@ def _build_scheduler(optimizer, sch_cfg, train_loader, epochs, has_val):
         min_lr = sch_cfg.get('min_lr', 1e-6)
         verbose = sch_cfg.get('verbose', True)
         return ReduceLROnPlateau(optimizer, mode='max', factor=factor, patience=patience,
-                                 cooldown=cooldown, min_lr=min_lr, verbose=verbose), 'val_metric'
+                                 cooldown=cooldown, min_lr=min_lr), 'val_metric'
     if name in ['cosine', 'cosineannealinglr']:
         T_max = sch_cfg.get('t_max', epochs)
         eta_min = sch_cfg.get('eta_min', 0.0)
@@ -105,7 +105,7 @@ def train_model(config):
     optimizer = _build_optimizer(model, config.get('optimizer', {}))
     scheduler, sched_step_on = _build_scheduler(optimizer, config.get('scheduler', {}),
                                                 train_loader, epochs, has_val=val_loader is not None)
-    scaler = torch.cuda.amp.GradScaler(enabled=(amp_enabled and device == 'cuda'))
+    scaler = torch.amp.GradScaler("cuda", enabled=(amp_enabled and torch.cuda.is_available()))
 
     history = defaultdict(list)
     best_val_acc = -float('inf')

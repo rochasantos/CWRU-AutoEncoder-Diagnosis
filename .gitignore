@@ -178,3 +178,4 @@ pkl_files
 checkpoint/
 checkpoints/
 logs/
+wp_features/

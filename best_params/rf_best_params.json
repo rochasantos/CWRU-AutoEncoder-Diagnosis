@@ -1,0 +1,8 @@
+{
+  "model__n_estimators": 50,
+  "model__max_depth": 29,
+  "model__min_samples_split": 8,
+  "model__min_samples_leaf": 1,
+  "model__max_features": "sqrt",
+  "model__bootstrap": false
+}

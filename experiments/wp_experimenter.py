@@ -43,8 +43,7 @@ def load_xy(csv_path: str):
 # ---------------------- base learners (fixos) ----------------------
 def make_base_estimators():
     """
-    Monta os 4 modelos base com os hiperparâmetros fornecidos.
-    - Repare que LR e SVM são encadeados com StandardScaler.
+    Build the base models with the provided hyperparameters.
     """
     # Logistic Regression (base)
     lr_base = Pipeline([
@@ -56,7 +55,7 @@ def make_base_estimators():
             max_iter=1179,
             random_state=42,
             multi_class="auto",
-            n_jobs=-1  # 'saga' paraleliza
+            n_jobs=-1
         ))
     ])
 
@@ -82,7 +81,7 @@ def make_base_estimators():
         random_state=42
     )
 
-    # SVM (RBF) com scaler + probas para stacking
+    # SVM (RBF)
     svm = Pipeline([
         ("scaler", StandardScaler()),
         ("svm", SVC(
@@ -104,8 +103,8 @@ def make_base_estimators():
 
 def make_meta_learner():
     """
-    Meta-modelo: Logistic Regression (fixo com os mesmos hiperparâmetros fornecidos).
-    Como as entradas do meta são probabilidades das bases, não é necessário scaler aqui.
+    Meta-model: Logistic Regression (fixed with the same hyperparameters provided).
+    Since the meta-model inputs are base probabilities, a scaler is not necessary here.
     """
     meta = LogisticRegression(
         penalty="l2",
@@ -119,7 +118,7 @@ def make_meta_learner():
     return meta
 
 
-# ---------------------- avaliação ----------------------
+# ---------------------- evaluation ----------------------
 def evaluate_model(name, clf, X_test, y_test):
     y_pred = clf.predict(X_test)
     acc = accuracy_score(y_test, y_pred)
@@ -142,10 +141,10 @@ def main():
     base_dir = Path("wp_features")
     setup_ids = list(range(1, 10 + 1))
 
-    # Meta-learner fixo
+    # Fixed meta-learner
     meta = make_meta_learner()
 
-    # Stacking: usa predict_proba dos quatro modelos base
+    # Stacking: uses predict_proba of the four base models
     stack = StackingClassifier(
         estimators=make_base_estimators(),
         final_estimator=meta,
